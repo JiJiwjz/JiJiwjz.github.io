@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
+    <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
+    <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n)</code>,最好情况<code>O(n^2)</code>.  </p>
+<h2 id="选择排序-不稳定"><a href="#选择排序-不稳定" class="headerlink" title="选择排序(不稳定)"></a>选择排序(不稳定)</h2><p><strong>特点</strong>:每次从待排序列中选出一个<strong>最小值</strong>,然后放在序列的起始位置,直至排完.</p>
+<p><strong>时间复杂度</strong>:<code>O(n^2)</code>.  </p>
+<h2 id="插入排序-稳定"><a href="#插入排序-稳定" class="headerlink" title="插入排序(稳定)"></a>插入排序(稳定)</h2><p><strong>特点</strong>:从<strong>第下个元素开始</strong>,从已排序的元素序列<strong>从后往前</strong>扫描,如果该元素<strong>大于</strong>tem,<strong>则将该元素移至下一位</strong>.重复该步骤,直到找到已排序元素中<strong>小于等于</strong>tem的元素.tem插入到该元素的<strong>后面</strong>,如果已排序所有元素都大于tem,则将tem插入到下标为0的位置.<br><strong>一直重复上述步骤,直至排序完成</strong>.   </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n^2)</code>,最好情况<code>O(n)</code>.</p>
+<h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
+<ul>
+<li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
+<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.</li>
+</ul>
+<p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
+<h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
+<p>是对<strong>冒泡排序</strong>的一种改进  </p>
+</blockquote>
+<p><strong>特点</strong>:通过一趟排序将要排序的数据分割成<strong>独立的两部分</strong>，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以<strong>递归</strong>进行，以此达到整个数据变成有序序列。  </p>
+<ul>
+<li><p>排序流程:  </p>
+<ol>
+<li>首先设定一个<strong>分界值Key</strong>,通过该分界值将数组分成左右两部分.</li>
+<li>将<em>大于或等于Key的数据集中到数组右边,小于分界值的数据集中到数组的左边</em>.此时,左边部分中各元素都小于或等于分界值,而右边部分中各元素都大于或等于分界值.</li>
+<li>然后,左边和右边的数据可以独立排序.对于左侧的数组数据,又可以取一个分界值,将该部分数据分成左右两部分,同样在左边放置较小值,右边放置较大值.右侧的数组数据也可以做类似处理.</li>
+<li>重复上述过程,可以看出,这是一个<strong>递归定义</strong>.通过递归将左侧部分排好序后,再递归排好右侧部分的顺序.当左右两个部分各数据排序完成后,整个数组的排序也就完成了.</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+</search>
