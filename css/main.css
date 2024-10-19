@@ -1174,7 +1174,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #4512ff;
+  background: #98fff7;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2586,4 +2586,16 @@ body {
 .content {
   padding-top: 15px;
   opacity: 0.8;
+}
+::selection {
+  background: #26a69a;
+  color: #fff;
+  font-weight: 900;
+  font-size: 32px;
+}
+::-moz-selection {
+  background: #26a69a;
+  color: #fff;
+  font-weight: 900;
+  font-size: 32px;
 }
