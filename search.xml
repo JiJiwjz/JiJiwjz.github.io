@@ -1,57 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Markdown�﷨����(����DX�ر��)</title>
-    <url>/2024/10/19/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E8%88%9E%E8%90%8CDX%E7%89%B9%E5%88%AB%E7%89%88/</url>
-    <content><![CDATA[<h2 id="0-1����"><a href="#0-1����" class="headerlink" title="0.1����"></a>0.1����</h2><p><code>Markdown</code>��һ���������ı�����ԣ�����������ʹ��<strong>���ı���ʽ</strong>��д�ĵ�������򵥵��﷨�����ٵĳ��ñ�Ƿ��ţ��Լ��϶̵�ѧϰʱ��(<del>�����ٳ�</del>)����Խ��Խ���ѧ�������߼�������ʹ�á�һ���������ֱ�����ԣ�����������Ч�ʡ� </p>
-<p><code>Markdown</code>ʹ�ü����﷨�����Ű档���<code>Word</code>�����ִ���������<code>Markdown</code>��������<strong>�ֲ��뿪����</strong>���ɸı������С���������ͼƬ�������ӡ���ע�ȡ�  </p>
-<p>����Ҫʵ�ָ����Ű�(�����Ҷ���������)������ѡ��<code>Word</code>��<code>Pages</code>��רҵ������  </p>
-<h2 id="0-2���n༭������"><a href="#0-2���n༭������" class="headerlink" title="0.2���ñ༭������"></a>0.2���ñ༭������</h2><ol>
-<li><code>Typora</code>��һ����ܻ�ӭ��������Markdown�༭������ƾ������������ܺ�׿Խ���û����飬���ڶ��ı��༭��������ӱ������<br><code>Typora</code>���������������ã�WYSIWYG�����������û��ڱ༭�����п�ʵʱԤ���Ű�Ч���������л���Ԥ��ģʽ������������˹���Ч�ʺͱ༭���顣<br>���ǣ�Typora�ѿ�ʼ�շѽ׶Σ��۸�14.99��Ԫ���ɹ���̨�豸ʹ�á�(<del>������csdn��ƽ̨�����ѣ��㶮��(doge)</del>)</li>
-<li><code>vscode</code>���ض�˵����װ��Markdown��չ���ɡ��ɷ�������д��Ԥ����Ҳ��ֱ�ۡ�<del>����vscode���</del></li>
-</ol>
-<h2 id="1-�����﷨"><a href="#1-�����﷨" class="headerlink" title="1.�����﷨"></a>1.�����﷨</h2><p>Ҫ��������ʱ��ֻ���ھ���(#)����<strong>��һ��</strong>��Ȼ������Ҫ��Ϊ��������ּ��ɡ�**#�����������˱���ļ���*<em>������һ����������</em>���<em>������</em>��С*��  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ʾ��:# ����2024</span><br><span class="line">### Lv.14+</span><br><span class="line">##### VERTEX(rintaro soma deconstructed remix)</span><br></pre></td></tr></table></figure>
-<p><strong>ʵ��Ч��</strong>:<br><img src="/blog/themes/next/source/images/shili.png"><br>�ǲ��Ǻܼ򵥣�  </p>
-<h2 id="2-��������б�塢���塢ɾ����"><a href="#2-��������б�塢���塢ɾ����" class="headerlink" title="2.��������б�塢���塢ɾ����"></a>2.��������б�塢���塢ɾ����</h2><p>������Ҫ�õ��⼸���ַ�:<code>*</code> <code>_</code>  <code>~</code>  </p>
-<p><strong>б��</strong>  </p>
-<ul>
-<li>ֻ����Ҫ��Ϊб������ǰ�������һ�� * �� _ ���ɡ�</li>
-</ul>
-<p>   ʾ��:<code>*PANDORA PARADOXXX*</code>��<code>_PANDORA PARADOXXX_</code></p>
-<ul>
-<li><strong>ʵ��Ч��</strong>:<br>   <em>PANDORA PARADOXXX</em></li>
-</ul>
-<p><strong>����</strong>  </p>
-<ul>
-<li>ֻ����Ҫ��Ϊ��������ǰ����������� * ���ɡ�</li>
-</ul>
-<p>   ʾ��:<code>**Qzkago Requiem** </code></p>
-<ul>
-<li><strong>ʵ��Ч��</strong>:<br>   <strong>Qzkago Requiem</strong></li>
-</ul>
-<p><strong>��б�Ӵ�</strong></p>
-<ul>
-<li>ֻ����Ҫ��Ϊ��б�Ӵֵ����ǰ����������� * ���ɡ�</li>
-</ul>
-<p>   ʾ��:<code>***Garakuta Doll Play***  </code></p>
-<ul>
-<li><strong>ʵ��Ч��</strong>:<br>   <em><strong>Garakuta Doll Play</strong></em></li>
-</ul>
-<p><strong>ɾ����</strong>  </p>
-<ul>
-<li>ֻ����Ҫ����ɾ���ߵ����ǰ����������� ~ ���ɡ�</li>
-</ul>
-<p>ʾ��:<code>~~��������15~~</code>  </p>
-<ul>
-<li><strong>ʵ��Ч��</strong>:<br><del>��������15</del></li>
-</ul>
-<h2 id="3-�����"><a href="#3-�����" class="headerlink" title="3.�����"></a>3.�����</h2>]]></content>
-      <tags>
-        <tag>����DX,markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
     <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
     <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
