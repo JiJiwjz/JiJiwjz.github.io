@@ -11,9 +11,9 @@
 <li><code>vscode</code>不必多说，安装了Markdown扩展即可。可分屏，边写边预览，也很直观。<del>并且vscode免费</del></li>
 </ol>
 <h2 id="1-标题语法"><a href="#1-标题语法" class="headerlink" title="1.标题语法"></a>1.标题语法</h2><p>要创建标题时，只需在井号(#)后面<strong>空一格</strong>，然后输入要作为标题的文字即可。**#的数量代表了标题的级别*<em>。其中一级标题文字</em>最大<em>，六级</em>最小*。  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例:# 舞萌2024</span><br><span class="line">### Lv.14+</span><br><span class="line">##### VERTEX(rintaro soma deconstructed remix)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例:#### 舞萌2024</span><br><span class="line">##### Lv.14+</span><br><span class="line">###### VERTEX(rintaro soma deconstructed remix)</span><br></pre></td></tr></table></figure>
 <p><strong>实际效果</strong>:</p>
-<h1 id="舞萌2024"><a href="#舞萌2024" class="headerlink" title="舞萌2024"></a>舞萌2024</h1><h3 id="Lv-14"><a href="#Lv-14" class="headerlink" title="Lv.14"></a>Lv.14</h3><h5 id="VERTEX-rintaro-soma-deconstructed-remix"><a href="#VERTEX-rintaro-soma-deconstructed-remix" class="headerlink" title="VERTEX(rintaro soma deconstructed remix)"></a>VERTEX(rintaro soma deconstructed remix)</h5><p>是不是很简单？  </p>
+<h4 id="舞萌2024"><a href="#舞萌2024" class="headerlink" title="舞萌2024"></a>舞萌2024</h4><h5 id="Lv-14"><a href="#Lv-14" class="headerlink" title="Lv.14"></a>Lv.14</h5><h6 id="VERTEX-rintaro-soma-deconstructed-remix"><a href="#VERTEX-rintaro-soma-deconstructed-remix" class="headerlink" title="VERTEX(rintaro soma deconstructed remix)"></a>VERTEX(rintaro soma deconstructed remix)</h6><p>是不是很简单？  </p>
 <h2 id="2-字体设置斜体、粗体、删除线"><a href="#2-字体设置斜体、粗体、删除线" class="headerlink" title="2.字体设置斜体、粗体、删除线"></a>2.字体设置斜体、粗体、删除线</h2><p>这里需要用到这几个字符:<code>*</code> <code>_</code>  <code>~</code>  </p>
 <p><strong>斜体</strong>  </p>
 <ul>
