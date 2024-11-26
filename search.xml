@@ -170,6 +170,75 @@
       </tags>
   </entry>
   <entry>
+    <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
+    <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
+    <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n)</code>,最好情况<code>O(n^2)</code>.  </p>
+<h2 id="选择排序-不稳定"><a href="#选择排序-不稳定" class="headerlink" title="选择排序(不稳定)"></a>选择排序(不稳定)</h2><p><strong>特点</strong>:每次从待排序列中选出一个<strong>最小值</strong>,然后放在序列的起始位置,直至排完.</p>
+<p><strong>时间复杂度</strong>:<code>O(n^2)</code>.  </p>
+<h2 id="插入排序-稳定"><a href="#插入排序-稳定" class="headerlink" title="插入排序(稳定)"></a>插入排序(稳定)</h2><p><strong>特点</strong>:从<strong>第下个元素开始</strong>,从已排序的元素序列<strong>从后往前</strong>扫描,如果该元素<strong>大于</strong>tem,<strong>则将该元素移至下一位</strong>.重复该步骤,直到找到已排序元素中<strong>小于等于</strong>tem的元素.tem插入到该元素的<strong>后面</strong>,如果已排序所有元素都大于tem,则将tem插入到下标为0的位置.<br><strong>一直重复上述步骤,直至排序完成</strong>.   </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n^2)</code>,最好情况<code>O(n)</code>.</p>
+<h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
+<ul>
+<li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
+<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.</li>
+</ul>
+<p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
+<h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
+<p>是对<strong>冒泡排序</strong>的一种改进  </p>
+</blockquote>
+<p><strong>特点</strong>:通过一趟排序将要排序的数据分割成<strong>独立的两部分</strong>，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以<strong>递归</strong>进行，以此达到整个数据变成有序序列。  </p>
+<ul>
+<li><p>排序流程:  </p>
+<ol>
+<li>首先设定一个<strong>分界值Key</strong>,通过该分界值将数组分成左右两部分.</li>
+<li>将<em>大于或等于Key的数据集中到数组右边,小于分界值的数据集中到数组的左边</em>.此时,左边部分中各元素都小于或等于分界值,而右边部分中各元素都大于或等于分界值.</li>
+<li>然后,左边和右边的数据可以独立排序.对于左侧的数组数据,又可以取一个分界值,将该部分数据分成左右两部分,同样在左边放置较小值,右边放置较大值.右侧的数组数据也可以做类似处理.</li>
+<li>重复上述过程,可以看出,这是一个<strong>递归定义</strong>.通过递归将左侧部分排好序后,再递归排好右侧部分的顺序.当左右两个部分各数据排序完成后,整个数组的排序也就完成了.</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据类型:结构体</title>
+    <url>/2024/10/20/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93/</url>
+    <content><![CDATA[<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>在实际问题中，仅仅使用整型(<code>int</code> <code>long long</code>)，浮点型(<code>float</code> <code>double</code>)，字符型(<code>char</code>)以及数组、字符串这些数据类型经常不够。有时候我们需要其中的几种<strong>一起</strong>来修饰某个变量，例如一个学生的信息就需要<code>学号</code>(字符串)，<code>姓名</code>(字符串)，<code>年龄</code>(整型)等等。这些数据类型都不同，但是它们又要表示一个整体，要存在联系，那么我们就需要一个新的数据类型。   </p>
+<p><strong>结构体</strong>就能将不同类型的数据存放在一起，作为个整体进行处理。  </p>
+<p>结构体的声明：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure>
+<p>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
+<p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong>。  </p>
+<p>而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>。  </p>
+<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。  </p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure>
+<p>2.直接定义结构体变量(匿名结构体)。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure>
+<p><em><strong>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</strong></em>  </p>
+<p><strong>Typedef的引入</strong>:<br>以此为例:  </p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
+<p>而若要定义结构体变量<code>stu</code>时，利用<em>数据类型+变量名</em>，我们可以自然而然地写出<code>Student stu;</code>。但这样写，编译器可能会报错，提示我们需要在前面加上<code>struct</code>，于是我们应写为：<code>struct Student stu;</code>。  </p>
+<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure>
+<p>这样我们就可以直接用<code>Student stu</code>来定义结构体变量。  </p>
+<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：  </p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure>
+<p>这样，学生信息里面就包含了学生的生日信息。</p>
+<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
+<p>e.g.访问学号:<code>stu1.id</code>.<br>访问生日信息中的月份:<code>stu1.birthday.month</code>.   </p>
+<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>数据类型</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git初步学习</title>
     <url>/2024/11/25/Git%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="Git入门学习"><a href="#Git入门学习" class="headerlink" title="Git入门学习"></a>Git入门学习</h1><p><strong>Git</strong> 是一种 <strong>分布式版本控制系统</strong>，主要用于管理源代码的版本历史。它能记录文件的每一次改动，让开发者能够随时回溯、更改和协作，从而极大提高了代码开发的效率和安全性。</p>
@@ -275,78 +344,61 @@
 
 
 <hr>
-<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2>]]></content>
+<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p><strong>工作区</strong></p>
+<p>个人理解，工作区就是电脑里面能直接看到的目录。例如创建的 <code>learngit</code> 文件夹就是一个工作区。</p>
+<p><strong>版本库</strong></p>
+<p>工作区里有一个隐藏的目录 <code>.git</code>，这不算工作区，而是Git的版本库。这里面存了很多东西，其中最重要的就是称为 <code>stage</code> 的<strong>暂存区</strong>，还有Git自动创建的第一个分支<code>master</code>，以及指向<code>master</code>的一个指针 <code>HEAD</code>。</p>
+<p><code>git add</code> 命令实际上就是把要提交的所有修改放到暂存区，然后执行 <code>git commit</code>就可以一次性地把暂存区的所有修改提交到分支。</p>
+<p><strong>实践验证：</strong></p>
+<p>先对 <code>readme.txt</code> 做出修改：在后面添加一行内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br></pre></td></tr></table></figure>
+
+<p>然后，在工作区新建一个 <code>LICENSE</code> 文本文件。</p>
+<p>先用 <code>git status</code> 查看一下状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">尚未暂存以备提交的变更：</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 更新要提交的内容）</span><br><span class="line">  （使用 &quot;git restore &lt;文件&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line">	修改：     readme.txt</span><br><span class="line"></span><br><span class="line">未跟踪的文件:</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 以包含要提交的内容）</span><br><span class="line">	LICENSE</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure>
+
+<p>Git说，<code>readme.txt</code> 被修改了，而 <code>LICENSE</code> 还从来没有被添加过，所以显示他是<strong>未跟踪的</strong>。</p>
+<p>现在，使用两次 <code>git add</code>，把 <code>readme.txt</code> 和 <code>LICENSE</code> 都添加后，用 <code>git status</code> 再查看一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">要提交的变更：</span><br><span class="line">  （使用 &quot;git restore --staged &lt;文件&gt;...&quot; 以取消暂存）</span><br><span class="line">	新文件：   LICENSE</span><br><span class="line">	修改：     readme.txt</span><br></pre></td></tr></table></figure>
+
+<p>所以，<code>git add</code>命令实际上就是把要提交的所有修改放到暂存区，然后执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;understand how stage works&quot;</span><br><span class="line"></span><br><span class="line">[master d25e97f] understand how stage works</span><br><span class="line"> 2 files changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 LICENSE</span><br></pre></td></tr></table></figure>
+
+<p>一旦提交后，如果没有对工作区做任何修改，那么工作区就是“干净”的：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">无文件要提交，干净的工作区</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>Git跟踪并管理的是<strong>修改而非文件</strong>。若要提交二次修改，要遵循以下流程：</p>
+<p>第一次修改 -&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git add</code> -&gt; <code>git commit</code></p>
+<hr>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>场景1：当改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</p>
+<p>场景2：当不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就回到了场景1，第二步按场景1操作。</p>
+<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，使用<strong>版本回退</strong>，不过前提是没有推送到远程库。</p>
+<hr>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>在Git中，删除也是一个修改操作。先添加一个新文件<code>test.txt</code>到Git并提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;add test.txt&quot;</span><br><span class="line"></span><br><span class="line">[master a511415] add test.txt</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 test.txt</span><br></pre></td></tr></table></figure>
+
+<p>一般情况下，直接在文件管理器中把没用的文件删除，或者用<code>rm</code>命令删除：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ rm test.txt</span><br></pre></td></tr></table></figure>
+
+<p>这个时候，Git知道删除了文件，因此，工作区和版本库就不一致了，<code>git status</code>命令会立刻告诉你哪些文件被删除了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">尚未暂存以备提交的变更：</span><br><span class="line">  （使用 &quot;git add/rm &lt;文件&gt;...&quot; 更新要提交的内容）</span><br><span class="line">  （使用 &quot;git restore &lt;文件&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line">	删除：     test.txt</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure>
+
+<p>现在有两个选择，一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git rm test.txt</span><br><span class="line"></span><br><span class="line">rm &#x27;test.txt&#x27;</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;remove test.txt&quot;</span><br><span class="line"></span><br><span class="line">[master 67c1822] remove test.txt</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 test.txt</span><br></pre></td></tr></table></figure>
+
+<p>现在，文件就从版本库中被删除了。</p>
+<p>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git checkout -- test.txt</span><br></pre></td></tr></table></figure>
+
+<p><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
+<p>命令<code>git rm</code>用于删除一个文件。如果一个文件已经被提交到版本库，那么永远不用担心误删。但是要小心，只能恢复文件到最新版本，会丢失<strong>最近一次提交后你修改的内容</strong>。</p>
+<hr>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2>]]></content>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
-    <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
-    <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
-<p><strong>时间复杂度</strong>:最坏情况<code>O(n)</code>,最好情况<code>O(n^2)</code>.  </p>
-<h2 id="选择排序-不稳定"><a href="#选择排序-不稳定" class="headerlink" title="选择排序(不稳定)"></a>选择排序(不稳定)</h2><p><strong>特点</strong>:每次从待排序列中选出一个<strong>最小值</strong>,然后放在序列的起始位置,直至排完.</p>
-<p><strong>时间复杂度</strong>:<code>O(n^2)</code>.  </p>
-<h2 id="插入排序-稳定"><a href="#插入排序-稳定" class="headerlink" title="插入排序(稳定)"></a>插入排序(稳定)</h2><p><strong>特点</strong>:从<strong>第下个元素开始</strong>,从已排序的元素序列<strong>从后往前</strong>扫描,如果该元素<strong>大于</strong>tem,<strong>则将该元素移至下一位</strong>.重复该步骤,直到找到已排序元素中<strong>小于等于</strong>tem的元素.tem插入到该元素的<strong>后面</strong>,如果已排序所有元素都大于tem,则将tem插入到下标为0的位置.<br><strong>一直重复上述步骤,直至排序完成</strong>.   </p>
-<p><strong>时间复杂度</strong>:最坏情况<code>O(n^2)</code>,最好情况<code>O(n)</code>.</p>
-<h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
-<ul>
-<li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
-<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.</li>
-</ul>
-<p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
-<h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
-<p>是对<strong>冒泡排序</strong>的一种改进  </p>
-</blockquote>
-<p><strong>特点</strong>:通过一趟排序将要排序的数据分割成<strong>独立的两部分</strong>，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以<strong>递归</strong>进行，以此达到整个数据变成有序序列。  </p>
-<ul>
-<li><p>排序流程:  </p>
-<ol>
-<li>首先设定一个<strong>分界值Key</strong>,通过该分界值将数组分成左右两部分.</li>
-<li>将<em>大于或等于Key的数据集中到数组右边,小于分界值的数据集中到数组的左边</em>.此时,左边部分中各元素都小于或等于分界值,而右边部分中各元素都大于或等于分界值.</li>
-<li>然后,左边和右边的数据可以独立排序.对于左侧的数组数据,又可以取一个分界值,将该部分数据分成左右两部分,同样在左边放置较小值,右边放置较大值.右侧的数组数据也可以做类似处理.</li>
-<li>重复上述过程,可以看出,这是一个<strong>递归定义</strong>.通过递归将左侧部分排好序后,再递归排好右侧部分的顺序.当左右两个部分各数据排序完成后,整个数组的排序也就完成了.</li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据类型:结构体</title>
-    <url>/2024/10/20/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93/</url>
-    <content><![CDATA[<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>在实际问题中，仅仅使用整型(<code>int</code> <code>long long</code>)，浮点型(<code>float</code> <code>double</code>)，字符型(<code>char</code>)以及数组、字符串这些数据类型经常不够。有时候我们需要其中的几种<strong>一起</strong>来修饰某个变量，例如一个学生的信息就需要<code>学号</code>(字符串)，<code>姓名</code>(字符串)，<code>年龄</code>(整型)等等。这些数据类型都不同，但是它们又要表示一个整体，要存在联系，那么我们就需要一个新的数据类型。   </p>
-<p><strong>结构体</strong>就能将不同类型的数据存放在一起，作为个整体进行处理。  </p>
-<p>结构体的声明：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure>
-<p>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
-<p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong>。  </p>
-<p>而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>。  </p>
-<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。  </p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure>
-<p>2.直接定义结构体变量(匿名结构体)。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure>
-<p><em><strong>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</strong></em>  </p>
-<p><strong>Typedef的引入</strong>:<br>以此为例:  </p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<p>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
-<p>而若要定义结构体变量<code>stu</code>时，利用<em>数据类型+变量名</em>，我们可以自然而然地写出<code>Student stu;</code>。但这样写，编译器可能会报错，提示我们需要在前面加上<code>struct</code>，于是我们应写为：<code>struct Student stu;</code>。  </p>
-<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure>
-<p>这样我们就可以直接用<code>Student stu</code>来定义结构体变量。  </p>
-<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：  </p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure>
-<p>这样，学生信息里面就包含了学生的生日信息。</p>
-<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
-<p>e.g.访问学号:<code>stu1.id</code>.<br>访问生日信息中的月份:<code>stu1.birthday.month</code>.   </p>
-<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>数据类型</tag>
       </tags>
   </entry>
   <entry>
