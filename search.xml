@@ -1,6 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Git初步学习</title>
+    <url>/2024/11/25/Git%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="Git入门学习"><a href="#Git入门学习" class="headerlink" title="Git入门学习"></a>Git入门学习</h1><p><strong>Git</strong> 是一种 <strong>分布式版本控制系统</strong>，主要用于管理源代码的版本历史。它能记录文件的每一次改动，让开发者能够随时回溯、更改和协作，从而极大提高了代码开发的效率和安全性。</p>
+<p>如果把代码开发比作写一本书，Git 就像一本“时间机器”，能保存每一版的草稿，不小心删掉的内容可以找回来，还能让多人同时编辑不同的章节，最后合并在一起。</p>
+<hr>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>本人使用Ubuntu 22.04，直接通过如下代码安装Git:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p><strong>step 1</strong>: 我在<code>/</code>下使用如下命令创建空目录 <code>learngit</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ mkdir learngit</span><br></pre></td></tr></table></figure>
+
+<p>然后进入这个目录:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd learngit</span><br></pre></td></tr></table></figure>
+
+<p>然后可以<strong>打印工作目录(print working directory)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ pwd</span><br><span class="line">/Users/Samxander/learngit</span><br></pre></td></tr></table></figure>
+
+<p><code>pwd</code> 命令用于显示当前的目录。在我的Ubuntu中，这个仓库位于<code>/Users/Samxander/learngit</code>.</p>
+<p><strong>step 2:</strong> 通过 <code>git init</code> 命令把这个目录变成Git可以管理的仓库:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+
+<p>瞬间Git就把仓库建好了，而且告诉你是一个空的仓库。</p>
+<p><strong>step 3:</strong> 把文件添加到版本库</p>
+<p>所有的版本控制系统，只能跟踪文本文件的改动，而无法跟踪图片和视频这类二进制文件（Word也是二进制格式）。</p>
+<p>现在编写一个 <code>readme.txt</code> 文件，放在 <code>learngit</code>目录下或子目录下。内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
+
+<p>特殊地，为创建这个txt文件，我使用的是 <code>Vim</code> 。首先在终端输入如下代码（<strong>在learngit目录下</strong>！！）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ vim readme.txt</span><br></pre></td></tr></table></figure>
+
+<p>随后按下 <code>i</code> 键进入<strong>插入模式</strong>，随后输入内容。输入完成后，按下 <code>Esc</code> 键退出插入模式，输入 <code>:wq</code> 保存并退出。</p>
+<p>用命令 <code>git commit</code> 告诉Git，把文件提交到仓库：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;wrote a readme file&quot;</span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>-m</code> 后面输入的是本次提交的说明，可以输入任意内容。内容最好是<strong>有意义的</strong>，这样就能从历史记录里方便地找到改动记录。</p>
+<p><code>git commit</code>命令执行成功后会告诉你，<code>1 file changed</code>：1个文件被改动（我们新添加的readme.txt文件）；<code>2 insertions</code>：插入了两行内容（readme.txt有两行内容）。</p>
+<hr>
+<h2 id="时光机穿梭"><a href="#时光机穿梭" class="headerlink" title="时光机穿梭"></a>时光机穿梭</h2><p>我已经成功地添加并提交了一个readme.txt文件，现在，是时候继续工作了。于是，我继续修改readme.txt文件，改成如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
+
+<p>随后运行 <code>git status</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+
+<p>命令输出告诉我们，<code>readme.txt</code>被修改过了，但还没有准备提交的修改。</p>
+<p>如果想看看具体修改了什么，可以使用 <code>git diff</code> 查看修改了什么内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git diff readme.txt </span><br><span class="line"></span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">index 46d49bf..9247db6 100644</span><br><span class="line">--- a/readme.txt</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -1,2 +1,2 @@</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br></pre></td></tr></table></figure>
+
+<p>可以从上面的命令输出看到，我们在第一行添加了一个<code>distributed</code>单词。</p>
+<p>知道了对<code>readme.txt</code>作了什么修改后，再把它提交到仓库就放心多了，提交修改和提交新文件是一样的两步，第一步是<code>git add</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add readme.txt</span><br></pre></td></tr></table></figure>
+
+<p>然后我们运行<code>git status</code>查看当前仓库的状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">要提交的变更:</span><br><span class="line">   (使用 &quot;git restore --staged &lt;文件&gt;...&quot; 以取消暂存)</span><br><span class="line">		修改:		 readme.txt</span><br></pre></td></tr></table></figure>
+
+<p><code>git status</code>告诉我们，将要被提交的修改包括<code>readme.txt</code>，下一步，就可以放心地使用 <code>git commit</code> 提交了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;add distributed&quot;</span><br></pre></td></tr></table></figure>
+
+<p>提交后，我们再用<code>git status</code>命令看看仓库的当前状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支master</span><br><span class="line">无文件要提交，干净的工作区</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>（练习：将第二行加上GPL，并提交)</p>
+<p>现在共进行了三个版本的提交，分别是 <code>wrote a readme file</code>, <code>add distributed</code>, <code>append GPL</code>.</p>
+<p>在实际工作中，版本控制系统肯定有命令可以告诉我们历史记录。在Git中，我们用 <code>git log</code> 查看：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit 9e000ba1df429c0aa9d972325d9847368ed1c584 (HEAD -&gt; master)</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:38:53 2024 +0800</span><br><span class="line"></span><br><span class="line">    append GPL</span><br><span class="line"></span><br><span class="line">commit d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:30:46 2024 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 0998895744bfbd854f6d74792da039c0d3b2c7de</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 17:25:26 2024 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
+
+<p><code>git log</code>命令显示从最近到最远的提交日志，我们可以看到3次提交，最近的一次是<code>append GPL</code>，上一次是<code>add distributed</code>，最早的一次是<code>wrote a readme file</code>。</p>
+<p>如果嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br><span class="line"></span><br><span class="line">9e000ba1df429c0aa9d972325d9847368ed1c584 (HEAD -&gt; master) attend GPL</span><br><span class="line">d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f add distributed</span><br><span class="line">0998895744bfbd854f6d74792da039c0d3b2c7de wrote a readme file</span><br></pre></td></tr></table></figure>
+
+
+
+<p>好了，现在我们启动时光穿梭机，准备把<code>readme.txt</code>回退到上一个版本，也就是<code>add distributed</code>的那个版本，怎么做呢？</p>
+<p>首先，Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交<code>9e000ba1df429c0aa9d972325d9847368ed1c584</code> , 上一个版本是<code>HEAD^</code>，上上一个版本是<code>HEAD^^</code>，往上100个版本写100个<code>^</code>比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
+<p>现在，我们要把当前版本<code>append GPL</code>回退到上一个版本<code>add distributed</code>，就可以使用<code>git reset</code>命令：</p>
+<figure class="highlight plaintext"><figcaption><span>git</span></figcaption><table><tr><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br><span class="line"></span><br><span class="line">HEAD 现在位于 d7c8172 add distributed</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong><code>--hard</code>会回退到上个版本的<strong>已提交</strong>状态，而<code>--soft</code>会回退到上个版本的<strong>未提交</strong>状态，<code>--mixed</code>会回退到上个版本<strong>已添加但未提交</strong>的状态。现在，先放心使用<code>--hard</code>。</p>
+<p>现在看看<code>readme.txt</code> 的内容是不是版本 <code>add distributed</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat readme.txt</span><br><span class="line"></span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
+
+<p>果然被还原了。</p>
+<p>让我们用<code>git log</code>再看看现在版本库的状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f (HEAD -&gt; master)</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:30:46 2024 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 0998895744bfbd854f6d74792da039c0d3b2c7de</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 17:25:26 2024 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
+
+<p>最新的那个版本<code>append GPL</code>已经看不到了。若要回到那个版本，只要上面的命令行窗口还没有被关掉，就可以找到那个 <code>append GPL</code> 的 <code>commit id</code>是 <code>9e000ba1...</code>，于是就可以指定回到未来的某个版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reset --hard 9e000ba1</span><br><span class="line"></span><br><span class="line">HEAD 现在位于 9e000ba attend GPL</span><br></pre></td></tr></table></figure>
+
+<p>再查看<code>readme.txt</code> 的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat readme.txt</span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br></pre></td></tr></table></figure>
+
+
+
+<p>若回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的<code>commit id</code>怎么办？</p>
+<p>在Git中，总是有后悔药可以吃的。当用<code>$ git reset --hard HEAD^</code>回退到<code>add distributed</code>版本时，再想恢复到<code>append GPL</code>，就必须找到<code>append GPL</code>的commit id。Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line"> </span><br><span class="line">9e000ba (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to 9e000ba1</span><br><span class="line">d7c8172 HEAD@&#123;1&#125;: reset: moving to HEAD^</span><br><span class="line">9e000ba (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: attend GPL</span><br><span class="line">d7c8172 HEAD@&#123;3&#125;: commit: add distributed</span><br><span class="line">0998895 HEAD@&#123;4&#125;: commit (initial): wrote a readme file</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p><strong>工作区</strong></p>
+<p>个人理解，工作区就是电脑里面能直接看到的目录。例如创建的 <code>learngit</code> 文件夹就是一个工作区。</p>
+<p><strong>版本库</strong></p>
+<p>工作区里有一个隐藏的目录 <code>.git</code>，这不算工作区，而是Git的版本库。这里面存了很多东西，其中最重要的就是称为 <code>stage</code> 的<strong>暂存区</strong>，还有Git自动创建的第一个分支<code>master</code>，以及指向<code>master</code>的一个指针 <code>HEAD</code>。</p>
+<p><code>git add</code> 命令实际上就是把要提交的所有修改放到暂存区，然后执行 <code>git commit</code>就可以一次性地把暂存区的所有修改提交到分支。</p>
+<p><strong>实践验证：</strong></p>
+<p>先对 <code>readme.txt</code> 做出修改：在后面添加一行内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br></pre></td></tr></table></figure>
+
+<p>然后，在工作区新建一个 <code>LICENSE</code> 文本文件。</p>
+<p>先用 <code>git status</code> 查看一下状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">尚未暂存以备提交的变更：</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 更新要提交的内容）</span><br><span class="line">  （使用 &quot;git restore &lt;文件&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line">	修改：     readme.txt</span><br><span class="line"></span><br><span class="line">未跟踪的文件:</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 以包含要提交的内容）</span><br><span class="line">	LICENSE</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure>
+
+<p>Git说，<code>readme.txt</code> 被修改了，而 <code>LICENSE</code> 还从来没有被添加过，所以显示他是<strong>未跟踪的</strong>。</p>
+<p>现在，使用两次 <code>git add</code>，把 <code>readme.txt</code> 和 <code>LICENSE</code> 都添加后，用 <code>git status</code> 再查看一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">要提交的变更：</span><br><span class="line">  （使用 &quot;git restore --staged &lt;文件&gt;...&quot; 以取消暂存）</span><br><span class="line">	新文件：   LICENSE</span><br><span class="line">	修改：     readme.txt</span><br></pre></td></tr></table></figure>
+
+<p>所以，<code>git add</code>命令实际上就是把要提交的所有修改放到暂存区，然后执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;understand how stage works&quot;</span><br><span class="line"></span><br><span class="line">[master d25e97f] understand how stage works</span><br><span class="line"> 2 files changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 LICENSE</span><br></pre></td></tr></table></figure>
+
+<p>一旦提交后，如果没有对工作区做任何修改，那么工作区就是“干净”的：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">无文件要提交，干净的工作区</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>Git跟踪并管理的是<strong>修改而非文件</strong>。若要提交二次修改，要遵循以下流程：</p>
+<p>第一次修改 -&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git add</code> -&gt; <code>git commit</code></p>
+<hr>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>场景1：当改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</p>
+<p>场景2：当不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就回到了场景1，第二步按场景1操作。</p>
+<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，使用<strong>版本回退</strong>，不过前提是没有推送到远程库。</p>
+<hr>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>在Git中，删除也是一个修改操作。先添加一个新文件<code>test.txt</code>到Git并提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;add test.txt&quot;</span><br><span class="line"></span><br><span class="line">[master a511415] add test.txt</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 test.txt</span><br></pre></td></tr></table></figure>
+
+<p>一般情况下，直接在文件管理器中把没用的文件删除，或者用<code>rm</code>命令删除：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ rm test.txt</span><br></pre></td></tr></table></figure>
+
+<p>这个时候，Git知道删除了文件，因此，工作区和版本库就不一致了，<code>git status</code>命令会立刻告诉你哪些文件被删除了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">尚未暂存以备提交的变更：</span><br><span class="line">  （使用 &quot;git add/rm &lt;文件&gt;...&quot; 更新要提交的内容）</span><br><span class="line">  （使用 &quot;git restore &lt;文件&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line">	删除：     test.txt</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure>
+
+<p>现在有两个选择，一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git rm test.txt</span><br><span class="line"></span><br><span class="line">rm &#x27;test.txt&#x27;</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;remove test.txt&quot;</span><br><span class="line"></span><br><span class="line">[master 67c1822] remove test.txt</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 test.txt</span><br></pre></td></tr></table></figure>
+
+<p>现在，文件就从版本库中被删除了。</p>
+<p>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git checkout -- test.txt</span><br></pre></td></tr></table></figure>
+
+<p><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
+<p>命令<code>git rm</code>用于删除一个文件。如果一个文件已经被提交到版本库，那么永远不用担心误删。但是要小心，只能恢复文件到最新版本，会丢失<strong>最近一次提交后你修改的内容</strong>。</p>
+<hr>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2>]]></content>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TOPSIS法</title>
+    <url>/2025/01/17/TOPSIS%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="TOPSIS法"><a href="#TOPSIS法" class="headerlink" title="TOPSIS法"></a>TOPSIS法</h1><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p><strong>1.指标类型：</strong></p>
+<ul>
+<li><strong>效益型</strong>属性：<strong>越大越好</strong>的属性，例如上述人均专著、科研经费。</li>
+<li><strong>成本型</strong>属性：<strong>越小越好</strong>的属性，例如逾期毕业率。</li>
+<li><strong>区间型</strong>属性：<strong>在某一区间内最好</strong>，过大或过小都不好，例如师生比。</li>
+</ul>
+<p>显然的是，求<strong>效益型</strong>属性无需处理；而对于<strong>成本型</strong>属性，求<strong>正理想解</strong>时对其取<strong>最小值</strong>，求<strong>负理想解</strong>时对其取<strong>最大值</strong>；而对于<strong>区间型</strong>属性，根据<strong>数据与最优区间</strong>的<strong>差异</strong>进行处理。</p>
+<p><strong>2.区间型属性的变换</strong></p>
+<ul>
+<li>设第 $j$ 个指标的最优属性区间为 $[ a_j^0, a_j^*]$ ， $a_j^{\prime}$ 为无法容忍下限， $a_j^{\prime\prime}$ 为无法容忍上限，则：</li>
+<li>若在最优属性区间内，值<strong>设为1</strong>；超出可容忍的范围，值<strong>设为0</strong>。</li>
+<li>不在最优区间内，但是还在可接受的范围内，按公式改为<strong>0到1之间的值</strong>。</li>
+</ul>
+<p><strong>3.向量规范化</strong>：</p>
+<ul>
+<li><p>无论成本型属性还是效益型属性，都用相同公式进行变换：</p>
+<p>$b_{ij} &#x3D; \frac{a_{ij}}{\sqrt{\sum_{i&#x3D;1}^{m} a_{ij}^2}}$</p>
+</li>
+<li><p>规范化后的数值，同一属性值(评价指标)的<strong>平方和为1</strong>。</p>
+</li>
+<li><p>确保不同评价指标在同一数量级(0到1之间)。</p>
+</li>
+<li><p><strong>变换前后，每个属性值</strong>(评价指标)中的数据的<strong>大小排序不变</strong>。</p>
+</li>
+</ul>
+<h2 id="加权处理"><a href="#加权处理" class="headerlink" title="加权处理"></a>加权处理</h2><p><strong>不同指标的重要性不同</strong></p>
+<ul>
+<li>与AHP的两两比较不同，TOPSIS法直接给每个指标加上权重。</li>
+<li>因为TOPSIS法充分利用了数据的差异，只要权重设置的不是太离谱，对结果影响不会太大。</li>
+</ul>
+<h2 id="最终求解"><a href="#最终求解" class="headerlink" title="最终求解"></a>最终求解</h2><p><strong>求解思路</strong></p>
+<ul>
+<li><p>对第 $j$ 个属性(指标)的正理想解：</p>
+<p>$$ c_j^* &#x3D;  \begin{cases}  \max_i c_{ij}, &amp; \text{ } j \text{ 是效益型属性} \ \min_i c_{ij}, &amp; \text{ } j \text{ 是成本型属性} \end{cases} $$</p>
+</li>
+<li><p>对第 $j$ 个属性(指标)的负理想解：<br>$$ c_j^0 &#x3D;  \begin{cases}  \min_i c_{ij}, &amp; \text{ } j \text{ 是效益型属性} \ \max_i c_{ij}, &amp; \text{ } j \text{ 是成本型属性} \end{cases} $$</p>
+</li>
+<li><p>第 $i$ 个方案到正理想解的距离：</p>
+<p>  $s_i^{<em>} &#x3D; \sqrt{\sum_{j&#x3D;1}^n (c_{ij}-c_j^</em>)^2}$</p>
+</li>
+<li><p>第 $j$个方案到负理想解的距离：</p>
+<p>  $s_i^{0} &#x3D; \sqrt{\sum_{j&#x3D;1}^n (c_{ij}-c_j^0)^2}$</p>
+</li>
+</ul>
+<p><strong>最终求解：</strong></p>
+<ul>
+<li><p>各方案的<strong>综合评价指数</strong>：$f_i^* &#x3D; \frac{s_i^0}{s_i^0+s_i^*} &#x3D; \frac{1}{1+\frac{s_i^*}{s_i^0}}$</p>
+</li>
+<li><p>显然，距离正理想解越近 ($s_i^*$ 越小)，距离负理想解越远 ($s_i^0$ 越大)越好。</p>
+</li>
+<li><p>按 $f_i^*$ 从大到小排序方案的优劣，即为所求。</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Markdown语法入门(舞萌DX特别版)</title>
     <url>/2024/10/20/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E8%88%9E%E8%90%8CDX%E7%89%B9%E5%88%AB%E7%89%88/</url>
     <content><![CDATA[<h2 id="0-1介绍"><a href="#0-1介绍" class="headerlink" title="0.1介绍"></a>0.1介绍</h2><p><code>Markdown</code>是一种轻量级的标记语言，它允许人们使用<strong>纯文本格式</strong>编写文档。因其简单的语法、较少的常用标记符号，以及较短的学习时间(<del>易于速成</del>)，被越来越多的学做爱好者及工作者使用。一旦掌握这种标记语言，将极大地提高效率。 </p>
@@ -236,169 +460,6 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>数据类型</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git初步学习</title>
-    <url>/2024/11/25/Git%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="Git入门学习"><a href="#Git入门学习" class="headerlink" title="Git入门学习"></a>Git入门学习</h1><p><strong>Git</strong> 是一种 <strong>分布式版本控制系统</strong>，主要用于管理源代码的版本历史。它能记录文件的每一次改动，让开发者能够随时回溯、更改和协作，从而极大提高了代码开发的效率和安全性。</p>
-<p>如果把代码开发比作写一本书，Git 就像一本“时间机器”，能保存每一版的草稿，不小心删掉的内容可以找回来，还能让多人同时编辑不同的章节，最后合并在一起。</p>
-<hr>
-<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>本人使用Ubuntu 22.04，直接通过如下代码安装Git:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p><strong>step 1</strong>: 我在<code>/</code>下使用如下命令创建空目录 <code>learngit</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ mkdir learngit</span><br></pre></td></tr></table></figure>
-
-<p>然后进入这个目录:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd learngit</span><br></pre></td></tr></table></figure>
-
-<p>然后可以<strong>打印工作目录(print working directory)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ pwd</span><br><span class="line">/Users/Samxander/learngit</span><br></pre></td></tr></table></figure>
-
-<p><code>pwd</code> 命令用于显示当前的目录。在我的Ubuntu中，这个仓库位于<code>/Users/Samxander/learngit</code>.</p>
-<p><strong>step 2:</strong> 通过 <code>git init</code> 命令把这个目录变成Git可以管理的仓库:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
-
-<p>瞬间Git就把仓库建好了，而且告诉你是一个空的仓库。</p>
-<p><strong>step 3:</strong> 把文件添加到版本库</p>
-<p>所有的版本控制系统，只能跟踪文本文件的改动，而无法跟踪图片和视频这类二进制文件（Word也是二进制格式）。</p>
-<p>现在编写一个 <code>readme.txt</code> 文件，放在 <code>learngit</code>目录下或子目录下。内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>特殊地，为创建这个txt文件，我使用的是 <code>Vim</code> 。首先在终端输入如下代码（<strong>在learngit目录下</strong>！！）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ vim readme.txt</span><br></pre></td></tr></table></figure>
-
-<p>随后按下 <code>i</code> 键进入<strong>插入模式</strong>，随后输入内容。输入完成后，按下 <code>Esc</code> 键退出插入模式，输入 <code>:wq</code> 保存并退出。</p>
-<p>用命令 <code>git commit</code> 告诉Git，把文件提交到仓库：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;wrote a readme file&quot;</span><br></pre></td></tr></table></figure>
-
-<p>注意：<code>-m</code> 后面输入的是本次提交的说明，可以输入任意内容。内容最好是<strong>有意义的</strong>，这样就能从历史记录里方便地找到改动记录。</p>
-<p><code>git commit</code>命令执行成功后会告诉你，<code>1 file changed</code>：1个文件被改动（我们新添加的readme.txt文件）；<code>2 insertions</code>：插入了两行内容（readme.txt有两行内容）。</p>
-<hr>
-<h2 id="时光机穿梭"><a href="#时光机穿梭" class="headerlink" title="时光机穿梭"></a>时光机穿梭</h2><p>我已经成功地添加并提交了一个readme.txt文件，现在，是时候继续工作了。于是，我继续修改readme.txt文件，改成如下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>随后运行 <code>git status</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
-
-<p>命令输出告诉我们，<code>readme.txt</code>被修改过了，但还没有准备提交的修改。</p>
-<p>如果想看看具体修改了什么，可以使用 <code>git diff</code> 查看修改了什么内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git diff readme.txt </span><br><span class="line"></span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">index 46d49bf..9247db6 100644</span><br><span class="line">--- a/readme.txt</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -1,2 +1,2 @@</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>可以从上面的命令输出看到，我们在第一行添加了一个<code>distributed</code>单词。</p>
-<p>知道了对<code>readme.txt</code>作了什么修改后，再把它提交到仓库就放心多了，提交修改和提交新文件是一样的两步，第一步是<code>git add</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add readme.txt</span><br></pre></td></tr></table></figure>
-
-<p>然后我们运行<code>git status</code>查看当前仓库的状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">要提交的变更:</span><br><span class="line">   (使用 &quot;git restore --staged &lt;文件&gt;...&quot; 以取消暂存)</span><br><span class="line">		修改:		 readme.txt</span><br></pre></td></tr></table></figure>
-
-<p><code>git status</code>告诉我们，将要被提交的修改包括<code>readme.txt</code>，下一步，就可以放心地使用 <code>git commit</code> 提交了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;add distributed&quot;</span><br></pre></td></tr></table></figure>
-
-<p>提交后，我们再用<code>git status</code>命令看看仓库的当前状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支master</span><br><span class="line">无文件要提交，干净的工作区</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>（练习：将第二行加上GPL，并提交)</p>
-<p>现在共进行了三个版本的提交，分别是 <code>wrote a readme file</code>, <code>add distributed</code>, <code>append GPL</code>.</p>
-<p>在实际工作中，版本控制系统肯定有命令可以告诉我们历史记录。在Git中，我们用 <code>git log</code> 查看：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit 9e000ba1df429c0aa9d972325d9847368ed1c584 (HEAD -&gt; master)</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:38:53 2024 +0800</span><br><span class="line"></span><br><span class="line">    append GPL</span><br><span class="line"></span><br><span class="line">commit d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:30:46 2024 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 0998895744bfbd854f6d74792da039c0d3b2c7de</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 17:25:26 2024 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<p><code>git log</code>命令显示从最近到最远的提交日志，我们可以看到3次提交，最近的一次是<code>append GPL</code>，上一次是<code>add distributed</code>，最早的一次是<code>wrote a readme file</code>。</p>
-<p>如果嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br><span class="line"></span><br><span class="line">9e000ba1df429c0aa9d972325d9847368ed1c584 (HEAD -&gt; master) attend GPL</span><br><span class="line">d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f add distributed</span><br><span class="line">0998895744bfbd854f6d74792da039c0d3b2c7de wrote a readme file</span><br></pre></td></tr></table></figure>
-
-
-
-<p>好了，现在我们启动时光穿梭机，准备把<code>readme.txt</code>回退到上一个版本，也就是<code>add distributed</code>的那个版本，怎么做呢？</p>
-<p>首先，Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交<code>9e000ba1df429c0aa9d972325d9847368ed1c584</code> , 上一个版本是<code>HEAD^</code>，上上一个版本是<code>HEAD^^</code>，往上100个版本写100个<code>^</code>比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
-<p>现在，我们要把当前版本<code>append GPL</code>回退到上一个版本<code>add distributed</code>，就可以使用<code>git reset</code>命令：</p>
-<figure class="highlight plaintext"><figcaption><span>git</span></figcaption><table><tr><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br><span class="line"></span><br><span class="line">HEAD 现在位于 d7c8172 add distributed</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong><code>--hard</code>会回退到上个版本的<strong>已提交</strong>状态，而<code>--soft</code>会回退到上个版本的<strong>未提交</strong>状态，<code>--mixed</code>会回退到上个版本<strong>已添加但未提交</strong>的状态。现在，先放心使用<code>--hard</code>。</p>
-<p>现在看看<code>readme.txt</code> 的内容是不是版本 <code>add distributed</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat readme.txt</span><br><span class="line"></span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>果然被还原了。</p>
-<p>让我们用<code>git log</code>再看看现在版本库的状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f (HEAD -&gt; master)</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:30:46 2024 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 0998895744bfbd854f6d74792da039c0d3b2c7de</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 17:25:26 2024 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<p>最新的那个版本<code>append GPL</code>已经看不到了。若要回到那个版本，只要上面的命令行窗口还没有被关掉，就可以找到那个 <code>append GPL</code> 的 <code>commit id</code>是 <code>9e000ba1...</code>，于是就可以指定回到未来的某个版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reset --hard 9e000ba1</span><br><span class="line"></span><br><span class="line">HEAD 现在位于 9e000ba attend GPL</span><br></pre></td></tr></table></figure>
-
-<p>再查看<code>readme.txt</code> 的内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat readme.txt</span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br></pre></td></tr></table></figure>
-
-
-
-<p>若回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的<code>commit id</code>怎么办？</p>
-<p>在Git中，总是有后悔药可以吃的。当用<code>$ git reset --hard HEAD^</code>回退到<code>add distributed</code>版本时，再想恢复到<code>append GPL</code>，就必须找到<code>append GPL</code>的commit id。Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line"> </span><br><span class="line">9e000ba (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to 9e000ba1</span><br><span class="line">d7c8172 HEAD@&#123;1&#125;: reset: moving to HEAD^</span><br><span class="line">9e000ba (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: attend GPL</span><br><span class="line">d7c8172 HEAD@&#123;3&#125;: commit: add distributed</span><br><span class="line">0998895 HEAD@&#123;4&#125;: commit (initial): wrote a readme file</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p><strong>工作区</strong></p>
-<p>个人理解，工作区就是电脑里面能直接看到的目录。例如创建的 <code>learngit</code> 文件夹就是一个工作区。</p>
-<p><strong>版本库</strong></p>
-<p>工作区里有一个隐藏的目录 <code>.git</code>，这不算工作区，而是Git的版本库。这里面存了很多东西，其中最重要的就是称为 <code>stage</code> 的<strong>暂存区</strong>，还有Git自动创建的第一个分支<code>master</code>，以及指向<code>master</code>的一个指针 <code>HEAD</code>。</p>
-<p><code>git add</code> 命令实际上就是把要提交的所有修改放到暂存区，然后执行 <code>git commit</code>就可以一次性地把暂存区的所有修改提交到分支。</p>
-<p><strong>实践验证：</strong></p>
-<p>先对 <code>readme.txt</code> 做出修改：在后面添加一行内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br></pre></td></tr></table></figure>
-
-<p>然后，在工作区新建一个 <code>LICENSE</code> 文本文件。</p>
-<p>先用 <code>git status</code> 查看一下状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">尚未暂存以备提交的变更：</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 更新要提交的内容）</span><br><span class="line">  （使用 &quot;git restore &lt;文件&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line">	修改：     readme.txt</span><br><span class="line"></span><br><span class="line">未跟踪的文件:</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 以包含要提交的内容）</span><br><span class="line">	LICENSE</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure>
-
-<p>Git说，<code>readme.txt</code> 被修改了，而 <code>LICENSE</code> 还从来没有被添加过，所以显示他是<strong>未跟踪的</strong>。</p>
-<p>现在，使用两次 <code>git add</code>，把 <code>readme.txt</code> 和 <code>LICENSE</code> 都添加后，用 <code>git status</code> 再查看一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">要提交的变更：</span><br><span class="line">  （使用 &quot;git restore --staged &lt;文件&gt;...&quot; 以取消暂存）</span><br><span class="line">	新文件：   LICENSE</span><br><span class="line">	修改：     readme.txt</span><br></pre></td></tr></table></figure>
-
-<p>所以，<code>git add</code>命令实际上就是把要提交的所有修改放到暂存区，然后执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;understand how stage works&quot;</span><br><span class="line"></span><br><span class="line">[master d25e97f] understand how stage works</span><br><span class="line"> 2 files changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 LICENSE</span><br></pre></td></tr></table></figure>
-
-<p>一旦提交后，如果没有对工作区做任何修改，那么工作区就是“干净”的：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">无文件要提交，干净的工作区</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>Git跟踪并管理的是<strong>修改而非文件</strong>。若要提交二次修改，要遵循以下流程：</p>
-<p>第一次修改 -&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git add</code> -&gt; <code>git commit</code></p>
-<hr>
-<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>场景1：当改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</p>
-<p>场景2：当不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就回到了场景1，第二步按场景1操作。</p>
-<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，使用<strong>版本回退</strong>，不过前提是没有推送到远程库。</p>
-<hr>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>在Git中，删除也是一个修改操作。先添加一个新文件<code>test.txt</code>到Git并提交：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;add test.txt&quot;</span><br><span class="line"></span><br><span class="line">[master a511415] add test.txt</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 test.txt</span><br></pre></td></tr></table></figure>
-
-<p>一般情况下，直接在文件管理器中把没用的文件删除，或者用<code>rm</code>命令删除：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ rm test.txt</span><br></pre></td></tr></table></figure>
-
-<p>这个时候，Git知道删除了文件，因此，工作区和版本库就不一致了，<code>git status</code>命令会立刻告诉你哪些文件被删除了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">尚未暂存以备提交的变更：</span><br><span class="line">  （使用 &quot;git add/rm &lt;文件&gt;...&quot; 更新要提交的内容）</span><br><span class="line">  （使用 &quot;git restore &lt;文件&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line">	删除：     test.txt</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure>
-
-<p>现在有两个选择，一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git rm test.txt</span><br><span class="line"></span><br><span class="line">rm &#x27;test.txt&#x27;</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;remove test.txt&quot;</span><br><span class="line"></span><br><span class="line">[master 67c1822] remove test.txt</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 test.txt</span><br></pre></td></tr></table></figure>
-
-<p>现在，文件就从版本库中被删除了。</p>
-<p>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git checkout -- test.txt</span><br></pre></td></tr></table></figure>
-
-<p><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
-<p>命令<code>git rm</code>用于删除一个文件。如果一个文件已经被提交到版本库，那么永远不用担心误删。但是要小心，只能恢复文件到最新版本，会丢失<strong>最近一次提交后你修改的内容</strong>。</p>
-<hr>
-<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2>]]></content>
-      <tags>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
