@@ -86,7 +86,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -206,32 +210,19 @@
       
         <h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>在实际问题中，仅仅使用整型(<code>int</code> <code>long long</code>)，浮点型(<code>float</code> <code>double</code>)，字符型(<code>char</code>)以及数组、字符串这些数据类型经常不够。有时候我们需要其中的几种<strong>一起</strong>来修饰某个变量，例如一个学生的信息就需要<code>学号</code>(字符串)，<code>姓名</code>(字符串)，<code>年龄</code>(整型)等等。这些数据类型都不同，但是它们又要表示一个整体，要存在联系，那么我们就需要一个新的数据类型。   </p>
 <p><strong>结构体</strong>就能将不同类型的数据存放在一起，作为个整体进行处理。  </p>
-<p>结构体的声明：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure>
-<p>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
+<p>结构体的声明：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure><br>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
 <p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong>。  </p>
 <p>而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>。  </p>
-<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。  </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure>
-<p>2.直接定义结构体变量(匿名结构体)。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure>
-<p><em><strong>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</strong></em>  </p>
-<p><strong>Typedef的引入</strong>:<br>以此为例:  </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<p>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
+<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure><br>2.直接定义结构体变量(匿名结构体)。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure><br><strong><em>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</em></strong>  </p>
+<p><strong>Typedef的引入</strong>:<br>以此为例:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure><br>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
 <p>而若要定义结构体变量<code>stu</code>时，利用<em>数据类型+变量名</em>，我们可以自然而然地写出<code>Student stu;</code>。但这样写，编译器可能会报错，提示我们需要在前面加上<code>struct</code>，于是我们应写为：<code>struct Student stu;</code>。  </p>
-<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure>
+<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure></p>
 <p>这样我们就可以直接用<code>Student stu</code>来定义结构体变量。  </p>
-<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：  </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure>
-<p>这样，学生信息里面就包含了学生的生日信息。</p>
-<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
+<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure><br>这样，学生信息里面就包含了学生的生日信息。</p>
+<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure><br><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
 <p>e.g.访问学号:<code>stu1.id</code>.<br>访问生日信息中的月份:<code>stu1.birthday.month</code>.   </p>
-<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
     </div>
 
     
@@ -454,6 +445,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

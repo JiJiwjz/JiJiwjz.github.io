@@ -86,7 +86,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -213,7 +217,7 @@
 <h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
 <ul>
 <li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
-<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.</li>
+<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.  </li>
 </ul>
 <p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
 <h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
@@ -450,6 +454,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
