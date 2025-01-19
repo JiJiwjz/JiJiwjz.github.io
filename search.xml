@@ -169,66 +169,6 @@
       </tags>
   </entry>
   <entry>
-    <title>TOPSIS法</title>
-    <url>/2025/01/17/TOPSIS%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="TOPSIS法"><a href="#TOPSIS法" class="headerlink" title="TOPSIS法"></a>TOPSIS法</h1><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p><strong>1.指标类型：</strong></p>
-<ul>
-<li><strong>效益型</strong>属性：<strong>越大越好</strong>的属性，例如上述人均专著、科研经费。</li>
-<li><strong>成本型</strong>属性：<strong>越小越好</strong>的属性，例如逾期毕业率。</li>
-<li><strong>区间型</strong>属性：<strong>在某一区间内最好</strong>，过大或过小都不好，例如师生比。</li>
-</ul>
-<p>显然的是，求<strong>效益型</strong>属性无需处理；而对于<strong>成本型</strong>属性，求<strong>正理想解</strong>时对其取<strong>最小值</strong>，求<strong>负理想解</strong>时对其取<strong>最大值</strong>；而对于<strong>区间型</strong>属性，根据<strong>数据与最优区间</strong>的<strong>差异</strong>进行处理。</p>
-<p><strong>2.区间型属性的变换</strong></p>
-<ul>
-<li>设第 $j$ 个指标的最优属性区间为 $[ a_j^0, a_j^*]$ ， $a_j^{\prime}$ 为无法容忍下限， $a_j^{\prime\prime}$ 为无法容忍上限，则：</li>
-<li>若在最优属性区间内，值<strong>设为1</strong>；超出可容忍的范围，值<strong>设为0</strong>。</li>
-<li>不在最优区间内，但是还在可接受的范围内，按公式改为<strong>0到1之间的值</strong>。</li>
-</ul>
-<p><strong>3.向量规范化</strong>：</p>
-<ul>
-<li><p>无论成本型属性还是效益型属性，都用相同公式进行变换：</p>
-<p>$b<em>{ij} = \frac{a</em>{ij}}{\sqrt{\sum<em>{i=1}^{m} a</em>{ij}^2}}$</p>
-</li>
-<li><p>规范化后的数值，同一属性值(评价指标)的<strong>平方和为1</strong>。</p>
-</li>
-<li><p>确保不同评价指标在同一数量级(0到1之间)。</p>
-</li>
-<li><p><strong>变换前后，每个属性值</strong>(评价指标)中的数据的<strong>大小排序不变</strong>。</p>
-</li>
-</ul>
-<h2 id="加权处理"><a href="#加权处理" class="headerlink" title="加权处理"></a>加权处理</h2><p><strong>不同指标的重要性不同</strong></p>
-<ul>
-<li>与AHP的两两比较不同，TOPSIS法直接给每个指标加上权重。</li>
-<li>因为TOPSIS法充分利用了数据的差异，只要权重设置的不是太离谱，对结果影响不会太大。</li>
-</ul>
-<h2 id="最终求解"><a href="#最终求解" class="headerlink" title="最终求解"></a>最终求解</h2><p><strong>求解思路</strong></p>
-<ul>
-<li><p>对第 $j$ 个属性(指标)的正理想解：</p>
-<script type="math/tex; mode=display">c_j^* =  \begin{cases}  \max_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \min_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
-<li><p>对第 $j$ 个属性(指标)的负理想解：</p>
-<script type="math/tex; mode=display">c_j^0 =  \begin{cases}  \min_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \max_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
-<li><p>第 $i$ 个方案到正理想解的距离：</p>
-<p>  $s<em>i^{*} = \sqrt{\sum</em>{j=1}^n (c_{ij}-c_j^*)^2}$</p>
-</li>
-<li><p>第 $j$个方案到负理想解的距离：</p>
-<p>  $s<em>i^{0} = \sqrt{\sum</em>{j=1}^n (c_{ij}-c_j^0)^2}$</p>
-</li>
-</ul>
-<p><strong>最终求解：</strong></p>
-<ul>
-<li><p>各方案的<strong>综合评价指数</strong>：$f_i^<em> = \frac{s_i^0}{s_i^0+s_i^</em>} = \frac{1}{1+\frac{s_i^*}{s_i^0}}$</p>
-</li>
-<li><p>显然，距离正理想解越近 ($s_i^*$ 越小)，距离负理想解越远 ($s_i^0$ 越大)越好。</p>
-</li>
-<li><p>按 $f_i^*$ 从大到小排序方案的优劣，即为所求。</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>数学建模</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python学习:字符串</title>
     <url>/2024/10/21/Python%E5%AD%A6%E4%B9%A0-%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     <content><![CDATA[<h3 id="字符串的索引与切片"><a href="#字符串的索引与切片" class="headerlink" title="字符串的索引与切片"></a>字符串的索引与切片</h3><ul>
@@ -324,28 +264,6 @@
       </tags>
   </entry>
   <entry>
-    <title>数据类型:结构体</title>
-    <url>/2024/10/20/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93/</url>
-    <content><![CDATA[<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>在实际问题中，仅仅使用整型(<code>int</code> <code>long long</code>)，浮点型(<code>float</code> <code>double</code>)，字符型(<code>char</code>)以及数组、字符串这些数据类型经常不够。有时候我们需要其中的几种<strong>一起</strong>来修饰某个变量，例如一个学生的信息就需要<code>学号</code>(字符串)，<code>姓名</code>(字符串)，<code>年龄</code>(整型)等等。这些数据类型都不同，但是它们又要表示一个整体，要存在联系，那么我们就需要一个新的数据类型。   </p>
-<p><strong>结构体</strong>就能将不同类型的数据存放在一起，作为个整体进行处理。  </p>
-<p>结构体的声明：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure><br>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
-<p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong>。  </p>
-<p>而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>。  </p>
-<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure><br>2.直接定义结构体变量(匿名结构体)。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure><br><strong><em>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</em></strong>  </p>
-<p><strong>Typedef的引入</strong>:<br>以此为例:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure><br>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
-<p>而若要定义结构体变量<code>stu</code>时，利用<em>数据类型+变量名</em>，我们可以自然而然地写出<code>Student stu;</code>。但这样写，编译器可能会报错，提示我们需要在前面加上<code>struct</code>，于是我们应写为：<code>struct Student stu;</code>。  </p>
-<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure></p>
-<p>这样我们就可以直接用<code>Student stu</code>来定义结构体变量。  </p>
-<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure><br>这样，学生信息里面就包含了学生的生日信息。</p>
-<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure><br><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
-<p>e.g.访问学号:<code>stu1.id</code>.<br>访问生日信息中的月份:<code>stu1.birthday.month</code>.   </p>
-<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <tags>
-        <tag>数据类型</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
     <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
     <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
@@ -377,6 +295,159 @@
 ]]></content>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TOPSIS法</title>
+    <url>/2025/01/17/TOPSIS%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="TOPSIS法"><a href="#TOPSIS法" class="headerlink" title="TOPSIS法"></a>TOPSIS法</h1><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p><strong>1.指标类型：</strong></p>
+<ul>
+<li><strong>效益型</strong>属性：<strong>越大越好</strong>的属性，例如上述人均专著、科研经费。</li>
+<li><strong>成本型</strong>属性：<strong>越小越好</strong>的属性，例如逾期毕业率。</li>
+<li><strong>区间型</strong>属性：<strong>在某一区间内最好</strong>，过大或过小都不好，例如师生比。</li>
+</ul>
+<p>显然的是，求<strong>效益型</strong>属性无需处理；而对于<strong>成本型</strong>属性，求<strong>正理想解</strong>时对其取<strong>最小值</strong>，求<strong>负理想解</strong>时对其取<strong>最大值</strong>；而对于<strong>区间型</strong>属性，根据<strong>数据与最优区间</strong>的<strong>差异</strong>进行处理。</p>
+<p><strong>2.区间型属性的变换</strong></p>
+<ul>
+<li>设第 $j$ 个指标的最优属性区间为 $[ a_j^0, a_j^*]$ ， $a_j^{\prime}$ 为无法容忍下限， $a_j^{\prime\prime}$ 为无法容忍上限，则：</li>
+<li>若在最优属性区间内，值<strong>设为1</strong>；超出可容忍的范围，值<strong>设为0</strong>。</li>
+<li>不在最优区间内，但是还在可接受的范围内，按公式改为<strong>0到1之间的值</strong>。</li>
+</ul>
+<p><strong>3.向量规范化</strong>：</p>
+<ul>
+<li><p>无论成本型属性还是效益型属性，都用相同公式进行变换：</p>
+<p>$b_{ij} = \frac{a_{ij}}{\sqrt{\sum_{i=1}^{m} a_{ij}^2}}$</p>
+</li>
+<li><p>规范化后的数值，同一属性值(评价指标)的<strong>平方和为1</strong>。</p>
+</li>
+<li><p>确保不同评价指标在同一数量级(0到1之间)。</p>
+</li>
+<li><p><strong>变换前后，每个属性值</strong>(评价指标)中的数据的<strong>大小排序不变</strong>。</p>
+</li>
+</ul>
+<h2 id="加权处理"><a href="#加权处理" class="headerlink" title="加权处理"></a>加权处理</h2><p><strong>不同指标的重要性不同</strong></p>
+<ul>
+<li>与AHP的两两比较不同，TOPSIS法直接给每个指标加上权重。</li>
+<li>因为TOPSIS法充分利用了数据的差异，只要权重设置的不是太离谱，对结果影响不会太大。</li>
+</ul>
+<h2 id="最终求解"><a href="#最终求解" class="headerlink" title="最终求解"></a>最终求解</h2><p><strong>求解思路</strong></p>
+<ul>
+<li><p>对第 $j$ 个属性(指标)的正理想解：</p>
+<script type="math/tex; mode=display">c_j^* =  \begin{cases}  \max_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \min_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
+<li><p>对第 $j$ 个属性(指标)的负理想解：</p>
+<script type="math/tex; mode=display">c_j^0 =  \begin{cases}  \min_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \max_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
+<li><p>第 $i$ 个方案到正理想解的距离：</p>
+<p>  $s_i^{*} = \sqrt{\sum_{j=1}^n (c_{ij}-c_j^{*})^2}$</p>
+</li>
+<li><p>第 $j$个方案到负理想解的距离：</p>
+<p>  $s_i^{0} = \sqrt{\sum_{j=1}^n (c_{ij}-c_j^0)^2}$</p>
+</li>
+</ul>
+<p><strong>最终求解：</strong></p>
+<ul>
+<li><p>各方案的<strong>综合评价指数</strong>：$f_i^{*} = \frac{s_i^0}{s_i^0+s_i^{*}} = \frac{1}{1+\frac{s_i^*}{s_i^0}}$</p>
+</li>
+<li><p>显然，距离正理想解越近 ($s_i^*$ 越小)，距离负理想解越远 ($s_i^0$ 越大)越好。</p>
+</li>
+<li><p>按 $f_i^*$ 从大到小排序方案的优劣，即为所求。</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>熵权法</title>
+    <url>/2025/01/19/%E7%86%B5%E6%9D%83%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h1><p><strong>熵的概念：</strong></p>
+<ul>
+<li>信息论中，熵是对<strong>不确定性</strong>的一种度量，可判断一个事件的<strong>随机性</strong>及<strong>无序</strong>程度。</li>
+<li>用熵值判断某个指标的<strong>离散程度</strong>，指标的<strong>离散程度越大</strong>，<strong>该指标对综合评价的影响越大</strong>。</li>
+</ul>
+<h3 id="适用赛题"><a href="#适用赛题" class="headerlink" title="适用赛题"></a>适用赛题</h3><ul>
+<li>数据全面，但缺少文献或主观依据的题目<ul>
+<li>例如，<strong>评价河流的水质</strong>，已知河流的含氧量、pH值、细菌密度、生物密度等数据</li>
+<li>但<strong>缺乏评价水质的文献资料</strong>，或者文献内的<strong>说法不一</strong></li>
+<li>即文献很难帮助我们确定影响水质最重要的因素是哪一个，也很难告诉我们其余指标的重要程度如何衡量</li>
+<li>此时即可使用熵权法，<strong>根据数据本身建立评价体系</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>熵权法与其他方法 (如AHP、TOPSIS法等) 最大的区别就是<strong>完全客观</strong></li>
+<li><strong>难以将数据之外的因素考虑进去</strong></li>
+</ul>
+<p><strong>1.数据标准化</strong></p>
+<p>标准化的原因：</p>
+<ul>
+<li>评价体系中，存在数值越大越好的<strong>正向指标</strong>，和数值越小越好的<strong>负向指标</strong></li>
+<li>不同指标数量级也可能不同；且求熵的公式中用到对数函数，变量不允许有负值</li>
+</ul>
+<p><strong>正向指标标准化：</strong></p>
+<p>$ a_{ij} = \frac{ x_{ij}- \min(x_{1j},…,x_{nj} )}{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
+<p><strong>负向指标标准化：</strong></p>
+<p>$ a_{ij} = \frac{ \max(x_{1j},…,x_{nj}) - x_{ij} }{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
+<p>不难发现，标准化之后，$a_{ij}$ 所有值在 $[0,1] $ 区间之内，且都是数值越大、现实意义越好。</p>
+<p><strong>2.指标的熵值和变异程度</strong></p>
+<p>①每个评价对象在各个指标中的比重：</p>
+<ul>
+<li><p>可理解为统计意义上某种情况出现的概率</p>
+<p>$p_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}$</p>
+</li>
+</ul>
+<p>②熵值</p>
+<ul>
+<li><p>对于第 $i$ 个指标，其熵值 $e_j$ 为：</p>
+<p>$e_j = -\frac{1}{\ln n} \sum_{i=1}^{n} p_{ij} \ln p_{ij}$</p>
+</li>
+</ul>
+<p>③变异系数</p>
+<ul>
+<li>第 $j$ 个指标的变异系数： $g_j = 1 - e_j$ .</li>
+<li>显然熵值越大、变异系数越小，代表该指标越有序，该指标的信息量也就越小。</li>
+</ul>
+<p><strong>3.权重与评分</strong></p>
+<p><strong>变异系数求权重</strong></p>
+<ul>
+<li>计算第 $j$ 个指标的权重： $w_j = \frac{g_j}{\sum_{j=1}^{m} g_j} $ .</li>
+<li>指标的变异系数越大、信息量越大，相应指标的权重也越大。</li>
+</ul>
+<p><strong>综合评分</strong></p>
+<ul>
+<li><p>计算第 $i$ 个评价对象的综合评价值</p>
+<p>$s_i = \sum_{j=1}^{m} w_j p_{ij}$</p>
+</li>
+<li><p>该公式对不同科目加权求和，得到每个人的平均值，评价值越大越好。</p>
+</li>
+<li><p>$p_{ij}$ 和 $w_j$ 都是原始数据 (成绩) 求得的，完全客观，不掺杂主观成分。</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据类型:结构体</title>
+    <url>/2024/10/20/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93/</url>
+    <content><![CDATA[<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>在实际问题中，仅仅使用整型(<code>int</code> <code>long long</code>)，浮点型(<code>float</code> <code>double</code>)，字符型(<code>char</code>)以及数组、字符串这些数据类型经常不够。有时候我们需要其中的几种<strong>一起</strong>来修饰某个变量，例如一个学生的信息就需要<code>学号</code>(字符串)，<code>姓名</code>(字符串)，<code>年龄</code>(整型)等等。这些数据类型都不同，但是它们又要表示一个整体，要存在联系，那么我们就需要一个新的数据类型。   </p>
+<p><strong>结构体</strong>就能将不同类型的数据存放在一起，作为个整体进行处理。  </p>
+<p>结构体的声明：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure><br>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
+<p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong>。  </p>
+<p>而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>。  </p>
+<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure><br>2.直接定义结构体变量(匿名结构体)。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure><br><strong><em>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</em></strong>  </p>
+<p><strong>Typedef的引入</strong>:<br>以此为例:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure><br>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
+<p>而若要定义结构体变量<code>stu</code>时，利用<em>数据类型+变量名</em>，我们可以自然而然地写出<code>Student stu;</code>。但这样写，编译器可能会报错，提示我们需要在前面加上<code>struct</code>，于是我们应写为：<code>struct Student stu;</code>。  </p>
+<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure></p>
+<p>这样我们就可以直接用<code>Student stu</code>来定义结构体变量。  </p>
+<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure><br>这样，学生信息里面就包含了学生的生日信息。</p>
+<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure><br><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
+<p>e.g.访问学号:<code>stu1.id</code>.<br>访问生日信息中的月份:<code>stu1.birthday.month</code>.   </p>
+<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <tags>
+        <tag>数据类型</tag>
       </tags>
   </entry>
   <entry>
