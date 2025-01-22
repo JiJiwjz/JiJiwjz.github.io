@@ -1,56 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Markdown语法入门(舞萌DX特别版)</title>
-    <url>/2024/10/20/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E8%88%9E%E8%90%8CDX%E7%89%B9%E5%88%AB%E7%89%88/</url>
-    <content><![CDATA[<h2 id="0-1介绍"><a href="#0-1介绍" class="headerlink" title="0.1介绍"></a>0.1介绍</h2><p><code>Markdown</code>是一种轻量级的标记语言，它允许人们使用<strong>纯文本格式</strong>编写文档。因其简单的语法、较少的常用标记符号，以及较短的学习时间(<del>易于速成</del>)，被越来越多的学做爱好者及工作者使用。一旦掌握这种标记语言，将极大地提高效率。 </p>
-<p><code>Markdown</code>使用简洁的语法代替排版。相较<code>Word</code>等文字处理软件，<code>Markdown</code>可以做到<strong>手不离开键盘</strong>即可改变字体大小，插入表格、图片、超链接、脚注等。  </p>
-<p>但若要实现复杂排版(如左右对齐缩进等)，建议选择<code>Word</code>、<code>Pages</code>等专业软件。  </p>
-<h2 id="0-2常用编辑器介绍"><a href="#0-2常用编辑器介绍" class="headerlink" title="0.2常用编辑器介绍"></a>0.2常用编辑器介绍</h2><ol>
-<li><code>Typora</code>是一款广受欢迎的轻量级Markdown编辑器。它凭借其优秀的性能和卓越的用户体验，在众多文本编辑工具中脱颖而出。<br><code>Typora</code>采用了所见即所得（WYSIWYG）的设计理念，用户在编辑过程中可实时预览排版效果，无需切换到预览模式，极大地提升了工作效率和编辑体验。<br>但是，Typora已开始收费阶段，价格14.99美元，可供三台设备使用。(<del>建议在csdn等平台多搜搜，你懂的(doge)</del>)</li>
-<li><code>vscode</code>不必多说，安装了Markdown扩展即可。可分屏，边写边预览，也很直观。<del>并且vscode免费</del></li>
-</ol>
-<h2 id="1-标题语法"><a href="#1-标题语法" class="headerlink" title="1.标题语法"></a>1.标题语法</h2><p>要创建标题时，只需在井号(#)后面<strong>空一格</strong>，然后输入要作为标题的文字即可。<strong>#的数量代表了标题的级别</strong>。其中一级标题文字<em>最大</em>，六级<em>最小</em>。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例:#### 舞萌2024</span><br><span class="line">##### Lv.14+</span><br><span class="line">###### VERTEX(rintaro soma deconstructed remix)</span><br></pre></td></tr></table></figure><br><strong>实际效果</strong>:</p>
-<h4 id="舞萌2024"><a href="#舞萌2024" class="headerlink" title="舞萌2024"></a>舞萌2024</h4><h5 id="Lv-14"><a href="#Lv-14" class="headerlink" title="Lv.14"></a>Lv.14</h5><h6 id="VERTEX-rintaro-soma-deconstructed-remix"><a href="#VERTEX-rintaro-soma-deconstructed-remix" class="headerlink" title="VERTEX(rintaro soma deconstructed remix)"></a>VERTEX(rintaro soma deconstructed remix)</h6><p>是不是很简单？  </p>
-<h2 id="2-字体设置斜体、粗体、删除线"><a href="#2-字体设置斜体、粗体、删除线" class="headerlink" title="2.字体设置斜体、粗体、删除线"></a>2.字体设置斜体、粗体、删除线</h2><p>这里需要用到这几个字符:<code>*</code> <code>_</code>  <code>~</code>  </p>
-<p><strong>斜体</strong>  </p>
-<ul>
-<li><p>只需在要变为斜体的语句前后各添加一个 * 或 _ 即可。  </p>
-<p>示例:<code>*PANDORA PARADOXXX*</code>或<code>_PANDORA PARADOXXX_</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <em>PANDORA PARADOXXX</em>  </p>
-</li>
-</ul>
-<p><strong>粗体</strong>  </p>
-<ul>
-<li><p>只需在要变为粗体的语句前后各添加两个 * 即可。   </p>
-<p>示例:<code>**Qzkago Requiem**</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <strong>Qzkago Requiem</strong></p>
-</li>
-</ul>
-<p><strong>倾斜加粗</strong></p>
-<ul>
-<li><p>只需在要变为倾斜加粗的语句前后各添加三个 * 即可。</p>
-<p>示例:<code>***Garakuta Doll Play***</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <strong><em>Garakuta Doll Play</em></strong>  </p>
-</li>
-</ul>
-<p><strong>删除线</strong>  </p>
-<ul>
-<li>只需在要添加删除线的语句前后各添加两个 ~ 即可。</li>
-</ul>
-<p>示例:<code>~~白茄子是15~~</code>  </p>
-<ul>
-<li><strong>实际效果</strong>:<br><del>白茄子是15</del>  <h2 id="3-代码块"><a href="#3-代码块" class="headerlink" title="3.代码块"></a>3.代码块</h2></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>GM(1,1)灰色预测</title>
     <url>/2025/01/19/GM-1-1-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B/</url>
     <content><![CDATA[<h1 id="GM-1-1-灰色预测"><a href="#GM-1-1-灰色预测" class="headerlink" title="GM(1,1)灰色预测"></a>GM(1,1)灰色预测</h1><p>显然地，G代表Grey(灰色)，M代表Model(模型)；而(1,1)代表只含有一个变量的一阶微分方程模型。</p>
@@ -256,6 +206,56 @@ u
 ]]></content>
       <tags>
         <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown语法入门(舞萌DX特别版)</title>
+    <url>/2024/10/20/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E8%88%9E%E8%90%8CDX%E7%89%B9%E5%88%AB%E7%89%88/</url>
+    <content><![CDATA[<h2 id="0-1介绍"><a href="#0-1介绍" class="headerlink" title="0.1介绍"></a>0.1介绍</h2><p><code>Markdown</code>是一种轻量级的标记语言，它允许人们使用<strong>纯文本格式</strong>编写文档。因其简单的语法、较少的常用标记符号，以及较短的学习时间(<del>易于速成</del>)，被越来越多的学做爱好者及工作者使用。一旦掌握这种标记语言，将极大地提高效率。 </p>
+<p><code>Markdown</code>使用简洁的语法代替排版。相较<code>Word</code>等文字处理软件，<code>Markdown</code>可以做到<strong>手不离开键盘</strong>即可改变字体大小，插入表格、图片、超链接、脚注等。  </p>
+<p>但若要实现复杂排版(如左右对齐缩进等)，建议选择<code>Word</code>、<code>Pages</code>等专业软件。  </p>
+<h2 id="0-2常用编辑器介绍"><a href="#0-2常用编辑器介绍" class="headerlink" title="0.2常用编辑器介绍"></a>0.2常用编辑器介绍</h2><ol>
+<li><code>Typora</code>是一款广受欢迎的轻量级Markdown编辑器。它凭借其优秀的性能和卓越的用户体验，在众多文本编辑工具中脱颖而出。<br><code>Typora</code>采用了所见即所得（WYSIWYG）的设计理念，用户在编辑过程中可实时预览排版效果，无需切换到预览模式，极大地提升了工作效率和编辑体验。<br>但是，Typora已开始收费阶段，价格14.99美元，可供三台设备使用。(<del>建议在csdn等平台多搜搜，你懂的(doge)</del>)</li>
+<li><code>vscode</code>不必多说，安装了Markdown扩展即可。可分屏，边写边预览，也很直观。<del>并且vscode免费</del></li>
+</ol>
+<h2 id="1-标题语法"><a href="#1-标题语法" class="headerlink" title="1.标题语法"></a>1.标题语法</h2><p>要创建标题时，只需在井号(#)后面<strong>空一格</strong>，然后输入要作为标题的文字即可。<strong>#的数量代表了标题的级别</strong>。其中一级标题文字<em>最大</em>，六级<em>最小</em>。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例:#### 舞萌2024</span><br><span class="line">##### Lv.14+</span><br><span class="line">###### VERTEX(rintaro soma deconstructed remix)</span><br></pre></td></tr></table></figure><br><strong>实际效果</strong>:</p>
+<h4 id="舞萌2024"><a href="#舞萌2024" class="headerlink" title="舞萌2024"></a>舞萌2024</h4><h5 id="Lv-14"><a href="#Lv-14" class="headerlink" title="Lv.14"></a>Lv.14</h5><h6 id="VERTEX-rintaro-soma-deconstructed-remix"><a href="#VERTEX-rintaro-soma-deconstructed-remix" class="headerlink" title="VERTEX(rintaro soma deconstructed remix)"></a>VERTEX(rintaro soma deconstructed remix)</h6><p>是不是很简单？  </p>
+<h2 id="2-字体设置斜体、粗体、删除线"><a href="#2-字体设置斜体、粗体、删除线" class="headerlink" title="2.字体设置斜体、粗体、删除线"></a>2.字体设置斜体、粗体、删除线</h2><p>这里需要用到这几个字符:<code>*</code> <code>_</code>  <code>~</code>  </p>
+<p><strong>斜体</strong>  </p>
+<ul>
+<li><p>只需在要变为斜体的语句前后各添加一个 * 或 _ 即可。  </p>
+<p>示例:<code>*PANDORA PARADOXXX*</code>或<code>_PANDORA PARADOXXX_</code></p>
+</li>
+<li><p><strong>实际效果</strong>:<br> <em>PANDORA PARADOXXX</em>  </p>
+</li>
+</ul>
+<p><strong>粗体</strong>  </p>
+<ul>
+<li><p>只需在要变为粗体的语句前后各添加两个 * 即可。   </p>
+<p>示例:<code>**Qzkago Requiem**</code></p>
+</li>
+<li><p><strong>实际效果</strong>:<br> <strong>Qzkago Requiem</strong></p>
+</li>
+</ul>
+<p><strong>倾斜加粗</strong></p>
+<ul>
+<li><p>只需在要变为倾斜加粗的语句前后各添加三个 * 即可。</p>
+<p>示例:<code>***Garakuta Doll Play***</code></p>
+</li>
+<li><p><strong>实际效果</strong>:<br> <strong><em>Garakuta Doll Play</em></strong>  </p>
+</li>
+</ul>
+<p><strong>删除线</strong>  </p>
+<ul>
+<li>只需在要添加删除线的语句前后各添加两个 ~ 即可。</li>
+</ul>
+<p>示例:<code>~~白茄子是15~~</code>  </p>
+<ul>
+<li><strong>实际效果</strong>:<br><del>白茄子是15</del>  <h2 id="3-代码块"><a href="#3-代码块" class="headerlink" title="3.代码块"></a>3.代码块</h2></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Markdown</tag>
       </tags>
   </entry>
   <entry>
@@ -666,7 +666,7 @@ P=\begin{cases}  1, & \text{ } \Delta f < 0, \\ exp(- \Delta f/T_i), & \text{ } 
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设的目标函数 f(x)，我们要最小化该函数</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">objective_function</span><span class="params">(<span class="type">double</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x - <span class="number">4</span> * x + <span class="number">4</span>; <span class="comment">// 例如 f(x) = x^2 - 4x + 4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟退火算法</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">simulated_annealing</span><span class="params">(<span class="type">double</span> (*obj_func)(<span class="type">double</span>), <span class="type">double</span> start, <span class="type">double</span> end, <span class="type">double</span> temp, <span class="type">double</span> cooling_rate, <span class="type">int</span> iterations)</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> current_solution = start + (end - start) * ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX); <span class="comment">// 随机初始解</span></span><br><span class="line">    <span class="type">double</span> current_energy = <span class="built_in">obj_func</span>(current_solution);</span><br><span class="line">    <span class="type">double</span> best_solution = current_solution;</span><br><span class="line">    <span class="type">double</span> best_energy = current_energy;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; iterations; i++) &#123;</span><br><span class="line">        <span class="comment">// 生成一个邻域解</span></span><br><span class="line">        <span class="type">double</span> neighbor = current_solution + (<span class="built_in">rand</span>() % <span class="number">2</span> == <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>) * ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX) * <span class="number">0.1</span>; <span class="comment">// 邻域解</span></span><br><span class="line"></span><br><span class="line">        <span class="type">double</span> neighbor_energy = <span class="built_in">obj_func</span>(neighbor);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 计算接受概率</span></span><br><span class="line">        <span class="keyword">if</span> (neighbor_energy &lt; current_energy || <span class="built_in">exp</span>((current_energy - neighbor_energy) / temp) &gt; ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX)) &#123;</span><br><span class="line">            current_solution = neighbor;</span><br><span class="line">            current_energy = neighbor_energy;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更新最优解</span></span><br><span class="line">        <span class="keyword">if</span> (current_energy &lt; best_energy) &#123;</span><br><span class="line">            best_solution = current_solution;</span><br><span class="line">            best_energy = current_energy;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 降温</span></span><br><span class="line">        temp *= cooling_rate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> best_solution; <span class="comment">// 返回最优解</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">srand</span>(<span class="built_in">time</span>(<span class="number">0</span>)); <span class="comment">// 随机数种子</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置模拟退火的参数</span></span><br><span class="line">    <span class="type">double</span> start = <span class="number">-10.0</span>;         <span class="comment">// 搜索空间的起始点</span></span><br><span class="line">    <span class="type">double</span> end = <span class="number">10.0</span>;            <span class="comment">// 搜索空间的结束点</span></span><br><span class="line">    <span class="type">double</span> initial_temperature = <span class="number">1000.0</span>;  <span class="comment">// 初始温度</span></span><br><span class="line">    <span class="type">double</span> cooling_rate = <span class="number">0.99</span>;   <span class="comment">// 降温速率</span></span><br><span class="line">    <span class="type">int</span> iterations = <span class="number">10000</span>;       <span class="comment">// 迭代次数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行模拟退火算法</span></span><br><span class="line">    <span class="type">double</span> result = <span class="built_in">simulated_annealing</span>(objective_function, start, end, initial_temperature, cooling_rate, iterations);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;最优解: &quot;</span> &lt;&lt; result &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;最优目标函数值: &quot;</span> &lt;&lt; <span class="built_in">objective_function</span>(result) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>数学建模,算法</tag>
+        <tag>数学建模</tag>
       </tags>
   </entry>
   <entry>
