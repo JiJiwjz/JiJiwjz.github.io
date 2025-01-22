@@ -1,6 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>GM(1,1)灰色预测</title>
+    <url>/2025/01/19/GM-1-1-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B/</url>
+    <content><![CDATA[<h1 id="GM-1-1-灰色预测"><a href="#GM-1-1-灰色预测" class="headerlink" title="GM(1,1)灰色预测"></a>GM(1,1)灰色预测</h1><p>显然地，G代表Grey(灰色)，M代表Model(模型)；而(1,1)代表只含有一个变量的一阶微分方程模型。</p>
+<p><strong>灰色系统：</strong></p>
+<ul>
+<li><p>介于黑色和白色之间，<strong>部分已知</strong>，<strong>部分未知</strong>，具有小样本数据的<strong>不确定性</strong>系统。</p>
+</li>
+<li><p>典型例子：GDP就是灰色系统。</p>
+</li>
+</ul>
+<p><strong>适用赛题：</strong></p>
+<ul>
+<li><p><strong>数列预测</strong></p>
+<ul>
+<li>特点：<strong>定时求量</strong>。已知xx年到xx年的数据，请预测下一年的数值。</li>
+<li>常见GDP、人口数量、耕地面积、粮食产量等问题。</li>
+<li>针对的问题往往短期<strong>波动小</strong>、<strong>可预测</strong>，但长期可能变化大、难以预测。</li>
+</ul>
+</li>
+<li><p><strong>灾变预测</strong></p>
+<ul>
+<li>特点：<strong>定量求时</strong>。已知xx年到xx年的数据和某灾变的阈值，预测下一次灾变发生的时间。</li>
+<li>常见洪涝灾害、虫灾等问题。</li>
+<li>模型中需要把<strong>超出阈值</strong>的数据 (异常数据) 对应的时间组成新序列。</li>
+</ul>
+</li>
+<li><strong>拓扑预测</strong><ul>
+<li>特点：<strong>对数据波形进行预测。</strong>求的是多个模型构成的模型群，等于求解<strong>多个</strong>灾变预测。</li>
+<li>与灾变预测类似，不过有较详细的分级，例如虫灾 “轻微” “中度” “重度”。</li>
+</ul>
+</li>
+<li><strong>注意事项</strong><ul>
+<li>需要的<strong>数据量少</strong>，数据量太多了没有意义。</li>
+<li>只能<strong>短期预测</strong>，但究竟多短没有严格限制。</li>
+</ul>
+</li>
+</ul>
+<p>以下题为例：某城市1986到1992年道路噪声平均声级数据见下表。请预测下一年的数据。</p>
+<ul>
+<li>某城市交通噪声数据/$dB(A)$ </li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">年份</td>
+<td style="text-align:center">1986</td>
+<td style="text-align:center">1987</td>
+<td style="text-align:center">1988</td>
+<td style="text-align:center">1989</td>
+<td style="text-align:center">1990</td>
+<td style="text-align:center">1991</td>
+<td style="text-align:center">1992</td>
+</tr>
+<tr>
+<td style="text-align:center">噪声</td>
+<td style="text-align:center">71.1</td>
+<td style="text-align:center">72.4</td>
+<td style="text-align:center">72.4</td>
+<td style="text-align:center">72.1</td>
+<td style="text-align:center">71.4</td>
+<td style="text-align:center">72.0</td>
+<td style="text-align:center">71.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>特点：<strong>数据少，看不出明显规律</strong>，适合用灰色预测。</li>
+</ul>
+<p>可进行数据的<strong>累加</strong>，于是有：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">年份</td>
+<td style="text-align:center">1986</td>
+<td style="text-align:center">1987</td>
+<td style="text-align:center">1988</td>
+<td style="text-align:center">1989</td>
+<td style="text-align:center">1990</td>
+<td style="text-align:center">1991</td>
+<td style="text-align:center">1992</td>
+</tr>
+<tr>
+<td style="text-align:center">$x^{(0)}$</td>
+<td style="text-align:center">71.1</td>
+<td style="text-align:center">72.4</td>
+<td style="text-align:center">72.4</td>
+<td style="text-align:center">72.1</td>
+<td style="text-align:center">71.4</td>
+<td style="text-align:center">72.0</td>
+<td style="text-align:center">71.6</td>
+</tr>
+<tr>
+<td style="text-align:center">$x^{(1)}$</td>
+<td style="text-align:center">71.1</td>
+<td style="text-align:center">143.5</td>
+<td style="text-align:center">215.9</td>
+<td style="text-align:center">288</td>
+<td style="text-align:center">359.4</td>
+<td style="text-align:center">431.4</td>
+<td style="text-align:center">503</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>累加生成序列：$x^{(1)}(k) = \sum_{i=1}^k x^{(0)}(i)$</p>
+</li>
+<li><p>弱化其<strong>随机性</strong>，显现其<strong>规律性</strong>。</p>
+</li>
+</ul>
+<p>此时生成的新序列 $x^{(1)}$ ，看起来像一个指数曲线 (直线)。因此可用一个<strong>指数曲线</strong>的表达式来逼近这个新序列，相应可构建<strong>一阶常微分方程</strong>来求解拟合<strong>指数曲线</strong>的<strong>函数表达式</strong>。</p>
+<p>关于一阶常微分方程，假设 $x^{(1)}$ 满足形式： $\frac{dx^{(1)}}{dt} + ax^{(1)} = u$</p>
+<ul>
+<li>要预测下一年数值，就需要新序列 $x^{(1)}$ 的表达式，那就要解出<strong>微分方程</strong>。</li>
+<li>要解微分方程，就要先知道参数 $a$ 和 $u$ </li>
+</ul>
+<h3 id="表达式处理"><a href="#表达式处理" class="headerlink" title="表达式处理"></a>表达式处理</h3><p>已知的 $\frac{dx^{(1)}}{dt} + ax^{(1)} = u$ 中的数据是离散的，所以应该把 $\frac{dx^{(1)}}{dt}$ 写成 $\frac{\Delta x^{(1)}}{\Delta t}$ .</p>
+<ul>
+<li>$\Delta t = t - (t-1) = 1$，始终为1；而 $\Delta x^{(1)} = x^{(1)}(t)- x^{(1)}(t-1) = x^{(0)}(t)$</li>
+<li>得到方程$x^{(0)}(t) + ax^{(1)}(t) = u$ ，即 $x^{(0)}(t) = - ax^{(1)}(t) + u$</li>
+</ul>
+<p>为了进一步消除数据随机性，将 $x^{(1)}(t)$ 修正为 $z^{(1)}(t)$</p>
+<ul>
+<li>考虑到原方程中有 $\frac{\Delta x^{(1)}}{\Delta t}$，因此将 $x^{(1)}(t)$ 改为取<strong>前后两个时刻的均值</strong>更合理。</li>
+<li>对 $x^{(1)}$ 进行<strong>均值生成</strong>：$z^{(1)}(t) = 0.5x^{(1)}(t)+0.5 x^{(1)}(t-1),t=2,…,n$，即方程改为 $x^{(0)}(t) = - az^{(1)}(t) + u$ .</li>
+<li>可用<strong>最小二乘法</strong>求未知参数。</li>
+</ul>
+<h3 id="模型求解"><a href="#模型求解" class="headerlink" title="模型求解"></a>模型求解</h3><p>1.最小二乘法求解</p>
+<ul>
+<li>当前方程 (函数) 为 $x^{(0)}(t) = - az^{(1)}(t) + u$ .</li>
+<li>最小二乘法就是求出当拟合函数求的值与已知数据的平方差最小时，未知参数的取值。</li>
+<li>方程矩阵形式 $Y = B U$</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+x^{(0)}(2)  \\
+x^{(0)}(3)  \\   
+\vdots      \\
+x^{(0)}(N) 
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\frac{1}{2} [x^{(1)}(2) + x^{(1)}(1)] & 1 \\
+-\frac{1}{2} [x^{(1)}(3) + x^{(1)}(2)] & 1 \\
+\vdots & \vdots \\
+-\frac{1}{2} [x^{(1)}(N) + x^{(1)}(N-1)] & 1
+\end{bmatrix}
+\begin{bmatrix}
+a \\
+u
+\end{bmatrix}</script><ul>
+<li>最小二乘法也就是求 $(Y-BU)^T(Y-BU)$取最小值时的 $U$</li>
+<li>求解U的估计值为 $\hat{U} = [\hat{a},\hat{b}]^T = (B^T B)^{-1} B^T Y$，即求出参数 $\hat{a},\hat{b}$ .</li>
+</ul>
+<p>然后带入原微分方程，求出$\frac{dx^{(1)}}{dt} + \hat{a}x^{(1)} = \hat{b}$ 的解，即 $\hat{x}^{(1)}(k+1) = (x^{(0)}(1)-\frac{\hat{b}}{\hat{a}})e^{-\hat{b}k}+\frac{\hat{b}}{\hat{a}}$</p>
+<h3 id="模型检验"><a href="#模型检验" class="headerlink" title="模型检验"></a>模型检验</h3><ul>
+<li>模型检验就是看按照 $\hat{x}^{(1)}(k+1)$ 求得的拟合值和实际值相差大不大。</li>
+<li><strong>相对误差检验</strong>：$\epsilon(k) = \frac{|x^{(0)}(k)-\hat{x}^{(0)}(k)|}{x^{(0)}(k)}$ ，如果 $\epsilon(k)&lt;0.2$，可认为达到一般要求；如果 $\epsilon(k)&lt;0.1$，即达到较高要求。</li>
+<li><strong>级比偏差检验</strong>：$\rho(k)=1-\frac{1-0.5a}{1+0.5a} \lambda(k)$，其中级比 $\lambda(k) = \frac{x^{(0)}(k-1)}{x^{(0)}(k)}$，如果 $|\rho(k)|&lt;0.2$，可认为达到一般要求；如果 $|\rho(k)|&lt;0.1$，即达到较高要求。</li>
+</ul>
+<h3 id="原始数据的级比检验-在建模最开始进行"><a href="#原始数据的级比检验-在建模最开始进行" class="headerlink" title="原始数据的级比检验(在建模最开始进行)"></a>原始数据的级比检验(在建模最开始进行)</h3><p>为了确定<strong>原始数据</strong>使用GM(1,1)模型的可行性，避免白忙活，需要对原始数据进行级比检验：</p>
+<ul>
+<li>计算 $\lambda(k) = \frac{x^{(0)}(k-1)}{x^{(0)}(k)},k=2,3,…,n$</li>
+</ul>
+<p>如果 $\lambda(k)$ 在区间 $(e^{-\frac{2}{n+1}},e^{\frac{2}{n+2}})$，说明可用GM(1,1)模型。</p>
+<ul>
+<li>如果在区间外，可尝试平移变换。也就是给每个数据都加上任意常数 $c$ 后，观察是否在区间内，求解后再减去 $c$ ；如果尝试多次平移变换后始终无法在区间内，说明题目不适合灰色预测。</li>
+</ul>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ul>
+<li><p>核心就是最小二乘法求参数，再求微分方程。</p>
+</li>
+<li><p>在最开始要对原始数据进行检验，在最后要对结果进行检验。</p>
+<p><img src="/images/Flowchart.png" alt="Flowchart"></p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git初步学习</title>
     <url>/2024/11/25/Git%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="Git入门学习"><a href="#Git入门学习" class="headerlink" title="Git入门学习"></a>Git入门学习</h1><p><strong>Git</strong> 是一种 <strong>分布式版本控制系统</strong>，主要用于管理源代码的版本历史。它能记录文件的每一次改动，让开发者能够随时回溯、更改和协作，从而极大提高了代码开发的效率和安全性。</p>
@@ -264,40 +472,6 @@
       </tags>
   </entry>
   <entry>
-    <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
-    <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
-    <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
-<p><strong>时间复杂度</strong>:最坏情况<code>O(n)</code>,最好情况<code>O(n^2)</code>.  </p>
-<h2 id="选择排序-不稳定"><a href="#选择排序-不稳定" class="headerlink" title="选择排序(不稳定)"></a>选择排序(不稳定)</h2><p><strong>特点</strong>:每次从待排序列中选出一个<strong>最小值</strong>,然后放在序列的起始位置,直至排完.</p>
-<p><strong>时间复杂度</strong>:<code>O(n^2)</code>.  </p>
-<h2 id="插入排序-稳定"><a href="#插入排序-稳定" class="headerlink" title="插入排序(稳定)"></a>插入排序(稳定)</h2><p><strong>特点</strong>:从<strong>第下个元素开始</strong>,从已排序的元素序列<strong>从后往前</strong>扫描,如果该元素<strong>大于</strong>tem,<strong>则将该元素移至下一位</strong>.重复该步骤,直到找到已排序元素中<strong>小于等于</strong>tem的元素.tem插入到该元素的<strong>后面</strong>,如果已排序所有元素都大于tem,则将tem插入到下标为0的位置.<br><strong>一直重复上述步骤,直至排序完成</strong>.   </p>
-<p><strong>时间复杂度</strong>:最坏情况<code>O(n^2)</code>,最好情况<code>O(n)</code>.</p>
-<h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
-<ul>
-<li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
-<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.  </li>
-</ul>
-<p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
-<h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
-<p>是对<strong>冒泡排序</strong>的一种改进  </p>
-</blockquote>
-<p><strong>特点</strong>:通过一趟排序将要排序的数据分割成<strong>独立的两部分</strong>，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以<strong>递归</strong>进行，以此达到整个数据变成有序序列。  </p>
-<ul>
-<li><p>排序流程:  </p>
-<ol>
-<li>首先设定一个<strong>分界值Key</strong>,通过该分界值将数组分成左右两部分.</li>
-<li>将<em>大于或等于Key的数据集中到数组右边,小于分界值的数据集中到数组的左边</em>.此时,左边部分中各元素都小于或等于分界值,而右边部分中各元素都大于或等于分界值.</li>
-<li>然后,左边和右边的数据可以独立排序.对于左侧的数组数据,又可以取一个分界值,将该部分数据分成左右两部分,同样在左边放置较小值,右边放置较大值.右侧的数组数据也可以做类似处理.</li>
-<li>重复上述过程,可以看出,这是一个<strong>递归定义</strong>.通过递归将左侧部分排好序后,再递归排好右侧部分的顺序.当左右两个部分各数据排序完成后,整个数组的排序也就完成了.</li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>TOPSIS法</title>
     <url>/2025/01/17/TOPSIS%E6%B3%95/</url>
     <content><![CDATA[<h1 id="TOPSIS法"><a href="#TOPSIS法" class="headerlink" title="TOPSIS法"></a>TOPSIS法</h1><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p><strong>1.指标类型：</strong></p>
@@ -355,6 +529,40 @@
 ]]></content>
       <tags>
         <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
+    <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
+    <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n)</code>,最好情况<code>O(n^2)</code>.  </p>
+<h2 id="选择排序-不稳定"><a href="#选择排序-不稳定" class="headerlink" title="选择排序(不稳定)"></a>选择排序(不稳定)</h2><p><strong>特点</strong>:每次从待排序列中选出一个<strong>最小值</strong>,然后放在序列的起始位置,直至排完.</p>
+<p><strong>时间复杂度</strong>:<code>O(n^2)</code>.  </p>
+<h2 id="插入排序-稳定"><a href="#插入排序-稳定" class="headerlink" title="插入排序(稳定)"></a>插入排序(稳定)</h2><p><strong>特点</strong>:从<strong>第下个元素开始</strong>,从已排序的元素序列<strong>从后往前</strong>扫描,如果该元素<strong>大于</strong>tem,<strong>则将该元素移至下一位</strong>.重复该步骤,直到找到已排序元素中<strong>小于等于</strong>tem的元素.tem插入到该元素的<strong>后面</strong>,如果已排序所有元素都大于tem,则将tem插入到下标为0的位置.<br><strong>一直重复上述步骤,直至排序完成</strong>.   </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n^2)</code>,最好情况<code>O(n)</code>.</p>
+<h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
+<ul>
+<li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
+<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.  </li>
+</ul>
+<p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
+<h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
+<p>是对<strong>冒泡排序</strong>的一种改进  </p>
+</blockquote>
+<p><strong>特点</strong>:通过一趟排序将要排序的数据分割成<strong>独立的两部分</strong>，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以<strong>递归</strong>进行，以此达到整个数据变成有序序列。  </p>
+<ul>
+<li><p>排序流程:  </p>
+<ol>
+<li>首先设定一个<strong>分界值Key</strong>,通过该分界值将数组分成左右两部分.</li>
+<li>将<em>大于或等于Key的数据集中到数组右边,小于分界值的数据集中到数组的左边</em>.此时,左边部分中各元素都小于或等于分界值,而右边部分中各元素都大于或等于分界值.</li>
+<li>然后,左边和右边的数据可以独立排序.对于左侧的数组数据,又可以取一个分界值,将该部分数据分成左右两部分,同样在左边放置较小值,右边放置较大值.右侧的数组数据也可以做类似处理.</li>
+<li>重复上述过程,可以看出,这是一个<strong>递归定义</strong>.通过递归将左侧部分排好序后,再递归排好右侧部分的顺序.当左右两个部分各数据排序完成后,整个数组的排序也就完成了.</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
