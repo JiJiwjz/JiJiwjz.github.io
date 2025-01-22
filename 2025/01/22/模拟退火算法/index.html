@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="模拟退火算法模拟退火思想(以寻找山的最高峰为例)  显然，此时朴素贪心算法会失效  首先在可见范围内，随机选择一点  若该点比当前位置更高，就直接去该点 如果该点更低，那么有一定概率去该点 在刚才的局部最优解的峰，会有一定概率走下了当前山峰，从而发现另一个山峰的上坡 从而就有可能走上新的更高峰">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模拟退火算法">
+<meta property="og:url" content="http://example.com/2025/01/22/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Samxander&#39;s home">
+<meta property="og:description" content="模拟退火算法模拟退火思想(以寻找山的最高峰为例)  显然，此时朴素贪心算法会失效  首先在可见范围内，随机选择一点  若该点比当前位置更高，就直接去该点 如果该点更低，那么有一定概率去该点 在刚才的局部最优解的峰，会有一定概率走下了当前山峰，从而发现另一个山峰的上坡 从而就有可能走上新的更高峰">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-01-22T13:12:20.000Z">
+<meta property="article:modified_time" content="2025-01-22T13:13:54.875Z">
+<meta property="article:author" content="Sam">
+<meta property="article:tag" content="数学建模,算法">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2025/01/22/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>模拟退火算法 | Samxander's home</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?39a7b28cea42de31b1e8e2834e588560";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Samxander's home</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">You shall see the difference now that we are back again!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/22/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Samxander's home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          模拟退火算法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-01-22 21:12:20 / 修改时间：21:13:54" itemprop="dateCreated datePublished" datetime="2025-01-22T21:12:20+08:00">2025-01-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="模拟退火算法"><a href="#模拟退火算法" class="headerlink" title="模拟退火算法"></a>模拟退火算法</h1><p><strong>模拟退火思想</strong>(以寻找山的最高峰为例)</p>
+<ul>
+<li><p>显然，此时朴素<strong>贪心</strong>算法会<strong>失效</strong></p>
+</li>
+<li><p>首先在可见范围内，<strong>随机</strong>选择一点</p>
+</li>
+<li>若该点比当前位置更高，就<strong>直接去</strong>该点</li>
+<li>如果该点更低，那么<strong>有一定概率</strong>去该点</li>
+<li>在刚才的<strong>局部最优解的</strong>峰，会有一定概率走下了当前山峰，从而发现另一个山峰的上坡</li>
+<li>从而就有可能走上新的更高峰</li>
+</ul>
+<p><strong>算法关键点</strong></p>
+<ul>
+<li>时间有限，需要设置终止条件 (“退火”过程中<strong>温度不断降低，剩余时间不多时就别乱跑</strong>)</li>
+<li>若当前所处的山峰越高，前往低点的概率越低 (<strong>概率的表达式</strong>)</li>
+</ul>
+<h3 id="适用赛题"><a href="#适用赛题" class="headerlink" title="适用赛题"></a>适用赛题</h3><ul>
+<li><strong>可行解过多</strong><ul>
+<li>有些规划类问题的<strong>可行解过多</strong>，传统算法运算时间过长</li>
+<li>能够列出可行解的任意排列</li>
+</ul>
+</li>
+<li><strong>NP-hard问题</strong><ul>
+<li>旅行推销员问题 (TSP)：给定一系列城市和每对城市之间的距离，求解访问<strong>每一座</strong>城市<strong>一次</strong>并回到<strong>起始城市</strong>的<strong>最短</strong>回路</li>
+<li>TSP问题是组合优化中的一个<strong>NP-hard</strong>问题，该问题的可行解是<strong>所有顶点的全排列</strong>，随着点数的增加，会产生组合爆炸，传统算法难以求解</li>
+<li>此时就适合用模拟退火等启发式算法求近似解</li>
+</ul>
+</li>
+</ul>
+<h3 id="原理与求解思路"><a href="#原理与求解思路" class="headerlink" title="原理与求解思路"></a>原理与求解思路</h3><p><strong>例题：</strong></p>
+<ul>
+<li>已知全国34个省会城市（包括直辖市、自治区首府和港澳台）的经纬度坐标（第一个为北京） </li>
+<li>现在需要从北京出发，到所有城市视察 </li>
+<li>要求每个城市只能到达一次，并最终回到北京 </li>
+<li>求视察路线方案，使得总路径最短</li>
+</ul>
+<p>令北京为1号城市 $x_1$，剩下33个城市依次设为 $x_2,x_3,…,x_{34}$；</p>
+<p>设第 $i$ 号城市 $x_i$ 与第 $i+1$ 号城市 $x_{i+1}$ 之间的路径长度为 $d_{x_i x_{i+1}}$，则目标函数： $min \ f(x_1,x_2,…,x_{35}) = \sum_{i=1}^{34} d_{x_i x_{i+1}}$</p>
+<h4 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h4><ul>
+<li>在最开始，需设定一个初始温度 $T_0$ 和问题的一个初始解 $x(0)$</li>
+<li>也可用<strong>蒙特卡洛法</strong>求一个较好的初始解</li>
+</ul>
+<h4 id="2-随机产生新解"><a href="#2-随机产生新解" class="headerlink" title="2.随机产生新解"></a>2.随机产生新解</h4><ul>
+<li>在当前温度 $T_i$ 下<strong>随机</strong>求一个解 $x’$，制定产生新解的准则 (准则不唯一，能确保<strong>随机</strong>即可)</li>
+<li>假设上一步的解为： $x_1x_2…x_{u-1} x_{u} x_{u+1} … x_{v-1} x_{v} x_{v+1}…x_{35}$</li>
+<li>随机选序号 $u,v$ ，将 $u$ 到 $v$ 这部分转为逆序，得到解： $x_1x_2…x_{u-1} x_{v} x_{v-1} … x_{u+1} x_{u} x_{v+1}…x_{35}$</li>
+</ul>
+<h4 id="3-计算目标函数差值"><a href="#3-计算目标函数差值" class="headerlink" title="3.计算目标函数差值"></a>3.计算目标函数差值</h4><ul>
+<li><p>随机得到的解 $x’$ 和当前解 $x(i)$ ，两种方案总路径的差值记为 $\Delta f$ :</p>
+<p>$ \Delta f = (d_{x_{u-1} x_{v}} + d_{x_{u} x_{v+1}}) - (d_{x_{u-1} x_{u}} + d_{x_{v} x_{v+1}})$</p>
+</li>
+</ul>
+<h4 id="4-是否接受新解"><a href="#4-是否接受新解" class="headerlink" title="4.是否接受新解"></a>4.是否接受新解</h4><ul>
+<li><p>接受准则：</p>
+<script type="math/tex; mode=display">
+P=\begin{cases}  1, & \text{ } \Delta f < 0, \\ exp(- \Delta f/T_i), & \text{ } \Delta f \geq 0. \end{cases}</script></li>
+<li><p>显然，$\Delta f$ 越小，意味着随机解的总路径比原解的总路径短更多，那么接受 $x’$ 的概率就越大</p>
+</li>
+</ul>
+<h4 id="5-马尔科夫过程"><a href="#5-马尔科夫过程" class="headerlink" title="5.马尔科夫过程"></a>5.马尔科夫过程</h4><ul>
+<li>在当前温度 $T_i$ 下，重复2、3、4步</li>
+<li><strong>新解 $x(i+1)$ 只与 $x(i)$ 有关</strong>，而与更早的 $x(i-1),x(i-2),…,x(0)$<strong>无关</strong></li>
+<li>这是个马尔科夫过程，$x’$ 在原解 $x(i)$ 的邻域中符合<strong>均匀分布</strong></li>
+</ul>
+<h4 id="6-退火过程"><a href="#6-退火过程" class="headerlink" title="6. 退火过程"></a>6. 退火过程</h4><ul>
+<li>选定降温系数 $\alpha$，求得新温度 $T_{i+1} = \alpha T_i$，此处设为0.999</li>
+<li>再重复2、3、4、5步；然后继续降低温度</li>
+</ul>
+<h4 id="7-结束条件"><a href="#7-结束条件" class="headerlink" title="7.结束条件"></a>7.结束条件</h4><ul>
+<li>直到温度足够小，设终止温度为 $ e = 10^{-30}$，当 $T &lt; e$ 时终止迭代，输出最终解</li>
+<li>退火过程足够慢、每个温度下寻找新解的次数足够多，则最终解是全局最优解的概率越大</li>
+</ul>
+<p><strong>理论上，模拟退火可以找到全局最优</strong></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设的目标函数 f(x)，我们要最小化该函数</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">objective_function</span><span class="params">(<span class="type">double</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x - <span class="number">4</span> * x + <span class="number">4</span>; <span class="comment">// 例如 f(x) = x^2 - 4x + 4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟退火算法</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">simulated_annealing</span><span class="params">(<span class="type">double</span> (*obj_func)(<span class="type">double</span>), <span class="type">double</span> start, <span class="type">double</span> end, <span class="type">double</span> temp, <span class="type">double</span> cooling_rate, <span class="type">int</span> iterations)</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> current_solution = start + (end - start) * ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX); <span class="comment">// 随机初始解</span></span><br><span class="line">    <span class="type">double</span> current_energy = <span class="built_in">obj_func</span>(current_solution);</span><br><span class="line">    <span class="type">double</span> best_solution = current_solution;</span><br><span class="line">    <span class="type">double</span> best_energy = current_energy;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; iterations; i++) &#123;</span><br><span class="line">        <span class="comment">// 生成一个邻域解</span></span><br><span class="line">        <span class="type">double</span> neighbor = current_solution + (<span class="built_in">rand</span>() % <span class="number">2</span> == <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>) * ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX) * <span class="number">0.1</span>; <span class="comment">// 邻域解</span></span><br><span class="line"></span><br><span class="line">        <span class="type">double</span> neighbor_energy = <span class="built_in">obj_func</span>(neighbor);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 计算接受概率</span></span><br><span class="line">        <span class="keyword">if</span> (neighbor_energy &lt; current_energy || <span class="built_in">exp</span>((current_energy - neighbor_energy) / temp) &gt; ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX)) &#123;</span><br><span class="line">            current_solution = neighbor;</span><br><span class="line">            current_energy = neighbor_energy;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更新最优解</span></span><br><span class="line">        <span class="keyword">if</span> (current_energy &lt; best_energy) &#123;</span><br><span class="line">            best_solution = current_solution;</span><br><span class="line">            best_energy = current_energy;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 降温</span></span><br><span class="line">        temp *= cooling_rate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> best_solution; <span class="comment">// 返回最优解</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">srand</span>(<span class="built_in">time</span>(<span class="number">0</span>)); <span class="comment">// 随机数种子</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置模拟退火的参数</span></span><br><span class="line">    <span class="type">double</span> start = <span class="number">-10.0</span>;         <span class="comment">// 搜索空间的起始点</span></span><br><span class="line">    <span class="type">double</span> end = <span class="number">10.0</span>;            <span class="comment">// 搜索空间的结束点</span></span><br><span class="line">    <span class="type">double</span> initial_temperature = <span class="number">1000.0</span>;  <span class="comment">// 初始温度</span></span><br><span class="line">    <span class="type">double</span> cooling_rate = <span class="number">0.99</span>;   <span class="comment">// 降温速率</span></span><br><span class="line">    <span class="type">int</span> iterations = <span class="number">10000</span>;       <span class="comment">// 迭代次数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行模拟退火算法</span></span><br><span class="line">    <span class="type">double</span> result = <span class="built_in">simulated_annealing</span>(objective_function, start, end, initial_temperature, cooling_rate, iterations);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;最优解: &quot;</span> &lt;&lt; result &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;最优目标函数值: &quot;</span> &lt;&lt; <span class="built_in">objective_function</span>(result) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>Insist on writing original high-quality articles. Your support is my biggest motivation.</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Sam 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Sam 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1-%E7%AE%97%E6%B3%95/" rel="tag"># 数学建模,算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/01/19/GM-1-1-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B/" rel="prev" title="GM(1,1)灰色预测">
+      <i class="fa fa-chevron-left"></i> GM(1,1)灰色预测
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">模拟退火算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E8%B5%9B%E9%A2%98"><span class="nav-number">1.0.1.</span> <span class="nav-text">适用赛题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E4%B8%8E%E6%B1%82%E8%A7%A3%E6%80%9D%E8%B7%AF"><span class="nav-number">1.0.2.</span> <span class="nav-text">原理与求解思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1.初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%9A%8F%E6%9C%BA%E4%BA%A7%E7%94%9F%E6%96%B0%E8%A7%A3"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2.随机产生新解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%AE%A1%E7%AE%97%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E5%B7%AE%E5%80%BC"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">3.计算目标函数差值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%98%AF%E5%90%A6%E6%8E%A5%E5%8F%97%E6%96%B0%E8%A7%A3"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">4.是否接受新解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E8%BF%87%E7%A8%8B"><span class="nav-number">1.0.2.5.</span> <span class="nav-text">5.马尔科夫过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E9%80%80%E7%81%AB%E8%BF%87%E7%A8%8B"><span class="nav-number">1.0.2.6.</span> <span class="nav-text">6. 退火过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E7%BB%93%E6%9D%9F%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.0.2.7.</span> <span class="nav-text">7.结束条件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.0.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sam"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">Sam</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/shuai-xiao-ji-65" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;shuai-xiao-ji-65" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/JiJiwjz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JiJiwjz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/weijiazhe123.mail.nwpu.edu.cn" title="E-Mail → weijiazhe123.mail.nwpu.edu.cn"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

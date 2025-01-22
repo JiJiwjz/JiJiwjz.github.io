@@ -327,6 +327,66 @@ u
       </tags>
   </entry>
   <entry>
+    <title>TOPSIS法</title>
+    <url>/2025/01/17/TOPSIS%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="TOPSIS法"><a href="#TOPSIS法" class="headerlink" title="TOPSIS法"></a>TOPSIS法</h1><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p><strong>1.指标类型：</strong></p>
+<ul>
+<li><strong>效益型</strong>属性：<strong>越大越好</strong>的属性，例如上述人均专著、科研经费。</li>
+<li><strong>成本型</strong>属性：<strong>越小越好</strong>的属性，例如逾期毕业率。</li>
+<li><strong>区间型</strong>属性：<strong>在某一区间内最好</strong>，过大或过小都不好，例如师生比。</li>
+</ul>
+<p>显然的是，求<strong>效益型</strong>属性无需处理；而对于<strong>成本型</strong>属性，求<strong>正理想解</strong>时对其取<strong>最小值</strong>，求<strong>负理想解</strong>时对其取<strong>最大值</strong>；而对于<strong>区间型</strong>属性，根据<strong>数据与最优区间</strong>的<strong>差异</strong>进行处理。</p>
+<p><strong>2.区间型属性的变换</strong></p>
+<ul>
+<li>设第 $j$ 个指标的最优属性区间为 $[ a_j^0, a_j^*]$ ， $a_j^{\prime}$ 为无法容忍下限， $a_j^{\prime\prime}$ 为无法容忍上限，则：</li>
+<li>若在最优属性区间内，值<strong>设为1</strong>；超出可容忍的范围，值<strong>设为0</strong>。</li>
+<li>不在最优区间内，但是还在可接受的范围内，按公式改为<strong>0到1之间的值</strong>。</li>
+</ul>
+<p><strong>3.向量规范化</strong>：</p>
+<ul>
+<li><p>无论成本型属性还是效益型属性，都用相同公式进行变换：</p>
+<p>$b_{ij} = \frac{a_{ij}}{\sqrt{\sum_{i=1}^{m} a_{ij}^2}}$</p>
+</li>
+<li><p>规范化后的数值，同一属性值(评价指标)的<strong>平方和为1</strong>。</p>
+</li>
+<li><p>确保不同评价指标在同一数量级(0到1之间)。</p>
+</li>
+<li><p><strong>变换前后，每个属性值</strong>(评价指标)中的数据的<strong>大小排序不变</strong>。</p>
+</li>
+</ul>
+<h2 id="加权处理"><a href="#加权处理" class="headerlink" title="加权处理"></a>加权处理</h2><p><strong>不同指标的重要性不同</strong></p>
+<ul>
+<li>与AHP的两两比较不同，TOPSIS法直接给每个指标加上权重。</li>
+<li>因为TOPSIS法充分利用了数据的差异，只要权重设置的不是太离谱，对结果影响不会太大。</li>
+</ul>
+<h2 id="最终求解"><a href="#最终求解" class="headerlink" title="最终求解"></a>最终求解</h2><p><strong>求解思路</strong></p>
+<ul>
+<li><p>对第 $j$ 个属性(指标)的正理想解：</p>
+<script type="math/tex; mode=display">c_j^* =  \begin{cases}  \max_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \min_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
+<li><p>对第 $j$ 个属性(指标)的负理想解：</p>
+<script type="math/tex; mode=display">c_j^0 =  \begin{cases}  \min_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \max_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
+<li><p>第 $i$ 个方案到正理想解的距离：</p>
+<p>  $s_i^{*} = \sqrt{\sum_{j=1}^n (c_{ij}-c_j^{*})^2}$</p>
+</li>
+<li><p>第 $j$个方案到负理想解的距离：</p>
+<p>  $s_i^{0} = \sqrt{\sum_{j=1}^n (c_{ij}-c_j^0)^2}$</p>
+</li>
+</ul>
+<p><strong>最终求解：</strong></p>
+<ul>
+<li><p>各方案的<strong>综合评价指数</strong>：$f_i^{*} = \frac{s_i^0}{s_i^0+s_i^{*}} = \frac{1}{1+\frac{s_i^*}{s_i^0}}$</p>
+</li>
+<li><p>显然，距离正理想解越近 ($s_i^*$ 越小)，距离负理想解越远 ($s_i^0$ 越大)越好。</p>
+</li>
+<li><p>按 $f_i^*$ 从大到小排序方案的优劣，即为所求。</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Markdown语法入门(舞萌DX特别版)</title>
     <url>/2024/10/20/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E8%88%9E%E8%90%8CDX%E7%89%B9%E5%88%AB%E7%89%88/</url>
     <content><![CDATA[<h2 id="0-1介绍"><a href="#0-1介绍" class="headerlink" title="0.1介绍"></a>0.1介绍</h2><p><code>Markdown</code>是一种轻量级的标记语言，它允许人们使用<strong>纯文本格式</strong>编写文档。因其简单的语法、较少的常用标记符号，以及较短的学习时间(<del>易于速成</del>)，被越来越多的学做爱好者及工作者使用。一旦掌握这种标记语言，将极大地提高效率。 </p>
@@ -374,6 +434,181 @@ u
 ]]></content>
       <tags>
         <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据类型:结构体</title>
+    <url>/2024/10/20/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93/</url>
+    <content><![CDATA[<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>在实际问题中，仅仅使用整型(<code>int</code> <code>long long</code>)，浮点型(<code>float</code> <code>double</code>)，字符型(<code>char</code>)以及数组、字符串这些数据类型经常不够。有时候我们需要其中的几种<strong>一起</strong>来修饰某个变量，例如一个学生的信息就需要<code>学号</code>(字符串)，<code>姓名</code>(字符串)，<code>年龄</code>(整型)等等。这些数据类型都不同，但是它们又要表示一个整体，要存在联系，那么我们就需要一个新的数据类型。   </p>
+<p><strong>结构体</strong>就能将不同类型的数据存放在一起，作为个整体进行处理。  </p>
+<p>结构体的声明：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure><br>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
+<p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong>。  </p>
+<p>而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>。  </p>
+<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure><br>2.直接定义结构体变量(匿名结构体)。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure><br><strong><em>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</em></strong>  </p>
+<p><strong>Typedef的引入</strong>:<br>以此为例:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure><br>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
+<p>而若要定义结构体变量<code>stu</code>时，利用<em>数据类型+变量名</em>，我们可以自然而然地写出<code>Student stu;</code>。但这样写，编译器可能会报错，提示我们需要在前面加上<code>struct</code>，于是我们应写为：<code>struct Student stu;</code>。  </p>
+<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure></p>
+<p>这样我们就可以直接用<code>Student stu</code>来定义结构体变量。  </p>
+<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure><br>这样，学生信息里面就包含了学生的生日信息。</p>
+<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure><br><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
+<p>e.g.访问学号:<code>stu1.id</code>.<br>访问生日信息中的月份:<code>stu1.birthday.month</code>.   </p>
+<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <tags>
+        <tag>数据类型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>模拟退火算法</title>
+    <url>/2025/01/22/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="模拟退火算法"><a href="#模拟退火算法" class="headerlink" title="模拟退火算法"></a>模拟退火算法</h1><p><strong>模拟退火思想</strong>(以寻找山的最高峰为例)</p>
+<ul>
+<li><p>显然，此时朴素<strong>贪心</strong>算法会<strong>失效</strong></p>
+</li>
+<li><p>首先在可见范围内，<strong>随机</strong>选择一点</p>
+</li>
+<li>若该点比当前位置更高，就<strong>直接去</strong>该点</li>
+<li>如果该点更低，那么<strong>有一定概率</strong>去该点</li>
+<li>在刚才的<strong>局部最优解的</strong>峰，会有一定概率走下了当前山峰，从而发现另一个山峰的上坡</li>
+<li>从而就有可能走上新的更高峰</li>
+</ul>
+<p><strong>算法关键点</strong></p>
+<ul>
+<li>时间有限，需要设置终止条件 (“退火”过程中<strong>温度不断降低，剩余时间不多时就别乱跑</strong>)</li>
+<li>若当前所处的山峰越高，前往低点的概率越低 (<strong>概率的表达式</strong>)</li>
+</ul>
+<h3 id="适用赛题"><a href="#适用赛题" class="headerlink" title="适用赛题"></a>适用赛题</h3><ul>
+<li><strong>可行解过多</strong><ul>
+<li>有些规划类问题的<strong>可行解过多</strong>，传统算法运算时间过长</li>
+<li>能够列出可行解的任意排列</li>
+</ul>
+</li>
+<li><strong>NP-hard问题</strong><ul>
+<li>旅行推销员问题 (TSP)：给定一系列城市和每对城市之间的距离，求解访问<strong>每一座</strong>城市<strong>一次</strong>并回到<strong>起始城市</strong>的<strong>最短</strong>回路</li>
+<li>TSP问题是组合优化中的一个<strong>NP-hard</strong>问题，该问题的可行解是<strong>所有顶点的全排列</strong>，随着点数的增加，会产生组合爆炸，传统算法难以求解</li>
+<li>此时就适合用模拟退火等启发式算法求近似解</li>
+</ul>
+</li>
+</ul>
+<h3 id="原理与求解思路"><a href="#原理与求解思路" class="headerlink" title="原理与求解思路"></a>原理与求解思路</h3><p><strong>例题：</strong></p>
+<ul>
+<li>已知全国34个省会城市（包括直辖市、自治区首府和港澳台）的经纬度坐标（第一个为北京） </li>
+<li>现在需要从北京出发，到所有城市视察 </li>
+<li>要求每个城市只能到达一次，并最终回到北京 </li>
+<li>求视察路线方案，使得总路径最短</li>
+</ul>
+<p>令北京为1号城市 $x_1$，剩下33个城市依次设为 $x_2,x_3,…,x_{34}$；</p>
+<p>设第 $i$ 号城市 $x_i$ 与第 $i+1$ 号城市 $x_{i+1}$ 之间的路径长度为 $d_{x_i x_{i+1}}$，则目标函数： $min \ f(x_1,x_2,…,x_{35}) = \sum_{i=1}^{34} d_{x_i x_{i+1}}$</p>
+<h4 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h4><ul>
+<li>在最开始，需设定一个初始温度 $T_0$ 和问题的一个初始解 $x(0)$</li>
+<li>也可用<strong>蒙特卡洛法</strong>求一个较好的初始解</li>
+</ul>
+<h4 id="2-随机产生新解"><a href="#2-随机产生新解" class="headerlink" title="2.随机产生新解"></a>2.随机产生新解</h4><ul>
+<li>在当前温度 $T_i$ 下<strong>随机</strong>求一个解 $x’$，制定产生新解的准则 (准则不唯一，能确保<strong>随机</strong>即可)</li>
+<li>假设上一步的解为： $x_1x_2…x_{u-1} x_{u} x_{u+1} … x_{v-1} x_{v} x_{v+1}…x_{35}$</li>
+<li>随机选序号 $u,v$ ，将 $u$ 到 $v$ 这部分转为逆序，得到解： $x_1x_2…x_{u-1} x_{v} x_{v-1} … x_{u+1} x_{u} x_{v+1}…x_{35}$</li>
+</ul>
+<h4 id="3-计算目标函数差值"><a href="#3-计算目标函数差值" class="headerlink" title="3.计算目标函数差值"></a>3.计算目标函数差值</h4><ul>
+<li><p>随机得到的解 $x’$ 和当前解 $x(i)$ ，两种方案总路径的差值记为 $\Delta f$ :</p>
+<p>$ \Delta f = (d_{x_{u-1} x_{v}} + d_{x_{u} x_{v+1}}) - (d_{x_{u-1} x_{u}} + d_{x_{v} x_{v+1}})$</p>
+</li>
+</ul>
+<h4 id="4-是否接受新解"><a href="#4-是否接受新解" class="headerlink" title="4.是否接受新解"></a>4.是否接受新解</h4><ul>
+<li><p>接受准则：</p>
+<script type="math/tex; mode=display">
+P=\begin{cases}  1, & \text{ } \Delta f < 0, \\ exp(- \Delta f/T_i), & \text{ } \Delta f \geq 0. \end{cases}</script></li>
+<li><p>显然，$\Delta f$ 越小，意味着随机解的总路径比原解的总路径短更多，那么接受 $x’$ 的概率就越大</p>
+</li>
+</ul>
+<h4 id="5-马尔科夫过程"><a href="#5-马尔科夫过程" class="headerlink" title="5.马尔科夫过程"></a>5.马尔科夫过程</h4><ul>
+<li>在当前温度 $T_i$ 下，重复2、3、4步</li>
+<li><strong>新解 $x(i+1)$ 只与 $x(i)$ 有关</strong>，而与更早的 $x(i-1),x(i-2),…,x(0)$<strong>无关</strong></li>
+<li>这是个马尔科夫过程，$x’$ 在原解 $x(i)$ 的邻域中符合<strong>均匀分布</strong></li>
+</ul>
+<h4 id="6-退火过程"><a href="#6-退火过程" class="headerlink" title="6. 退火过程"></a>6. 退火过程</h4><ul>
+<li>选定降温系数 $\alpha$，求得新温度 $T_{i+1} = \alpha T_i$，此处设为0.999</li>
+<li>再重复2、3、4、5步；然后继续降低温度</li>
+</ul>
+<h4 id="7-结束条件"><a href="#7-结束条件" class="headerlink" title="7.结束条件"></a>7.结束条件</h4><ul>
+<li>直到温度足够小，设终止温度为 $ e = 10^{-30}$，当 $T &lt; e$ 时终止迭代，输出最终解</li>
+<li>退火过程足够慢、每个温度下寻找新解的次数足够多，则最终解是全局最优解的概率越大</li>
+</ul>
+<p><strong>理论上，模拟退火可以找到全局最优</strong></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设的目标函数 f(x)，我们要最小化该函数</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">objective_function</span><span class="params">(<span class="type">double</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x - <span class="number">4</span> * x + <span class="number">4</span>; <span class="comment">// 例如 f(x) = x^2 - 4x + 4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟退火算法</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">simulated_annealing</span><span class="params">(<span class="type">double</span> (*obj_func)(<span class="type">double</span>), <span class="type">double</span> start, <span class="type">double</span> end, <span class="type">double</span> temp, <span class="type">double</span> cooling_rate, <span class="type">int</span> iterations)</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> current_solution = start + (end - start) * ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX); <span class="comment">// 随机初始解</span></span><br><span class="line">    <span class="type">double</span> current_energy = <span class="built_in">obj_func</span>(current_solution);</span><br><span class="line">    <span class="type">double</span> best_solution = current_solution;</span><br><span class="line">    <span class="type">double</span> best_energy = current_energy;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; iterations; i++) &#123;</span><br><span class="line">        <span class="comment">// 生成一个邻域解</span></span><br><span class="line">        <span class="type">double</span> neighbor = current_solution + (<span class="built_in">rand</span>() % <span class="number">2</span> == <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>) * ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX) * <span class="number">0.1</span>; <span class="comment">// 邻域解</span></span><br><span class="line"></span><br><span class="line">        <span class="type">double</span> neighbor_energy = <span class="built_in">obj_func</span>(neighbor);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 计算接受概率</span></span><br><span class="line">        <span class="keyword">if</span> (neighbor_energy &lt; current_energy || <span class="built_in">exp</span>((current_energy - neighbor_energy) / temp) &gt; ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX)) &#123;</span><br><span class="line">            current_solution = neighbor;</span><br><span class="line">            current_energy = neighbor_energy;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更新最优解</span></span><br><span class="line">        <span class="keyword">if</span> (current_energy &lt; best_energy) &#123;</span><br><span class="line">            best_solution = current_solution;</span><br><span class="line">            best_energy = current_energy;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 降温</span></span><br><span class="line">        temp *= cooling_rate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> best_solution; <span class="comment">// 返回最优解</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">srand</span>(<span class="built_in">time</span>(<span class="number">0</span>)); <span class="comment">// 随机数种子</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置模拟退火的参数</span></span><br><span class="line">    <span class="type">double</span> start = <span class="number">-10.0</span>;         <span class="comment">// 搜索空间的起始点</span></span><br><span class="line">    <span class="type">double</span> end = <span class="number">10.0</span>;            <span class="comment">// 搜索空间的结束点</span></span><br><span class="line">    <span class="type">double</span> initial_temperature = <span class="number">1000.0</span>;  <span class="comment">// 初始温度</span></span><br><span class="line">    <span class="type">double</span> cooling_rate = <span class="number">0.99</span>;   <span class="comment">// 降温速率</span></span><br><span class="line">    <span class="type">int</span> iterations = <span class="number">10000</span>;       <span class="comment">// 迭代次数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行模拟退火算法</span></span><br><span class="line">    <span class="type">double</span> result = <span class="built_in">simulated_annealing</span>(objective_function, start, end, initial_temperature, cooling_rate, iterations);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;最优解: &quot;</span> &lt;&lt; result &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;最优目标函数值: &quot;</span> &lt;&lt; <span class="built_in">objective_function</span>(result) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>数学建模,算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>熵权法</title>
+    <url>/2025/01/19/%E7%86%B5%E6%9D%83%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h1><p><strong>熵的概念：</strong></p>
+<ul>
+<li>信息论中，熵是对<strong>不确定性</strong>的一种度量，可判断一个事件的<strong>随机性</strong>及<strong>无序</strong>程度。</li>
+<li>用熵值判断某个指标的<strong>离散程度</strong>，指标的<strong>离散程度越大</strong>，<strong>该指标对综合评价的影响越大</strong>。</li>
+</ul>
+<h3 id="适用赛题"><a href="#适用赛题" class="headerlink" title="适用赛题"></a>适用赛题</h3><ul>
+<li>数据全面，但缺少文献或主观依据的题目<ul>
+<li>例如，<strong>评价河流的水质</strong>，已知河流的含氧量、pH值、细菌密度、生物密度等数据</li>
+<li>但<strong>缺乏评价水质的文献资料</strong>，或者文献内的<strong>说法不一</strong></li>
+<li>即文献很难帮助我们确定影响水质最重要的因素是哪一个，也很难告诉我们其余指标的重要程度如何衡量</li>
+<li>此时即可使用熵权法，<strong>根据数据本身建立评价体系</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>熵权法与其他方法 (如AHP、TOPSIS法等) 最大的区别就是<strong>完全客观</strong></li>
+<li><strong>难以将数据之外的因素考虑进去</strong></li>
+</ul>
+<p><strong>1.数据标准化</strong></p>
+<p>标准化的原因：</p>
+<ul>
+<li>评价体系中，存在数值越大越好的<strong>正向指标</strong>，和数值越小越好的<strong>负向指标</strong></li>
+<li>不同指标数量级也可能不同；且求熵的公式中用到对数函数，变量不允许有负值</li>
+</ul>
+<p><strong>正向指标标准化：</strong></p>
+<p>$ a_{ij} = \frac{ x_{ij}- \min(x_{1j},…,x_{nj} )}{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
+<p><strong>负向指标标准化：</strong></p>
+<p>$ a_{ij} = \frac{ \max(x_{1j},…,x_{nj}) - x_{ij} }{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
+<p>不难发现，标准化之后，$a_{ij}$ 所有值在 $[0,1] $ 区间之内，且都是数值越大、现实意义越好。</p>
+<p><strong>2.指标的熵值和变异程度</strong></p>
+<p>①每个评价对象在各个指标中的比重：</p>
+<ul>
+<li><p>可理解为统计意义上某种情况出现的概率</p>
+<p>$p_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}$</p>
+</li>
+</ul>
+<p>②熵值</p>
+<ul>
+<li><p>对于第 $i$ 个指标，其熵值 $e_j$ 为：</p>
+<p>$e_j = -\frac{1}{\ln n} \sum_{i=1}^{n} p_{ij} \ln p_{ij}$</p>
+</li>
+</ul>
+<p>③变异系数</p>
+<ul>
+<li>第 $j$ 个指标的变异系数： $g_j = 1 - e_j$ .</li>
+<li>显然熵值越大、变异系数越小，代表该指标越有序，该指标的信息量也就越小。</li>
+</ul>
+<p><strong>3.权重与评分</strong></p>
+<p><strong>变异系数求权重</strong></p>
+<ul>
+<li>计算第 $j$ 个指标的权重： $w_j = \frac{g_j}{\sum_{j=1}^{m} g_j} $ .</li>
+<li>指标的变异系数越大、信息量越大，相应指标的权重也越大。</li>
+</ul>
+<p><strong>综合评分</strong></p>
+<ul>
+<li><p>计算第 $i$ 个评价对象的综合评价值</p>
+<p>$s_i = \sum_{j=1}^{m} w_j p_{ij}$</p>
+</li>
+<li><p>该公式对不同科目加权求和，得到每个人的平均值，评价值越大越好。</p>
+</li>
+<li><p>$p_{ij}$ 和 $w_j$ 都是原始数据 (成绩) 求得的，完全客观，不掺杂主观成分。</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>数学建模</tag>
       </tags>
   </entry>
   <entry>
@@ -472,66 +707,6 @@ u
       </tags>
   </entry>
   <entry>
-    <title>TOPSIS法</title>
-    <url>/2025/01/17/TOPSIS%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="TOPSIS法"><a href="#TOPSIS法" class="headerlink" title="TOPSIS法"></a>TOPSIS法</h1><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p><strong>1.指标类型：</strong></p>
-<ul>
-<li><strong>效益型</strong>属性：<strong>越大越好</strong>的属性，例如上述人均专著、科研经费。</li>
-<li><strong>成本型</strong>属性：<strong>越小越好</strong>的属性，例如逾期毕业率。</li>
-<li><strong>区间型</strong>属性：<strong>在某一区间内最好</strong>，过大或过小都不好，例如师生比。</li>
-</ul>
-<p>显然的是，求<strong>效益型</strong>属性无需处理；而对于<strong>成本型</strong>属性，求<strong>正理想解</strong>时对其取<strong>最小值</strong>，求<strong>负理想解</strong>时对其取<strong>最大值</strong>；而对于<strong>区间型</strong>属性，根据<strong>数据与最优区间</strong>的<strong>差异</strong>进行处理。</p>
-<p><strong>2.区间型属性的变换</strong></p>
-<ul>
-<li>设第 $j$ 个指标的最优属性区间为 $[ a_j^0, a_j^*]$ ， $a_j^{\prime}$ 为无法容忍下限， $a_j^{\prime\prime}$ 为无法容忍上限，则：</li>
-<li>若在最优属性区间内，值<strong>设为1</strong>；超出可容忍的范围，值<strong>设为0</strong>。</li>
-<li>不在最优区间内，但是还在可接受的范围内，按公式改为<strong>0到1之间的值</strong>。</li>
-</ul>
-<p><strong>3.向量规范化</strong>：</p>
-<ul>
-<li><p>无论成本型属性还是效益型属性，都用相同公式进行变换：</p>
-<p>$b_{ij} = \frac{a_{ij}}{\sqrt{\sum_{i=1}^{m} a_{ij}^2}}$</p>
-</li>
-<li><p>规范化后的数值，同一属性值(评价指标)的<strong>平方和为1</strong>。</p>
-</li>
-<li><p>确保不同评价指标在同一数量级(0到1之间)。</p>
-</li>
-<li><p><strong>变换前后，每个属性值</strong>(评价指标)中的数据的<strong>大小排序不变</strong>。</p>
-</li>
-</ul>
-<h2 id="加权处理"><a href="#加权处理" class="headerlink" title="加权处理"></a>加权处理</h2><p><strong>不同指标的重要性不同</strong></p>
-<ul>
-<li>与AHP的两两比较不同，TOPSIS法直接给每个指标加上权重。</li>
-<li>因为TOPSIS法充分利用了数据的差异，只要权重设置的不是太离谱，对结果影响不会太大。</li>
-</ul>
-<h2 id="最终求解"><a href="#最终求解" class="headerlink" title="最终求解"></a>最终求解</h2><p><strong>求解思路</strong></p>
-<ul>
-<li><p>对第 $j$ 个属性(指标)的正理想解：</p>
-<script type="math/tex; mode=display">c_j^* =  \begin{cases}  \max_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \min_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
-<li><p>对第 $j$ 个属性(指标)的负理想解：</p>
-<script type="math/tex; mode=display">c_j^0 =  \begin{cases}  \min_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \max_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
-<li><p>第 $i$ 个方案到正理想解的距离：</p>
-<p>  $s_i^{*} = \sqrt{\sum_{j=1}^n (c_{ij}-c_j^{*})^2}$</p>
-</li>
-<li><p>第 $j$个方案到负理想解的距离：</p>
-<p>  $s_i^{0} = \sqrt{\sum_{j=1}^n (c_{ij}-c_j^0)^2}$</p>
-</li>
-</ul>
-<p><strong>最终求解：</strong></p>
-<ul>
-<li><p>各方案的<strong>综合评价指数</strong>：$f_i^{*} = \frac{s_i^0}{s_i^0+s_i^{*}} = \frac{1}{1+\frac{s_i^*}{s_i^0}}$</p>
-</li>
-<li><p>显然，距离正理想解越近 ($s_i^*$ 越小)，距离负理想解越远 ($s_i^0$ 越大)越好。</p>
-</li>
-<li><p>按 $f_i^*$ 从大到小排序方案的优劣，即为所求。</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>数学建模</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
     <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
     <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
@@ -563,99 +738,6 @@ u
 ]]></content>
       <tags>
         <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>熵权法</title>
-    <url>/2025/01/19/%E7%86%B5%E6%9D%83%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h1><p><strong>熵的概念：</strong></p>
-<ul>
-<li>信息论中，熵是对<strong>不确定性</strong>的一种度量，可判断一个事件的<strong>随机性</strong>及<strong>无序</strong>程度。</li>
-<li>用熵值判断某个指标的<strong>离散程度</strong>，指标的<strong>离散程度越大</strong>，<strong>该指标对综合评价的影响越大</strong>。</li>
-</ul>
-<h3 id="适用赛题"><a href="#适用赛题" class="headerlink" title="适用赛题"></a>适用赛题</h3><ul>
-<li>数据全面，但缺少文献或主观依据的题目<ul>
-<li>例如，<strong>评价河流的水质</strong>，已知河流的含氧量、pH值、细菌密度、生物密度等数据</li>
-<li>但<strong>缺乏评价水质的文献资料</strong>，或者文献内的<strong>说法不一</strong></li>
-<li>即文献很难帮助我们确定影响水质最重要的因素是哪一个，也很难告诉我们其余指标的重要程度如何衡量</li>
-<li>此时即可使用熵权法，<strong>根据数据本身建立评价体系</strong></li>
-</ul>
-</li>
-</ul>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li>熵权法与其他方法 (如AHP、TOPSIS法等) 最大的区别就是<strong>完全客观</strong></li>
-<li><strong>难以将数据之外的因素考虑进去</strong></li>
-</ul>
-<p><strong>1.数据标准化</strong></p>
-<p>标准化的原因：</p>
-<ul>
-<li>评价体系中，存在数值越大越好的<strong>正向指标</strong>，和数值越小越好的<strong>负向指标</strong></li>
-<li>不同指标数量级也可能不同；且求熵的公式中用到对数函数，变量不允许有负值</li>
-</ul>
-<p><strong>正向指标标准化：</strong></p>
-<p>$ a_{ij} = \frac{ x_{ij}- \min(x_{1j},…,x_{nj} )}{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
-<p><strong>负向指标标准化：</strong></p>
-<p>$ a_{ij} = \frac{ \max(x_{1j},…,x_{nj}) - x_{ij} }{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
-<p>不难发现，标准化之后，$a_{ij}$ 所有值在 $[0,1] $ 区间之内，且都是数值越大、现实意义越好。</p>
-<p><strong>2.指标的熵值和变异程度</strong></p>
-<p>①每个评价对象在各个指标中的比重：</p>
-<ul>
-<li><p>可理解为统计意义上某种情况出现的概率</p>
-<p>$p_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}$</p>
-</li>
-</ul>
-<p>②熵值</p>
-<ul>
-<li><p>对于第 $i$ 个指标，其熵值 $e_j$ 为：</p>
-<p>$e_j = -\frac{1}{\ln n} \sum_{i=1}^{n} p_{ij} \ln p_{ij}$</p>
-</li>
-</ul>
-<p>③变异系数</p>
-<ul>
-<li>第 $j$ 个指标的变异系数： $g_j = 1 - e_j$ .</li>
-<li>显然熵值越大、变异系数越小，代表该指标越有序，该指标的信息量也就越小。</li>
-</ul>
-<p><strong>3.权重与评分</strong></p>
-<p><strong>变异系数求权重</strong></p>
-<ul>
-<li>计算第 $j$ 个指标的权重： $w_j = \frac{g_j}{\sum_{j=1}^{m} g_j} $ .</li>
-<li>指标的变异系数越大、信息量越大，相应指标的权重也越大。</li>
-</ul>
-<p><strong>综合评分</strong></p>
-<ul>
-<li><p>计算第 $i$ 个评价对象的综合评价值</p>
-<p>$s_i = \sum_{j=1}^{m} w_j p_{ij}$</p>
-</li>
-<li><p>该公式对不同科目加权求和，得到每个人的平均值，评价值越大越好。</p>
-</li>
-<li><p>$p_{ij}$ 和 $w_j$ 都是原始数据 (成绩) 求得的，完全客观，不掺杂主观成分。</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>数学建模</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据类型:结构体</title>
-    <url>/2024/10/20/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93/</url>
-    <content><![CDATA[<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>在实际问题中，仅仅使用整型(<code>int</code> <code>long long</code>)，浮点型(<code>float</code> <code>double</code>)，字符型(<code>char</code>)以及数组、字符串这些数据类型经常不够。有时候我们需要其中的几种<strong>一起</strong>来修饰某个变量，例如一个学生的信息就需要<code>学号</code>(字符串)，<code>姓名</code>(字符串)，<code>年龄</code>(整型)等等。这些数据类型都不同，但是它们又要表示一个整体，要存在联系，那么我们就需要一个新的数据类型。   </p>
-<p><strong>结构体</strong>就能将不同类型的数据存放在一起，作为个整体进行处理。  </p>
-<p>结构体的声明：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure><br>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
-<p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong>。  </p>
-<p>而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>。  </p>
-<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure><br>2.直接定义结构体变量(匿名结构体)。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure><br><strong><em>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</em></strong>  </p>
-<p><strong>Typedef的引入</strong>:<br>以此为例:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure><br>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
-<p>而若要定义结构体变量<code>stu</code>时，利用<em>数据类型+变量名</em>，我们可以自然而然地写出<code>Student stu;</code>。但这样写，编译器可能会报错，提示我们需要在前面加上<code>struct</code>，于是我们应写为：<code>struct Student stu;</code>。  </p>
-<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure></p>
-<p>这样我们就可以直接用<code>Student stu</code>来定义结构体变量。  </p>
-<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure><br>这样，学生信息里面就包含了学生的生日信息。</p>
-<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure><br><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
-<p>e.g.访问学号:<code>stu1.id</code>.<br>访问生日信息中的月份:<code>stu1.birthday.month</code>.   </p>
-<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <tags>
-        <tag>数据类型</tag>
       </tags>
   </entry>
   <entry>
