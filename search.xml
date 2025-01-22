@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Markdown语法入门(舞萌DX特别版)</title>
+    <url>/2024/10/20/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E8%88%9E%E8%90%8CDX%E7%89%B9%E5%88%AB%E7%89%88/</url>
+    <content><![CDATA[<h2 id="0-1介绍"><a href="#0-1介绍" class="headerlink" title="0.1介绍"></a>0.1介绍</h2><p><code>Markdown</code>是一种轻量级的标记语言，它允许人们使用<strong>纯文本格式</strong>编写文档。因其简单的语法、较少的常用标记符号，以及较短的学习时间(<del>易于速成</del>)，被越来越多的学做爱好者及工作者使用。一旦掌握这种标记语言，将极大地提高效率。 </p>
+<p><code>Markdown</code>使用简洁的语法代替排版。相较<code>Word</code>等文字处理软件，<code>Markdown</code>可以做到<strong>手不离开键盘</strong>即可改变字体大小，插入表格、图片、超链接、脚注等。  </p>
+<p>但若要实现复杂排版(如左右对齐缩进等)，建议选择<code>Word</code>、<code>Pages</code>等专业软件。  </p>
+<h2 id="0-2常用编辑器介绍"><a href="#0-2常用编辑器介绍" class="headerlink" title="0.2常用编辑器介绍"></a>0.2常用编辑器介绍</h2><ol>
+<li><code>Typora</code>是一款广受欢迎的轻量级Markdown编辑器。它凭借其优秀的性能和卓越的用户体验，在众多文本编辑工具中脱颖而出。<br><code>Typora</code>采用了所见即所得（WYSIWYG）的设计理念，用户在编辑过程中可实时预览排版效果，无需切换到预览模式，极大地提升了工作效率和编辑体验。<br>但是，Typora已开始收费阶段，价格14.99美元，可供三台设备使用。(<del>建议在csdn等平台多搜搜，你懂的(doge)</del>)</li>
+<li><code>vscode</code>不必多说，安装了Markdown扩展即可。可分屏，边写边预览，也很直观。<del>并且vscode免费</del></li>
+</ol>
+<h2 id="1-标题语法"><a href="#1-标题语法" class="headerlink" title="1.标题语法"></a>1.标题语法</h2><p>要创建标题时，只需在井号(#)后面<strong>空一格</strong>，然后输入要作为标题的文字即可。<strong>#的数量代表了标题的级别</strong>。其中一级标题文字<em>最大</em>，六级<em>最小</em>。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例:#### 舞萌2024</span><br><span class="line">##### Lv.14+</span><br><span class="line">###### VERTEX(rintaro soma deconstructed remix)</span><br></pre></td></tr></table></figure><br><strong>实际效果</strong>:</p>
+<h4 id="舞萌2024"><a href="#舞萌2024" class="headerlink" title="舞萌2024"></a>舞萌2024</h4><h5 id="Lv-14"><a href="#Lv-14" class="headerlink" title="Lv.14"></a>Lv.14</h5><h6 id="VERTEX-rintaro-soma-deconstructed-remix"><a href="#VERTEX-rintaro-soma-deconstructed-remix" class="headerlink" title="VERTEX(rintaro soma deconstructed remix)"></a>VERTEX(rintaro soma deconstructed remix)</h6><p>是不是很简单？  </p>
+<h2 id="2-字体设置斜体、粗体、删除线"><a href="#2-字体设置斜体、粗体、删除线" class="headerlink" title="2.字体设置斜体、粗体、删除线"></a>2.字体设置斜体、粗体、删除线</h2><p>这里需要用到这几个字符:<code>*</code> <code>_</code>  <code>~</code>  </p>
+<p><strong>斜体</strong>  </p>
+<ul>
+<li><p>只需在要变为斜体的语句前后各添加一个 * 或 _ 即可。  </p>
+<p>示例:<code>*PANDORA PARADOXXX*</code>或<code>_PANDORA PARADOXXX_</code></p>
+</li>
+<li><p><strong>实际效果</strong>:<br> <em>PANDORA PARADOXXX</em>  </p>
+</li>
+</ul>
+<p><strong>粗体</strong>  </p>
+<ul>
+<li><p>只需在要变为粗体的语句前后各添加两个 * 即可。   </p>
+<p>示例:<code>**Qzkago Requiem**</code></p>
+</li>
+<li><p><strong>实际效果</strong>:<br> <strong>Qzkago Requiem</strong></p>
+</li>
+</ul>
+<p><strong>倾斜加粗</strong></p>
+<ul>
+<li><p>只需在要变为倾斜加粗的语句前后各添加三个 * 即可。</p>
+<p>示例:<code>***Garakuta Doll Play***</code></p>
+</li>
+<li><p><strong>实际效果</strong>:<br> <strong><em>Garakuta Doll Play</em></strong>  </p>
+</li>
+</ul>
+<p><strong>删除线</strong>  </p>
+<ul>
+<li>只需在要添加删除线的语句前后各添加两个 ~ 即可。</li>
+</ul>
+<p>示例:<code>~~白茄子是15~~</code>  </p>
+<ul>
+<li><strong>实际效果</strong>:<br><del>白茄子是15</del>  <h2 id="3-代码块"><a href="#3-代码块" class="headerlink" title="3.代码块"></a>3.代码块</h2></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GM(1,1)灰色预测</title>
     <url>/2025/01/19/GM-1-1-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B/</url>
     <content><![CDATA[<h1 id="GM-1-1-灰色预测"><a href="#GM-1-1-灰色预测" class="headerlink" title="GM(1,1)灰色预测"></a>GM(1,1)灰色预测</h1><p>显然地，G代表Grey(灰色)，M代表Model(模型)；而(1,1)代表只含有一个变量的一阶微分方程模型。</p>
@@ -327,6 +377,135 @@ u
       </tags>
   </entry>
   <entry>
+    <title>Python学习:字符串</title>
+    <url>/2024/10/21/Python%E5%AD%A6%E4%B9%A0-%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h3 id="字符串的索引与切片"><a href="#字符串的索引与切片" class="headerlink" title="字符串的索引与切片"></a>字符串的索引与切片</h3><ul>
+<li><strong>字符串的索引访问</strong>  </li>
+</ul>
+<p>Python语言中的字符串包括两种符号体系:正向递增序号和反向递减序号。  </p>
+<p>如下图所示:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>]</span><br><span class="line"><span class="string">&#x27;H&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;d&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">8</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">3</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>字符串的切片访问</strong></li>
+</ul>
+<p>具体语法格式为: <code>[头下标：尾下标]</code> ，这种访问方式称之为“切片”。但注意，这是<strong>左闭右开</strong>的区间。在切片方式中，若头下标缺省，表示从字符串的开始取子串；若尾下标缺省，表示取到字符串的最后一个字符；若头下标和尾下标都缺省，则取整个字符串。 </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Mik&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:]</span><br><span class="line"><span class="string">&#x27;Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:]</span><br><span class="line"><span class="string">&#x27;Hello Mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<p>字符串切片还可以设置取子字符串的顺序，格式为 <code>[头下标:尾下标:步长]</code> 。当步长大于0的时候，从左往右取字符；当步长小于0的时候，从右往左取字符。  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>:<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:<span class="number">2</span>]</span><br><span class="line"><span class="string">&#x27;Hlo&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>:<span class="number">0</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olle&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>::-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olleH&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="字符串的处理与操作"><a href="#字符串的处理与操作" class="headerlink" title="字符串的处理与操作"></a>字符串的处理与操作</h3><ul>
+<li><strong>内置字符串处理函数</strong> </li>
+</ul>
+<p>len(x)   #返回字符串x的长度    </p>
+<p>str(x)   #将任意类型的x转化为字符串类型 </p>
+<p>chr(x)   #返回Unicode编码为x的字符  </p>
+<p>ord(x)   #返回字符x的Unicode编码  </p>
+<p>hex(x)   #将整数x转化为十六进制数  </p>
+<p>oct(x)   #将整数x转化为八进制数  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(s)</span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">120</span>)</span><br><span class="line"><span class="string">&#x27;120&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">3</span>+<span class="number">5</span>)</span><br><span class="line"><span class="string">&#x27;8&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">hex</span>(<span class="number">62</span>)</span><br><span class="line"><span class="string">&#x27;0o76&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line"><span class="number">65</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">chr</span>(<span class="number">65</span>)</span><br><span class="line"><span class="string">&#x27;A&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>查找类函数</strong></li>
+</ul>
+<p>find()   #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则返回-1.  </p>
+<p>rfind()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则返回-1.  </p>
+<p>index()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则抛出异常.  </p>
+<p>rindex() #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则抛出异常.  </p>
+<p>count()  #用来返回一个字符串在另一个字符串中出现的次数，若不存在则返回0.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.find(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line">-<span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.index(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line"> Traceback (most recent call last):</span><br><span class="line">   File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"> ValueError: substring <span class="keyword">not</span> found</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.count(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>分割类函数</strong>  </li>
+</ul>
+<p>split()    #以指定字符为分隔符，从原字符串的左端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
+<p>rsplit()   #以指定字符为分隔符，从原字符串的右端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
+<p>partition()    #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串.  </p>
+<p>rpartition()   #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串. </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;bird&#x27;</span>,<span class="string">&#x27;fish&#x27;</span>,<span class="string">&#x27;monkey&#x27;</span>,<span class="string">&#x27;rabbit&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a girl&#x27;</span>] <span class="comment">#此时以空白来从左往右分割, &#x27;maxsplit=2&#x27;说明最多分割两次.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>] <span class="comment">#此时以空白来从右往左分割.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I am a girl&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;m a girl&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;am&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27; a girl&#x27;</span>)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>字符串连接方法</strong>  </li>
+</ul>
+<p>join()  #将列表中多个字符串进行连接，并在相邻两个字符串之间插入指定字符，返回新字符串. </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=[<span class="string">&#x27;apple&#x27;</span>,<span class="string">&#x27;banana&#x27;</span>,<span class="string">&#x27;pear&#x27;</span>,<span class="string">&#x27;peach&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;:&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple:banana:pear:peach&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;-&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple-banana-pear-peach&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>大小写字符转换方法</strong>  </li>
+</ul>
+<p>lower()     #将字符串转换为小写字符串.  </p>
+<p>uppper()    #将字符串转换为大写字符串.  </p>
+<p>capitalize()    #将字符串首字母变为大写.  </p>
+<p>title()         #将字符串中每个单词的首字母都变为大写.  </p>
+<p>swapcase()      #将字符串中的字符大小写互换.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lower()</span><br><span class="line"><span class="string">&#x27;i have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.upper()</span><br><span class="line"><span class="string">&#x27;I HAVE TWO BIG EYES&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.capitalize()</span><br><span class="line"><span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.title()</span><br><span class="line"><span class="string">&#x27;I Have Two Big Eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.swapcase()</span><br><span class="line"><span class="string">&#x27;i HAVE TWO BIG EYES&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>替换方法</strong>  </li>
+</ul>
+<p>replace() #替换字符串中指定字符或子字符串</p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.replace(<span class="string">&#x27;big&#x27;</span>,<span class="string">&#x27;大&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;I have two 大 eyes&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>删除字符串两端、右端或左端连续空白字符和指定字符方法</strong></li>
+</ul>
+<p>strip()         #删除字符串两端空白字符.   </p>
+<p>rstrip()        #删除字符串右端空白字符.  </p>
+<p>lstrip()        #删除字符串左端空白字符.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;     abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip()</span><br><span class="line"><span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rstrip()</span><br><span class="line"><span class="string">&#x27;     abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lstrip()</span><br><span class="line"><span class="string">&#x27;abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;====mike====&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip(<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>判断字符串是否以指定字符串开始或结束</strong></li>
+</ul>
+<p>startswith()   #判断字符串是否以指定字符开始.  </p>
+<p>endswith()      #判断字符串是否以指定字符结束.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Python 程序设计.py&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;Python&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.endswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>判断字符串类型方法</strong></li>
+</ul>
+<p>isupper()       #是否全为大写.  </p>
+<p>islower()       #是否全为小写.  </p>
+<p>isdigit()       #是否全为数字.  </p>
+<p>isalnum()       #是否全为字母或汉字或数字.  </p>
+<p>isalpha()       #是否全为字母或汉字.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;years&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.islower()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;YEARS&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isupper()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;20241022&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isdigit()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=s.replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalnum()</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>字符串排版方法</strong>  </li>
+</ul>
+<p>center()         #字符串居中对齐.  </p>
+<p>ljust()          #字符串居左对齐.  </p>
+<p>rjust()          #字符串居右对齐.  </p>
+<p>zfill()          #输出指定宽度，不足的左边填0.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.center(<span class="number">30.</span><span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;==========hello mike==========&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rjust(<span class="number">20</span>,<span class="string">&#x27;*&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;**********hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.zfill(<span class="number">20</span>)</span><br><span class="line"><span class="string">&#x27;0000000000hello mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
+    <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
+    <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n)</code>,最好情况<code>O(n^2)</code>.  </p>
+<h2 id="选择排序-不稳定"><a href="#选择排序-不稳定" class="headerlink" title="选择排序(不稳定)"></a>选择排序(不稳定)</h2><p><strong>特点</strong>:每次从待排序列中选出一个<strong>最小值</strong>,然后放在序列的起始位置,直至排完.</p>
+<p><strong>时间复杂度</strong>:<code>O(n^2)</code>.  </p>
+<h2 id="插入排序-稳定"><a href="#插入排序-稳定" class="headerlink" title="插入排序(稳定)"></a>插入排序(稳定)</h2><p><strong>特点</strong>:从<strong>第下个元素开始</strong>,从已排序的元素序列<strong>从后往前</strong>扫描,如果该元素<strong>大于</strong>tem,<strong>则将该元素移至下一位</strong>.重复该步骤,直到找到已排序元素中<strong>小于等于</strong>tem的元素.tem插入到该元素的<strong>后面</strong>,如果已排序所有元素都大于tem,则将tem插入到下标为0的位置.<br><strong>一直重复上述步骤,直至排序完成</strong>.   </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n^2)</code>,最好情况<code>O(n)</code>.</p>
+<h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
+<ul>
+<li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
+<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.  </li>
+</ul>
+<p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
+<h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
+<p>是对<strong>冒泡排序</strong>的一种改进  </p>
+</blockquote>
+<p><strong>特点</strong>:通过一趟排序将要排序的数据分割成<strong>独立的两部分</strong>，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以<strong>递归</strong>进行，以此达到整个数据变成有序序列。  </p>
+<ul>
+<li><p>排序流程:  </p>
+<ol>
+<li>首先设定一个<strong>分界值Key</strong>,通过该分界值将数组分成左右两部分.</li>
+<li>将<em>大于或等于Key的数据集中到数组右边,小于分界值的数据集中到数组的左边</em>.此时,左边部分中各元素都小于或等于分界值,而右边部分中各元素都大于或等于分界值.</li>
+<li>然后,左边和右边的数据可以独立排序.对于左侧的数组数据,又可以取一个分界值,将该部分数据分成左右两部分,同样在左边放置较小值,右边放置较大值.右侧的数组数据也可以做类似处理.</li>
+<li>重复上述过程,可以看出,这是一个<strong>递归定义</strong>.通过递归将左侧部分排好序后,再递归排好右侧部分的顺序.当左右两个部分各数据排序完成后,整个数组的排序也就完成了.</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TOPSIS法</title>
     <url>/2025/01/17/TOPSIS%E6%B3%95/</url>
     <content><![CDATA[<h1 id="TOPSIS法"><a href="#TOPSIS法" class="headerlink" title="TOPSIS法"></a>TOPSIS法</h1><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p><strong>1.指标类型：</strong></p>
@@ -384,56 +563,6 @@ u
 ]]></content>
       <tags>
         <tag>数学建模</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Markdown语法入门(舞萌DX特别版)</title>
-    <url>/2024/10/20/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E8%88%9E%E8%90%8CDX%E7%89%B9%E5%88%AB%E7%89%88/</url>
-    <content><![CDATA[<h2 id="0-1介绍"><a href="#0-1介绍" class="headerlink" title="0.1介绍"></a>0.1介绍</h2><p><code>Markdown</code>是一种轻量级的标记语言，它允许人们使用<strong>纯文本格式</strong>编写文档。因其简单的语法、较少的常用标记符号，以及较短的学习时间(<del>易于速成</del>)，被越来越多的学做爱好者及工作者使用。一旦掌握这种标记语言，将极大地提高效率。 </p>
-<p><code>Markdown</code>使用简洁的语法代替排版。相较<code>Word</code>等文字处理软件，<code>Markdown</code>可以做到<strong>手不离开键盘</strong>即可改变字体大小，插入表格、图片、超链接、脚注等。  </p>
-<p>但若要实现复杂排版(如左右对齐缩进等)，建议选择<code>Word</code>、<code>Pages</code>等专业软件。  </p>
-<h2 id="0-2常用编辑器介绍"><a href="#0-2常用编辑器介绍" class="headerlink" title="0.2常用编辑器介绍"></a>0.2常用编辑器介绍</h2><ol>
-<li><code>Typora</code>是一款广受欢迎的轻量级Markdown编辑器。它凭借其优秀的性能和卓越的用户体验，在众多文本编辑工具中脱颖而出。<br><code>Typora</code>采用了所见即所得（WYSIWYG）的设计理念，用户在编辑过程中可实时预览排版效果，无需切换到预览模式，极大地提升了工作效率和编辑体验。<br>但是，Typora已开始收费阶段，价格14.99美元，可供三台设备使用。(<del>建议在csdn等平台多搜搜，你懂的(doge)</del>)</li>
-<li><code>vscode</code>不必多说，安装了Markdown扩展即可。可分屏，边写边预览，也很直观。<del>并且vscode免费</del></li>
-</ol>
-<h2 id="1-标题语法"><a href="#1-标题语法" class="headerlink" title="1.标题语法"></a>1.标题语法</h2><p>要创建标题时，只需在井号(#)后面<strong>空一格</strong>，然后输入要作为标题的文字即可。<strong>#的数量代表了标题的级别</strong>。其中一级标题文字<em>最大</em>，六级<em>最小</em>。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例:#### 舞萌2024</span><br><span class="line">##### Lv.14+</span><br><span class="line">###### VERTEX(rintaro soma deconstructed remix)</span><br></pre></td></tr></table></figure><br><strong>实际效果</strong>:</p>
-<h4 id="舞萌2024"><a href="#舞萌2024" class="headerlink" title="舞萌2024"></a>舞萌2024</h4><h5 id="Lv-14"><a href="#Lv-14" class="headerlink" title="Lv.14"></a>Lv.14</h5><h6 id="VERTEX-rintaro-soma-deconstructed-remix"><a href="#VERTEX-rintaro-soma-deconstructed-remix" class="headerlink" title="VERTEX(rintaro soma deconstructed remix)"></a>VERTEX(rintaro soma deconstructed remix)</h6><p>是不是很简单？  </p>
-<h2 id="2-字体设置斜体、粗体、删除线"><a href="#2-字体设置斜体、粗体、删除线" class="headerlink" title="2.字体设置斜体、粗体、删除线"></a>2.字体设置斜体、粗体、删除线</h2><p>这里需要用到这几个字符:<code>*</code> <code>_</code>  <code>~</code>  </p>
-<p><strong>斜体</strong>  </p>
-<ul>
-<li><p>只需在要变为斜体的语句前后各添加一个 * 或 _ 即可。  </p>
-<p>示例:<code>*PANDORA PARADOXXX*</code>或<code>_PANDORA PARADOXXX_</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <em>PANDORA PARADOXXX</em>  </p>
-</li>
-</ul>
-<p><strong>粗体</strong>  </p>
-<ul>
-<li><p>只需在要变为粗体的语句前后各添加两个 * 即可。   </p>
-<p>示例:<code>**Qzkago Requiem**</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <strong>Qzkago Requiem</strong></p>
-</li>
-</ul>
-<p><strong>倾斜加粗</strong></p>
-<ul>
-<li><p>只需在要变为倾斜加粗的语句前后各添加三个 * 即可。</p>
-<p>示例:<code>***Garakuta Doll Play***</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <strong><em>Garakuta Doll Play</em></strong>  </p>
-</li>
-</ul>
-<p><strong>删除线</strong>  </p>
-<ul>
-<li>只需在要添加删除线的语句前后各添加两个 ~ 即可。</li>
-</ul>
-<p>示例:<code>~~白茄子是15~~</code>  </p>
-<ul>
-<li><strong>实际效果</strong>:<br><del>白茄子是15</del>  <h2 id="3-代码块"><a href="#3-代码块" class="headerlink" title="3.代码块"></a>3.代码块</h2></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Markdown</tag>
       </tags>
   </entry>
   <entry>
@@ -609,135 +738,6 @@ P=\begin{cases}  1, & \text{ } \Delta f < 0, \\ exp(- \Delta f/T_i), & \text{ } 
 ]]></content>
       <tags>
         <tag>数学建模</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python学习:字符串</title>
-    <url>/2024/10/21/Python%E5%AD%A6%E4%B9%A0-%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
-    <content><![CDATA[<h3 id="字符串的索引与切片"><a href="#字符串的索引与切片" class="headerlink" title="字符串的索引与切片"></a>字符串的索引与切片</h3><ul>
-<li><strong>字符串的索引访问</strong>  </li>
-</ul>
-<p>Python语言中的字符串包括两种符号体系:正向递增序号和反向递减序号。  </p>
-<p>如下图所示:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>]</span><br><span class="line"><span class="string">&#x27;H&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;d&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">8</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">3</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>字符串的切片访问</strong></li>
-</ul>
-<p>具体语法格式为: <code>[头下标：尾下标]</code> ，这种访问方式称之为“切片”。但注意，这是<strong>左闭右开</strong>的区间。在切片方式中，若头下标缺省，表示从字符串的开始取子串；若尾下标缺省，表示取到字符串的最后一个字符；若头下标和尾下标都缺省，则取整个字符串。 </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Mik&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:]</span><br><span class="line"><span class="string">&#x27;Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:]</span><br><span class="line"><span class="string">&#x27;Hello Mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<p>字符串切片还可以设置取子字符串的顺序，格式为 <code>[头下标:尾下标:步长]</code> 。当步长大于0的时候，从左往右取字符；当步长小于0的时候，从右往左取字符。  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>:<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:<span class="number">2</span>]</span><br><span class="line"><span class="string">&#x27;Hlo&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>:<span class="number">0</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olle&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>::-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olleH&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="字符串的处理与操作"><a href="#字符串的处理与操作" class="headerlink" title="字符串的处理与操作"></a>字符串的处理与操作</h3><ul>
-<li><strong>内置字符串处理函数</strong> </li>
-</ul>
-<p>len(x)   #返回字符串x的长度    </p>
-<p>str(x)   #将任意类型的x转化为字符串类型 </p>
-<p>chr(x)   #返回Unicode编码为x的字符  </p>
-<p>ord(x)   #返回字符x的Unicode编码  </p>
-<p>hex(x)   #将整数x转化为十六进制数  </p>
-<p>oct(x)   #将整数x转化为八进制数  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(s)</span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">120</span>)</span><br><span class="line"><span class="string">&#x27;120&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">3</span>+<span class="number">5</span>)</span><br><span class="line"><span class="string">&#x27;8&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">hex</span>(<span class="number">62</span>)</span><br><span class="line"><span class="string">&#x27;0o76&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line"><span class="number">65</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">chr</span>(<span class="number">65</span>)</span><br><span class="line"><span class="string">&#x27;A&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>查找类函数</strong></li>
-</ul>
-<p>find()   #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则返回-1.  </p>
-<p>rfind()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则返回-1.  </p>
-<p>index()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则抛出异常.  </p>
-<p>rindex() #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则抛出异常.  </p>
-<p>count()  #用来返回一个字符串在另一个字符串中出现的次数，若不存在则返回0.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.find(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line">-<span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.index(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line"> Traceback (most recent call last):</span><br><span class="line">   File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"> ValueError: substring <span class="keyword">not</span> found</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.count(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>分割类函数</strong>  </li>
-</ul>
-<p>split()    #以指定字符为分隔符，从原字符串的左端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
-<p>rsplit()   #以指定字符为分隔符，从原字符串的右端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
-<p>partition()    #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串.  </p>
-<p>rpartition()   #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串. </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;bird&#x27;</span>,<span class="string">&#x27;fish&#x27;</span>,<span class="string">&#x27;monkey&#x27;</span>,<span class="string">&#x27;rabbit&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a girl&#x27;</span>] <span class="comment">#此时以空白来从左往右分割, &#x27;maxsplit=2&#x27;说明最多分割两次.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>] <span class="comment">#此时以空白来从右往左分割.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I am a girl&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;m a girl&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;am&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27; a girl&#x27;</span>)</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>字符串连接方法</strong>  </li>
-</ul>
-<p>join()  #将列表中多个字符串进行连接，并在相邻两个字符串之间插入指定字符，返回新字符串. </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=[<span class="string">&#x27;apple&#x27;</span>,<span class="string">&#x27;banana&#x27;</span>,<span class="string">&#x27;pear&#x27;</span>,<span class="string">&#x27;peach&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;:&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple:banana:pear:peach&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;-&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple-banana-pear-peach&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>大小写字符转换方法</strong>  </li>
-</ul>
-<p>lower()     #将字符串转换为小写字符串.  </p>
-<p>uppper()    #将字符串转换为大写字符串.  </p>
-<p>capitalize()    #将字符串首字母变为大写.  </p>
-<p>title()         #将字符串中每个单词的首字母都变为大写.  </p>
-<p>swapcase()      #将字符串中的字符大小写互换.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lower()</span><br><span class="line"><span class="string">&#x27;i have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.upper()</span><br><span class="line"><span class="string">&#x27;I HAVE TWO BIG EYES&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.capitalize()</span><br><span class="line"><span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.title()</span><br><span class="line"><span class="string">&#x27;I Have Two Big Eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.swapcase()</span><br><span class="line"><span class="string">&#x27;i HAVE TWO BIG EYES&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>替换方法</strong>  </li>
-</ul>
-<p>replace() #替换字符串中指定字符或子字符串</p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.replace(<span class="string">&#x27;big&#x27;</span>,<span class="string">&#x27;大&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;I have two 大 eyes&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>删除字符串两端、右端或左端连续空白字符和指定字符方法</strong></li>
-</ul>
-<p>strip()         #删除字符串两端空白字符.   </p>
-<p>rstrip()        #删除字符串右端空白字符.  </p>
-<p>lstrip()        #删除字符串左端空白字符.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;     abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip()</span><br><span class="line"><span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rstrip()</span><br><span class="line"><span class="string">&#x27;     abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lstrip()</span><br><span class="line"><span class="string">&#x27;abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;====mike====&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip(<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>判断字符串是否以指定字符串开始或结束</strong></li>
-</ul>
-<p>startswith()   #判断字符串是否以指定字符开始.  </p>
-<p>endswith()      #判断字符串是否以指定字符结束.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Python 程序设计.py&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;Python&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.endswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>判断字符串类型方法</strong></li>
-</ul>
-<p>isupper()       #是否全为大写.  </p>
-<p>islower()       #是否全为小写.  </p>
-<p>isdigit()       #是否全为数字.  </p>
-<p>isalnum()       #是否全为字母或汉字或数字.  </p>
-<p>isalpha()       #是否全为字母或汉字.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;years&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.islower()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;YEARS&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isupper()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;20241022&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isdigit()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=s.replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalnum()</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>字符串排版方法</strong>  </li>
-</ul>
-<p>center()         #字符串居中对齐.  </p>
-<p>ljust()          #字符串居左对齐.  </p>
-<p>rjust()          #字符串居右对齐.  </p>
-<p>zfill()          #输出指定宽度，不足的左边填0.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.center(<span class="number">30.</span><span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;==========hello mike==========&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rjust(<span class="number">20</span>,<span class="string">&#x27;*&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;**********hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.zfill(<span class="number">20</span>)</span><br><span class="line"><span class="string">&#x27;0000000000hello mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-]]></content>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
-    <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
-    <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
-<p><strong>时间复杂度</strong>:最坏情况<code>O(n)</code>,最好情况<code>O(n^2)</code>.  </p>
-<h2 id="选择排序-不稳定"><a href="#选择排序-不稳定" class="headerlink" title="选择排序(不稳定)"></a>选择排序(不稳定)</h2><p><strong>特点</strong>:每次从待排序列中选出一个<strong>最小值</strong>,然后放在序列的起始位置,直至排完.</p>
-<p><strong>时间复杂度</strong>:<code>O(n^2)</code>.  </p>
-<h2 id="插入排序-稳定"><a href="#插入排序-稳定" class="headerlink" title="插入排序(稳定)"></a>插入排序(稳定)</h2><p><strong>特点</strong>:从<strong>第下个元素开始</strong>,从已排序的元素序列<strong>从后往前</strong>扫描,如果该元素<strong>大于</strong>tem,<strong>则将该元素移至下一位</strong>.重复该步骤,直到找到已排序元素中<strong>小于等于</strong>tem的元素.tem插入到该元素的<strong>后面</strong>,如果已排序所有元素都大于tem,则将tem插入到下标为0的位置.<br><strong>一直重复上述步骤,直至排序完成</strong>.   </p>
-<p><strong>时间复杂度</strong>:最坏情况<code>O(n^2)</code>,最好情况<code>O(n)</code>.</p>
-<h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
-<ul>
-<li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
-<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.  </li>
-</ul>
-<p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
-<h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
-<p>是对<strong>冒泡排序</strong>的一种改进  </p>
-</blockquote>
-<p><strong>特点</strong>:通过一趟排序将要排序的数据分割成<strong>独立的两部分</strong>，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以<strong>递归</strong>进行，以此达到整个数据变成有序序列。  </p>
-<ul>
-<li><p>排序流程:  </p>
-<ol>
-<li>首先设定一个<strong>分界值Key</strong>,通过该分界值将数组分成左右两部分.</li>
-<li>将<em>大于或等于Key的数据集中到数组右边,小于分界值的数据集中到数组的左边</em>.此时,左边部分中各元素都小于或等于分界值,而右边部分中各元素都大于或等于分界值.</li>
-<li>然后,左边和右边的数据可以独立排序.对于左侧的数组数据,又可以取一个分界值,将该部分数据分成左右两部分,同样在左边放置较小值,右边放置较大值.右侧的数组数据也可以做类似处理.</li>
-<li>重复上述过程,可以看出,这是一个<strong>递归定义</strong>.通过递归将左侧部分排好序后,再递归排好右侧部分的顺序.当左右两个部分各数据排序完成后,整个数组的排序也就完成了.</li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
