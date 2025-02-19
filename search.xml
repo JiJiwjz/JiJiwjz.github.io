@@ -209,134 +209,123 @@ u
       </tags>
   </entry>
   <entry>
-    <title>Git初步学习</title>
-    <url>/2024/11/25/Git%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="Git入门学习"><a href="#Git入门学习" class="headerlink" title="Git入门学习"></a>Git入门学习</h1><p><strong>Git</strong> 是一种 <strong>分布式版本控制系统</strong>，主要用于管理源代码的版本历史。它能记录文件的每一次改动，让开发者能够随时回溯、更改和协作，从而极大提高了代码开发的效率和安全性。</p>
-<p>如果把代码开发比作写一本书，Git 就像一本“时间机器”，能保存每一版的草稿，不小心删掉的内容可以找回来，还能让多人同时编辑不同的章节，最后合并在一起。</p>
+    <title>C#初步学习</title>
+    <url>/2025/02/19/C-%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="C-初步学习"><a href="#C-初步学习" class="headerlink" title="C#初步学习"></a>C#初步学习</h1><p><strong>Foreword</strong></p>
+<p>During last term’s study, I found that all of my studies were focused on theories and abstract concepts. What I lacked was practical experience, such as working on a concrete project. Thus, I wanna make a new game. I’m an avid rhythm game player. tbh, It’s really cool to make a rhythm game by myself. After looking up references and websites, I decided to create a traditional 4K rhythm game based on <code>Unity</code> , a game engine including abundant functions and frameworks. Therefore, it’s essential for me to study <code>C#</code> as an important programming language.</p>
+<p><strong>简介</strong></p>
+<ul>
+<li><code>C#</code> 是一种由 <code>C</code> 和 <code>C++</code> 衍生出来的<strong>面向对象的编程语言</strong>，它不仅去掉了 <code>C++</code> 中的一些复杂特性，还提供了可视化工具，能够高效地编写程序。</li>
+<li><code>C#</code> 是由 <code>C</code> 和 <code>C++</code> 衍生出来的一种安全的、稳定的、简单的、优雅的面向对象编程语言。它在继承C和C++强大功能的同时去掉了一些它们的复杂特性 (例如没有宏以及不允许多重继承) 。</li>
+<li><code>C#</code> 使得 <code>C++</code> 程序员可以高效的开发程序，且因可调用由 <code>C/C++</code> 编写的本机原生函数，而绝不损失<code>C/C++</code> 原有的强大的功能。因为这种继承关系，<code>C#</code> 与 <code>C/C++</code> 具有极大的相似性，熟悉类似语言的开发者可以很快的转向 <code>C#</code> 。</li>
+</ul>
 <hr>
-<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>本人使用Ubuntu 22.04，直接通过如下代码安装Git:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p><strong>step 1</strong>: 我在<code>/</code>下使用如下命令创建空目录 <code>learngit</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ mkdir learngit</span><br></pre></td></tr></table></figure>
-<p>然后进入这个目录:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd learngit</span><br></pre></td></tr></table></figure>
-<p>然后可以<strong>打印工作目录(print working directory)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ pwd</span><br><span class="line">/Users/Samxander/learngit</span><br></pre></td></tr></table></figure>
-<p><code>pwd</code> 命令用于显示当前的目录。在我的Ubuntu中，这个仓库位于<code>/Users/Samxander/learngit</code>.</p>
-<p><strong>step 2:</strong> 通过 <code>git init</code> 命令把这个目录变成Git可以管理的仓库:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
-<p>瞬间Git就把仓库建好了，而且告诉你是一个空的仓库。</p>
-<p><strong>step 3:</strong> 把文件添加到版本库</p>
-<p>所有的版本控制系统，只能跟踪文本文件的改动，而无法跟踪图片和视频这类二进制文件（Word也是二进制格式）。</p>
-<p>现在编写一个 <code>readme.txt</code> 文件，放在 <code>learngit</code>目录下或子目录下。内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-<p>特殊地，为创建这个txt文件，我使用的是 <code>Vim</code> 。首先在终端输入如下代码（<strong>在learngit目录下</strong>！！）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ vim readme.txt</span><br></pre></td></tr></table></figure>
-<p>随后按下 <code>i</code> 键进入<strong>插入模式</strong>，随后输入内容。输入完成后，按下 <code>Esc</code> 键退出插入模式，输入 <code>:wq</code> 保存并退出。</p>
-<p>用命令 <code>git commit</code> 告诉Git，把文件提交到仓库：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;wrote a readme file&quot;</span><br></pre></td></tr></table></figure>
-<p>注意：<code>-m</code> 后面输入的是本次提交的说明，可以输入任意内容。内容最好是<strong>有意义的</strong>，这样就能从历史记录里方便地找到改动记录。</p>
-<p><code>git commit</code>命令执行成功后会告诉你，<code>1 file changed</code>：1个文件被改动（我们新添加的readme.txt文件）；<code>2 insertions</code>：插入了两行内容（readme.txt有两行内容）。</p>
-<hr>
-<h2 id="时光机穿梭"><a href="#时光机穿梭" class="headerlink" title="时光机穿梭"></a>时光机穿梭</h2><p>我已经成功地添加并提交了一个readme.txt文件，现在，是时候继续工作了。于是，我继续修改readme.txt文件，改成如下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-<p>随后运行 <code>git status</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
-<p>命令输出告诉我们，<code>readme.txt</code>被修改过了，但还没有准备提交的修改。</p>
-<p>如果想看看具体修改了什么，可以使用 <code>git diff</code> 查看修改了什么内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git diff readme.txt </span><br><span class="line"></span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">index 46d49bf..9247db6 100644</span><br><span class="line">--- a/readme.txt</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -1,2 +1,2 @@</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br></pre></td></tr></table></figure>
-<p>可以从上面的命令输出看到，我们在第一行添加了一个<code>distributed</code>单词。</p>
-<p>知道了对<code>readme.txt</code>作了什么修改后，再把它提交到仓库就放心多了，提交修改和提交新文件是一样的两步，第一步是<code>git add</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add readme.txt</span><br></pre></td></tr></table></figure>
-<p>然后我们运行<code>git status</code>查看当前仓库的状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">要提交的变更:</span><br><span class="line">   (使用 &quot;git restore --staged &lt;文件&gt;...&quot; 以取消暂存)</span><br><span class="line">		修改:		 readme.txt</span><br></pre></td></tr></table></figure>
-<p><code>git status</code>告诉我们，将要被提交的修改包括<code>readme.txt</code>，下一步，就可以放心地使用 <code>git commit</code> 提交了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;add distributed&quot;</span><br></pre></td></tr></table></figure>
-<p>提交后，我们再用<code>git status</code>命令看看仓库的当前状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支master</span><br><span class="line">无文件要提交，干净的工作区</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>（练习：将第二行加上GPL，并提交)</p>
-<p>现在共进行了三个版本的提交，分别是 <code>wrote a readme file</code>, <code>add distributed</code>, <code>append GPL</code>.</p>
-<p>在实际工作中，版本控制系统肯定有命令可以告诉我们历史记录。在Git中，我们用 <code>git log</code> 查看：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit 9e000ba1df429c0aa9d972325d9847368ed1c584 (HEAD -&gt; master)</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:38:53 2024 +0800</span><br><span class="line"></span><br><span class="line">    append GPL</span><br><span class="line"></span><br><span class="line">commit d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:30:46 2024 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 0998895744bfbd854f6d74792da039c0d3b2c7de</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 17:25:26 2024 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
-<p><code>git log</code>命令显示从最近到最远的提交日志，我们可以看到3次提交，最近的一次是<code>append GPL</code>，上一次是<code>add distributed</code>，最早的一次是<code>wrote a readme file</code>。</p>
-<p>如果嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br><span class="line"></span><br><span class="line">9e000ba1df429c0aa9d972325d9847368ed1c584 (HEAD -&gt; master) attend GPL</span><br><span class="line">d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f add distributed</span><br><span class="line">0998895744bfbd854f6d74792da039c0d3b2c7de wrote a readme file</span><br></pre></td></tr></table></figure>
-<p>好了，现在我们启动时光穿梭机，准备把<code>readme.txt</code>回退到上一个版本，也就是<code>add distributed</code>的那个版本，怎么做呢？</p>
-<p>首先，Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交<code>9e000ba1df429c0aa9d972325d9847368ed1c584</code> , 上一个版本是<code>HEAD^</code>，上上一个版本是<code>HEAD^^</code>，往上100个版本写100个<code>^</code>比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
-<p>现在，我们要把当前版本<code>append GPL</code>回退到上一个版本<code>add distributed</code>，就可以使用<code>git reset</code>命令：</p>
-<figure class="highlight plaintext"><figcaption><span>git</span></figcaption><table><tr><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br><span class="line"></span><br><span class="line">HEAD 现在位于 d7c8172 add distributed</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong><code>--hard</code>会回退到上个版本的<strong>已提交</strong>状态，而<code>--soft</code>会回退到上个版本的<strong>未提交</strong>状态，<code>--mixed</code>会回退到上个版本<strong>已添加但未提交</strong>的状态。现在，先放心使用<code>--hard</code>。</p>
-<p>现在看看<code>readme.txt</code> 的内容是不是版本 <code>add distributed</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat readme.txt</span><br><span class="line"></span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-<p>果然被还原了。</p>
-<p>让我们用<code>git log</code>再看看现在版本库的状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f (HEAD -&gt; master)</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:30:46 2024 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 0998895744bfbd854f6d74792da039c0d3b2c7de</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 17:25:26 2024 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
-<p>最新的那个版本<code>append GPL</code>已经看不到了。若要回到那个版本，只要上面的命令行窗口还没有被关掉，就可以找到那个 <code>append GPL</code> 的 <code>commit id</code>是 <code>9e000ba1...</code>，于是就可以指定回到未来的某个版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reset --hard 9e000ba1</span><br><span class="line"></span><br><span class="line">HEAD 现在位于 9e000ba attend GPL</span><br></pre></td></tr></table></figure>
-<p>再查看<code>readme.txt</code> 的内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat readme.txt</span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br></pre></td></tr></table></figure>
-<p>若回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的<code>commit id</code>怎么办？</p>
-<p>在Git中，总是有后悔药可以吃的。当用<code>$ git reset --hard HEAD^</code>回退到<code>add distributed</code>版本时，再想恢复到<code>append GPL</code>，就必须找到<code>append GPL</code>的commit id。Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line"> </span><br><span class="line">9e000ba (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to 9e000ba1</span><br><span class="line">d7c8172 HEAD@&#123;1&#125;: reset: moving to HEAD^</span><br><span class="line">9e000ba (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: attend GPL</span><br><span class="line">d7c8172 HEAD@&#123;3&#125;: commit: add distributed</span><br><span class="line">0998895 HEAD@&#123;4&#125;: commit (initial): wrote a readme file</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p><strong>工作区</strong></p>
-<p>个人理解，工作区就是电脑里面能直接看到的目录。例如创建的 <code>learngit</code> 文件夹就是一个工作区。</p>
-<p><strong>版本库</strong></p>
-<p>工作区里有一个隐藏的目录 <code>.git</code>，这不算工作区，而是Git的版本库。这里面存了很多东西，其中最重要的就是称为 <code>stage</code> 的<strong>暂存区</strong>，还有Git自动创建的第一个分支<code>master</code>，以及指向<code>master</code>的一个指针 <code>HEAD</code>。</p>
-<p><code>git add</code> 命令实际上就是把要提交的所有修改放到暂存区，然后执行 <code>git commit</code>就可以一次性地把暂存区的所有修改提交到分支。</p>
-<p><strong>实践验证：</strong></p>
-<p>先对 <code>readme.txt</code> 做出修改：在后面添加一行内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br></pre></td></tr></table></figure>
-<p>然后，在工作区新建一个 <code>LICENSE</code> 文本文件。</p>
-<p>先用 <code>git status</code> 查看一下状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">尚未暂存以备提交的变更：</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 更新要提交的内容）</span><br><span class="line">  （使用 &quot;git restore &lt;文件&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line">	修改：     readme.txt</span><br><span class="line"></span><br><span class="line">未跟踪的文件:</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 以包含要提交的内容）</span><br><span class="line">	LICENSE</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure>
-<p>Git说，<code>readme.txt</code> 被修改了，而 <code>LICENSE</code> 还从来没有被添加过，所以显示他是<strong>未跟踪的</strong>。</p>
-<p>现在，使用两次 <code>git add</code>，把 <code>readme.txt</code> 和 <code>LICENSE</code> 都添加后，用 <code>git status</code> 再查看一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">要提交的变更：</span><br><span class="line">  （使用 &quot;git restore --staged &lt;文件&gt;...&quot; 以取消暂存）</span><br><span class="line">	新文件：   LICENSE</span><br><span class="line">	修改：     readme.txt</span><br></pre></td></tr></table></figure>
-<p>所以，<code>git add</code>命令实际上就是把要提交的所有修改放到暂存区，然后执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;understand how stage works&quot;</span><br><span class="line"></span><br><span class="line">[master d25e97f] understand how stage works</span><br><span class="line"> 2 files changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 LICENSE</span><br></pre></td></tr></table></figure>
-<p>一旦提交后，如果没有对工作区做任何修改，那么工作区就是“干净”的：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">无文件要提交，干净的工作区</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>Git跟踪并管理的是<strong>修改而非文件</strong>。若要提交二次修改，要遵循以下流程：</p>
-<p>第一次修改 -&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git add</code> -&gt; <code>git commit</code></p>
-<hr>
-<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>场景1：当改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</p>
-<p>场景2：当不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就回到了场景1，第二步按场景1操作。</p>
-<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，使用<strong>版本回退</strong>，不过前提是没有推送到远程库。</p>
-<hr>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>在Git中，删除也是一个修改操作。先添加一个新文件<code>test.txt</code>到Git并提交：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;add test.txt&quot;</span><br><span class="line"></span><br><span class="line">[master a511415] add test.txt</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 test.txt</span><br></pre></td></tr></table></figure>
-<p>一般情况下，直接在文件管理器中把没用的文件删除，或者用<code>rm</code>命令删除：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ rm test.txt</span><br></pre></td></tr></table></figure>
-<p>这个时候，Git知道删除了文件，因此，工作区和版本库就不一致了，<code>git status</code>命令会立刻告诉你哪些文件被删除了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">尚未暂存以备提交的变更：</span><br><span class="line">  （使用 &quot;git add/rm &lt;文件&gt;...&quot; 更新要提交的内容）</span><br><span class="line">  （使用 &quot;git restore &lt;文件&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line">	删除：     test.txt</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure>
-<p>现在有两个选择，一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git rm test.txt</span><br><span class="line"></span><br><span class="line">rm &#x27;test.txt&#x27;</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;remove test.txt&quot;</span><br><span class="line"></span><br><span class="line">[master 67c1822] remove test.txt</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 test.txt</span><br></pre></td></tr></table></figure>
-<p>现在，文件就从版本库中被删除了。</p>
-<p>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git checkout -- test.txt</span><br></pre></td></tr></table></figure>
-<p><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
-<p>命令<code>git rm</code>用于删除一个文件。如果一个文件已经被提交到版本库，那么永远不用担心误删。但是要小心，只能恢复文件到最新版本，会丢失<strong>最近一次提交后你修改的内容</strong>。</p>
-<hr>
-<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><h3 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h3><p>现在，在本地创建了一个 <code>Git</code> 仓库后，我们要在 <code>Github</code> 上创建一个 <code>Git</code> 仓库，并且让两个仓库进行远程同步。</p>
-<p>首先，登录 <code>Github</code> ，然后创建一个新仓库。创建完成之后，复制网址，输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git remote add origin git@github.com:&lt;Github账户名&gt;/&lt;仓库名&gt;.git</span><br></pre></td></tr></table></figure>
-<p>使用 <code>git push</code> 命令，将本地库的内容推送到远程，使用如下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
-<p>也就是把当前分支 <code>master</code> 推送到远程。因为远程库是空的，所以加上了 <code>-u</code> 参数。以后的推送或拉取时，就可以简化命令。于是，只要本地做了提交，就可以通过如下命令，把本地分支的最新修改推送到 <code>Github</code> ：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-<p><strong>删除远程库</strong></p>
-<p>如果添加的时候地址写错了，或者就是想删除远程库，可以用 <code>git remote rm &lt;name&gt;</code> 命令。</p>
-<hr>
-<h3 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h3><p>首先，我们需要知道仓库的地址，随后使用 <code>git clone</code> 进行克隆。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:&lt;Github账户名&gt;/&lt;仓库名&gt;.git</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2>]]></content>
+<h2 id="一个简单的-Hello-World"><a href="#一个简单的-Hello-World" class="headerlink" title="一个简单的 Hello World!"></a>一个简单的 Hello World!</h2><p>一个 <code>C#</code> 程序主要包含以下部分：</p>
+<ul>
+<li>命名空间的声明</li>
+<li>一个 <code>class</code></li>
+<li><code>class</code> 方法</li>
+<li><code>class</code> 属性</li>
+<li>一个 <code>Main</code> 方法</li>
+<li>语句&amp;表达式</li>
+<li>注释</li>
+</ul>
+<p><code>C#</code> 文件的后缀为 <code>.cs</code></p>
+<p>我们在 <code>Visual Studio</code> 中创建一个 <code>test.cs</code> 文件，包含了可以打印出 <code>Hello World</code> 的简单代码：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">HelloWorldApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">HelloWorld</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* 我的第一个C#程序 */</span></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>在 <code>C#</code> 中，变量分为以下几种类型：</p>
+<ul>
+<li>值类型</li>
+<li>引用类型</li>
+<li>指针类型</li>
+</ul>
+<h3 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h3><p>值类型变量可以直接分配给一个值，它们是从类 <code>System.ValueType</code> 中派生的。</p>
+<p>如下：</p>
+<ul>
+<li>bool</li>
+<li>byte: 8位无符号整数类型</li>
+<li>char</li>
+<li>decimal</li>
+<li>double</li>
+<li>float</li>
+<li>int</li>
+<li>long</li>
+<li><code>sbyte</code>：8位有符号整数类型</li>
+<li>short</li>
+<li><code>uint</code></li>
+<li><code>ulong</code></li>
+<li><code>ushort</code></li>
+</ul>
+<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><ul>
+<li><p>引用类型<strong>不包含</strong>存储在变量中的<strong>实际数据</strong>，但它们<strong>包含</strong>对变量的<strong>引用</strong>。</p>
+</li>
+<li><p>换句话说，它们指的是一个<strong>内存位置</strong>。使用多个变量时，引用类型可以指向一个内存位置。如果内存位置的数据是由一个变量改变的，其他变量会自动反映这种值的变化。内置的引用类型有：object、dynamic 和 string。</p>
+</li>
+</ul>
+<p><strong>对象类型</strong></p>
+<p>对象类型是 <code>C#</code> 通用类型系统中所有数据类型的终极基类。<code>Object</code> 是 <code>System.Object</code> 类的别名。所以对象类型可以被分配任何其他类型的值。但是在分配值之前，需要先进行类型转换。当一个值类型转换为对象类型时，则被称为<strong>装箱</strong>；另一方面，当一个对象类型转换为值类型时，则被称为<strong>拆箱</strong>。</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">object</span> obj;</span><br><span class="line">obj = <span class="number">100</span>; <span class="comment">//这是装箱</span></span><br></pre></td></tr></table></figure>
+<p><strong>动态类型</strong></p>
+<p>可以存储任何类型的值在动态数据类型变量中。这些变量的类型检查是在运行时发生的。</p>
+<p>声明动态类型的语法：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dynamic</span> &lt;variable_name&gt; = <span class="keyword">value</span>;</span><br><span class="line"><span class="comment">// 例如：</span></span><br><span class="line"><span class="built_in">dynamic</span> d = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>字符串类型</strong></p>
+<p>字符串类型允许给变量分配人格字符串值。字符串类型是 <code>System.String</code> 类的别名。他是从对象类型派生的。字符串类型的值可以通过两种形式进行分配：引号和 <code>@</code> 引号</p>
+<p>例如：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">String str = <span class="string">&quot;WoShiNaiLong&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p><code>C#</code> string字符串的前面可以加 <code>@</code> 将转义字符当做普通字符对待，比如：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> str = <span class="string">@&quot;C:\Windows&quot;</span>;</span><br><span class="line"><span class="comment">//等价于：</span></span><br><span class="line"><span class="built_in">string</span> str = <span class="string">&quot;C:\\Windows&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p><code>@</code> 字符串中可以任意换行，换行符及缩进空格都计算在字符串长度之内。</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> str = <span class="string">@&quot;&lt;script type=&quot;&quot;text/javascript&quot;&quot;&gt;</span></span><br><span class="line"><span class="string">	&lt;!--</span></span><br><span class="line"><span class="string">	--&gt;</span></span><br><span class="line"><span class="string">&lt;/script&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>用户自定义引用类型有：<code>class</code>、<code>interface</code> 或 <code>delegate</code>。我们将在以后讨论这些类型。</p>
+<h3 id="指针类型"><a href="#指针类型" class="headerlink" title="指针类型"></a>指针类型</h3><p>指针类型变量存储另一个类型的内存地址，<code>C#</code> 中的指针与 <code>C</code> 或 <code>C++</code> 中的指针有相同的功能，声明指针类型的语法：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">type* identifier;</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">char</span>* cptr;</span><br><span class="line"><span class="built_in">int</span>* iptr;</span><br></pre></td></tr></table></figure>
+<h3 id="C-类型转换"><a href="#C-类型转换" class="headerlink" title="C#类型转换"></a>C#类型转换</h3><p>类型转换从根本上说是类型铸造，或者说是把数据从一种类型转换为另一种类型。在 C# 中，类型铸造有两种形式：</p>
+<ul>
+<li><strong>隐式类型转换</strong>：这些转换是 <code>C#</code> 默认的以安全方式进行的转换, 不会导致数据丢失。例如，从小的整数类型转换为大的整数类型，从派生类转换为基类。</li>
+<li><strong>显式类型转换</strong>：显式类型转换，即强制类型转换。显式转换需要强制转换运算符，而且强制转换会造成数据丢失。</li>
+</ul>
+<p><strong>显式的类型转换示例：</strong></p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">TypeConversionApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">ExplicitConversion</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">double</span> d = <span class="number">5673.74</span>;</span><br><span class="line">            <span class="built_in">int</span> i;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 强制转换 double 为 int</span></span><br><span class="line">            i = (<span class="built_in">int</span>)d;</span><br><span class="line">            Console.WriteLine(i);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="number">5673</span></span><br></pre></td></tr></table></figure>
+<h4 id="C-类型转换方法"><a href="#C-类型转换方法" class="headerlink" title="C#类型转换方法"></a>C#类型转换方法</h4><p><code>C#</code> 提供了下列内置的类型转换方法：</p>
+<ul>
+<li><code>ToBoolean</code>：转换为 <code>bool</code> 型</li>
+<li><code>ToByte</code></li>
+<li><code>Tochar</code></li>
+<li><code>ToDateTime</code>：转换为 <code>日期-时间</code> 结构</li>
+<li><code>ToDecimal</code></li>
+<li><code>ToDouble</code></li>
+<li><code>Toint16</code></li>
+<li><code>Toint32</code></li>
+<li><code>Toint64</code></li>
+<li><code>ToSbyte</code></li>
+<li><code>ToSingle</code>：把类型转换为小浮点数类型</li>
+<li><code>ToString</code></li>
+<li><code>ToType</code></li>
+<li><code>ToUInt16</code></li>
+<li><code>ToUInt32</code></li>
+<li><code>ToUInt64</code></li>
+</ul>
+<p>一个示例：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">Console.WriteLine(i.ToString());</span><br></pre></td></tr></table></figure>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p><strong>静态常量const</strong></p>
+<p>静态常量(编译时常量)<strong>在编译时就确定了值</strong>，必须在声明时就进行初始化且之后不能进行更改，可在类和方法中定义。使用 <code>const</code> 关键字，定义一个常量的语法如下：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &lt;data_type&gt; &lt;constant_name&gt; = <span class="keyword">value</span>;</span><br><span class="line"><span class="comment">//例子</span></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">double</span> a = <span class="number">3.14</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>动态常量readonly</strong></p>
+<p>在运行时确定值，只能在声明时或构造函数中初始化，只能在类中定义。定义方法如下：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">readonly</span> <span class="built_in">int</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">readonly</span> <span class="built_in">int</span> b;</span><br><span class="line">    Program() <span class="comment">// 构造函数</span></span><br><span class="line">    &#123;</span><br><span class="line">        b = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>静态常量与动态常量的使用场景</p>
+<p>在下面两种情况下，可以使用 <code>const</code> 常量：</p>
+<ul>
+<li><strong>取值永久不变</strong>。比如圆周率、一天包含的小时数、地球的半径等。</li>
+<li><strong>对程序性能要求非常苛刻</strong>。</li>
+</ul>
+<p>除此之外的其他情况都应该优先采用 <code>readonly</code> 常量。</p>
+<h2 id="C-运算符"><a href="#C-运算符" class="headerlink" title="C#运算符"></a>C#运算符</h2>]]></content>
       <tags>
-        <tag>Git</tag>
+        <tag>C#</tag>
       </tags>
   </entry>
   <entry>
@@ -545,37 +534,620 @@ u
       </tags>
   </entry>
   <entry>
-    <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
-    <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
-    <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
-<p><strong>时间复杂度</strong>:最坏情况<code>O(n)</code>,最好情况<code>O(n^2)</code>.  </p>
-<h2 id="选择排序-不稳定"><a href="#选择排序-不稳定" class="headerlink" title="选择排序(不稳定)"></a>选择排序(不稳定)</h2><p><strong>特点</strong>:每次从待排序列中选出一个<strong>最小值</strong>,然后放在序列的起始位置,直至排完.</p>
-<p><strong>时间复杂度</strong>:<code>O(n^2)</code>.  </p>
-<h2 id="插入排序-稳定"><a href="#插入排序-稳定" class="headerlink" title="插入排序(稳定)"></a>插入排序(稳定)</h2><p><strong>特点</strong>:从<strong>第下个元素开始</strong>,从已排序的元素序列<strong>从后往前</strong>扫描,如果该元素<strong>大于</strong>tem,<strong>则将该元素移至下一位</strong>.重复该步骤,直到找到已排序元素中<strong>小于等于</strong>tem的元素.tem插入到该元素的<strong>后面</strong>,如果已排序所有元素都大于tem,则将tem插入到下标为0的位置.<br><strong>一直重复上述步骤,直至排序完成</strong>.   </p>
-<p><strong>时间复杂度</strong>:最坏情况<code>O(n^2)</code>,最好情况<code>O(n)</code>.</p>
-<h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
-<ul>
-<li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
-<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.  </li>
+    <title>Git初步学习</title>
+    <url>/2024/11/25/Git%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="Git入门学习"><a href="#Git入门学习" class="headerlink" title="Git入门学习"></a>Git入门学习</h1><p><strong>Git</strong> 是一种 <strong>分布式版本控制系统</strong>，主要用于管理源代码的版本历史。它能记录文件的每一次改动，让开发者能够随时回溯、更改和协作，从而极大提高了代码开发的效率和安全性。</p>
+<p>如果把代码开发比作写一本书，Git 就像一本“时间机器”，能保存每一版的草稿，不小心删掉的内容可以找回来，还能让多人同时编辑不同的章节，最后合并在一起。</p>
+<hr>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>本人使用Ubuntu 22.04，直接通过如下代码安装Git:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p><strong>step 1</strong>: 我在<code>/</code>下使用如下命令创建空目录 <code>learngit</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ mkdir learngit</span><br></pre></td></tr></table></figure>
+<p>然后进入这个目录:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd learngit</span><br></pre></td></tr></table></figure>
+<p>然后可以<strong>打印工作目录(print working directory)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ pwd</span><br><span class="line">/Users/Samxander/learngit</span><br></pre></td></tr></table></figure>
+<p><code>pwd</code> 命令用于显示当前的目录。在我的Ubuntu中，这个仓库位于<code>/Users/Samxander/learngit</code>.</p>
+<p><strong>step 2:</strong> 通过 <code>git init</code> 命令把这个目录变成Git可以管理的仓库:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+<p>瞬间Git就把仓库建好了，而且告诉你是一个空的仓库。</p>
+<p><strong>step 3:</strong> 把文件添加到版本库</p>
+<p>所有的版本控制系统，只能跟踪文本文件的改动，而无法跟踪图片和视频这类二进制文件（Word也是二进制格式）。</p>
+<p>现在编写一个 <code>readme.txt</code> 文件，放在 <code>learngit</code>目录下或子目录下。内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
+<p>特殊地，为创建这个txt文件，我使用的是 <code>Vim</code> 。首先在终端输入如下代码（<strong>在learngit目录下</strong>！！）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ vim readme.txt</span><br></pre></td></tr></table></figure>
+<p>随后按下 <code>i</code> 键进入<strong>插入模式</strong>，随后输入内容。输入完成后，按下 <code>Esc</code> 键退出插入模式，输入 <code>:wq</code> 保存并退出。</p>
+<p>用命令 <code>git commit</code> 告诉Git，把文件提交到仓库：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;wrote a readme file&quot;</span><br></pre></td></tr></table></figure>
+<p>注意：<code>-m</code> 后面输入的是本次提交的说明，可以输入任意内容。内容最好是<strong>有意义的</strong>，这样就能从历史记录里方便地找到改动记录。</p>
+<p><code>git commit</code>命令执行成功后会告诉你，<code>1 file changed</code>：1个文件被改动（我们新添加的readme.txt文件）；<code>2 insertions</code>：插入了两行内容（readme.txt有两行内容）。</p>
+<hr>
+<h2 id="时光机穿梭"><a href="#时光机穿梭" class="headerlink" title="时光机穿梭"></a>时光机穿梭</h2><p>我已经成功地添加并提交了一个readme.txt文件，现在，是时候继续工作了。于是，我继续修改readme.txt文件，改成如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
+<p>随后运行 <code>git status</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+<p>命令输出告诉我们，<code>readme.txt</code>被修改过了，但还没有准备提交的修改。</p>
+<p>如果想看看具体修改了什么，可以使用 <code>git diff</code> 查看修改了什么内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git diff readme.txt </span><br><span class="line"></span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">index 46d49bf..9247db6 100644</span><br><span class="line">--- a/readme.txt</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -1,2 +1,2 @@</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br></pre></td></tr></table></figure>
+<p>可以从上面的命令输出看到，我们在第一行添加了一个<code>distributed</code>单词。</p>
+<p>知道了对<code>readme.txt</code>作了什么修改后，再把它提交到仓库就放心多了，提交修改和提交新文件是一样的两步，第一步是<code>git add</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add readme.txt</span><br></pre></td></tr></table></figure>
+<p>然后我们运行<code>git status</code>查看当前仓库的状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">要提交的变更:</span><br><span class="line">   (使用 &quot;git restore --staged &lt;文件&gt;...&quot; 以取消暂存)</span><br><span class="line">		修改:		 readme.txt</span><br></pre></td></tr></table></figure>
+<p><code>git status</code>告诉我们，将要被提交的修改包括<code>readme.txt</code>，下一步，就可以放心地使用 <code>git commit</code> 提交了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;add distributed&quot;</span><br></pre></td></tr></table></figure>
+<p>提交后，我们再用<code>git status</code>命令看看仓库的当前状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支master</span><br><span class="line">无文件要提交，干净的工作区</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>（练习：将第二行加上GPL，并提交)</p>
+<p>现在共进行了三个版本的提交，分别是 <code>wrote a readme file</code>, <code>add distributed</code>, <code>append GPL</code>.</p>
+<p>在实际工作中，版本控制系统肯定有命令可以告诉我们历史记录。在Git中，我们用 <code>git log</code> 查看：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit 9e000ba1df429c0aa9d972325d9847368ed1c584 (HEAD -&gt; master)</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:38:53 2024 +0800</span><br><span class="line"></span><br><span class="line">    append GPL</span><br><span class="line"></span><br><span class="line">commit d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:30:46 2024 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 0998895744bfbd854f6d74792da039c0d3b2c7de</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 17:25:26 2024 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
+<p><code>git log</code>命令显示从最近到最远的提交日志，我们可以看到3次提交，最近的一次是<code>append GPL</code>，上一次是<code>add distributed</code>，最早的一次是<code>wrote a readme file</code>。</p>
+<p>如果嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br><span class="line"></span><br><span class="line">9e000ba1df429c0aa9d972325d9847368ed1c584 (HEAD -&gt; master) attend GPL</span><br><span class="line">d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f add distributed</span><br><span class="line">0998895744bfbd854f6d74792da039c0d3b2c7de wrote a readme file</span><br></pre></td></tr></table></figure>
+<p>好了，现在我们启动时光穿梭机，准备把<code>readme.txt</code>回退到上一个版本，也就是<code>add distributed</code>的那个版本，怎么做呢？</p>
+<p>首先，Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交<code>9e000ba1df429c0aa9d972325d9847368ed1c584</code> , 上一个版本是<code>HEAD^</code>，上上一个版本是<code>HEAD^^</code>，往上100个版本写100个<code>^</code>比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
+<p>现在，我们要把当前版本<code>append GPL</code>回退到上一个版本<code>add distributed</code>，就可以使用<code>git reset</code>命令：</p>
+<figure class="highlight plaintext"><figcaption><span>git</span></figcaption><table><tr><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br><span class="line"></span><br><span class="line">HEAD 现在位于 d7c8172 add distributed</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong><code>--hard</code>会回退到上个版本的<strong>已提交</strong>状态，而<code>--soft</code>会回退到上个版本的<strong>未提交</strong>状态，<code>--mixed</code>会回退到上个版本<strong>已添加但未提交</strong>的状态。现在，先放心使用<code>--hard</code>。</p>
+<p>现在看看<code>readme.txt</code> 的内容是不是版本 <code>add distributed</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat readme.txt</span><br><span class="line"></span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
+<p>果然被还原了。</p>
+<p>让我们用<code>git log</code>再看看现在版本库的状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit d7c8172e14e38f27ccb901e01bf3c7e4eee8c35f (HEAD -&gt; master)</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 18:30:46 2024 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 0998895744bfbd854f6d74792da039c0d3b2c7de</span><br><span class="line">Author: Samxander &lt;weijiazhe123@mail.nwpu.edu.cn&gt;</span><br><span class="line">Date:   Mon Nov 25 17:25:26 2024 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
+<p>最新的那个版本<code>append GPL</code>已经看不到了。若要回到那个版本，只要上面的命令行窗口还没有被关掉，就可以找到那个 <code>append GPL</code> 的 <code>commit id</code>是 <code>9e000ba1...</code>，于是就可以指定回到未来的某个版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reset --hard 9e000ba1</span><br><span class="line"></span><br><span class="line">HEAD 现在位于 9e000ba attend GPL</span><br></pre></td></tr></table></figure>
+<p>再查看<code>readme.txt</code> 的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat readme.txt</span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br></pre></td></tr></table></figure>
+<p>若回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的<code>commit id</code>怎么办？</p>
+<p>在Git中，总是有后悔药可以吃的。当用<code>$ git reset --hard HEAD^</code>回退到<code>add distributed</code>版本时，再想恢复到<code>append GPL</code>，就必须找到<code>append GPL</code>的commit id。Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line"> </span><br><span class="line">9e000ba (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to 9e000ba1</span><br><span class="line">d7c8172 HEAD@&#123;1&#125;: reset: moving to HEAD^</span><br><span class="line">9e000ba (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: attend GPL</span><br><span class="line">d7c8172 HEAD@&#123;3&#125;: commit: add distributed</span><br><span class="line">0998895 HEAD@&#123;4&#125;: commit (initial): wrote a readme file</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p><strong>工作区</strong></p>
+<p>个人理解，工作区就是电脑里面能直接看到的目录。例如创建的 <code>learngit</code> 文件夹就是一个工作区。</p>
+<p><strong>版本库</strong></p>
+<p>工作区里有一个隐藏的目录 <code>.git</code>，这不算工作区，而是Git的版本库。这里面存了很多东西，其中最重要的就是称为 <code>stage</code> 的<strong>暂存区</strong>，还有Git自动创建的第一个分支<code>master</code>，以及指向<code>master</code>的一个指针 <code>HEAD</code>。</p>
+<p><code>git add</code> 命令实际上就是把要提交的所有修改放到暂存区，然后执行 <code>git commit</code>就可以一次性地把暂存区的所有修改提交到分支。</p>
+<p><strong>实践验证：</strong></p>
+<p>先对 <code>readme.txt</code> 做出修改：在后面添加一行内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br></pre></td></tr></table></figure>
+<p>然后，在工作区新建一个 <code>LICENSE</code> 文本文件。</p>
+<p>先用 <code>git status</code> 查看一下状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">尚未暂存以备提交的变更：</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 更新要提交的内容）</span><br><span class="line">  （使用 &quot;git restore &lt;文件&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line">	修改：     readme.txt</span><br><span class="line"></span><br><span class="line">未跟踪的文件:</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 以包含要提交的内容）</span><br><span class="line">	LICENSE</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure>
+<p>Git说，<code>readme.txt</code> 被修改了，而 <code>LICENSE</code> 还从来没有被添加过，所以显示他是<strong>未跟踪的</strong>。</p>
+<p>现在，使用两次 <code>git add</code>，把 <code>readme.txt</code> 和 <code>LICENSE</code> 都添加后，用 <code>git status</code> 再查看一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">要提交的变更：</span><br><span class="line">  （使用 &quot;git restore --staged &lt;文件&gt;...&quot; 以取消暂存）</span><br><span class="line">	新文件：   LICENSE</span><br><span class="line">	修改：     readme.txt</span><br></pre></td></tr></table></figure>
+<p>所以，<code>git add</code>命令实际上就是把要提交的所有修改放到暂存区，然后执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;understand how stage works&quot;</span><br><span class="line"></span><br><span class="line">[master d25e97f] understand how stage works</span><br><span class="line"> 2 files changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 LICENSE</span><br></pre></td></tr></table></figure>
+<p>一旦提交后，如果没有对工作区做任何修改，那么工作区就是“干净”的：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">无文件要提交，干净的工作区</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>Git跟踪并管理的是<strong>修改而非文件</strong>。若要提交二次修改，要遵循以下流程：</p>
+<p>第一次修改 -&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git add</code> -&gt; <code>git commit</code></p>
+<hr>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>场景1：当改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</p>
+<p>场景2：当不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就回到了场景1，第二步按场景1操作。</p>
+<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，使用<strong>版本回退</strong>，不过前提是没有推送到远程库。</p>
+<hr>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>在Git中，删除也是一个修改操作。先添加一个新文件<code>test.txt</code>到Git并提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;add test.txt&quot;</span><br><span class="line"></span><br><span class="line">[master a511415] add test.txt</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 test.txt</span><br></pre></td></tr></table></figure>
+<p>一般情况下，直接在文件管理器中把没用的文件删除，或者用<code>rm</code>命令删除：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ rm test.txt</span><br></pre></td></tr></table></figure>
+<p>这个时候，Git知道删除了文件，因此，工作区和版本库就不一致了，<code>git status</code>命令会立刻告诉你哪些文件被删除了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">尚未暂存以备提交的变更：</span><br><span class="line">  （使用 &quot;git add/rm &lt;文件&gt;...&quot; 更新要提交的内容）</span><br><span class="line">  （使用 &quot;git restore &lt;文件&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line">	删除：     test.txt</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure>
+<p>现在有两个选择，一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git rm test.txt</span><br><span class="line"></span><br><span class="line">rm &#x27;test.txt&#x27;</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;remove test.txt&quot;</span><br><span class="line"></span><br><span class="line">[master 67c1822] remove test.txt</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 test.txt</span><br></pre></td></tr></table></figure>
+<p>现在，文件就从版本库中被删除了。</p>
+<p>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git checkout -- test.txt</span><br></pre></td></tr></table></figure>
+<p><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
+<p>命令<code>git rm</code>用于删除一个文件。如果一个文件已经被提交到版本库，那么永远不用担心误删。但是要小心，只能恢复文件到最新版本，会丢失<strong>最近一次提交后你修改的内容</strong>。</p>
+<hr>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><h3 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h3><p>现在，在本地创建了一个 <code>Git</code> 仓库后，我们要在 <code>Github</code> 上创建一个 <code>Git</code> 仓库，并且让两个仓库进行远程同步。</p>
+<p>首先，登录 <code>Github</code> ，然后创建一个新仓库。创建完成之后，复制网址，输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git remote add origin git@github.com:&lt;Github账户名&gt;/&lt;仓库名&gt;.git</span><br></pre></td></tr></table></figure>
+<p>使用 <code>git push</code> 命令，将本地库的内容推送到远程，使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>也就是把当前分支 <code>master</code> 推送到远程。因为远程库是空的，所以加上了 <code>-u</code> 参数。以后的推送或拉取时，就可以简化命令。于是，只要本地做了提交，就可以通过如下命令，把本地分支的最新修改推送到 <code>Github</code> ：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<p><strong>删除远程库</strong></p>
+<p>如果添加的时候地址写错了，或者就是想删除远程库，可以用 <code>git remote rm &lt;name&gt;</code> 命令。</p>
+<hr>
+<h3 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h3><p>首先，我们需要知道仓库的地址，随后使用 <code>git clone</code> 进行克隆。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:&lt;Github账户名&gt;/&lt;仓库名&gt;.git</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2>]]></content>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ROS1初步学习</title>
+    <url>/2024/11/19/ROS1%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="ROS-1"><a href="#ROS-1" class="headerlink" title="ROS 1"></a>ROS 1</h1><p>在 <code>ROS-Wiki</code> 上，我们可以得知ROS到底是个啥：</p>
+<p> <strong>简介：</strong>ROS 是一个适用于机器人的开源的元操作系统。它提供了操作系统应有的服务，包括硬件抽象，底层设备控制，常用函数的实现，进程间消息传递，以及包管理。它也提供用于获取、编译、编写、和跨计算机运行代码所需的工具和库函数。在某些方面ROS相当于一种”机器人框架“。（<del>复制粘贴的</del>）</p>
+<p><strong>ROS1的安装</strong></p>
+<p>我已经在虚拟机上准备了一个已经换好源的 Ubuntu 20.04 ，我们将在这个系统上运行 ROS。</p>
+<p>根据csdn上的教程，我根据我的乌班图版本选择了 <code>ROS Noetic Ninjemys</code> 这个ROS版本</p>
+<p>安装完 <code>ros</code> 之后，这篇博客还推荐配置 <code>rosdep</code> ，我也顺手搞定了。(<em>不知道为什么，博主推荐的一键安装失效了，还是我手动配置的</em>)</p>
+<h2 id="ROS1-初级教程学习"><a href="#ROS1-初级教程学习" class="headerlink" title="ROS1 初级教程学习"></a>ROS1 初级教程学习</h2><p><strong>配置ROS环境</strong></p>
+<p>由于我安装的是 <code>ROS Noetic Ninjemys</code>  这个版本，得先输入如下指令才能访问ROS相关的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /opt/ros/noetic/setup.bash</span><br></pre></td></tr></table></figure>
+<p>每次都输太麻烦，所以直接使用 <code>vim ~/.bashrc</code> 这条指令，在文件末尾插入上述命令(<del>我用的小鱼一键安装，搞半天像傻子一样打开才发现人家已经在文件末尾写好了</del>)</p>
+<p><strong>创建ROS工作空间</strong></p>
+<p>我们要使用wiki里面给出的指令创建和构建一个 <code>catkin工作空间</code> 。wiki还告诉我们，<code>catkin_make</code>命令在 <code>catkin工作空间</code> 中是一个非常方便的工具。在工作空间中第一次运行它时，它会在<code>src</code>目录下创建一个 <code>CMakeLists.txt</code> 的链接。</p>
+<p>然后继续根据要求，<code>source</code>一下新生成的 <code>setup.*sh</code> 文件，再确定一下那个环境变量包括我当前的工作目录就行了。</p>
+<hr>
+<h3 id="ROS-文件系统导览"><a href="#ROS-文件系统导览" class="headerlink" title="ROS 文件系统导览"></a>ROS 文件系统导览</h3><ul>
+<li>软件包(Packages)：wiki告诉我们，包是ROS代码的<strong>软件组织单元</strong>，每个软件包都可以包含程序库、可执行文件、脚本或者其他构件。</li>
+<li>清单(Manifests)：清单是对软件包的描述。他用于定义软件包之间的依赖关系，并记录有关软件包的元信息，比如版本、维护者、许可证之类的。</li>
 </ul>
-<p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
-<h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
-<p>是对<strong>冒泡排序</strong>的一种改进  </p>
-</blockquote>
-<p><strong>特点</strong>:通过一趟排序将要排序的数据分割成<strong>独立的两部分</strong>，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以<strong>递归</strong>进行，以此达到整个数据变成有序序列。  </p>
+<p>程序的代码散落在许多ROS包里头，如果使用<code>ls</code> <code>cd</code> 这些来进行查找和导航比较繁琐，因此ROS提供了专门的命令工具来简化这些操作。</p>
+<p><strong>rospack</strong></p>
+<p>这个命令允许我们获取软件包的有关信息，wiki给我们讲了 <code>find</code> 这个参数：</p>
+<p>使用如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rospack find roscpp</span><br></pre></td></tr></table></figure>
+<p>它输出的是：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/opt/ros/noetic/share/roscpp</span><br></pre></td></tr></table></figure>
+<p>所以显然，这个选项能够返回软件包的所在路径。</p>
+<p><strong>roscd</strong></p>
+<p><code>roscd</code> 由 <code>ros</code> 和 <code>cd</code> 组成，所以显然，这个命令可以让我们直接切换目录到某个软件包或者软件包集。</p>
+<p>依次输入如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roscd roscpp</span><br><span class="line">$ <span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+<p>它输出的是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/opt/ros/noetic/share/roscpp</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>排序流程:  </p>
-<ol>
-<li>首先设定一个<strong>分界值Key</strong>,通过该分界值将数组分成左右两部分.</li>
-<li>将<em>大于或等于Key的数据集中到数组右边,小于分界值的数据集中到数组的左边</em>.此时,左边部分中各元素都小于或等于分界值,而右边部分中各元素都大于或等于分界值.</li>
-<li>然后,左边和右边的数据可以独立排序.对于左侧的数组数据,又可以取一个分界值,将该部分数据分成左右两部分,同样在左边放置较小值,右边放置较大值.右侧的数组数据也可以做类似处理.</li>
-<li>重复上述过程,可以看出,这是一个<strong>递归定义</strong>.通过递归将左侧部分排好序后,再递归排好右侧部分的顺序.当左右两个部分各数据排序完成后,整个数组的排序也就完成了.</li>
-</ol>
+<li><strong>子目录</strong></li>
+</ul>
+<p>​    <code>roscd</code> 也可以切换到一个软件包或软件包集的子目录中。</p>
+<p>​    执行如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roscd roscpp/cmake</span><br><span class="line">$ <span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+<p>​    结果如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/opt/ros/noetic/share/roscpp/cmake</span><br></pre></td></tr></table></figure>
+<ul>
+<li>roscd log</li>
+</ul>
+<p>​    这个命令会进入存储 <code>ROS</code> 日志文件的目录。</p>
+<p>​    如果没有执行过任何 <code>ROS</code> 程序，系统会报错说该目录不存在。即如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">No active roscore</span><br><span class="line">bash: <span class="built_in">cd</span>: /home/wjz2024302124/.ros/log: No such file or directory</span><br></pre></td></tr></table></figure>
+<p><strong>rosls</strong></p>
+<p>这个命令允许直接按软件包的名称执行 <code>ls</code> 命令，而不需要繁琐地输入绝对路径。</p>
+<p>执行如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosls roscpp_tutorials</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmake launch package.xml  srv</span><br></pre></td></tr></table></figure>
+<p><strong>Tab 补全</strong></p>
+<p>总是输入完整的软件包名称比较繁琐，而一些ROS工具支持<strong>Tab补全</strong>这个功能</p>
+<p>输入如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roscd roscpp_tut&lt;&lt;&lt;按TAB键&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>它会自动补全如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roscd roscpp_tutorials/</span><br></pre></td></tr></table></figure>
+<p>然而，当输入的东西不完整，并且有许多软件包以输入的东西作为开头，再次按下TAB键会列出所有以其开头的ROS软件包。</p>
+<hr>
+<h3 id="创建ROS软件包"><a href="#创建ROS软件包" class="headerlink" title="创建ROS软件包"></a>创建ROS软件包</h3><p><strong>一个catkin软件包的组成</strong>：</p>
+<ul>
+<li>一个符合 <code>catkin</code> 规范的 <code>package.xml</code> 文件，用于提供该软件包的元信息</li>
+<li>一个 <code>catkin</code> 版本的 <code>CMakeLists.txt</code> 文件或文件的相关样板</li>
+<li>目录（同一个目录下不能有嵌套的或者多个软件包存在）</li>
+</ul>
+<p>最简单的软件包看起来像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">my_package/</span><br><span class="line">  CMakeLists.txt</span><br><span class="line">  package.xml</span><br></pre></td></tr></table></figure>
+<p><strong>catkin工作空间中的软件包</strong></p>
+<p>开发 <code>catkin</code> 软件包的推荐方法是使用 <code>catkin工作空间</code>，但也可以单独开发 <code>catkin</code> 软件包。</p>
+<p><strong>创建catkin软件包</strong></p>
+<p>先切换到创建的空白catkin工作空间中的源文件空间目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/catkin_ws/src</span><br></pre></td></tr></table></figure>
+<p>然后使用 <code>catkin_create_pkg</code> 命令创建一个名为 <code>beginner_tutorials</code> 的新软件包，这个软件包依赖于 <code>std_msgs</code>、<code>roscpp</code> 和 <code>rospy</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ catkin_create_pkg beginner_tutorials std_msgs rospy roscpp</span><br></pre></td></tr></table></figure>
+<p>这样搞的话就会创建一个名为 <code>beginner_tutorials</code> 的文件夹，这个文件夹里面包含一个 <code>package.xml</code> 文件和一个<code>CMakeLists.txt</code> 文件，这两个文件都已经部分填写了在执行 <code>catkin_create_pkg</code> 命令时提供的信息。</p>
+<p><code>catkin_create_pkg</code> 命令会要求输入 <code>package_name</code> ，如有需要还可以在后面添加一些需要依赖的其它软件包。</p>
+<p><strong>构建一个catkin工作区并生效配置文件</strong></p>
+<p>现在咱们在catkin工作区中构建软件包：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ catkin_make</span><br></pre></td></tr></table></figure>
+<p>工作空间构建完成后，在 <code>devel</code> 子目录下创建了一个与通常在 <code>/opt/ros/$ROSDISTRO_NAME</code> 下看到的目录结构类似的结构。</p>
+<p>要将这个工作空间添加到ROS环境中，需要<code>source</code>一下生成的配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ . ~/catkin_ws/devel/setup.bash</span><br></pre></td></tr></table></figure>
+<p><strong>软件包依赖关系</strong></p>
+<p><strong>一级依赖</strong></p>
+<p>之前在使用 <code>catkin_create_pkg</code> 命令时提供了几个软件包作为依赖关系，现在我们可以使用 <code>rospack</code> 命令工具来查看这些<strong>一级依赖</strong>包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rospack depends1 beginner_tutorials</span><br></pre></td></tr></table></figure>
+<p>结果是：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">roscpp</span><br><span class="line">rospy</span><br><span class="line">std_msgs</span><br></pre></td></tr></table></figure>
+<p>诶，这不就是前面咱们加的东西吗？</p>
+<p><code>rospack</code>列出了在运行 <code>catkin_create_pkg</code> 命令时作为参数的依赖包，这些依赖关系存储在 <code>package.xml</code> 文件中。</p>
+<p><strong>间接依赖</strong></p>
+<p>一个依赖还会有自己的依赖关系，譬如 <code>rospy</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rospack depends1 rospy</span><br><span class="line"></span><br><span class="line">genpy</span><br><span class="line">roscpp</span><br><span class="line">rosgraph</span><br><span class="line">rosgraph_msgs</span><br><span class="line">roslib</span><br><span class="line">std_msgs</span><br></pre></td></tr></table></figure>
+<p>一个软件包可以有相当多间接的依赖关系，使用 <code>rospack</code> 就可以递归检测出所有嵌套的依赖包。</p>
+<p><strong>自定义软件包</strong></p>
+<p><strong>自定义<code>package.xml</code></strong></p>
+<ul>
+<li><p>描述标签</p>
+<p>注意到 <code>description</code> 标签 <code>&lt;description&gt;The beginner_tutorials package&lt;/description&gt;</code> ，可以将描述信息修改为任何内容。</p>
+</li>
+<li><p>维护者标签</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- One maintainer tag required, multiple allowed, one person per tag --&gt;</span><br><span class="line">&lt;!-- Example:  --&gt;</span><br><span class="line">&lt;!-- &lt;maintainer email=<span class="string">&quot;jane.doe@example.com&quot;</span>&gt;Jane Doe&lt;/maintainer&gt; --&gt;</span><br><span class="line">&lt;maintainer email=<span class="string">&quot;wjz2024302124@todo.todo&quot;</span>&gt;wjz2024302124&lt;/maintainer&gt;</span><br></pre></td></tr></table></figure>
+<p>从wiki中我们可以知道，这是 <code>package.xml</code> 中的一个重要标签，因为它能够让其他人联系到软件包的相关人员。这里至少需要填写一个维护者，但如果想的话可以添加多个。除了在标签里面填写维护者的名字外，还应该在标签的<code>email</code>属性中填写电子邮件地址。</p>
+</li>
+<li><p>许可证标签</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- One license tag required, multiple allowed, one license per tag --&gt;</span><br><span class="line">&lt;!-- Commonly used license strings: --&gt;</span><br><span class="line">&lt;!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 --&gt;</span><br><span class="line">&lt;license&gt;TODO&lt;/license&gt;</span><br></pre></td></tr></table></figure>
+<p>在wiki中提到，我们应使用BSD。</p>
+</li>
+<li><p>依赖项标签</p>
 </li>
 </ul>
+<p>​    接下来的标签描述了软件包的依赖关系，这些依赖项分为<code>build_depend</code>、<code>buildtool_depend</code>、<code>run_depend</code>、<code>test_depend</code>。</p>
+<pre><code>    <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- The *depend tags are used to specify dependencies --&gt;</span><br><span class="line">&lt;!-- Dependencies can be catkin packages or system dependencies --&gt;</span><br><span class="line">&lt;!-- Examples: --&gt;</span><br><span class="line">&lt;!-- Use depend as a shortcut <span class="keyword">for</span> packages that are both build and <span class="built_in">exec</span> dependencies --&gt;</span><br><span class="line">&lt;!--   &lt;depend&gt;roscpp&lt;/depend&gt; --&gt;</span><br><span class="line">&lt;!--   Note that this is equivalent to the following: --&gt;</span><br><span class="line">&lt;!--   &lt;build_depend&gt;roscpp&lt;/build_depend&gt; --&gt;</span><br><span class="line">&lt;!--   &lt;exec_depend&gt;roscpp&lt;/exec_depend&gt; --&gt;</span><br><span class="line">&lt;!-- Use build_depend <span class="keyword">for</span> packages you need at compile time: --&gt;</span><br><span class="line">&lt;!--   &lt;build_depend&gt;message_generation&lt;/build_depend&gt; --&gt;</span><br><span class="line">&lt;!-- Use build_export_depend <span class="keyword">for</span> packages you need <span class="keyword">in</span> order to build against this package: --&gt;</span><br><span class="line">&lt;!--   &lt;build_export_depend&gt;message_generation&lt;/build_export_depend&gt; --&gt;</span><br><span class="line">&lt;!-- Use buildtool_depend <span class="keyword">for</span> build tool packages: --&gt;</span><br><span class="line">&lt;!--   &lt;buildtool_depend&gt;catkin&lt;/buildtool_depend&gt; --&gt;</span><br><span class="line">&lt;!-- Use exec_depend <span class="keyword">for</span> packages you need at runtime: --&gt;</span><br><span class="line">&lt;!--   &lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt; --&gt;</span><br><span class="line">&lt;!-- Use test_depend <span class="keyword">for</span> packages you need only <span class="keyword">for</span> testing: --&gt;</span><br><span class="line">&lt;!--   &lt;test_depend&gt;gtest&lt;/test_depend&gt; --&gt;</span><br><span class="line">&lt;!-- Use doc_depend <span class="keyword">for</span> packages you need only <span class="keyword">for</span> building documentation: --&gt;</span><br><span class="line">&lt;!--   &lt;doc_depend&gt;doxygen&lt;/doc_depend&gt; --&gt;</span><br><span class="line">&lt;buildtool_depend&gt;catkin&lt;/buildtool_depend&gt;</span><br><span class="line">&lt;build_depend&gt;roscpp&lt;/build_depend&gt;</span><br><span class="line">&lt;build_depend&gt;rospy&lt;/build_depend&gt;</span><br><span class="line">&lt;build_depend&gt;std_msgs&lt;/build_depend&gt;</span><br><span class="line">&lt;build_export_depend&gt;roscpp&lt;/build_export_depend&gt;</span><br><span class="line">&lt;build_export_depend&gt;rospy&lt;/build_export_depend&gt;</span><br><span class="line">&lt;build_export_depend&gt;std_msgs&lt;/build_export_depend&gt;</span><br><span class="line">&lt;exec_depend&gt;roscpp&lt;/exec_depend&gt;</span><br><span class="line">&lt;exec_depend&gt;rospy&lt;/exec_depend&gt;</span><br><span class="line">&lt;exec_depend&gt;std_msgs&lt;/exec_depend&gt;</span><br></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p>最终的 <code>package.xml</code></p>
+<p>去掉注释和未使用标签即可。</p>
+</li>
+</ul>
+<hr>
+<h3 id="构建ROS软件包"><a href="#构建ROS软件包" class="headerlink" title="构建ROS软件包"></a>构建ROS软件包</h3><p>只要安装了这个包的所有系统依赖项，就可以开始编译软件包了。</p>
+<p><code>catkin_make</code> 的用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ catkin_make [make_targets] [-DCMAKE_VARIABLES=...]</span><br></pre></td></tr></table></figure>
+<p><strong>开始构建软件包</strong></p>
+<p>输入以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/catkin_ws/</span><br><span class="line">$ <span class="built_in">ls</span> src</span><br><span class="line"></span><br><span class="line">beginner_tutorials  CMakeLists.txt</span><br></pre></td></tr></table></figure>
+<p>现在我们可以使用catkin_make来构建</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ catkin_make</span><br></pre></td></tr></table></figure>
+<p>这样的话就成功构建了一个ROS软件包。</p>
+<hr>
+<h3 id="理解ROS节点"><a href="#理解ROS节点" class="headerlink" title="理解ROS节点"></a>理解ROS节点</h3><p><strong>图概念</strong></p>
+<p>(概念来自wiki)计算图是一个由ROS进程组成的点对点网络，它们能够共同处理数据。</p>
+<p>ROS的基本计算图概念：</p>
+<ul>
+<li>节点：一个可执行文件，可通过ROS来与其他节点进行通信</li>
+<li>消息：订阅或发布话题时所使用的ROS数据类型</li>
+<li>话题：节点可以将消息发布到话题，或通过订阅话题来接收消息</li>
+<li>主节点：ROS的命名服务，例如帮助节点发现彼此</li>
+<li>rosout：在ROS中相当于 <code>stdout/stderr</code> </li>
+<li>roscore：主节点 + rosout + 参数服务器(wiki提到后面会进行介绍)</li>
+</ul>
+<p><strong>节点</strong></p>
+<p>正如上面提到的，它是一个可执行文件。ROS节点使用ROS客户端库与其他节点通信。节点可以发布或订阅话题，也可以提供或使用服务。</p>
+<p>（wiki里面的例子，是把遥控器和机器人当做两个节点来理解）</p>
+<p><strong>客户端库</strong></p>
+<p>ROS客户端库可以让用不同编程语言编写的节点进行相互通信：</p>
+<ul>
+<li>rospy=Python数据库</li>
+<li>roscpp=C++数据库</li>
+</ul>
+<p><strong>roscore</strong></p>
+<p>wiki提到，这个命令是在运行所有ROS程序前首先要运行的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roscore</span><br></pre></td></tr></table></figure>
+<p>我这边并没有按照预期显示，有可能网络配置出问题了，所以我输入了如下代码，保证其能够完成单机配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">export</span> ROS_HOSTNAME=localhost</span><br><span class="line">$ <span class="built_in">export</span> ROS_MASTER_URI=http://localhost:11311</span><br></pre></td></tr></table></figure>
+<p>最终成功。</p>
+<p><strong>rosnode</strong></p>
+<p>在保持原来终端开着的情况下，打开一个新终端。 <code>rosnode</code>显示当前正在运行的ROS节点信息。<code>rosnode list</code>命令会列出这些活动的节点：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosnode list</span><br><span class="line"></span><br><span class="line">/rosout</span><br></pre></td></tr></table></figure>
+<p>表示当前只有一个节点在运行：<code>rosout</code> 。这个节点用于收集和记录节点的调试输出，所以总是运行着的。</p>
+<p><code>rosnode info</code>命令返回的是某个指定节点的信息。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosnode info /rosout</span><br><span class="line"></span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">Node [/rosout]</span><br><span class="line">Publications: </span><br><span class="line"> * /rosout_agg [rosgraph_msgs/Log]</span><br><span class="line"></span><br><span class="line">Subscriptions: </span><br><span class="line"> * /rosout [unknown <span class="built_in">type</span>]</span><br><span class="line"></span><br><span class="line">Services: </span><br><span class="line"> * /rosout/get_loggers</span><br><span class="line"> * /rosout/set_logger_level</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">contacting node http://localhost:35183/ ...</span><br><span class="line">Pid: 11688</span><br></pre></td></tr></table></figure>
+<p>wiki表示，这给了我们更多关于<code>rosout</code>的信息，比如说实际上它是发布了一个<code>/rosout_agg</code>话题。</p>
+<p><strong>rosrun</strong></p>
+<p>这个指令可以让咱们用包名直接运行软件包内的节点，不需要知道包的路径。</p>
+<p>它的用法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosrun [package_name] [node_name]</span><br></pre></td></tr></table></figure>
+<p>wiki指引我们运行一个运行 <code>turtlesim</code> 包中的 <code>turtlesim_node</code> ，跟随wiki的指引，我们能够看到一个蓝底的窗口上有一只乌龟。</p>
+<p>咱们还可以通过命令行重新分配名称，例如输入以下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosrun turtlesim turtlesim_node __name:=my_turtle</span><br></pre></td></tr></table></figure>
+<p>节点的名称就被更改了。</p>
+<hr>
+<h3 id="理解ROS话题"><a href="#理解ROS话题" class="headerlink" title="理解ROS话题"></a>理解ROS话题</h3><p>先把roscore运行着，然后打开一个<strong>新终端</strong>就行，输入如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosrun turtlesim turtlesim_node</span><br></pre></td></tr></table></figure>
+<p><strong>通过键盘遥控turtle</strong></p>
+<p>这时候已经有一个乌龟窗口被打开了，<strong>再</strong>打开一个<strong>新终端</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosrun turtlesim turtle_teleop_key</span><br></pre></td></tr></table></figure>
+<p>这时候就可以用方向键来控制乌龟了 (↑是向头指向的方向移动，←→是调整方向)</p>
+<p><strong>ROS话题</strong></p>
+<p>wiki告诉我们，刚才提到的 <code>turtlesim_node</code> 节点和 <code>turtle_teleop_key</code> 节点之间是通过一个ROS<strong>话题</strong>来相互通信的。<code>turtle_teleop_key</code>在话题上<strong>发布</strong>键盘按下的消息，<code>turtlesim</code>则<strong>订阅</strong>该话题以接收消息。</p>
+<p><strong>rqt_graph</strong></p>
+<p><code>rqt_graph</code> 用动态的图显示了系统中正在发生的事情。</p>
+<p>安装完 <code>rqt_graph</code> 之后，再打开一个<strong>新</strong>终端：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosrun rqt_graph rqt_graph</span><br></pre></td></tr></table></figure>
+<p>此时会弹出一个新的窗口，把鼠标放在 <code>/turtle1/command_velocity</code> 上方，ROS节点会变为蓝and绿色，话题会变成红色。</p>
+<p>wiki告诉我们，<code>turtlesim_node</code> 和 <code>turtle_teleop_key</code> 节点正通过一个名为 <code>/turtle1/command_velocity</code> 的话题来相互通信。</p>
+<p><strong>rostopic</strong></p>
+<p>这个命令可以让我们来获取ROS话题的信息，可以使用 <code>$ rostopic -h</code> 来查看可用的子命令。</p>
+<p><strong>rostopic echo</strong></p>
+<p>这个命令可以显示在某个话题上发布的数据，用法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic <span class="built_in">echo</span> [topic]</span><br></pre></td></tr></table></figure>
+<p>现在让我们看看由 <code>turtle_teleop_key</code> 节点发布的“指令、速度”数据。再打开一个<strong>新</strong>终端：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic <span class="built_in">echo</span> /turtlel/cmd_vel</span><br><span class="line"></span><br><span class="line">linear: </span><br><span class="line">  x: 2.0</span><br><span class="line">  y: 0.0</span><br><span class="line">  z: 0.0</span><br><span class="line">angular: </span><br><span class="line">  x: 0.0</span><br><span class="line">  y: 0.0</span><br><span class="line">  z: 0.0</span><br><span class="line">---</span><br><span class="line">linear: </span><br><span class="line">  x: 0.0</span><br><span class="line">  y: 0.0</span><br><span class="line">  z: 0.0</span><br><span class="line">angular: </span><br><span class="line">  x: 0.0</span><br><span class="line">  y: 0.0</span><br><span class="line">  z: 2.0</span><br></pre></td></tr></table></figure>
+<p>我随便点了两下，就有上述的输出。</p>
+<p>再看一下 <code>rqt_graph</code> ，按下左上角的刷新按钮显示新的节点：现在 <code>rostopic echo</code>（红色）现在也<strong>订阅</strong>了 <code>turtle1/command_velocity</code>这个话题。</p>
+<p><strong>rostopic list</strong></p>
+<p>这个命令能够列出当前已经被订阅和发布的所有话题。</p>
+<p>咱们继续打开一个<strong>新</strong>终端：（向上面一样，可以通过 <code>$ rostopic list -h</code> 命令打开帮助页面）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic list -v</span><br><span class="line"></span><br><span class="line">Published topics:</span><br><span class="line"> * /rosout_agg [rosgraph_msgs/Log] 1 publisher</span><br><span class="line"> * /rosout [rosgraph_msgs/Log] 5 publishers</span><br><span class="line"> * /turtle1/pose [turtlesim/Pose] 1 publisher</span><br><span class="line"> * /turtle1/color_sensor [turtlesim/Color] 1 publisher</span><br><span class="line"> * /turtle1/cmd_vel [geometry_msgs/Twist] 1 publisher</span><br><span class="line"></span><br><span class="line">Subscribed topics:</span><br><span class="line"> * /rosout [rosgraph_msgs/Log] 1 subscriber</span><br><span class="line"> * /turtle1/cmd_vel [geometry_msgs/Twist] 2 subscribers</span><br><span class="line"> * /statistics [rosgraph_msgs/TopicStatistics] 1 subscriber</span><br></pre></td></tr></table></figure>
+<p>如输出所示，这样会列出所有发布和订阅的主题及其类型的详细信息。</p>
+<p><strong>ROS 消息</strong></p>
+<p>wiki告诉我们，话题的通信是通过节点间发送<strong>ROS消息</strong>实现的。</p>
+<p>为了使发布者（<code>turtle_teleop_key</code>）和订阅者（<code>turtulesim_node</code>）进行通信，发布者和订阅者必须发送和接收相同<strong>类型</strong>的消息。这意味着话题的<strong>类型</strong>是由发布在它上面消息的<strong>类型</strong>决定的。使用<code>rostopic type</code>命令可以查看发布在话题上的消息的<strong>类型</strong>。</p>
+<p><strong>rostopic type</strong></p>
+<p>这个命令是用来查看所发布话题的消息类型。</p>
+<p>用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic <span class="built_in">type</span> [topic]</span><br></pre></td></tr></table></figure>
+<p>根据wiki，我们运行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic <span class="built_in">type</span> /turtle1/cmd_vel</span><br><span class="line"></span><br><span class="line">geometry_msgs/Twist</span><br></pre></td></tr></table></figure>
+<p>继续用rosmsg查看消息的详细信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosmsg show geometry_msgs/Twist</span><br><span class="line"></span><br><span class="line">geometry_msgs/Vector3 linear</span><br><span class="line">  float64 x</span><br><span class="line">  float64 y</span><br><span class="line">  float64 z</span><br><span class="line">geometry_msgs/Vector3 angular</span><br><span class="line">  float64 x</span><br><span class="line">  float64 y</span><br><span class="line">  float64 z</span><br></pre></td></tr></table></figure>
+<p>所以，现在我们已经知道了 <code>turtlesim</code> 节点想要的消息类型，然后就可以发布命令给 <code>turtle</code> 了。</p>
+<p><strong>rostopic pub</strong></p>
+<p>这个命令可以把数据发布到当前某个正在广播的话题上。</p>
+<p>用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic pub [topic] [msg_type] [args]</span><br></pre></td></tr></table></figure>
+<p>继续跟着wiki的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- <span class="string">&#x27;[2.0, 0.0, 0.0]&#x27;</span> <span class="string">&#x27;[0.0, 0.0, 1.8]&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>根据wiki上的解释，我们得知这个命令会发送一条消息给 <code>turtlesim</code> ，告诉它要以2.0的线速度和1.8的角速度移动。</p>
+<p>逐步解析：</p>
+<ul>
+<li><code>rostopic pub</code> 将消息发布到指定的话题；</li>
+<li><code>-1</code> 这个选项会让 <code>rostopic</code> 只发布一条消息，然后退出；</li>
+<li><code>/turtle1/cmd_vel</code> 是要发布到的话题的名称；</li>
+<li><code>geometry_mags/Twist</code> 是发布到话题时要使用的消息的类型；</li>
+<li><code>--</code> 用来告诉选项解析器，表明之后的参数都不是选项。如果参数前有破折号（-）比如负数，那么这是必需的；</li>
+<li><code>&#39;[2.0, 0.0, 0.0]&#39; &#39;[0.0, 0.0, 1.8]&#39;</code> ：如前所述，一个 <code>turtlesim/Velocity</code> 消息有两个浮点型元素：<code>linear</code>和<code>angular</code>。在本例中，<code>&#39;[2.0, 0.0, 0.0]&#39;</code>表示 <code>linear</code> 的值为 <code>x=2.0</code>, <code>y=0.0</code>, <code>z=0.0</code>，而<code>&#39;[0.0, 0.0, 1.8]&#39;</code> 是说 <code>angular</code> 的值为 <code>x=0.0</code>, <code>y=0.0</code>, <code>z=1.8</code>。而且根据wiki我们得知，这些参数使用的是YAML语法。</li>
+</ul>
+<p>我们发现，小乌龟动了一小下就停止移动了。wiki告诉我们，<code>turtle</code> 需要一个稳定的频率为1Hz的指令流才能保持移动状态。我们可以使用 <code>rostopic pub -r</code>命令来发布源源不断的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- <span class="string">&#x27;[2.0, 0.0, 0.0]&#x27;</span> <span class="string">&#x27;[0.0, 0.0, -1.8]&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>诶，这样的话小乌龟就一直在动了！</p>
+<p><strong>rostopic hz</strong></p>
+<p>这个命令呢，是用来报告数据发布的速率的~</p>
+<p>用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic hz [topic]</span><br></pre></td></tr></table></figure>
+<p>比如，咱们看一下 <code>turtlesim_node</code> 发布 <code>/turtle/pose</code> 的速率：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic hz /turtle1/pose</span><br><span class="line"></span><br><span class="line">average rate: 62.477</span><br><span class="line">	min: 0.015s max: 0.017s std dev: 0.00050s window: 63</span><br><span class="line">average rate: 62.480</span><br><span class="line">	min: 0.015s max: 0.017s std dev: 0.00053s window: 125</span><br><span class="line">average rate: 62.485</span><br><span class="line">	min: 0.015s max: 0.017s std dev: 0.00054s window: 188</span><br><span class="line">average rate: 62.493</span><br><span class="line">	min: 0.015s max: 0.017s std dev: 0.00054s window: 251</span><br><span class="line">average rate: 62.485</span><br><span class="line">	min: 0.014s max: 0.017s std dev: 0.00057s window: 313</span><br><span class="line">average rate: 62.487</span><br><span class="line">	min: 0.014s max: 0.017s std dev: 0.00057s window: 376</span><br></pre></td></tr></table></figure>
+<p>由上可知，<code>turtlesim</code> 正以大约 <code>60Hz</code> 的频率发布有关乌龟的数据。</p>
+<p><strong>rqt_plot</strong></p>
+<p>这个命令可以在<strong>滚动时间图上</strong>显示发布到某个话题上的数据。这里我们将使用 <code>rqt_plot</code> 命令来绘制正被发布到 <code>/turtle1/pose</code> 话题上的数据。</p>
+<p>再再再再次打开一个<strong>新</strong>终端：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosrun rqt_plot rqt_plot</span><br></pre></td></tr></table></figure>
+<p>然后就弹出了一个新窗口，咱们在左上角这个文本框里头添加任何想要绘制的话题</p>
+<p><img src="/.com//Users\wjz15\AppData\Roaming\Typora\typora-user-images\image-20241211201644948.png" alt="image-20241211201644948"></p>
+<p>咱们输入 <code>/turtle1/pose/x</code> 之后，按一下变亮的加号按钮；对 <code>turtle1/pose/y</code> 重复这样的过程，咱们就能看到龟龟的 <code>x-y</code> 位置力~</p>
+<p>按下减号按钮会显示一组菜单，可以在图中隐藏指定的话题。</p>
+<p>到此为止，咱们已经理解了ROS话题是如何工作的了~</p>
+<hr>
+<h3 id="理解ROS服务和参数"><a href="#理解ROS服务和参数" class="headerlink" title="理解ROS服务和参数"></a>理解ROS服务和参数</h3><p><strong>ROS服务</strong></p>
+<p>wiki告诉我们，<em>服务</em> 是节点之间通讯的另一种方式，服务允许节点发送一个<strong>请求</strong>并获得一个<strong>响应</strong>。</p>
+<p><strong>rosservice</strong></p>
+<p><code>rosservice</code> 可以通过服务附加到ROS客户端/服务器框架上。</p>
+<p>用法：(摘自wiki)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rosservice list         输出活跃服务的信息</span><br><span class="line">rosservice call         用给定的参数调用服务</span><br><span class="line">rosservice <span class="built_in">type</span>         输出服务的类型</span><br><span class="line">rosservice find         按服务的类型查找服务</span><br><span class="line">rosservice uri          输出服务的ROSRPC uri</span><br></pre></td></tr></table></figure>
+<p><strong>rosservice list</strong></p>
+<p>在终端输入这个命令 (注意要打开小乌龟的窗口)，它会显示 <code>turtlesim</code> 节点提供了哪些服务，比如 <code>clear</code> <del>就不一一列举了</del></p>
+<p><strong>rosservice type</strong></p>
+<p>以 <code>clear</code> 服务为例，我们来查看它的类型：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosservice <span class="built_in">type</span> /clear</span><br><span class="line"></span><br><span class="line">std_srvs/Empty</span><br></pre></td></tr></table></figure>
+<p>wiki告诉我们，服务的类型为 <code>empty</code>（空），这表明调用这个服务时不需要参数（即，它在发出<strong>请求</strong>时不发送数据，在接收<strong>响应</strong>时也不接收数据）。</p>
+<p><strong>rosservice call</strong></p>
+<p>这个命令就是用来调用服务的，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosservice call /clear</span><br></pre></td></tr></table></figure>
+<p>在终端输入后，我们不难发现，小乌龟窗口中背景的轨迹被清除了</p>
+<p>我们再来试试有参数的服务 <code>spawn</code> ：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosservice <span class="built_in">type</span> /spawn | rossrv show</span><br><span class="line"></span><br><span class="line">float32 x</span><br><span class="line">float32 y</span><br><span class="line">float32 theta</span><br><span class="line">string name</span><br><span class="line">---</span><br><span class="line">string name</span><br></pre></td></tr></table></figure>
+<p>咱们来观察一下返回的东西：显然，这个服务能让我们可以在给定的位置和角度生成一只新的乌龟，还可以给它起名字。</p>
+<p><strong>rosparam</strong></p>
+<p>这个命令可以让我们在 <code>ROS参数服务器</code> 上<strong>存储</strong>和<strong>操作</strong>数据。</p>
+<p>参数服务器能够存储整型、浮点型、布尔、字典和列表这些数据类型。<code>rosparam</code> 使用YAML标记语言的语法。一般而言，YAML的表述很自然，<code>1</code> 是整型，<code>1.0</code> 是浮点型，<code>one</code> 是字符串，<code>true</code> 是布尔型，<code>[1, 2, 3]</code> 是整型组成的列表…</p>
+<p><code>rosparam</code> 有很多命令可以用来操作参数，wiki告诉了我们这些命令的用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rosparam <span class="built_in">set</span>            设置参数</span><br><span class="line">rosparam get            获取参数</span><br><span class="line">rosparam load           从文件中加载参数</span><br><span class="line">rosparam dump           向文件中转储参数</span><br><span class="line">rosparam delete         删除参数</span><br><span class="line">rosparam list           列出参数名</span><br></pre></td></tr></table></figure>
+<p><strong>rosparam list</strong></p>
+<p>我们使用这个命令之后，可以看到参数服务器上有3个参数用于设定背景颜色：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/rosdistro</span><br><span class="line">/roslaunch/uris/host_nxt__43407</span><br><span class="line">/rosversion</span><br><span class="line">/run_id</span><br><span class="line">/turtlesim/background_b</span><br><span class="line">/turtlesim/background_g</span><br><span class="line">/turtlesim/background_r</span><br></pre></td></tr></table></figure>
+<p><strong>rosparam set &amp; rosparam get</strong></p>
+<p>这俩的用法都是后头加上 <code>[param_name]</code></p>
+<p>比如使用如下命令修改背景颜色：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosparam <span class="built_in">set</span> /turtlesim/background_r 150</span><br><span class="line">$ rosservice call /clear <span class="comment">#需要调用clear才能让参数的修改得以生效</span></span><br></pre></td></tr></table></figure>
+<p>我们就会发现背景颜色变紫了~</p>
+<p>然后我们可以使用 <code>get</code> 来获取其它参数的值，比如获取背景绿色通道的值：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosparam get /turtlesim/background_g</span><br><span class="line"></span><br><span class="line">86</span><br></pre></td></tr></table></figure>
+<p>我们甚至还能用 <code>rosparam get /</code> 来显示参数服务器上的所有内容</p>
+<p><strong>rosparam dump &amp; rosparam load</strong></p>
+<p>这俩的用法都是在后头加上 <code>[file_name] [namespace]</code></p>
+<p>比如，我们将所有的参数写入 <code>params.yaml</code> 文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosparam dump params.yaml</span><br></pre></td></tr></table></figure>
+<p>甚至可以将 <code>yaml</code> 文件重载入新的命令空间，比如 <code>copy_turtle</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosparam load params.yaml copy_turtle</span><br><span class="line">$ rosparam get /copy_turtle/turtlesim/background_b</span><br><span class="line"></span><br><span class="line">255</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="使用rqt-console和roslaunch"><a href="#使用rqt-console和roslaunch" class="headerlink" title="使用rqt_console和roslaunch"></a>使用rqt_console和roslaunch</h3><p><strong>rqt_console &amp; rqt_logger_level</strong></p>
+<p>wiki告诉我们，<code>rqt_console</code> 连接到了ROS的日志框架，以显示节点的输出信息。<code>rqt_logger_level</code> 允许我们在节点运行时改变输出信息的详细级别。</p>
+<p><code>rqt_logger_level</code>允许我们在节点运行时改变输出信息的详细级别，包括<code>Debug</code>、<code>Info</code>、<code>Warn</code> 和<code>Error</code>。</p>
+<p><strong>日志记录器级别</strong></p>
+<p>日志级别的优先级按以下顺序排列：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Fatal  Error  Warn  Info  Debug</span><br></pre></td></tr></table></figure>
+<p>wiki告诉我们，通过设置日志级别，咱们可以获得所有优先级级别，或只是更高级别的消息。比如，将日志级别设为<code>Warn</code>时，咱会得到<code>Warn</code>、<code>Error</code>和<code>Fatal</code>这三个等级的日志消息。</p>
+<p><strong>roslaunch</strong></p>
+<p>这个命令可以用来启动定义在 <code>launch</code> 文件中的节点，用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roslaunch [package] [filename.launch]</span><br></pre></td></tr></table></figure>
+<p>wiki引导我们切换到我们之前的 <code>beginner_tutorials</code> 软件包目录下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roscd beginner_tutorials</span><br></pre></td></tr></table></figure>
+<p>继续创建一个 <code>launch</code> 目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> launch</span><br><span class="line">$ <span class="built_in">cd</span> launch</span><br></pre></td></tr></table></figure>
+<p><strong>launch文件</strong></p>
+<p>wiki让我们现在创建一个名为 <code>turtlemimic.launch</code> 的launch文件并复制粘贴这些东西进去：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> 1 <span class="tag">&lt;<span class="name">launch</span>&gt;</span></span><br><span class="line"> 2 # 首先用launch标签开头，以表明这是一个launch文件</span><br><span class="line"> </span><br><span class="line"> 3   <span class="tag">&lt;<span class="name">group</span> <span class="attr">ns</span>=<span class="string">&quot;turtlesim1&quot;</span>&gt;</span></span><br><span class="line"> 4     <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;turtlesim&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sim&quot;</span> <span class="attr">type</span>=<span class="string">&quot;turtlesim_node&quot;</span>/&gt;</span></span><br><span class="line"> 5   <span class="tag">&lt;/<span class="name">group</span>&gt;</span></span><br><span class="line"> 6 </span><br><span class="line"> 7   <span class="tag">&lt;<span class="name">group</span> <span class="attr">ns</span>=<span class="string">&quot;turtlesim2&quot;</span>&gt;</span></span><br><span class="line"> 8     <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;turtlesim&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sim&quot;</span> <span class="attr">type</span>=<span class="string">&quot;turtlesim_node&quot;</span>/&gt;</span></span><br><span class="line"> 9   <span class="tag">&lt;/<span class="name">group</span>&gt;</span></span><br><span class="line"> # 此处我们创建了两个分组，并以命名空间（namespace）标签来区分，其中一个名为turtulesim1，另一个名为turtlesim2，两个分组中都有相同的名为sim的turtlesim节点。这样可以让我们同时启动两个turtlesim模拟器，而不会产生命名冲突。</span><br><span class="line"> </span><br><span class="line">10 </span><br><span class="line">11   <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;turtlesim&quot;</span> <span class="attr">name</span>=<span class="string">&quot;mimic&quot;</span> <span class="attr">type</span>=<span class="string">&quot;mimic&quot;</span>&gt;</span></span><br><span class="line">12     <span class="tag">&lt;<span class="name">remap</span> <span class="attr">from</span>=<span class="string">&quot;input&quot;</span> <span class="attr">to</span>=<span class="string">&quot;turtlesim1/turtle1&quot;</span>/&gt;</span></span><br><span class="line">13     <span class="tag">&lt;<span class="name">remap</span> <span class="attr">from</span>=<span class="string">&quot;output&quot;</span> <span class="attr">to</span>=<span class="string">&quot;turtlesim2/turtle1&quot;</span>/&gt;</span></span><br><span class="line">14   <span class="tag">&lt;/<span class="name">node</span>&gt;</span></span><br><span class="line">#在这里我们启动模仿节点，话题的输入和输出分别重命名为turtlesim1和turtlesim2，这样就可以让turtlesim2模仿turtlesim1了。</span><br><span class="line"></span><br><span class="line">15 </span><br><span class="line">16 <span class="tag">&lt;/<span class="name">launch</span>&gt;</span></span><br><span class="line"># 这一行使得launch文件的XML标签闭合。</span><br></pre></td></tr></table></figure>
+<p><strong>使用roslaunch</strong></p>
+<p>咱们通过 <code>roslaunch</code> 命令来运行launch文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roslaunch beginner_tutorials turtlemimic.launch</span><br></pre></td></tr></table></figure>
+<p>现在将会有两个turtlesim被启动，然后我们在一个<strong>新</strong>终端中使用<code>rostopic</code>命令发送：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic pub /turtlesim1/turtle1/cmd_vel geometry_msgs/Twist -r 1 -- <span class="string">&#x27;[2.0, 0.0, 0.0]&#x27;</span> <span class="string">&#x27;[0.0, 0.0, -1.8]&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>诶，咱们就会惊奇地发现，咱们只让 <code>turtle1</code> 运动了，但是 <code>turtle2</code> 也跟随它一起运动了！</p>
+<hr>
+<h3 id="使用rosed在ROS中编辑文件"><a href="#使用rosed在ROS中编辑文件" class="headerlink" title="使用rosed在ROS中编辑文件"></a>使用rosed在ROS中编辑文件</h3><p><strong>rosed</strong></p>
+<p>利用这个命令可以直接通过软件包名编辑包中文件，无需键入完整路径。</p>
+<p>用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosed [package_name] [filename]</span><br></pre></td></tr></table></figure>
+<p><strong>Tab补全</strong></p>
+<p>使用这个方法，在不知道准确文件名的情况下，也可以轻松地查看和编辑包中的所有文件，用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosed [package_name] &lt;tab&gt;&lt;tab&gt;</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosed roscpp &lt;tab&gt;&lt;tab&gt;</span><br><span class="line"></span><br><span class="line">Empty.srv                   roscpp.cmake</span><br><span class="line">genmsg_cpp.py               roscppConfig.cmake</span><br><span class="line">gensrv_cpp.py               roscppConfig-version.cmake</span><br><span class="line">GetLoggers.srv              roscpp-msg-extras.cmake</span><br><span class="line">Logger.msg                  roscpp-msg-paths.cmake</span><br><span class="line">msg_gen.py                  SetLoggerLevel.srv</span><br><span class="line">package.xml</span><br></pre></td></tr></table></figure>
+<p><strong>编辑器</strong></p>
+<p>rosed默认的编译器是vim~</p>
+<hr>
+<h3 id="创建ROS消息和服务"><a href="#创建ROS消息和服务" class="headerlink" title="创建ROS消息和服务"></a>创建ROS消息和服务</h3><p><strong>msg 和 srv</strong></p>
+<ul>
+<li><code>msg</code>：<code>msg</code> 文件是文本文件，用于描述ROS消息的字段。它们用于为不同编程语言编写的消息生成源代码。</li>
+<li><code>srv</code>：一个 <code>srv</code> 文件描述一个服务。它由两部分组成：请求和响应。</li>
+</ul>
+<hr>
+<h3 id="编写简单的发布者和订阅者-Python"><a href="#编写简单的发布者和订阅者-Python" class="headerlink" title="编写简单的发布者和订阅者 (Python)"></a>编写简单的发布者和订阅者 (Python)</h3><p><strong>编写发布者节点</strong></p>
+<p>wiki告诉我们，<code>节点</code> 是连接到ROS网络的可执行文件。我们要创建 <code>talker</code> (发布者) 节点，该节点将不断广播消息。</p>
+<p>跟着wiki上的步骤，先创建一个 <code>scripts</code> 目录来存放 <code>Python</code> 脚本，然后下载示例脚本 <code>talker.py</code> 放到 <code>scripts</code> 目录中并给执行权限；最后把相关内容添加到 <code>CMakeLists.txt</code> 里头，就能确保正确安装 <code>Python</code>脚本，并使用合适的 <code>Python</code> 解释器了~</p>
+<p><strong>解释</strong></p>
+<p>跟着wiki分解一下代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># (每个Python ROS节点的最开头都有这个声明。第一行确保脚本作为Python脚本执行。)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> std_msgs.msg <span class="keyword">import</span> String</span><br><span class="line"><span class="comment"># 如果要编写ROS节点，则需要导入rospy。std_msgs.msg的导入则是为了使我们能够重用std_msgs/String消息类型（即一个简单的字符串容器）来发布。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">talker</span>():</span><br><span class="line">    pub = rospy.Publisher(<span class="string">&#x27;chatter&#x27;</span>, String, queue_size=<span class="number">10</span>)</span><br><span class="line">    rospy.init_node(<span class="string">&#x27;talker&#x27;</span>, anonymous=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 这部分代码定义了talker与其他ROS部分的接口。pub = rospy.Publisher(&quot;chatter&quot;, String, queue_size=10)声明该节点正在使用String消息类型发布到chatter话题。这里的String实际上是std_msgs.msg.String类。queue_size参数是在ROS Hydro及更新版本中新增的，用于在订阅者接收消息的速度不够快的情况下，限制排队的消息数量。对于ROS Groovy及早期版本来说，只需省略即可。下一行的rospy.init_node(NAME, ...)非常重要，因为它把该节点的名称告诉了rospy——只有rospy掌握了这一信息后，才会开始与ROS主节点进行通信。在本例中，节点将使用talker名称。</span></span><br><span class="line">    </span><br><span class="line">    rate = rospy.Rate(<span class="number">10</span>) <span class="comment"># 10hz</span></span><br><span class="line">    <span class="comment"># 此行创建一个Rate对象rate。借助其方法sleep()，它提供了一种方便的方法，来以想要的速率循环。它的参数是10，即表示希望它每秒循环10次（只要我们的处理时间不超过十分之一秒）！</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> rospy.is_shutdown():</span><br><span class="line">        hello_str = <span class="string">&quot;hello world %s&quot;</span> % rospy.get_time()</span><br><span class="line">        rospy.loginfo(hello_str)</span><br><span class="line">        pub.publish(hello_str)</span><br><span class="line">        rate.sleep()</span><br><span class="line">    <span class="comment"># 这个循环是一个相当标准的rospy结构：检查rospy.is_shutdown()标志，然后执行代码逻辑。必须查看is_shutdown()以检查程序是否应该退出（例如有Ctrl+C或其他）。在本例中，代码逻辑即对public .publish(hello_str)的调用，它将一个字符串发布到chatter话题。循环的部分还调用了rate.sleep()，它在循环中可以用刚刚好的睡眠时间维持期望的速率。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        talker()</span><br><span class="line">    <span class="keyword">except</span> rospy.ROSInterruptException:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="comment"># 除了标准的Python __main__检查，它还会捕获一个rospy.ROSInterruptException异常，当按下Ctrl+C或节点因其他原因关闭时，这一异常就会被rospy.sleep()和rospy.Rate.sleep()抛出。引发此异常的原因是不会意外地在sleep()之后继续执行代码。</span></span><br></pre></td></tr></table></figure>
+<p><strong>编写订阅者节点</strong></p>
+<p>继续跟着wiki，下载示例脚本 <code>listener.py</code> 放到 <code>scripts</code> 目录中并给执行权限，然后编辑<code>CMakeLists.txt</code> 中的 <code>catkin_install_python()</code> 调用。(此处省略命令和代码)</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">rospy.init_node(<span class="string">&#x27;listener&#x27;</span>, anonymous=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">rospy.Subscriber(<span class="string">&#x27;chatter&#x27;</span>, String, callback)</span><br><span class="line"></span><br><span class="line"><span class="comment"># spin() simply keeps python from exiting until this node is stopped</span></span><br><span class="line">rospy.spin()</span><br></pre></td></tr></table></figure>
+<p>wiki对这段代码的解释是：<em>这声明节点订阅了 <code>chatter</code> 话题，类型是 <code>std_msgs.msgs.String</code>。当接收到新消息时，<code>callback</code> 函数被调用，消息作为第一个参数。</em></p>
+<p><em>我们还稍微更改了对<code>rospy.init_node()</code>的调用。我们添加了  <code>anonymous=True</code> 关键字参数。ROS要求每个节点都有一个唯一的名称，如果出现具有相同名称的节点，则会与前一个节点发生冲突，这样一来，出现故障的节点很容易地被踢出网络。<code>anonymous=True</code> 标志会告诉 <code>rospy</code> 为节点生成唯一的名称，这样就很容易可以有多个 <code>listener.py</code> 一起运行。</em></p>
+<p><em>最后再补充一下，<code>rospy.spin()</code> 只是不让节点退出，直到节点被明确关闭。与 <code>roscpp</code> 不同，<code>rospy.spin()</code> 不影响订阅者回调函数，因为它们有自己的线程。</em></p>
+<p><strong>构建节点</strong></p>
+<p>咱们使用CMake作为构建系统，这是为了确保能为创建的<strong>消息</strong>和<strong>服务</strong>自动生成Python代码。</p>
+<p>回到catkin工作空间，然后运行 <code>catkin_make</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/catkin_ws</span><br><span class="line">$ catkin_make</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="检验简单的发布者和订阅者"><a href="#检验简单的发布者和订阅者" class="headerlink" title="检验简单的发布者和订阅者"></a>检验简单的发布者和订阅者</h3><p><strong>运行发布者</strong></p>
+<p>咱们运行刚才制作的叫做 <code>talker</code> 的发布者：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rosrun beginner_tutorials talker.py</span><br><span class="line"></span><br><span class="line">[INFO] [1734609185.705253]: hello world 1734609185.7051988</span><br><span class="line">[INFO] [1734609185.806596]: hello world 1734609185.8064554</span><br><span class="line">[INFO] [1734609185.906493]: hello world 1734609185.9063175</span><br><span class="line">[INFO] [1734609186.005546]: hello world 1734609186.0053947</span><br><span class="line">[INFO] [1734609186.106381]: hello world 1734609186.1062553</span><br><span class="line">[INFO] [1734609186.206608]: hello world 1734609186.2064044</span><br><span class="line">[INFO] [1734609186.305868]: hello world 1734609186.3057268</span><br><span class="line">[INFO] [1734609186.406142]: hello world 1734609186.4059968</span><br><span class="line">[INFO] [1734609186.505583]: hello world 1734609186.5054214</span><br><span class="line">[INFO] [1734609186.606951]: hello world 1734609186.6068125</span><br><span class="line">[INFO] [1734609186.705764]: hello world 1734609186.7056243</span><br><span class="line">[INFO] [1734609186.805870]: hello world 1734609186.8057344</span><br><span class="line">[INFO] [1734609186.905890]: hello world 1734609186.9057145</span><br><span class="line">[INFO] [1734609187.006627]: hello world 1734609187.0064893</span><br></pre></td></tr></table></figure>
+<p>wiki告诉我们，发布者节点已启动并运行。现在我们需要一个订阅者以接收来自发布者的消息。</p>
+<p><strong>运行订阅者</strong></p>
+<p>咱们运行刚才制作的叫做 <code>listener</code> 的订阅者：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosrun beginner_tutorials listener</span><br><span class="line"></span><br><span class="line">[INFO] [1734609563.673116]: /listener_14824_1734609563066I heard hello world 1734609563.671003</span><br><span class="line">[INFO] [1734609563.773131]: /listener_14824_1734609563066I heard hello world 1734609563.7711043</span><br><span class="line">[INFO] [1734609563.873401]: /listener_14824_1734609563066I heard hello world 1734609563.8712664</span><br><span class="line">[INFO] [1734609563.973288]: /listener_14824_1734609563066I heard hello world 1734609563.9714963</span><br><span class="line">[INFO] [1734609564.073304]: /listener_14824_1734609563066I heard hello world 1734609564.0710852</span><br><span class="line">[INFO] [1734609564.173103]: /listener_14824_1734609563066I heard hello world 1734609564.1708713</span><br><span class="line">[INFO] [1734609564.273282]: /listener_14824_1734609563066I heard hello world 1734609564.2709982</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="编写简单的服务器和客户端-Python"><a href="#编写简单的服务器和客户端-Python" class="headerlink" title="编写简单的服务器和客户端 (Python)"></a>编写简单的服务器和客户端 (Python)</h3><p><strong>编写服务节点</strong></p>
+<p>跟着wiki的指引，我们将创建简单的服务节点 <code>add_two_ints_server</code>，该节点将接收两个整数，并返回它们的和。</p>
+<p><strong>代码</strong></p>
+<p>在beginner_tutorials包中创建 <code>scripts/add_two_ints_server.py</code> 文件并粘贴以下内容进去：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> beginner_tutorials.srv <span class="keyword">import</span> AddTwoInts,AddTwoIntsResponse</span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handle_add_two_ints</span>(<span class="params">req</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Returning [%s + %s = %s]&quot;</span>%(req.a, req.b, (req.a + req.b)))</span><br><span class="line">    <span class="keyword">return</span> AddTwoIntsResponse(req.a + req.b)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add_two_ints_server</span>():</span><br><span class="line">    rospy.init_node(<span class="string">&#x27;add_two_ints_server&#x27;</span>)</span><br><span class="line">    s = rospy.Service(<span class="string">&#x27;add_two_ints&#x27;</span>, AddTwoInts, handle_add_two_ints)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Ready to add two ints.&quot;</span>)</span><br><span class="line">    rospy.spin()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    add_two_ints_server()</span><br></pre></td></tr></table></figure>
+<p><strong>解释</strong></p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">s = rospy.Service(<span class="string">&#x27;add_two_ints&#x27;</span>, AddTwoInts, handle_add_two_ints)</span><br></pre></td></tr></table></figure>
+<p>wiki告诉我们：<em>这声明了一个名为 <code>add_two_ints</code> 的新服务，其服务类型为 <code>AddTwoInts</code>。所有的请求（request）都传递给了 <code>handle_add_two_ints</code> 函数。<code>handle_add_two_ints</code> 被 <code>AddTwoIntsRequest</code> 的实例调用，返回 <code>AddTwoIntsResponse</code> 实例。</em></p>
+<p><em>就像订阅者中的例子一样，<code>rospy.spin()</code> 可以防止代码在服务关闭之前退出。</em></p>
+<p><strong>编写客户端节点</strong></p>
+<p><strong>代码</strong></p>
+<p>继续跟随wiki指引，在 <code>beginner_tutorials</code> 包中创建 <code>scripts/add_two_ints_client.py</code>文件并粘贴以下内容进去：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> rospy</span><br><span class="line"><span class="keyword">from</span> beginner_tutorials.srv <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add_two_ints_client</span>(<span class="params">x, y</span>):</span><br><span class="line">    rospy.wait_for_service(<span class="string">&#x27;add_two_ints&#x27;</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        add_two_ints = rospy.ServiceProxy(<span class="string">&#x27;add_two_ints&#x27;</span>, AddTwoInts)</span><br><span class="line">        resp1 = add_two_ints(x, y)</span><br><span class="line">        <span class="keyword">return</span> resp1.<span class="built_in">sum</span></span><br><span class="line">    <span class="keyword">except</span> rospy.ServiceException <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Service call failed: %s&quot;</span>%e)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">usage</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;%s [x y]&quot;</span>%sys.argv[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(sys.argv) == <span class="number">3</span>:</span><br><span class="line">        x = <span class="built_in">int</span>(sys.argv[<span class="number">1</span>])</span><br><span class="line">        y = <span class="built_in">int</span>(sys.argv[<span class="number">2</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(usage())</span><br><span class="line">        sys.exit(<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Requesting %s+%s&quot;</span>%(x, y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;%s + %s = %s&quot;</span>%(x, y, add_two_ints_client(x, y)))</span><br></pre></td></tr></table></figure>
+<p><strong>解释</strong></p>
+<p>wiki的解释如下：</p>
+<p><em>客户端（用来调用服务）的代码也很简单。对于客户端来说不需要调用<code>init_node()</code>。我们首先调用：</em></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rospy.wait_for_service(&#x27;add_two_ints&#x27;)</span><br></pre></td></tr></table></figure>
+<p><em>这是一种很方便的方法，可以让在<code>add_two_ints</code>服务可用之前一直阻塞。</em></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add_two_ints = rospy.ServiceProxy(&#x27;add_two_ints&#x27;, AddTwoInts)</span><br></pre></td></tr></table></figure>
+<p><em>这里我们为服务的调用创建了一个句柄（handle）。</em></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">resp1 = add_two_ints(x, y)</span><br><span class="line">return resp1.sum</span><br></pre></td></tr></table></figure>
+<p><em>然后我们可以使用这个句柄，就像普通的函数一样调用它。</em></p>
+<p><em>因为我们已经将服务的类型声明为 <code>AddTwoInts</code>，它会生成 <code>AddTwoIntsRequest</code> 对象 (you’re free to pass in your own instead)。如果调用失败，<code>rospy.ServiceException</code>将会抛出，所以应该弄一个合适的 <code>try/except</code> 部分。</em></p>
+<p><strong>构建节点</strong></p>
+<p>继续使用CMake作为构建系统，跟前面一模一样，不再赘述~</p>
+<hr>
+<h3 id="检验简单的服务和客户端"><a href="#检验简单的服务和客户端" class="headerlink" title="检验简单的服务和客户端"></a>检验简单的服务和客户端</h3><p><strong>运行服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosrun beginner_tutorials add_two_ints_server,py</span><br><span class="line"></span><br><span class="line">Ready to add two ints.</span><br></pre></td></tr></table></figure>
+<p><strong>运行客户端</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosrun beginner_tutorials add_two_ints_client.py 1 3</span><br><span class="line"></span><br><span class="line">Requesting 1+3</span><br><span class="line">1 + 3 = 4</span><br></pre></td></tr></table></figure>
+<p>至此，成功地运行了第一个服务和客户端~</p>
+<hr>
+<h3 id="录制和回放数据"><a href="#录制和回放数据" class="headerlink" title="录制和回放数据"></a>录制和回放数据</h3><p><strong>录制数据 (创建bag文件) </strong></p>
+<p>wiki告诉我们，这一部分将指导咱如何从正在运行的ROS系统中记录话题数据，话题数据将被积累到一个 <code>bag</code> 文件中。</p>
+<p>咱打开三个新终端，分别输入以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roscore</span><br><span class="line"></span><br><span class="line">$ rosrun turtlesim turtlesim_node</span><br><span class="line"></span><br><span class="line">$ rosrun turtlesim turtle_teleop_key</span><br></pre></td></tr></table></figure>
+<p>这三个命令就是咱之前用来控制小乌龟运动的命令。</p>
+<p><strong>录制所有发布的话题</strong></p>
+<p>咱们打开一个新终端：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> ~/bagfiles</span><br><span class="line">$ <span class="built_in">cd</span> ~/bagfiles</span><br><span class="line">$ rosbag record -a</span><br></pre></td></tr></table></figure>
+<p>wiki告诉我们，这里我们只是创建了一个临时目录来记录数据，然后运行 <code>rosbag record</code> 带选项 <code>-a</code>，表明所有发布的话题都应该积累在一个 <code>bag</code> 文件中。</p>
+<p>咱们回到 <code>turtle_teleop</code> 节点所在的终端窗口，控制乌龟移动10秒左右。然后咱在运行 <code>rosbag record</code> 的窗口中按 <code>Ctrl + C</code> 退出，然后查看 <code>~/bagfiles</code> 里的内容，咱们就能发现一个以<strong>年份、日期和时间</strong>开头，并且扩展名是 <code>.bag</code> 的文件，这就是咱们所说的袋文件，它包含 <code>rosbag record</code> 运行期间由任何节点发布的所有话题。</p>
+<p><strong>检查并回放bag文件</strong></p>
+<p>刚才咱已经使用 <code>rosbag record</code> 命令录制了一个 <code>bag</code> 文件，接下来我们可以使用 <code>rosbag info</code> 查看它的内容，或者使用 <code>rosbag play</code> 命令回放。</p>
+<p>命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosbag info &lt;your bagfile&gt;</span><br></pre></td></tr></table></figure>
+<p>用观察大法知，这些信息告诉了咱 <code>bag</code> 文件中所包含话题的名称、类型和消息数量。</p>
+<p>下一步咱们回放 <code>bag</code> 文件以再现系统运行过程。首先用<code>Ctrl+C</code>杀死之前运行的 <code>turtle_teleop_key</code> ，但让 <code>turtlesim</code> 继续运行。在终端中 <code>bag</code> 文件所在目录下运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosbag play &lt;your bagfile&gt;</span><br></pre></td></tr></table></figure>
+<p>wiki上写到：<em>默认模式下，<strong>rosbag play</strong>命令在公告每条消息后会等待一小段时间（0.2秒）才真正开始发布bag文件中的内容。等待一段时间是为了可以通知订阅者，消息已经公告且数据可能会马上到来。如果<strong>rosbag play</strong>在公告消息后立即发布，订阅者可能会接收不到几条最先发布的消息。等待时间可以通过 <code>-d</code> 选项来指定。</em></p>
+<p><em>最终 <code>/turtle1/cmd_vel</code> 话题将会被发布，同时在turtuelsim中乌龟应该会像之前用turtle_teleop_key控制它那样开始移动。从运行<strong>rosbag play</strong>到乌龟开始移动时所经历时间应该近似等于之前在本教程开始部分运行<strong>rosbag record</strong>后到开始按下键盘发出控制命令时所经历时间。</em></p>
+<p><strong>录制数据子集</strong></p>
+<p>wiki告诉我们，当运行一个复杂的系统时，比如 <code>PR2</code> 软件套装，会有几百个话题被发布，有些话题亦会发布大量数据（比如包含摄像头图像流的话题）。在这种系统中，将包含所有话题的日志写入一个bag文件到磁盘通常是不切实际的。<strong>rosbag record</strong>命令支持只录制特定的话题到bag文件中，这样就可以只录制用户感兴趣的话题。</p>
+<p>在bag文件所在目录下执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rosbag record -O subset /turtle1/cmd_vel /turtle1/pose</span><br></pre></td></tr></table></figure>
+<p>上述命令中的 <code>-O</code> 参数告诉 <code>rosbag record</code> 将数据记录到名为 <code>subset.bag</code> 的文件中，而后面的 <code>topic</code> 参数告诉<code>rosbag record</code>只能订阅这两个指定的话题。然后通过键盘控制乌龟随意移动几秒钟，最后按 <code>Ctrl+C</code> 退出 <code>rosbag record</code> 命令。</p>
+<p>现在看看bag文件中的内容（<code>rosbag info subset.bag</code>），里面就只包含指定的话题了~</p>
+<p><strong>rosbag 录制和回放的局限性</strong></p>
+<p>仔细观察发现，乌龟的路径可能并没有完全地映射到原先通过键盘控制时产生的路径上——整体形状应该是差不多的，但没有完全一样。wiki告诉我们，<em>这是因为 <code>turtlesim</code> 的移动路径对系统定时精度的变化非常敏感。<code>rosbag</code> 受制于其本身的性能无法完全复制录制时的系统运行行为，<code>rosplay</code> 也一样。对于像 <code>turtlesim</code> 这样的节点，当处理消息的过程中系统定时发生极小变化时也会使其行为发生微妙变化，用户不应该期望能够完美地模仿系统行为。</em></p>
+<hr>
+<h3 id="从bag文件中读取信息"><a href="#从bag文件中读取信息" class="headerlink" title="从bag文件中读取信息"></a>从bag文件中读取信息</h3><p><strong>立即回放信息并在多个终端中查看输出</strong></p>
+<p>在终端里头使用下面这个命令，来手动检查所有已经发布的话题，以及向每个话题发布了多少信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ time rosbag info demo.bag</span><br><span class="line"><span class="comment"># 或者已经知道话题名称的话：</span></span><br><span class="line">$ time rosbag info mybag.bag | grep -E <span class="string">&quot;(topic1|topic2|topic3)&quot;</span></span><br></pre></td></tr></table></figure>
+<p>咱们就能看到有多少条消息发布在什么话题上了~</p>
+<p>有30条消息发布在 <code>/obs1/gps/fix</code> 话题上，有40条消息发布在 <code>/diagnostics_agg</code> 话题上。</p>
+<p>跟着wiki，咱们还是先运行 <code>roscore</code> ，然后订阅 <code>/obs1/gps/fix</code> 话题并复读该话题发布的所有内容，同时用tee命令转储到一个 <code>yaml</code> 格式的文件中以遍之后查看：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ rostopic <span class="built_in">echo</span> /obs1/gps/fix | <span class="built_in">tee</span> topic1.yaml</span><br></pre></td></tr></table></figure>
+<p>再打开一个新终端，订阅另一个话题 <code>/diagnostics_agg</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rostopic <span class="built_in">echo</span> /diagnostics_agg | <span class="built_in">tee</span> topic2.yaml</span><br></pre></td></tr></table></figure>
+<p>然后咱们还得再打开另一个新终端来回放 <code>bag</code> 文件。这一次我们将尽可能快地回放 <code>bag</code> 文件（使用 <code>--immediate</code> 选项），<strong>只</strong>会发布我们感兴趣的话题。格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">time rosbag play --immediate demo.bag --topics /obs1/gps/fix /diagnostics_agg</span><br></pre></td></tr></table></figure>
+<p>现在看一下咱的两个终端，每个终端都订阅了一个话题，每个话题类型的所有消息都用 <code>YAML</code> 格式输出，每条消息之间用 <code>---</code> 分割。咱们用任意文本编辑器（我用的 <code>vscode</code>）就能查看文件中的消息了~</p>
+<p><strong>使用 ros_readbagfile 脚本提取感兴趣的话题</strong></p>
+<p>下载并安装 <code>ros_readbag.py</code> :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Download the file</span></span><br><span class="line">wget https://raw.githubusercontent.com/ElectricRCAircraftGuy/eRCaGuy_dotfiles/master/useful_scripts/ros_readbagfile.py</span><br><span class="line"><span class="comment"># Make it executable</span></span><br><span class="line"><span class="built_in">chmod</span> +x ros_readbagfile.py</span><br><span class="line"><span class="comment"># Ensure you have the ~/bin directory for personal binaries</span></span><br><span class="line"><span class="built_in">mkdir</span> -p ~/bin</span><br><span class="line"><span class="comment"># Move this executable script into that directory as `ros_readbagfile`, so that it will</span></span><br><span class="line"><span class="comment"># be available as that command</span></span><br><span class="line"><span class="built_in">mv</span> ros_readbagfile.py ~/bin/ros_readbagfile</span><br><span class="line"><span class="comment"># Re-source your ~/.bashrc file to ensure ~/bin is in your PATH, so you can use this</span></span><br><span class="line"><span class="comment"># new `ros_readbagfile` command you just installed</span></span><br><span class="line">. ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>先通过 <code>rosbag info</code> 命令确定要从bag文件中读取的<strong>准确</strong>话题名，然后使用 <code>ros_readbagfile</code> ，格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ros_readbagfile &lt;mybagfile.bag&gt; [topic1] [topic2] [topic3] [...]</span><br></pre></td></tr></table></figure>
+<p>要阅读信息，就输入以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ time ros_readbagfile demo.bag /obs1/gps/fix /diagnostics_agg | <span class="built_in">tee</span> topics.yaml</span><br></pre></td></tr></table></figure>
+<p>这样之后，咱们就能看到它快速打印出来了所有信息~</p>
+<p>咱们用任意文本编辑器 (我用的vim) 来打开 <code>topics.yaml</code> ，就能看到它从 <code>bag</code> 文件中提取的所有信息了~</p>
+<hr>
+<h3 id="roswtf入门"><a href="#roswtf入门" class="headerlink" title="roswtf入门"></a>roswtf入门</h3><p>首先咱们要确保 <code>roscore</code> 没有运行</p>
+<p><strong>安装检查</strong></p>
+<p>这个命令可以检查我的系统，并且尝试发现问题，咱们输入以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roscd rosmaster</span><br><span class="line">$ roswtf</span><br><span class="line"></span><br><span class="line">Package: rosmaster <span class="comment"># roswtf使用当前目录中的任何内容来确定其执行的检查。这个输出告诉我们是在包rosmaster的目录中启动了roswtf。</span></span><br><span class="line">================================================================================</span><br><span class="line">Static checks summary: <span class="comment"># 它会报告任何关于文件系统或非运行时（比如无需roscore的场景）的问题。本例显示我们没有错误。</span></span><br><span class="line"></span><br><span class="line">No errors or warnings</span><br><span class="line">================================================================================</span><br><span class="line"></span><br><span class="line">ROS Master does not appear to be running. <span class="comment"># roscore未在运行。roswtf不会做任何ROS在线检查。</span></span><br><span class="line">Online graph checks will not be run.</span><br><span class="line">ROS_MASTER_URI is [http://localhost:11311]</span><br></pre></td></tr></table></figure>
+<p><strong>在线检查</strong></p>
+<p>依照wiki，接下来咱们要启动一个 <code>Master</code> ，在新终端启动 <code>roscore</code> ，然后继续</p>
+<p>现在咱们按照相同的顺序运行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roscd</span><br><span class="line">$ roswtf</span><br><span class="line"></span><br><span class="line">No package or stack <span class="keyword">in</span> context</span><br><span class="line">======================================================</span><br><span class="line">Static checks summary:</span><br><span class="line"></span><br><span class="line">No errors or warnings</span><br><span class="line">======================================================</span><br><span class="line">Beginning tests of your ROS graph. These may take awhile...</span><br><span class="line">analyzing graph...</span><br><span class="line">... <span class="keyword">done</span> analyzing graph</span><br><span class="line">running graph rules...</span><br><span class="line">... <span class="keyword">done</span> running graph rules</span><br><span class="line"></span><br><span class="line">Online checks summary:</span><br><span class="line"></span><br><span class="line">Found 1 warning(s).</span><br><span class="line">Warnings are things that may be just fine, but are sometimes at fault</span><br><span class="line"></span><br><span class="line">WARNING The following node subscriptions are unconnected:</span><br><span class="line"> * /rosout:</span><br><span class="line">   * /rosout</span><br></pre></td></tr></table></figure>
+<p>显然，在输出末尾， <code>roswtf</code> 发出了警告，<code>rosout</code> 节点订阅了一个没有节点向其发布的话题。wiki告诉我们，在本例中，这正是所期望看到的，因为除了 <code>roscore</code> 没有任何其它节点在运行，所以我们就可以忽略这个警告了~</p>
+<p><strong>错误</strong></p>
+<p>wiki告诉我们， <code>roswtf</code> <em>会对一些系统中看起来异常但可能是正常的运行情况发出警告。也会对确实有问题的情况报告错误。</em></p>
+<p>接下来按照wiki的步骤，给 <code>ROS_PACKAGE_PATH</code> 环境变量设置一个 <code>bad</code> 值，并退出 <code>roscore</code> 以简化检查输出信息。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ roscd</span><br><span class="line">$ ROS_PACKAGE_PATH=bad:<span class="variable">$ROS_PACKAGE_PATH</span> roswtf</span><br><span class="line"></span><br><span class="line">Stack: ros</span><br><span class="line">================================================================================</span><br><span class="line">Static checks summary:</span><br><span class="line"></span><br><span class="line">Found 1 error(s).</span><br><span class="line"></span><br><span class="line">ERROR Not all paths <span class="keyword">in</span> ROS_PACKAGE_PATH [bad] point to an existing directory: </span><br><span class="line"> * bad</span><br><span class="line"></span><br><span class="line">================================================================================</span><br><span class="line"></span><br><span class="line">Cannot communicate with master, ignoring graph checks</span><br></pre></td></tr></table></figure>
+<p>显然，<code>roswtf</code> 发现了一个有关 <code>ROS_PACKAGE_PATH</code> 设置的错误。</p>
+<p><code>roswtf</code> 还可以发现很多其它类型的问题。如果发现自己被构建或通信的问题难住了，可以尝试运行<code>roswtf</code>看能否指明正确的方向。</p>
+<hr>
+<p>至此，ROS 1学习结束~</p>
 ]]></content>
       <tags>
-        <tag>算法</tag>
+        <tag>ROS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据类型:结构体</title>
+    <url>/2024/10/20/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93/</url>
+    <content><![CDATA[<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>在实际问题中，仅仅使用整型(<code>int</code> <code>long long</code>)，浮点型(<code>float</code> <code>double</code>)，字符型(<code>char</code>)以及数组、字符串这些数据类型经常不够。有时候我们需要其中的几种<strong>一起</strong>来修饰某个变量，例如一个学生的信息就需要<code>学号</code>(字符串)，<code>姓名</code>(字符串)，<code>年龄</code>(整型)等等。这些数据类型都不同，但是它们又要表示一个整体，要存在联系，那么我们就需要一个新的数据类型。   </p>
+<p><strong>结构体</strong>就能将不同类型的数据存放在一起，作为个整体进行处理。  </p>
+<p>结构体的声明：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure><br>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
+<p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong>。  </p>
+<p>而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>。  </p>
+<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure><br>2.直接定义结构体变量(匿名结构体)。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure><br><strong><em>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</em></strong>  </p>
+<p><strong>Typedef的引入</strong>:<br>以此为例:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure><br>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
+<p>而若要定义结构体变量<code>stu</code>时，利用<em>数据类型+变量名</em>，我们可以自然而然地写出<code>Student stu;</code>。但这样写，编译器可能会报错，提示我们需要在前面加上<code>struct</code>，于是我们应写为：<code>struct Student stu;</code>。  </p>
+<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure></p>
+<p>这样我们就可以直接用<code>Student stu</code>来定义结构体变量。  </p>
+<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure><br>这样，学生信息里面就包含了学生的生日信息。</p>
+<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure><br><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
+<p>e.g.访问学号:<code>stu1.id</code>.<br>访问生日信息中的月份:<code>stu1.birthday.month</code>.   </p>
+<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <tags>
+        <tag>数据类型</tag>
       </tags>
   </entry>
   <entry>
@@ -732,25 +1304,37 @@ P=\begin{cases}  1, & \text{ } \Delta f < 0, \\ exp(- \Delta f/T_i), & \text{ } 
       </tags>
   </entry>
   <entry>
-    <title>数据类型:结构体</title>
-    <url>/2024/10/20/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93/</url>
-    <content><![CDATA[<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>在实际问题中，仅仅使用整型(<code>int</code> <code>long long</code>)，浮点型(<code>float</code> <code>double</code>)，字符型(<code>char</code>)以及数组、字符串这些数据类型经常不够。有时候我们需要其中的几种<strong>一起</strong>来修饰某个变量，例如一个学生的信息就需要<code>学号</code>(字符串)，<code>姓名</code>(字符串)，<code>年龄</code>(整型)等等。这些数据类型都不同，但是它们又要表示一个整体，要存在联系，那么我们就需要一个新的数据类型。   </p>
-<p><strong>结构体</strong>就能将不同类型的数据存放在一起，作为个整体进行处理。  </p>
-<p>结构体的声明：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure><br>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
-<p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong>。  </p>
-<p>而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>。  </p>
-<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure><br>2.直接定义结构体变量(匿名结构体)。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure><br><strong><em>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</em></strong>  </p>
-<p><strong>Typedef的引入</strong>:<br>以此为例:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure><br>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
-<p>而若要定义结构体变量<code>stu</code>时，利用<em>数据类型+变量名</em>，我们可以自然而然地写出<code>Student stu;</code>。但这样写，编译器可能会报错，提示我们需要在前面加上<code>struct</code>，于是我们应写为：<code>struct Student stu;</code>。  </p>
-<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure></p>
-<p>这样我们就可以直接用<code>Student stu</code>来定义结构体变量。  </p>
-<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure><br>这样，学生信息里面就包含了学生的生日信息。</p>
-<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure><br><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
-<p>e.g.访问学号:<code>stu1.id</code>.<br>访问生日信息中的月份:<code>stu1.birthday.month</code>.   </p>
-<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+    <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
+    <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
+    <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n)</code>,最好情况<code>O(n^2)</code>.  </p>
+<h2 id="选择排序-不稳定"><a href="#选择排序-不稳定" class="headerlink" title="选择排序(不稳定)"></a>选择排序(不稳定)</h2><p><strong>特点</strong>:每次从待排序列中选出一个<strong>最小值</strong>,然后放在序列的起始位置,直至排完.</p>
+<p><strong>时间复杂度</strong>:<code>O(n^2)</code>.  </p>
+<h2 id="插入排序-稳定"><a href="#插入排序-稳定" class="headerlink" title="插入排序(稳定)"></a>插入排序(稳定)</h2><p><strong>特点</strong>:从<strong>第下个元素开始</strong>,从已排序的元素序列<strong>从后往前</strong>扫描,如果该元素<strong>大于</strong>tem,<strong>则将该元素移至下一位</strong>.重复该步骤,直到找到已排序元素中<strong>小于等于</strong>tem的元素.tem插入到该元素的<strong>后面</strong>,如果已排序所有元素都大于tem,则将tem插入到下标为0的位置.<br><strong>一直重复上述步骤,直至排序完成</strong>.   </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n^2)</code>,最好情况<code>O(n)</code>.</p>
+<h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
+<ul>
+<li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
+<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.  </li>
+</ul>
+<p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
+<h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
+<p>是对<strong>冒泡排序</strong>的一种改进  </p>
+</blockquote>
+<p><strong>特点</strong>:通过一趟排序将要排序的数据分割成<strong>独立的两部分</strong>，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以<strong>递归</strong>进行，以此达到整个数据变成有序序列。  </p>
+<ul>
+<li><p>排序流程:  </p>
+<ol>
+<li>首先设定一个<strong>分界值Key</strong>,通过该分界值将数组分成左右两部分.</li>
+<li>将<em>大于或等于Key的数据集中到数组右边,小于分界值的数据集中到数组的左边</em>.此时,左边部分中各元素都小于或等于分界值,而右边部分中各元素都大于或等于分界值.</li>
+<li>然后,左边和右边的数据可以独立排序.对于左侧的数组数据,又可以取一个分界值,将该部分数据分成左右两部分,同样在左边放置较小值,右边放置较大值.右侧的数组数据也可以做类似处理.</li>
+<li>重复上述过程,可以看出,这是一个<strong>递归定义</strong>.通过递归将左侧部分排好序后,再递归排好右侧部分的顺序.当左右两个部分各数据排序完成后,整个数组的排序也就完成了.</li>
+</ol>
+</li>
+</ul>
 ]]></content>
       <tags>
-        <tag>数据类型</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>

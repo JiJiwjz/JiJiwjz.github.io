@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="C#初步学习Foreword During last term’s study, I found that all of my studies were focused on theories and abstract concepts. What I lacked was practical experience, such as working on a concrete project. T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#初步学习">
+<meta property="og:url" content="http://example.com/2025/02/19/C-%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Samxander&#39;s home">
+<meta property="og:description" content="C#初步学习Foreword During last term’s study, I found that all of my studies were focused on theories and abstract concepts. What I lacked was practical experience, such as working on a concrete project. T">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-02-19T12:07:32.000Z">
+<meta property="article:modified_time" content="2025-02-19T12:08:17.700Z">
+<meta property="article:author" content="Sam">
+<meta property="article:tag" content="C#">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2025/02/19/C-%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>C#初步学习 | Samxander's home</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?39a7b28cea42de31b1e8e2834e588560";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Samxander's home</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">You shall see the difference now that we are back again!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/19/C-%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Samxander's home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C#初步学习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-02-19 20:07:32 / 修改时间：20:08:17" itemprop="dateCreated datePublished" datetime="2025-02-19T20:07:32+08:00">2025-02-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="C-初步学习"><a href="#C-初步学习" class="headerlink" title="C#初步学习"></a>C#初步学习</h1><p><strong>Foreword</strong></p>
+<p>During last term’s study, I found that all of my studies were focused on theories and abstract concepts. What I lacked was practical experience, such as working on a concrete project. Thus, I wanna make a new game. I’m an avid rhythm game player. tbh, It’s really cool to make a rhythm game by myself. After looking up references and websites, I decided to create a traditional 4K rhythm game based on <code>Unity</code> , a game engine including abundant functions and frameworks. Therefore, it’s essential for me to study <code>C#</code> as an important programming language.</p>
+<p><strong>简介</strong></p>
+<ul>
+<li><code>C#</code> 是一种由 <code>C</code> 和 <code>C++</code> 衍生出来的<strong>面向对象的编程语言</strong>，它不仅去掉了 <code>C++</code> 中的一些复杂特性，还提供了可视化工具，能够高效地编写程序。</li>
+<li><code>C#</code> 是由 <code>C</code> 和 <code>C++</code> 衍生出来的一种安全的、稳定的、简单的、优雅的面向对象编程语言。它在继承C和C++强大功能的同时去掉了一些它们的复杂特性 (例如没有宏以及不允许多重继承) 。</li>
+<li><code>C#</code> 使得 <code>C++</code> 程序员可以高效的开发程序，且因可调用由 <code>C/C++</code> 编写的本机原生函数，而绝不损失<code>C/C++</code> 原有的强大的功能。因为这种继承关系，<code>C#</code> 与 <code>C/C++</code> 具有极大的相似性，熟悉类似语言的开发者可以很快的转向 <code>C#</code> 。</li>
+</ul>
+<hr>
+<h2 id="一个简单的-Hello-World"><a href="#一个简单的-Hello-World" class="headerlink" title="一个简单的 Hello World!"></a>一个简单的 Hello World!</h2><p>一个 <code>C#</code> 程序主要包含以下部分：</p>
+<ul>
+<li>命名空间的声明</li>
+<li>一个 <code>class</code></li>
+<li><code>class</code> 方法</li>
+<li><code>class</code> 属性</li>
+<li>一个 <code>Main</code> 方法</li>
+<li>语句&amp;表达式</li>
+<li>注释</li>
+</ul>
+<p><code>C#</code> 文件的后缀为 <code>.cs</code></p>
+<p>我们在 <code>Visual Studio</code> 中创建一个 <code>test.cs</code> 文件，包含了可以打印出 <code>Hello World</code> 的简单代码：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">HelloWorldApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">HelloWorld</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* 我的第一个C#程序 */</span></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>在 <code>C#</code> 中，变量分为以下几种类型：</p>
+<ul>
+<li>值类型</li>
+<li>引用类型</li>
+<li>指针类型</li>
+</ul>
+<h3 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h3><p>值类型变量可以直接分配给一个值，它们是从类 <code>System.ValueType</code> 中派生的。</p>
+<p>如下：</p>
+<ul>
+<li>bool</li>
+<li>byte: 8位无符号整数类型</li>
+<li>char</li>
+<li>decimal</li>
+<li>double</li>
+<li>float</li>
+<li>int</li>
+<li>long</li>
+<li><code>sbyte</code>：8位有符号整数类型</li>
+<li>short</li>
+<li><code>uint</code></li>
+<li><code>ulong</code></li>
+<li><code>ushort</code></li>
+</ul>
+<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><ul>
+<li><p>引用类型<strong>不包含</strong>存储在变量中的<strong>实际数据</strong>，但它们<strong>包含</strong>对变量的<strong>引用</strong>。</p>
+</li>
+<li><p>换句话说，它们指的是一个<strong>内存位置</strong>。使用多个变量时，引用类型可以指向一个内存位置。如果内存位置的数据是由一个变量改变的，其他变量会自动反映这种值的变化。内置的引用类型有：object、dynamic 和 string。</p>
+</li>
+</ul>
+<p><strong>对象类型</strong></p>
+<p>对象类型是 <code>C#</code> 通用类型系统中所有数据类型的终极基类。<code>Object</code> 是 <code>System.Object</code> 类的别名。所以对象类型可以被分配任何其他类型的值。但是在分配值之前，需要先进行类型转换。当一个值类型转换为对象类型时，则被称为<strong>装箱</strong>；另一方面，当一个对象类型转换为值类型时，则被称为<strong>拆箱</strong>。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">object</span> obj;</span><br><span class="line">obj = <span class="number">100</span>; <span class="comment">//这是装箱</span></span><br></pre></td></tr></table></figure>
+<p><strong>动态类型</strong></p>
+<p>可以存储任何类型的值在动态数据类型变量中。这些变量的类型检查是在运行时发生的。</p>
+<p>声明动态类型的语法：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dynamic</span> &lt;variable_name&gt; = <span class="keyword">value</span>;</span><br><span class="line"><span class="comment">// 例如：</span></span><br><span class="line"><span class="built_in">dynamic</span> d = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>字符串类型</strong></p>
+<p>字符串类型允许给变量分配人格字符串值。字符串类型是 <code>System.String</code> 类的别名。他是从对象类型派生的。字符串类型的值可以通过两种形式进行分配：引号和 <code>@</code> 引号</p>
+<p>例如：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;WoShiNaiLong&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p><code>C#</code> string字符串的前面可以加 <code>@</code> 将转义字符当做普通字符对待，比如：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> str = <span class="string">@&quot;C:\Windows&quot;</span>;</span><br><span class="line"><span class="comment">//等价于：</span></span><br><span class="line"><span class="built_in">string</span> str = <span class="string">&quot;C:\\Windows&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p><code>@</code> 字符串中可以任意换行，换行符及缩进空格都计算在字符串长度之内。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> str = <span class="string">@&quot;&lt;script type=&quot;&quot;text/javascript&quot;&quot;&gt;</span></span><br><span class="line"><span class="string">	&lt;!--</span></span><br><span class="line"><span class="string">	--&gt;</span></span><br><span class="line"><span class="string">&lt;/script&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>用户自定义引用类型有：<code>class</code>、<code>interface</code> 或 <code>delegate</code>。我们将在以后讨论这些类型。</p>
+<h3 id="指针类型"><a href="#指针类型" class="headerlink" title="指针类型"></a>指针类型</h3><p>指针类型变量存储另一个类型的内存地址，<code>C#</code> 中的指针与 <code>C</code> 或 <code>C++</code> 中的指针有相同的功能，声明指针类型的语法：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type* identifier;</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">char</span>* cptr;</span><br><span class="line"><span class="built_in">int</span>* iptr;</span><br></pre></td></tr></table></figure>
+<h3 id="C-类型转换"><a href="#C-类型转换" class="headerlink" title="C#类型转换"></a>C#类型转换</h3><p>类型转换从根本上说是类型铸造，或者说是把数据从一种类型转换为另一种类型。在 C# 中，类型铸造有两种形式：</p>
+<ul>
+<li><strong>隐式类型转换</strong>：这些转换是 <code>C#</code> 默认的以安全方式进行的转换, 不会导致数据丢失。例如，从小的整数类型转换为大的整数类型，从派生类转换为基类。</li>
+<li><strong>显式类型转换</strong>：显式类型转换，即强制类型转换。显式转换需要强制转换运算符，而且强制转换会造成数据丢失。</li>
+</ul>
+<p><strong>显式的类型转换示例：</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">TypeConversionApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">ExplicitConversion</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">double</span> d = <span class="number">5673.74</span>;</span><br><span class="line">            <span class="built_in">int</span> i;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 强制转换 double 为 int</span></span><br><span class="line">            i = (<span class="built_in">int</span>)d;</span><br><span class="line">            Console.WriteLine(i);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="number">5673</span></span><br></pre></td></tr></table></figure>
+<h4 id="C-类型转换方法"><a href="#C-类型转换方法" class="headerlink" title="C#类型转换方法"></a>C#类型转换方法</h4><p><code>C#</code> 提供了下列内置的类型转换方法：</p>
+<ul>
+<li><code>ToBoolean</code>：转换为 <code>bool</code> 型</li>
+<li><code>ToByte</code></li>
+<li><code>Tochar</code></li>
+<li><code>ToDateTime</code>：转换为 <code>日期-时间</code> 结构</li>
+<li><code>ToDecimal</code></li>
+<li><code>ToDouble</code></li>
+<li><code>Toint16</code></li>
+<li><code>Toint32</code></li>
+<li><code>Toint64</code></li>
+<li><code>ToSbyte</code></li>
+<li><code>ToSingle</code>：把类型转换为小浮点数类型</li>
+<li><code>ToString</code></li>
+<li><code>ToType</code></li>
+<li><code>ToUInt16</code></li>
+<li><code>ToUInt32</code></li>
+<li><code>ToUInt64</code></li>
+</ul>
+<p>一个示例：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(i.ToString());</span><br></pre></td></tr></table></figure>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p><strong>静态常量const</strong></p>
+<p>静态常量(编译时常量)<strong>在编译时就确定了值</strong>，必须在声明时就进行初始化且之后不能进行更改，可在类和方法中定义。使用 <code>const</code> 关键字，定义一个常量的语法如下：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &lt;data_type&gt; &lt;constant_name&gt; = <span class="keyword">value</span>;</span><br><span class="line"><span class="comment">//例子</span></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">double</span> a = <span class="number">3.14</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>动态常量readonly</strong></p>
+<p>在运行时确定值，只能在声明时或构造函数中初始化，只能在类中定义。定义方法如下：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">readonly</span> <span class="built_in">int</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">readonly</span> <span class="built_in">int</span> b;</span><br><span class="line">    Program() <span class="comment">// 构造函数</span></span><br><span class="line">    &#123;</span><br><span class="line">        b = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>静态常量与动态常量的使用场景</p>
+<p>在下面两种情况下，可以使用 <code>const</code> 常量：</p>
+<ul>
+<li><strong>取值永久不变</strong>。比如圆周率、一天包含的小时数、地球的半径等。</li>
+<li><strong>对程序性能要求非常苛刻</strong>。</li>
+</ul>
+<p>除此之外的其他情况都应该优先采用 <code>readonly</code> 常量。</p>
+<h2 id="C-运算符"><a href="#C-运算符" class="headerlink" title="C#运算符"></a>C#运算符</h2>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>Insist on writing original high-quality articles. Your support is my biggest motivation.</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Sam 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Sam 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C#</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/01/22/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/" rel="prev" title="模拟退火算法">
+      <i class="fa fa-chevron-left"></i> 模拟退火算法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">C#初步学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84-Hello-World"><span class="nav-number">1.1.</span> <span class="nav-text">一个简单的 Hello World!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">值类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">引用类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.3.</span> <span class="nav-text">指针类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.2.4.</span> <span class="nav-text">C#类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">C#类型转换方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">1.3.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.4.</span> <span class="nav-text">C#运算符</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sam"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">Sam</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/shuai-xiao-ji-65" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;shuai-xiao-ji-65" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/JiJiwjz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JiJiwjz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/weijiazhe123.mail.nwpu.edu.cn" title="E-Mail → weijiazhe123.mail.nwpu.edu.cn"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
