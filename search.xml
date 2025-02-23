@@ -1,126 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C#初步学习</title>
-    <url>/2025/02/19/C-%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="C-初步学习"><a href="#C-初步学习" class="headerlink" title="C#初步学习"></a>C#初步学习</h1><p><strong>Foreword</strong></p>
-<p>During last term’s study, I found that all of my studies were focused on theories and abstract concepts. What I lacked was practical experience, such as working on a concrete project. Thus, I wanna make a new game. I’m an avid rhythm game player. tbh, It’s really cool to make a rhythm game by myself. After looking up references and websites, I decided to create a traditional 4K rhythm game based on <code>Unity</code> , a game engine including abundant functions and frameworks. Therefore, it’s essential for me to study <code>C#</code> as an important programming language.</p>
-<p><strong>简介</strong></p>
-<ul>
-<li><code>C#</code> 是一种由 <code>C</code> 和 <code>C++</code> 衍生出来的<strong>面向对象的编程语言</strong>，它不仅去掉了 <code>C++</code> 中的一些复杂特性，还提供了可视化工具，能够高效地编写程序。</li>
-<li><code>C#</code> 是由 <code>C</code> 和 <code>C++</code> 衍生出来的一种安全的、稳定的、简单的、优雅的面向对象编程语言。它在继承C和C++强大功能的同时去掉了一些它们的复杂特性 (例如没有宏以及不允许多重继承) 。</li>
-<li><code>C#</code> 使得 <code>C++</code> 程序员可以高效的开发程序，且因可调用由 <code>C/C++</code> 编写的本机原生函数，而绝不损失<code>C/C++</code> 原有的强大的功能。因为这种继承关系，<code>C#</code> 与 <code>C/C++</code> 具有极大的相似性，熟悉类似语言的开发者可以很快的转向 <code>C#</code> 。</li>
-</ul>
-<hr>
-<h2 id="一个简单的-Hello-World"><a href="#一个简单的-Hello-World" class="headerlink" title="一个简单的 Hello World!"></a>一个简单的 Hello World!</h2><p>一个 <code>C#</code> 程序主要包含以下部分：</p>
-<ul>
-<li>命名空间的声明</li>
-<li>一个 <code>class</code></li>
-<li><code>class</code> 方法</li>
-<li><code>class</code> 属性</li>
-<li>一个 <code>Main</code> 方法</li>
-<li>语句&amp;表达式</li>
-<li>注释</li>
-</ul>
-<p><code>C#</code> 文件的后缀为 <code>.cs</code></p>
-<p>我们在 <code>Visual Studio</code> 中创建一个 <code>test.cs</code> 文件，包含了可以打印出 <code>Hello World</code> 的简单代码：</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">HelloWorldApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">HelloWorld</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* 我的第一个C#程序 */</span></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>在 <code>C#</code> 中，变量分为以下几种类型：</p>
-<ul>
-<li>值类型</li>
-<li>引用类型</li>
-<li>指针类型</li>
-</ul>
-<h3 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h3><p>值类型变量可以直接分配给一个值，它们是从类 <code>System.ValueType</code> 中派生的。</p>
-<p>如下：</p>
-<ul>
-<li>bool</li>
-<li>byte: 8位无符号整数类型</li>
-<li>char</li>
-<li>decimal</li>
-<li>double</li>
-<li>float</li>
-<li>int</li>
-<li>long</li>
-<li><code>sbyte</code>：8位有符号整数类型</li>
-<li>short</li>
-<li><code>uint</code></li>
-<li><code>ulong</code></li>
-<li><code>ushort</code></li>
-</ul>
-<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><ul>
-<li><p>引用类型<strong>不包含</strong>存储在变量中的<strong>实际数据</strong>，但它们<strong>包含</strong>对变量的<strong>引用</strong>。</p>
-</li>
-<li><p>换句话说，它们指的是一个<strong>内存位置</strong>。使用多个变量时，引用类型可以指向一个内存位置。如果内存位置的数据是由一个变量改变的，其他变量会自动反映这种值的变化。内置的引用类型有：object、dynamic 和 string。</p>
-</li>
-</ul>
-<p><strong>对象类型</strong></p>
-<p>对象类型是 <code>C#</code> 通用类型系统中所有数据类型的终极基类。<code>Object</code> 是 <code>System.Object</code> 类的别名。所以对象类型可以被分配任何其他类型的值。但是在分配值之前，需要先进行类型转换。当一个值类型转换为对象类型时，则被称为<strong>装箱</strong>；另一方面，当一个对象类型转换为值类型时，则被称为<strong>拆箱</strong>。</p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">object</span> obj;</span><br><span class="line">obj = <span class="number">100</span>; <span class="comment">//这是装箱</span></span><br></pre></td></tr></table></figure>
-<p><strong>动态类型</strong></p>
-<p>可以存储任何类型的值在动态数据类型变量中。这些变量的类型检查是在运行时发生的。</p>
-<p>声明动态类型的语法：</p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dynamic</span> &lt;variable_name&gt; = <span class="keyword">value</span>;</span><br><span class="line"><span class="comment">// 例如：</span></span><br><span class="line"><span class="built_in">dynamic</span> d = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
-<p><strong>字符串类型</strong></p>
-<p>字符串类型允许给变量分配人格字符串值。字符串类型是 <code>System.String</code> 类的别名。他是从对象类型派生的。字符串类型的值可以通过两种形式进行分配：引号和 <code>@</code> 引号</p>
-<p>例如：</p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">String str = <span class="string">&quot;WoShiNaiLong&quot;</span>;</span><br></pre></td></tr></table></figure>
-<p><code>C#</code> string字符串的前面可以加 <code>@</code> 将转义字符当做普通字符对待，比如：</p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> str = <span class="string">@&quot;C:\Windows&quot;</span>;</span><br><span class="line"><span class="comment">//等价于：</span></span><br><span class="line"><span class="built_in">string</span> str = <span class="string">&quot;C:\\Windows&quot;</span>;</span><br></pre></td></tr></table></figure>
-<p><code>@</code> 字符串中可以任意换行，换行符及缩进空格都计算在字符串长度之内。</p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> str = <span class="string">@&quot;&lt;script type=&quot;&quot;text/javascript&quot;&quot;&gt;</span></span><br><span class="line"><span class="string">	&lt;!--</span></span><br><span class="line"><span class="string">	--&gt;</span></span><br><span class="line"><span class="string">&lt;/script&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
-<p>用户自定义引用类型有：<code>class</code>、<code>interface</code> 或 <code>delegate</code>。我们将在以后讨论这些类型。</p>
-<h3 id="指针类型"><a href="#指针类型" class="headerlink" title="指针类型"></a>指针类型</h3><p>指针类型变量存储另一个类型的内存地址，<code>C#</code> 中的指针与 <code>C</code> 或 <code>C++</code> 中的指针有相同的功能，声明指针类型的语法：</p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">type* identifier;</span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">char</span>* cptr;</span><br><span class="line"><span class="built_in">int</span>* iptr;</span><br></pre></td></tr></table></figure>
-<h3 id="C-类型转换"><a href="#C-类型转换" class="headerlink" title="C#类型转换"></a>C#类型转换</h3><p>类型转换从根本上说是类型铸造，或者说是把数据从一种类型转换为另一种类型。在 C# 中，类型铸造有两种形式：</p>
-<ul>
-<li><strong>隐式类型转换</strong>：这些转换是 <code>C#</code> 默认的以安全方式进行的转换, 不会导致数据丢失。例如，从小的整数类型转换为大的整数类型，从派生类转换为基类。</li>
-<li><strong>显式类型转换</strong>：显式类型转换，即强制类型转换。显式转换需要强制转换运算符，而且强制转换会造成数据丢失。</li>
-</ul>
-<p><strong>显式的类型转换示例：</strong></p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">TypeConversionApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">ExplicitConversion</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">double</span> d = <span class="number">5673.74</span>;</span><br><span class="line">            <span class="built_in">int</span> i;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 强制转换 double 为 int</span></span><br><span class="line">            i = (<span class="built_in">int</span>)d;</span><br><span class="line">            Console.WriteLine(i);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="number">5673</span></span><br></pre></td></tr></table></figure>
-<h4 id="C-类型转换方法"><a href="#C-类型转换方法" class="headerlink" title="C#类型转换方法"></a>C#类型转换方法</h4><p><code>C#</code> 提供了下列内置的类型转换方法：</p>
-<ul>
-<li><code>ToBoolean</code>：转换为 <code>bool</code> 型</li>
-<li><code>ToByte</code></li>
-<li><code>Tochar</code></li>
-<li><code>ToDateTime</code>：转换为 <code>日期-时间</code> 结构</li>
-<li><code>ToDecimal</code></li>
-<li><code>ToDouble</code></li>
-<li><code>Toint16</code></li>
-<li><code>Toint32</code></li>
-<li><code>Toint64</code></li>
-<li><code>ToSbyte</code></li>
-<li><code>ToSingle</code>：把类型转换为小浮点数类型</li>
-<li><code>ToString</code></li>
-<li><code>ToType</code></li>
-<li><code>ToUInt16</code></li>
-<li><code>ToUInt32</code></li>
-<li><code>ToUInt64</code></li>
-</ul>
-<p>一个示例：</p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">Console.WriteLine(i.ToString());</span><br></pre></td></tr></table></figure>
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p><strong>静态常量const</strong></p>
-<p>静态常量(编译时常量)<strong>在编译时就确定了值</strong>，必须在声明时就进行初始化且之后不能进行更改，可在类和方法中定义。使用 <code>const</code> 关键字，定义一个常量的语法如下：</p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &lt;data_type&gt; &lt;constant_name&gt; = <span class="keyword">value</span>;</span><br><span class="line"><span class="comment">//例子</span></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">double</span> a = <span class="number">3.14</span>;</span><br></pre></td></tr></table></figure>
-<p><strong>动态常量readonly</strong></p>
-<p>在运行时确定值，只能在声明时或构造函数中初始化，只能在类中定义。定义方法如下：</p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">readonly</span> <span class="built_in">int</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">readonly</span> <span class="built_in">int</span> b;</span><br><span class="line">    Program() <span class="comment">// 构造函数</span></span><br><span class="line">    &#123;</span><br><span class="line">        b = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>静态常量与动态常量的使用场景</p>
-<p>在下面两种情况下，可以使用 <code>const</code> 常量：</p>
-<ul>
-<li><strong>取值永久不变</strong>。比如圆周率、一天包含的小时数、地球的半径等。</li>
-<li><strong>对程序性能要求非常苛刻</strong>。</li>
-</ul>
-<p>除此之外的其他情况都应该优先采用 <code>readonly</code> 常量。</p>
-<h2 id="C-运算符"><a href="#C-运算符" class="headerlink" title="C#运算符"></a>C#运算符</h2>]]></content>
-      <tags>
-        <tag>C#</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>4K音游制作</title>
     <url>/2025/02/21/4K%E9%9F%B3%E6%B8%B8%E5%88%B6%E4%BD%9C/</url>
     <content><![CDATA[<h1 id="4K音游制作"><a href="#4K音游制作" class="headerlink" title="4K音游制作"></a>4K音游制作</h1><p><strong>Foreword</strong></p>
@@ -323,182 +203,155 @@
       </tags>
   </entry>
   <entry>
-    <title>Markdown语法入门(舞萌DX特别版)</title>
-    <url>/2024/10/20/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E8%88%9E%E8%90%8CDX%E7%89%B9%E5%88%AB%E7%89%88/</url>
-    <content><![CDATA[<h2 id="0-1介绍"><a href="#0-1介绍" class="headerlink" title="0.1介绍"></a>0.1介绍</h2><p><code>Markdown</code>是一种轻量级的标记语言，它允许人们使用<strong>纯文本格式</strong>编写文档。因其简单的语法、较少的常用标记符号，以及较短的学习时间(<del>易于速成</del>)，被越来越多的学做爱好者及工作者使用。一旦掌握这种标记语言，将极大地提高效率。 </p>
-<p><code>Markdown</code>使用简洁的语法代替排版。相较<code>Word</code>等文字处理软件，<code>Markdown</code>可以做到<strong>手不离开键盘</strong>即可改变字体大小，插入表格、图片、超链接、脚注等。  </p>
-<p>但若要实现复杂排版(如左右对齐缩进等)，建议选择<code>Word</code>、<code>Pages</code>等专业软件。  </p>
-<h2 id="0-2常用编辑器介绍"><a href="#0-2常用编辑器介绍" class="headerlink" title="0.2常用编辑器介绍"></a>0.2常用编辑器介绍</h2><ol>
-<li><code>Typora</code>是一款广受欢迎的轻量级Markdown编辑器。它凭借其优秀的性能和卓越的用户体验，在众多文本编辑工具中脱颖而出。<br><code>Typora</code>采用了所见即所得（WYSIWYG）的设计理念，用户在编辑过程中可实时预览排版效果，无需切换到预览模式，极大地提升了工作效率和编辑体验。<br>但是，Typora已开始收费阶段，价格14.99美元，可供三台设备使用。(<del>建议在csdn等平台多搜搜，你懂的(doge)</del>)</li>
-<li><code>vscode</code>不必多说，安装了Markdown扩展即可。可分屏，边写边预览，也很直观。<del>并且vscode免费</del></li>
-</ol>
-<h2 id="1-标题语法"><a href="#1-标题语法" class="headerlink" title="1.标题语法"></a>1.标题语法</h2><p>要创建标题时，只需在井号(#)后面<strong>空一格</strong>，然后输入要作为标题的文字即可。<strong>#的数量代表了标题的级别</strong>。其中一级标题文字<em>最大</em>，六级<em>最小</em>。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例:#### 舞萌2024</span><br><span class="line">##### Lv.14+</span><br><span class="line">###### VERTEX(rintaro soma deconstructed remix)</span><br></pre></td></tr></table></figure><br><strong>实际效果</strong>:</p>
-<h4 id="舞萌2024"><a href="#舞萌2024" class="headerlink" title="舞萌2024"></a>舞萌2024</h4><h5 id="Lv-14"><a href="#Lv-14" class="headerlink" title="Lv.14"></a>Lv.14</h5><h6 id="VERTEX-rintaro-soma-deconstructed-remix"><a href="#VERTEX-rintaro-soma-deconstructed-remix" class="headerlink" title="VERTEX(rintaro soma deconstructed remix)"></a>VERTEX(rintaro soma deconstructed remix)</h6><p>是不是很简单？  </p>
-<h2 id="2-字体设置斜体、粗体、删除线"><a href="#2-字体设置斜体、粗体、删除线" class="headerlink" title="2.字体设置斜体、粗体、删除线"></a>2.字体设置斜体、粗体、删除线</h2><p>这里需要用到这几个字符:<code>*</code> <code>_</code>  <code>~</code>  </p>
-<p><strong>斜体</strong>  </p>
+    <title>C#初步学习</title>
+    <url>/2025/02/19/C-%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="C-初步学习"><a href="#C-初步学习" class="headerlink" title="C#初步学习"></a>C#初步学习</h1><p><strong>Foreword</strong></p>
+<p>During last term’s study, I found that all of my studies were focused on theories and abstract concepts. What I lacked was practical experience, such as working on a concrete project. Thus, I wanna make a new game. I’m an avid rhythm game player. tbh, It’s really cool to make a rhythm game by myself. After looking up references and websites, I decided to create a traditional 4K rhythm game based on <code>Unity</code> , a game engine including abundant functions and frameworks. Therefore, it’s essential for me to study <code>C#</code> as an important programming language.</p>
+<p><strong>简介</strong></p>
 <ul>
-<li><p>只需在要变为斜体的语句前后各添加一个 * 或 _ 即可。  </p>
-<p>示例:<code>*PANDORA PARADOXXX*</code>或<code>_PANDORA PARADOXXX_</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <em>PANDORA PARADOXXX</em>  </p>
-</li>
+<li><code>C#</code> 是一种由 <code>C</code> 和 <code>C++</code> 衍生出来的<strong>面向对象的编程语言</strong>，它不仅去掉了 <code>C++</code> 中的一些复杂特性，还提供了可视化工具，能够高效地编写程序。</li>
+<li><code>C#</code> 是由 <code>C</code> 和 <code>C++</code> 衍生出来的一种安全的、稳定的、简单的、优雅的面向对象编程语言。它在继承C和C++强大功能的同时去掉了一些它们的复杂特性 (例如没有宏以及不允许多重继承) 。</li>
+<li><code>C#</code> 使得 <code>C++</code> 程序员可以高效的开发程序，且因可调用由 <code>C/C++</code> 编写的本机原生函数，而绝不损失<code>C/C++</code> 原有的强大的功能。因为这种继承关系，<code>C#</code> 与 <code>C/C++</code> 具有极大的相似性，熟悉类似语言的开发者可以很快的转向 <code>C#</code> 。</li>
 </ul>
-<p><strong>粗体</strong>  </p>
-<ul>
-<li><p>只需在要变为粗体的语句前后各添加两个 * 即可。   </p>
-<p>示例:<code>**Qzkago Requiem**</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <strong>Qzkago Requiem</strong></p>
-</li>
-</ul>
-<p><strong>倾斜加粗</strong></p>
-<ul>
-<li><p>只需在要变为倾斜加粗的语句前后各添加三个 * 即可。</p>
-<p>示例:<code>***Garakuta Doll Play***</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <strong><em>Garakuta Doll Play</em></strong>  </p>
-</li>
-</ul>
-<p><strong>删除线</strong>  </p>
-<ul>
-<li>只需在要添加删除线的语句前后各添加两个 ~ 即可。</li>
-</ul>
-<p>示例:<code>~~白茄子是15~~</code>  </p>
-<ul>
-<li><strong>实际效果</strong>:<br><del>白茄子是15</del>  <h2 id="3-代码块"><a href="#3-代码块" class="headerlink" title="3.代码块"></a>3.代码块</h2></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python学习:字符串</title>
-    <url>/2024/10/21/Python%E5%AD%A6%E4%B9%A0-%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
-    <content><![CDATA[<h3 id="字符串的索引与切片"><a href="#字符串的索引与切片" class="headerlink" title="字符串的索引与切片"></a>字符串的索引与切片</h3><ul>
-<li><strong>字符串的索引访问</strong>  </li>
-</ul>
-<p>Python语言中的字符串包括两种符号体系:正向递增序号和反向递减序号。  </p>
-<p>如下图所示:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>]</span><br><span class="line"><span class="string">&#x27;H&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;d&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">8</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">3</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>字符串的切片访问</strong></li>
-</ul>
-<p>具体语法格式为: <code>[头下标：尾下标]</code> ，这种访问方式称之为“切片”。但注意，这是<strong>左闭右开</strong>的区间。在切片方式中，若头下标缺省，表示从字符串的开始取子串；若尾下标缺省，表示取到字符串的最后一个字符；若头下标和尾下标都缺省，则取整个字符串。 </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Mik&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:]</span><br><span class="line"><span class="string">&#x27;Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:]</span><br><span class="line"><span class="string">&#x27;Hello Mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<p>字符串切片还可以设置取子字符串的顺序，格式为 <code>[头下标:尾下标:步长]</code> 。当步长大于0的时候，从左往右取字符；当步长小于0的时候，从右往左取字符。  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>:<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:<span class="number">2</span>]</span><br><span class="line"><span class="string">&#x27;Hlo&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>:<span class="number">0</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olle&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>::-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olleH&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="字符串的处理与操作"><a href="#字符串的处理与操作" class="headerlink" title="字符串的处理与操作"></a>字符串的处理与操作</h3><ul>
-<li><strong>内置字符串处理函数</strong> </li>
-</ul>
-<p>len(x)   #返回字符串x的长度    </p>
-<p>str(x)   #将任意类型的x转化为字符串类型 </p>
-<p>chr(x)   #返回Unicode编码为x的字符  </p>
-<p>ord(x)   #返回字符x的Unicode编码  </p>
-<p>hex(x)   #将整数x转化为十六进制数  </p>
-<p>oct(x)   #将整数x转化为八进制数  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(s)</span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">120</span>)</span><br><span class="line"><span class="string">&#x27;120&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">3</span>+<span class="number">5</span>)</span><br><span class="line"><span class="string">&#x27;8&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">hex</span>(<span class="number">62</span>)</span><br><span class="line"><span class="string">&#x27;0o76&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line"><span class="number">65</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">chr</span>(<span class="number">65</span>)</span><br><span class="line"><span class="string">&#x27;A&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>查找类函数</strong></li>
-</ul>
-<p>find()   #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则返回-1.  </p>
-<p>rfind()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则返回-1.  </p>
-<p>index()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则抛出异常.  </p>
-<p>rindex() #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则抛出异常.  </p>
-<p>count()  #用来返回一个字符串在另一个字符串中出现的次数，若不存在则返回0.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.find(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line">-<span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.index(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line"> Traceback (most recent call last):</span><br><span class="line">   File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"> ValueError: substring <span class="keyword">not</span> found</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.count(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>分割类函数</strong>  </li>
-</ul>
-<p>split()    #以指定字符为分隔符，从原字符串的左端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
-<p>rsplit()   #以指定字符为分隔符，从原字符串的右端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
-<p>partition()    #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串.  </p>
-<p>rpartition()   #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串. </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;bird&#x27;</span>,<span class="string">&#x27;fish&#x27;</span>,<span class="string">&#x27;monkey&#x27;</span>,<span class="string">&#x27;rabbit&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a girl&#x27;</span>] <span class="comment">#此时以空白来从左往右分割, &#x27;maxsplit=2&#x27;说明最多分割两次.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>] <span class="comment">#此时以空白来从右往左分割.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I am a girl&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;m a girl&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;am&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27; a girl&#x27;</span>)</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>字符串连接方法</strong>  </li>
-</ul>
-<p>join()  #将列表中多个字符串进行连接，并在相邻两个字符串之间插入指定字符，返回新字符串. </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=[<span class="string">&#x27;apple&#x27;</span>,<span class="string">&#x27;banana&#x27;</span>,<span class="string">&#x27;pear&#x27;</span>,<span class="string">&#x27;peach&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;:&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple:banana:pear:peach&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;-&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple-banana-pear-peach&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>大小写字符转换方法</strong>  </li>
-</ul>
-<p>lower()     #将字符串转换为小写字符串.  </p>
-<p>uppper()    #将字符串转换为大写字符串.  </p>
-<p>capitalize()    #将字符串首字母变为大写.  </p>
-<p>title()         #将字符串中每个单词的首字母都变为大写.  </p>
-<p>swapcase()      #将字符串中的字符大小写互换.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lower()</span><br><span class="line"><span class="string">&#x27;i have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.upper()</span><br><span class="line"><span class="string">&#x27;I HAVE TWO BIG EYES&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.capitalize()</span><br><span class="line"><span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.title()</span><br><span class="line"><span class="string">&#x27;I Have Two Big Eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.swapcase()</span><br><span class="line"><span class="string">&#x27;i HAVE TWO BIG EYES&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>替换方法</strong>  </li>
-</ul>
-<p>replace() #替换字符串中指定字符或子字符串</p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.replace(<span class="string">&#x27;big&#x27;</span>,<span class="string">&#x27;大&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;I have two 大 eyes&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>删除字符串两端、右端或左端连续空白字符和指定字符方法</strong></li>
-</ul>
-<p>strip()         #删除字符串两端空白字符.   </p>
-<p>rstrip()        #删除字符串右端空白字符.  </p>
-<p>lstrip()        #删除字符串左端空白字符.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;     abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip()</span><br><span class="line"><span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rstrip()</span><br><span class="line"><span class="string">&#x27;     abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lstrip()</span><br><span class="line"><span class="string">&#x27;abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;====mike====&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip(<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>判断字符串是否以指定字符串开始或结束</strong></li>
-</ul>
-<p>startswith()   #判断字符串是否以指定字符开始.  </p>
-<p>endswith()      #判断字符串是否以指定字符结束.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Python 程序设计.py&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;Python&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.endswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>判断字符串类型方法</strong></li>
-</ul>
-<p>isupper()       #是否全为大写.  </p>
-<p>islower()       #是否全为小写.  </p>
-<p>isdigit()       #是否全为数字.  </p>
-<p>isalnum()       #是否全为字母或汉字或数字.  </p>
-<p>isalpha()       #是否全为字母或汉字.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;years&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.islower()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;YEARS&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isupper()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;20241022&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isdigit()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=s.replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalnum()</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>字符串排版方法</strong>  </li>
-</ul>
-<p>center()         #字符串居中对齐.  </p>
-<p>ljust()          #字符串居左对齐.  </p>
-<p>rjust()          #字符串居右对齐.  </p>
-<p>zfill()          #输出指定宽度，不足的左边填0.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.center(<span class="number">30.</span><span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;==========hello mike==========&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rjust(<span class="number">20</span>,<span class="string">&#x27;*&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;**********hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.zfill(<span class="number">20</span>)</span><br><span class="line"><span class="string">&#x27;0000000000hello mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
 <hr>
-]]></content>
+<h2 id="一个简单的-Hello-World"><a href="#一个简单的-Hello-World" class="headerlink" title="一个简单的 Hello World!"></a>一个简单的 Hello World!</h2><p>一个 <code>C#</code> 程序主要包含以下部分：</p>
+<ul>
+<li>命名空间的声明</li>
+<li>一个 <code>class</code></li>
+<li><code>class</code> 方法</li>
+<li><code>class</code> 属性</li>
+<li>一个 <code>Main</code> 方法</li>
+<li>语句&amp;表达式</li>
+<li>注释</li>
+</ul>
+<p><code>C#</code> 文件的后缀为 <code>.cs</code></p>
+<p>我们在 <code>Visual Studio</code> 中创建一个 <code>test.cs</code> 文件，包含了可以打印出 <code>Hello World</code> 的简单代码：</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">HelloWorldApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">HelloWorld</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* 我的第一个C#程序 */</span></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>在 <code>C#</code> 中，变量分为以下几种类型：</p>
+<ul>
+<li>值类型</li>
+<li>引用类型</li>
+<li>指针类型</li>
+</ul>
+<h3 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h3><p>值类型变量可以直接分配给一个值，它们是从类 <code>System.ValueType</code> 中派生的。</p>
+<p>如下：</p>
+<ul>
+<li>bool</li>
+<li>byte: 8位无符号整数类型</li>
+<li>char</li>
+<li>decimal</li>
+<li>double</li>
+<li>float</li>
+<li>int</li>
+<li>long</li>
+<li><code>sbyte</code>：8位有符号整数类型</li>
+<li>short</li>
+<li><code>uint</code></li>
+<li><code>ulong</code></li>
+<li><code>ushort</code></li>
+</ul>
+<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><ul>
+<li><p>引用类型<strong>不包含</strong>存储在变量中的<strong>实际数据</strong>，但它们<strong>包含</strong>对变量的<strong>引用</strong>。</p>
+</li>
+<li><p>换句话说，它们指的是一个<strong>内存位置</strong>。使用多个变量时，引用类型可以指向一个内存位置。如果内存位置的数据是由一个变量改变的，其他变量会自动反映这种值的变化。内置的引用类型有：object、dynamic 和 string。</p>
+</li>
+</ul>
+<p><strong>对象类型</strong></p>
+<p>对象类型是 <code>C#</code> 通用类型系统中所有数据类型的终极基类。<code>Object</code> 是 <code>System.Object</code> 类的别名。所以对象类型可以被分配任何其他类型的值。但是在分配值之前，需要先进行类型转换。当一个值类型转换为对象类型时，则被称为<strong>装箱</strong>；另一方面，当一个对象类型转换为值类型时，则被称为<strong>拆箱</strong>。</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">object</span> obj;</span><br><span class="line">obj = <span class="number">100</span>; <span class="comment">//这是装箱</span></span><br></pre></td></tr></table></figure>
+<p><strong>动态类型</strong></p>
+<p>可以存储任何类型的值在动态数据类型变量中。这些变量的类型检查是在运行时发生的。</p>
+<p>声明动态类型的语法：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dynamic</span> &lt;variable_name&gt; = <span class="keyword">value</span>;</span><br><span class="line"><span class="comment">// 例如：</span></span><br><span class="line"><span class="built_in">dynamic</span> d = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>字符串类型</strong></p>
+<p>字符串类型允许给变量分配人格字符串值。字符串类型是 <code>System.String</code> 类的别名。他是从对象类型派生的。字符串类型的值可以通过两种形式进行分配：引号和 <code>@</code> 引号</p>
+<p>例如：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">String str = <span class="string">&quot;WoShiNaiLong&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p><code>C#</code> string字符串的前面可以加 <code>@</code> 将转义字符当做普通字符对待，比如：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> str = <span class="string">@&quot;C:\Windows&quot;</span>;</span><br><span class="line"><span class="comment">//等价于：</span></span><br><span class="line"><span class="built_in">string</span> str = <span class="string">&quot;C:\\Windows&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p><code>@</code> 字符串中可以任意换行，换行符及缩进空格都计算在字符串长度之内。</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> str = <span class="string">@&quot;&lt;script type=&quot;&quot;text/javascript&quot;&quot;&gt;</span></span><br><span class="line"><span class="string">	&lt;!--</span></span><br><span class="line"><span class="string">	--&gt;</span></span><br><span class="line"><span class="string">&lt;/script&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>用户自定义引用类型有：<code>class</code>、<code>interface</code> 或 <code>delegate</code>。我们将在以后讨论这些类型。</p>
+<h3 id="指针类型"><a href="#指针类型" class="headerlink" title="指针类型"></a>指针类型</h3><p>指针类型变量存储另一个类型的内存地址，<code>C#</code> 中的指针与 <code>C</code> 或 <code>C++</code> 中的指针有相同的功能，声明指针类型的语法：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">type* identifier;</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="built_in">char</span>* cptr;</span><br><span class="line"><span class="built_in">int</span>* iptr;</span><br></pre></td></tr></table></figure>
+<h3 id="C-类型转换"><a href="#C-类型转换" class="headerlink" title="C#类型转换"></a>C#类型转换</h3><p>类型转换从根本上说是类型铸造，或者说是把数据从一种类型转换为另一种类型。在 C# 中，类型铸造有两种形式：</p>
+<ul>
+<li><strong>隐式类型转换</strong>：这些转换是 <code>C#</code> 默认的以安全方式进行的转换, 不会导致数据丢失。例如，从小的整数类型转换为大的整数类型，从派生类转换为基类。</li>
+<li><strong>显式类型转换</strong>：显式类型转换，即强制类型转换。显式转换需要强制转换运算符，而且强制转换会造成数据丢失。</li>
+</ul>
+<p><strong>显式的类型转换示例：</strong></p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">TypeConversionApplication</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">ExplicitConversion</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">double</span> d = <span class="number">5673.74</span>;</span><br><span class="line">            <span class="built_in">int</span> i;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 强制转换 double 为 int</span></span><br><span class="line">            i = (<span class="built_in">int</span>)d;</span><br><span class="line">            Console.WriteLine(i);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="number">5673</span></span><br></pre></td></tr></table></figure>
+<h4 id="C-类型转换方法"><a href="#C-类型转换方法" class="headerlink" title="C#类型转换方法"></a>C#类型转换方法</h4><p><code>C#</code> 提供了下列内置的类型转换方法：</p>
+<ul>
+<li><code>ToBoolean</code>：转换为 <code>bool</code> 型</li>
+<li><code>ToByte</code></li>
+<li><code>Tochar</code></li>
+<li><code>ToDateTime</code>：转换为 <code>日期-时间</code> 结构</li>
+<li><code>ToDecimal</code></li>
+<li><code>ToDouble</code></li>
+<li><code>Toint16</code></li>
+<li><code>Toint32</code></li>
+<li><code>Toint64</code></li>
+<li><code>ToSbyte</code></li>
+<li><code>ToSingle</code>：把类型转换为小浮点数类型</li>
+<li><code>ToString</code></li>
+<li><code>ToType</code></li>
+<li><code>ToUInt16</code></li>
+<li><code>ToUInt32</code></li>
+<li><code>ToUInt64</code></li>
+</ul>
+<p>一个示例：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">Console.WriteLine(i.ToString());</span><br></pre></td></tr></table></figure>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p><strong>静态常量const</strong></p>
+<p>静态常量(编译时常量)<strong>在编译时就确定了值</strong>，必须在声明时就进行初始化且之后不能进行更改，可在类和方法中定义。使用 <code>const</code> 关键字，定义一个常量的语法如下：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &lt;data_type&gt; &lt;constant_name&gt; = <span class="keyword">value</span>;</span><br><span class="line"><span class="comment">//例子</span></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">double</span> a = <span class="number">3.14</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>动态常量readonly</strong></p>
+<p>在运行时确定值，只能在声明时或构造函数中初始化，只能在类中定义。定义方法如下：</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">readonly</span> <span class="built_in">int</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">readonly</span> <span class="built_in">int</span> b;</span><br><span class="line">    Program() <span class="comment">// 构造函数</span></span><br><span class="line">    &#123;</span><br><span class="line">        b = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>静态常量与动态常量的使用场景</p>
+<p>在下面两种情况下，可以使用 <code>const</code> 常量：</p>
+<ul>
+<li><strong>取值永久不变</strong>。比如圆周率、一天包含的小时数、地球的半径等。</li>
+<li><strong>对程序性能要求非常苛刻</strong>。</li>
+</ul>
+<p>除此之外的其他情况都应该优先采用 <code>readonly</code> 常量。</p>
+<h2 id="C-运算符"><a href="#C-运算符" class="headerlink" title="C#运算符"></a>C#运算符</h2>]]></content>
       <tags>
-        <tag>Python</tag>
+        <tag>C#</tag>
       </tags>
   </entry>
   <entry>
-    <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
-    <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
-    <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
-<p><strong>时间复杂度</strong>:最坏情况<code>O(n)</code>,最好情况<code>O(n^2)</code>.  </p>
-<h2 id="选择排序-不稳定"><a href="#选择排序-不稳定" class="headerlink" title="选择排序(不稳定)"></a>选择排序(不稳定)</h2><p><strong>特点</strong>:每次从待排序列中选出一个<strong>最小值</strong>,然后放在序列的起始位置,直至排完.</p>
-<p><strong>时间复杂度</strong>:<code>O(n^2)</code>.  </p>
-<h2 id="插入排序-稳定"><a href="#插入排序-稳定" class="headerlink" title="插入排序(稳定)"></a>插入排序(稳定)</h2><p><strong>特点</strong>:从<strong>第下个元素开始</strong>,从已排序的元素序列<strong>从后往前</strong>扫描,如果该元素<strong>大于</strong>tem,<strong>则将该元素移至下一位</strong>.重复该步骤,直到找到已排序元素中<strong>小于等于</strong>tem的元素.tem插入到该元素的<strong>后面</strong>,如果已排序所有元素都大于tem,则将tem插入到下标为0的位置.<br><strong>一直重复上述步骤,直至排序完成</strong>.   </p>
-<p><strong>时间复杂度</strong>:最坏情况<code>O(n^2)</code>,最好情况<code>O(n)</code>.</p>
-<h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
-<ul>
-<li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
-<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.  </li>
-</ul>
-<p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
-<h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
-<p>是对<strong>冒泡排序</strong>的一种改进  </p>
-</blockquote>
-<p><strong>特点</strong>:通过一趟排序将要排序的数据分割成<strong>独立的两部分</strong>，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以<strong>递归</strong>进行，以此达到整个数据变成有序序列。  </p>
-<ul>
-<li><p>排序流程:  </p>
-<ol>
-<li>首先设定一个<strong>分界值Key</strong>,通过该分界值将数组分成左右两部分.</li>
-<li>将<em>大于或等于Key的数据集中到数组右边,小于分界值的数据集中到数组的左边</em>.此时,左边部分中各元素都小于或等于分界值,而右边部分中各元素都大于或等于分界值.</li>
-<li>然后,左边和右边的数据可以独立排序.对于左侧的数组数据,又可以取一个分界值,将该部分数据分成左右两部分,同样在左边放置较小值,右边放置较大值.右侧的数组数据也可以做类似处理.</li>
-<li>重复上述过程,可以看出,这是一个<strong>递归定义</strong>.通过递归将左侧部分排好序后,再递归排好右侧部分的顺序.当左右两个部分各数据排序完成后,整个数组的排序也就完成了.</li>
-</ol>
-</li>
-</ul>
+    <title>Google开源项目风格指南精简版</title>
+    <url>/2025/02/23/Google%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97%E7%B2%BE%E7%AE%80%E7%89%88/</url>
+    <content><![CDATA[<p><strong>自给自足的头文件</strong></p>
+<p>头文件应该<strong>可以独立编译</strong>，并以 <code>.h</code> 为拓展名。给需要被导入但不属于头文件的文件设置为 <code>.inc</code> 拓展名，并尽量避免使用。</p>
+<p><strong>#define防护符</strong></p>
+<p>所有头文件都应该用 <code>#define</code> 防护符来防止重复导入。防护符的格式是 <code>&lt;项目&gt;_&lt;路径&gt;_&lt;文件名&gt;_H_</code> .</p>
+<p><strong>内联函数</strong></p>
+<p>只把 10 行以下的小函数定义为内联(inline).</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>#include的路径及顺序</strong></p>
+<p>推荐按照以下顺序导入头文件：配套的头文件，C语言系统库头文件，C++标准库头文件，其他库的头文件，本项目的头文件。</p>
+<p>举例来说, <code>google-awesome-project/src/foo/internal/fooserver.cc</code> 的导入语句如下:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo/server/fooserver.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;base/basictypes.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo/server/bar.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;third_party/absl/flags/flag.h&quot;</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>命名空间</strong></p>
+<p>除了少数特殊情况，应该在命名空间 (namespace) 内放置代码。命名空间应该有独一无二的名字，其中包含项目名称，也可以选择性地包含文件路径。禁止使用 using 指令 (例如 <code>using namespace foo</code>). 禁止使用内联 (inline) 命名空间。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> mynamespace &#123;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Myclass</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Foo</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>局部变量</strong></p>
+<p>应该尽可能缩小函数变量的作用域 (scope)，并在声明的同时初始化。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i;</span><br><span class="line">i = <span class="built_in">f</span>(); <span class="comment">// 不好：初始化和声明分离，</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> i = <span class="built_in">f</span>(); <span class="comment">// 良好：声明时初始化。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> jobs = <span class="built_in">NumJobs</span>();</span><br><span class="line"><span class="comment">// 更多代码...</span></span><br><span class="line"><span class="built_in">f</span>(jobs); <span class="comment">// 不好：初始化和使用位置分离，</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> jobs = <span class="built_in">NumJobs</span>()</span><br><span class="line"><span class="built_in">f</span>(jobs); <span class="comment">// 良好：初始化以后立即(或很快)使用。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">v.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">v.<span class="built_in">push_back</span>(<span class="number">2</span>); <span class="comment">// 用花括号初始化更好，</span></span><br><span class="line"></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;; <span class="comment">// 良好：立即初始化 v.</span></span><br></pre></td></tr></table></figure>
+<p>通常应该在语句内声明用于 <code>if</code>、<code>while</code> 和 <code>for</code> 语句的变量，这样会把作用域限制在语句内。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while (const char* p = strchr(str, &#x27;/&#x27;)) str = p + 1;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，如果变量是一个对象，那么它每次进入作用域时会调用构造函数，每次退出作用域时都会调用析构函数。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 低效的实现：</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">    Foo f; <span class="comment">// 调用 1000000 次构造函数和析构函数</span></span><br><span class="line">    f.<span class="built_in">DoSomething</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo f; <span class="comment">// 调用 1 次构造函数和析构函数</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">    f.<span class="built_in">DoSomething</span>(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>未完待续</p>
 ]]></content>
       <tags>
-        <tag>算法</tag>
+        <tag>代码规范</tag>
       </tags>
   </entry>
   <entry>
@@ -707,6 +560,185 @@ u
 ]]></content>
       <tags>
         <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python学习:字符串</title>
+    <url>/2024/10/21/Python%E5%AD%A6%E4%B9%A0-%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h3 id="字符串的索引与切片"><a href="#字符串的索引与切片" class="headerlink" title="字符串的索引与切片"></a>字符串的索引与切片</h3><ul>
+<li><strong>字符串的索引访问</strong>  </li>
+</ul>
+<p>Python语言中的字符串包括两种符号体系:正向递增序号和反向递减序号。  </p>
+<p>如下图所示:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>]</span><br><span class="line"><span class="string">&#x27;H&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;d&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">8</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">3</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>字符串的切片访问</strong></li>
+</ul>
+<p>具体语法格式为: <code>[头下标：尾下标]</code> ，这种访问方式称之为“切片”。但注意，这是<strong>左闭右开</strong>的区间。在切片方式中，若头下标缺省，表示从字符串的开始取子串；若尾下标缺省，表示取到字符串的最后一个字符；若头下标和尾下标都缺省，则取整个字符串。 </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Mik&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:]</span><br><span class="line"><span class="string">&#x27;Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:]</span><br><span class="line"><span class="string">&#x27;Hello Mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<p>字符串切片还可以设置取子字符串的顺序，格式为 <code>[头下标:尾下标:步长]</code> 。当步长大于0的时候，从左往右取字符；当步长小于0的时候，从右往左取字符。  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>:<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:<span class="number">2</span>]</span><br><span class="line"><span class="string">&#x27;Hlo&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>:<span class="number">0</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olle&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>::-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olleH&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="字符串的处理与操作"><a href="#字符串的处理与操作" class="headerlink" title="字符串的处理与操作"></a>字符串的处理与操作</h3><ul>
+<li><strong>内置字符串处理函数</strong> </li>
+</ul>
+<p>len(x)   #返回字符串x的长度    </p>
+<p>str(x)   #将任意类型的x转化为字符串类型 </p>
+<p>chr(x)   #返回Unicode编码为x的字符  </p>
+<p>ord(x)   #返回字符x的Unicode编码  </p>
+<p>hex(x)   #将整数x转化为十六进制数  </p>
+<p>oct(x)   #将整数x转化为八进制数  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(s)</span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">120</span>)</span><br><span class="line"><span class="string">&#x27;120&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">3</span>+<span class="number">5</span>)</span><br><span class="line"><span class="string">&#x27;8&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">hex</span>(<span class="number">62</span>)</span><br><span class="line"><span class="string">&#x27;0o76&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line"><span class="number">65</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">chr</span>(<span class="number">65</span>)</span><br><span class="line"><span class="string">&#x27;A&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>查找类函数</strong></li>
+</ul>
+<p>find()   #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则返回-1.  </p>
+<p>rfind()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则返回-1.  </p>
+<p>index()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则抛出异常.  </p>
+<p>rindex() #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则抛出异常.  </p>
+<p>count()  #用来返回一个字符串在另一个字符串中出现的次数，若不存在则返回0.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.find(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line">-<span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.index(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line"> Traceback (most recent call last):</span><br><span class="line">   File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"> ValueError: substring <span class="keyword">not</span> found</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.count(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>分割类函数</strong>  </li>
+</ul>
+<p>split()    #以指定字符为分隔符，从原字符串的左端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
+<p>rsplit()   #以指定字符为分隔符，从原字符串的右端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
+<p>partition()    #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串.  </p>
+<p>rpartition()   #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串. </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;bird&#x27;</span>,<span class="string">&#x27;fish&#x27;</span>,<span class="string">&#x27;monkey&#x27;</span>,<span class="string">&#x27;rabbit&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a girl&#x27;</span>] <span class="comment">#此时以空白来从左往右分割, &#x27;maxsplit=2&#x27;说明最多分割两次.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>] <span class="comment">#此时以空白来从右往左分割.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I am a girl&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;m a girl&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;am&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27; a girl&#x27;</span>)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>字符串连接方法</strong>  </li>
+</ul>
+<p>join()  #将列表中多个字符串进行连接，并在相邻两个字符串之间插入指定字符，返回新字符串. </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=[<span class="string">&#x27;apple&#x27;</span>,<span class="string">&#x27;banana&#x27;</span>,<span class="string">&#x27;pear&#x27;</span>,<span class="string">&#x27;peach&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;:&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple:banana:pear:peach&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;-&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple-banana-pear-peach&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>大小写字符转换方法</strong>  </li>
+</ul>
+<p>lower()     #将字符串转换为小写字符串.  </p>
+<p>uppper()    #将字符串转换为大写字符串.  </p>
+<p>capitalize()    #将字符串首字母变为大写.  </p>
+<p>title()         #将字符串中每个单词的首字母都变为大写.  </p>
+<p>swapcase()      #将字符串中的字符大小写互换.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lower()</span><br><span class="line"><span class="string">&#x27;i have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.upper()</span><br><span class="line"><span class="string">&#x27;I HAVE TWO BIG EYES&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.capitalize()</span><br><span class="line"><span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.title()</span><br><span class="line"><span class="string">&#x27;I Have Two Big Eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.swapcase()</span><br><span class="line"><span class="string">&#x27;i HAVE TWO BIG EYES&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>替换方法</strong>  </li>
+</ul>
+<p>replace() #替换字符串中指定字符或子字符串</p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.replace(<span class="string">&#x27;big&#x27;</span>,<span class="string">&#x27;大&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;I have two 大 eyes&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>删除字符串两端、右端或左端连续空白字符和指定字符方法</strong></li>
+</ul>
+<p>strip()         #删除字符串两端空白字符.   </p>
+<p>rstrip()        #删除字符串右端空白字符.  </p>
+<p>lstrip()        #删除字符串左端空白字符.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;     abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip()</span><br><span class="line"><span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rstrip()</span><br><span class="line"><span class="string">&#x27;     abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lstrip()</span><br><span class="line"><span class="string">&#x27;abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;====mike====&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip(<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>判断字符串是否以指定字符串开始或结束</strong></li>
+</ul>
+<p>startswith()   #判断字符串是否以指定字符开始.  </p>
+<p>endswith()      #判断字符串是否以指定字符结束.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Python 程序设计.py&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;Python&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.endswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>判断字符串类型方法</strong></li>
+</ul>
+<p>isupper()       #是否全为大写.  </p>
+<p>islower()       #是否全为小写.  </p>
+<p>isdigit()       #是否全为数字.  </p>
+<p>isalnum()       #是否全为字母或汉字或数字.  </p>
+<p>isalpha()       #是否全为字母或汉字.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;years&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.islower()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;YEARS&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isupper()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;20241022&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isdigit()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=s.replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalnum()</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>字符串排版方法</strong>  </li>
+</ul>
+<p>center()         #字符串居中对齐.  </p>
+<p>ljust()          #字符串居左对齐.  </p>
+<p>rjust()          #字符串居右对齐.  </p>
+<p>zfill()          #输出指定宽度，不足的左边填0.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.center(<span class="number">30.</span><span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;==========hello mike==========&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rjust(<span class="number">20</span>,<span class="string">&#x27;*&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;**********hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.zfill(<span class="number">20</span>)</span><br><span class="line"><span class="string">&#x27;0000000000hello mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown语法入门(舞萌DX特别版)</title>
+    <url>/2024/10/20/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E8%88%9E%E8%90%8CDX%E7%89%B9%E5%88%AB%E7%89%88/</url>
+    <content><![CDATA[<h2 id="0-1介绍"><a href="#0-1介绍" class="headerlink" title="0.1介绍"></a>0.1介绍</h2><p><code>Markdown</code>是一种轻量级的标记语言，它允许人们使用<strong>纯文本格式</strong>编写文档。因其简单的语法、较少的常用标记符号，以及较短的学习时间(<del>易于速成</del>)，被越来越多的学做爱好者及工作者使用。一旦掌握这种标记语言，将极大地提高效率。 </p>
+<p><code>Markdown</code>使用简洁的语法代替排版。相较<code>Word</code>等文字处理软件，<code>Markdown</code>可以做到<strong>手不离开键盘</strong>即可改变字体大小，插入表格、图片、超链接、脚注等。  </p>
+<p>但若要实现复杂排版(如左右对齐缩进等)，建议选择<code>Word</code>、<code>Pages</code>等专业软件。  </p>
+<h2 id="0-2常用编辑器介绍"><a href="#0-2常用编辑器介绍" class="headerlink" title="0.2常用编辑器介绍"></a>0.2常用编辑器介绍</h2><ol>
+<li><code>Typora</code>是一款广受欢迎的轻量级Markdown编辑器。它凭借其优秀的性能和卓越的用户体验，在众多文本编辑工具中脱颖而出。<br><code>Typora</code>采用了所见即所得（WYSIWYG）的设计理念，用户在编辑过程中可实时预览排版效果，无需切换到预览模式，极大地提升了工作效率和编辑体验。<br>但是，Typora已开始收费阶段，价格14.99美元，可供三台设备使用。(<del>建议在csdn等平台多搜搜，你懂的(doge)</del>)</li>
+<li><code>vscode</code>不必多说，安装了Markdown扩展即可。可分屏，边写边预览，也很直观。<del>并且vscode免费</del></li>
+</ol>
+<h2 id="1-标题语法"><a href="#1-标题语法" class="headerlink" title="1.标题语法"></a>1.标题语法</h2><p>要创建标题时，只需在井号(#)后面<strong>空一格</strong>，然后输入要作为标题的文字即可。<strong>#的数量代表了标题的级别</strong>。其中一级标题文字<em>最大</em>，六级<em>最小</em>。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例:#### 舞萌2024</span><br><span class="line">##### Lv.14+</span><br><span class="line">###### VERTEX(rintaro soma deconstructed remix)</span><br></pre></td></tr></table></figure><br><strong>实际效果</strong>:</p>
+<h4 id="舞萌2024"><a href="#舞萌2024" class="headerlink" title="舞萌2024"></a>舞萌2024</h4><h5 id="Lv-14"><a href="#Lv-14" class="headerlink" title="Lv.14"></a>Lv.14</h5><h6 id="VERTEX-rintaro-soma-deconstructed-remix"><a href="#VERTEX-rintaro-soma-deconstructed-remix" class="headerlink" title="VERTEX(rintaro soma deconstructed remix)"></a>VERTEX(rintaro soma deconstructed remix)</h6><p>是不是很简单？  </p>
+<h2 id="2-字体设置斜体、粗体、删除线"><a href="#2-字体设置斜体、粗体、删除线" class="headerlink" title="2.字体设置斜体、粗体、删除线"></a>2.字体设置斜体、粗体、删除线</h2><p>这里需要用到这几个字符:<code>*</code> <code>_</code>  <code>~</code>  </p>
+<p><strong>斜体</strong>  </p>
+<ul>
+<li><p>只需在要变为斜体的语句前后各添加一个 * 或 _ 即可。  </p>
+<p>示例:<code>*PANDORA PARADOXXX*</code>或<code>_PANDORA PARADOXXX_</code></p>
+</li>
+<li><p><strong>实际效果</strong>:<br> <em>PANDORA PARADOXXX</em>  </p>
+</li>
+</ul>
+<p><strong>粗体</strong>  </p>
+<ul>
+<li><p>只需在要变为粗体的语句前后各添加两个 * 即可。   </p>
+<p>示例:<code>**Qzkago Requiem**</code></p>
+</li>
+<li><p><strong>实际效果</strong>:<br> <strong>Qzkago Requiem</strong></p>
+</li>
+</ul>
+<p><strong>倾斜加粗</strong></p>
+<ul>
+<li><p>只需在要变为倾斜加粗的语句前后各添加三个 * 即可。</p>
+<p>示例:<code>***Garakuta Doll Play***</code></p>
+</li>
+<li><p><strong>实际效果</strong>:<br> <strong><em>Garakuta Doll Play</em></strong>  </p>
+</li>
+</ul>
+<p><strong>删除线</strong>  </p>
+<ul>
+<li>只需在要添加删除线的语句前后各添加两个 ~ 即可。</li>
+</ul>
+<p>示例:<code>~~白茄子是15~~</code>  </p>
+<ul>
+<li><strong>实际效果</strong>:<br><del>白茄子是15</del>  <h2 id="3-代码块"><a href="#3-代码块" class="headerlink" title="3.代码块"></a>3.代码块</h2></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>五种排序方法(冒泡、选择、插入、归并和快排)</title>
+    <url>/2024/10/19/%E4%BA%94%E7%A7%8D%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E3%80%81%E5%BD%92%E5%B9%B6%E5%92%8C%E5%BF%AB%E6%8E%92/</url>
+    <content><![CDATA[<h2 id="冒泡排序-稳定"><a href="#冒泡排序-稳定" class="headerlink" title="冒泡排序(稳定)"></a>冒泡排序(稳定)</h2><p><strong>特点</strong>:从后<strong>两两对比</strong>,更小的往前放.  </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n)</code>,最好情况<code>O(n^2)</code>.  </p>
+<h2 id="选择排序-不稳定"><a href="#选择排序-不稳定" class="headerlink" title="选择排序(不稳定)"></a>选择排序(不稳定)</h2><p><strong>特点</strong>:每次从待排序列中选出一个<strong>最小值</strong>,然后放在序列的起始位置,直至排完.</p>
+<p><strong>时间复杂度</strong>:<code>O(n^2)</code>.  </p>
+<h2 id="插入排序-稳定"><a href="#插入排序-稳定" class="headerlink" title="插入排序(稳定)"></a>插入排序(稳定)</h2><p><strong>特点</strong>:从<strong>第下个元素开始</strong>,从已排序的元素序列<strong>从后往前</strong>扫描,如果该元素<strong>大于</strong>tem,<strong>则将该元素移至下一位</strong>.重复该步骤,直到找到已排序元素中<strong>小于等于</strong>tem的元素.tem插入到该元素的<strong>后面</strong>,如果已排序所有元素都大于tem,则将tem插入到下标为0的位置.<br><strong>一直重复上述步骤,直至排序完成</strong>.   </p>
+<p><strong>时间复杂度</strong>:最坏情况<code>O(n^2)</code>,最好情况<code>O(n)</code>.</p>
+<h2 id="归并排序-稳定"><a href="#归并排序-稳定" class="headerlink" title="归并排序(稳定)"></a>归并排序(稳定)</h2><p><strong>特点</strong>:采用<strong>分治算法</strong>.  </p>
+<ul>
+<li><strong>分</strong>:将待排序的线性表不断地<strong>切分</strong>成若干个子表,直到每个子表<strong>只包含一个元素</strong>,这时,可以认为只包含一个元素的子表是有序表.  </li>
+<li><strong>治</strong>:将子表<strong>两两合并</strong>,每合并一次,就会产生一个新的且更长的有序表,<strong>重复这一步骤,直到最后只剩下一个子表</strong>,这个子表就是排好序的线性表.  </li>
+</ul>
+<p><strong>时间复杂度</strong>:<code>O(nlogn)</code>.</p>
+<h2 id="快速排序-不稳定"><a href="#快速排序-不稳定" class="headerlink" title="快速排序(不稳定)"></a>快速排序(不稳定)</h2><blockquote>
+<p>是对<strong>冒泡排序</strong>的一种改进  </p>
+</blockquote>
+<p><strong>特点</strong>:通过一趟排序将要排序的数据分割成<strong>独立的两部分</strong>，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以<strong>递归</strong>进行，以此达到整个数据变成有序序列。  </p>
+<ul>
+<li><p>排序流程:  </p>
+<ol>
+<li>首先设定一个<strong>分界值Key</strong>,通过该分界值将数组分成左右两部分.</li>
+<li>将<em>大于或等于Key的数据集中到数组右边,小于分界值的数据集中到数组的左边</em>.此时,左边部分中各元素都小于或等于分界值,而右边部分中各元素都大于或等于分界值.</li>
+<li>然后,左边和右边的数据可以独立排序.对于左侧的数组数据,又可以取一个分界值,将该部分数据分成左右两部分,同样在左边放置较小值,右边放置较大值.右侧的数组数据也可以做类似处理.</li>
+<li>重复上述过程,可以看出,这是一个<strong>递归定义</strong>.通过递归将左侧部分排好序后,再递归排好右侧部分的顺序.当左右两个部分各数据排序完成后,整个数组的排序也就完成了.</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1256,77 +1288,6 @@ u
       </tags>
   </entry>
   <entry>
-    <title>熵权法</title>
-    <url>/2025/01/19/%E7%86%B5%E6%9D%83%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h1><p><strong>熵的概念：</strong></p>
-<ul>
-<li>信息论中，熵是对<strong>不确定性</strong>的一种度量，可判断一个事件的<strong>随机性</strong>及<strong>无序</strong>程度。</li>
-<li>用熵值判断某个指标的<strong>离散程度</strong>，指标的<strong>离散程度越大</strong>，<strong>该指标对综合评价的影响越大</strong>。</li>
-</ul>
-<h3 id="适用赛题"><a href="#适用赛题" class="headerlink" title="适用赛题"></a>适用赛题</h3><ul>
-<li>数据全面，但缺少文献或主观依据的题目<ul>
-<li>例如，<strong>评价河流的水质</strong>，已知河流的含氧量、pH值、细菌密度、生物密度等数据</li>
-<li>但<strong>缺乏评价水质的文献资料</strong>，或者文献内的<strong>说法不一</strong></li>
-<li>即文献很难帮助我们确定影响水质最重要的因素是哪一个，也很难告诉我们其余指标的重要程度如何衡量</li>
-<li>此时即可使用熵权法，<strong>根据数据本身建立评价体系</strong></li>
-</ul>
-</li>
-</ul>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li>熵权法与其他方法 (如AHP、TOPSIS法等) 最大的区别就是<strong>完全客观</strong></li>
-<li><strong>难以将数据之外的因素考虑进去</strong></li>
-</ul>
-<p><strong>1.数据标准化</strong></p>
-<p>标准化的原因：</p>
-<ul>
-<li>评价体系中，存在数值越大越好的<strong>正向指标</strong>，和数值越小越好的<strong>负向指标</strong></li>
-<li>不同指标数量级也可能不同；且求熵的公式中用到对数函数，变量不允许有负值</li>
-</ul>
-<p><strong>正向指标标准化：</strong></p>
-<p>$ a_{ij} = \frac{ x_{ij}- \min(x_{1j},…,x_{nj} )}{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
-<p><strong>负向指标标准化：</strong></p>
-<p>$ a_{ij} = \frac{ \max(x_{1j},…,x_{nj}) - x_{ij} }{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
-<p>不难发现，标准化之后，$a_{ij}$ 所有值在 $[0,1] $ 区间之内，且都是数值越大、现实意义越好。</p>
-<p><strong>2.指标的熵值和变异程度</strong></p>
-<p>①每个评价对象在各个指标中的比重：</p>
-<ul>
-<li><p>可理解为统计意义上某种情况出现的概率</p>
-<p>$p_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}$</p>
-</li>
-</ul>
-<p>②熵值</p>
-<ul>
-<li><p>对于第 $i$ 个指标，其熵值 $e_j$ 为：</p>
-<p>$e_j = -\frac{1}{\ln n} \sum_{i=1}^{n} p_{ij} \ln p_{ij}$</p>
-</li>
-</ul>
-<p>③变异系数</p>
-<ul>
-<li>第 $j$ 个指标的变异系数： $g_j = 1 - e_j$ .</li>
-<li>显然熵值越大、变异系数越小，代表该指标越有序，该指标的信息量也就越小。</li>
-</ul>
-<p><strong>3.权重与评分</strong></p>
-<p><strong>变异系数求权重</strong></p>
-<ul>
-<li>计算第 $j$ 个指标的权重： $w_j = \frac{g_j}{\sum_{j=1}^{m} g_j} $ .</li>
-<li>指标的变异系数越大、信息量越大，相应指标的权重也越大。</li>
-</ul>
-<p><strong>综合评分</strong></p>
-<ul>
-<li><p>计算第 $i$ 个评价对象的综合评价值</p>
-<p>$s_i = \sum_{j=1}^{m} w_j p_{ij}$</p>
-</li>
-<li><p>该公式对不同科目加权求和，得到每个人的平均值，评价值越大越好。</p>
-</li>
-<li><p>$p_{ij}$ 和 $w_j$ 都是原始数据 (成绩) 求得的，完全客观，不掺杂主观成分。</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>数学建模</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>模拟退火算法</title>
     <url>/2025/01/22/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="模拟退火算法"><a href="#模拟退火算法" class="headerlink" title="模拟退火算法"></a>模拟退火算法</h1><p><strong>模拟退火思想</strong>(以寻找山的最高峰为例)</p>
@@ -1403,6 +1364,77 @@ P=\begin{cases}  1, & \text{ } \Delta f < 0, \\ exp(- \Delta f/T_i), & \text{ } 
 </ul>
 <p><strong>理论上，模拟退火可以找到全局最优</strong></p>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设的目标函数 f(x)，我们要最小化该函数</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">objective_function</span><span class="params">(<span class="type">double</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x - <span class="number">4</span> * x + <span class="number">4</span>; <span class="comment">// 例如 f(x) = x^2 - 4x + 4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟退火算法</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">simulated_annealing</span><span class="params">(<span class="type">double</span> (*obj_func)(<span class="type">double</span>), <span class="type">double</span> start, <span class="type">double</span> end, <span class="type">double</span> temp, <span class="type">double</span> cooling_rate, <span class="type">int</span> iterations)</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> current_solution = start + (end - start) * ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX); <span class="comment">// 随机初始解</span></span><br><span class="line">    <span class="type">double</span> current_energy = <span class="built_in">obj_func</span>(current_solution);</span><br><span class="line">    <span class="type">double</span> best_solution = current_solution;</span><br><span class="line">    <span class="type">double</span> best_energy = current_energy;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; iterations; i++) &#123;</span><br><span class="line">        <span class="comment">// 生成一个邻域解</span></span><br><span class="line">        <span class="type">double</span> neighbor = current_solution + (<span class="built_in">rand</span>() % <span class="number">2</span> == <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>) * ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX) * <span class="number">0.1</span>; <span class="comment">// 邻域解</span></span><br><span class="line"></span><br><span class="line">        <span class="type">double</span> neighbor_energy = <span class="built_in">obj_func</span>(neighbor);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 计算接受概率</span></span><br><span class="line">        <span class="keyword">if</span> (neighbor_energy &lt; current_energy || <span class="built_in">exp</span>((current_energy - neighbor_energy) / temp) &gt; ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX)) &#123;</span><br><span class="line">            current_solution = neighbor;</span><br><span class="line">            current_energy = neighbor_energy;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更新最优解</span></span><br><span class="line">        <span class="keyword">if</span> (current_energy &lt; best_energy) &#123;</span><br><span class="line">            best_solution = current_solution;</span><br><span class="line">            best_energy = current_energy;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 降温</span></span><br><span class="line">        temp *= cooling_rate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> best_solution; <span class="comment">// 返回最优解</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">srand</span>(<span class="built_in">time</span>(<span class="number">0</span>)); <span class="comment">// 随机数种子</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置模拟退火的参数</span></span><br><span class="line">    <span class="type">double</span> start = <span class="number">-10.0</span>;         <span class="comment">// 搜索空间的起始点</span></span><br><span class="line">    <span class="type">double</span> end = <span class="number">10.0</span>;            <span class="comment">// 搜索空间的结束点</span></span><br><span class="line">    <span class="type">double</span> initial_temperature = <span class="number">1000.0</span>;  <span class="comment">// 初始温度</span></span><br><span class="line">    <span class="type">double</span> cooling_rate = <span class="number">0.99</span>;   <span class="comment">// 降温速率</span></span><br><span class="line">    <span class="type">int</span> iterations = <span class="number">10000</span>;       <span class="comment">// 迭代次数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行模拟退火算法</span></span><br><span class="line">    <span class="type">double</span> result = <span class="built_in">simulated_annealing</span>(objective_function, start, end, initial_temperature, cooling_rate, iterations);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;最优解: &quot;</span> &lt;&lt; result &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;最优目标函数值: &quot;</span> &lt;&lt; <span class="built_in">objective_function</span>(result) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>熵权法</title>
+    <url>/2025/01/19/%E7%86%B5%E6%9D%83%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h1><p><strong>熵的概念：</strong></p>
+<ul>
+<li>信息论中，熵是对<strong>不确定性</strong>的一种度量，可判断一个事件的<strong>随机性</strong>及<strong>无序</strong>程度。</li>
+<li>用熵值判断某个指标的<strong>离散程度</strong>，指标的<strong>离散程度越大</strong>，<strong>该指标对综合评价的影响越大</strong>。</li>
+</ul>
+<h3 id="适用赛题"><a href="#适用赛题" class="headerlink" title="适用赛题"></a>适用赛题</h3><ul>
+<li>数据全面，但缺少文献或主观依据的题目<ul>
+<li>例如，<strong>评价河流的水质</strong>，已知河流的含氧量、pH值、细菌密度、生物密度等数据</li>
+<li>但<strong>缺乏评价水质的文献资料</strong>，或者文献内的<strong>说法不一</strong></li>
+<li>即文献很难帮助我们确定影响水质最重要的因素是哪一个，也很难告诉我们其余指标的重要程度如何衡量</li>
+<li>此时即可使用熵权法，<strong>根据数据本身建立评价体系</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>熵权法与其他方法 (如AHP、TOPSIS法等) 最大的区别就是<strong>完全客观</strong></li>
+<li><strong>难以将数据之外的因素考虑进去</strong></li>
+</ul>
+<p><strong>1.数据标准化</strong></p>
+<p>标准化的原因：</p>
+<ul>
+<li>评价体系中，存在数值越大越好的<strong>正向指标</strong>，和数值越小越好的<strong>负向指标</strong></li>
+<li>不同指标数量级也可能不同；且求熵的公式中用到对数函数，变量不允许有负值</li>
+</ul>
+<p><strong>正向指标标准化：</strong></p>
+<p>$ a_{ij} = \frac{ x_{ij}- \min(x_{1j},…,x_{nj} )}{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
+<p><strong>负向指标标准化：</strong></p>
+<p>$ a_{ij} = \frac{ \max(x_{1j},…,x_{nj}) - x_{ij} }{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
+<p>不难发现，标准化之后，$a_{ij}$ 所有值在 $[0,1] $ 区间之内，且都是数值越大、现实意义越好。</p>
+<p><strong>2.指标的熵值和变异程度</strong></p>
+<p>①每个评价对象在各个指标中的比重：</p>
+<ul>
+<li><p>可理解为统计意义上某种情况出现的概率</p>
+<p>$p_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}$</p>
+</li>
+</ul>
+<p>②熵值</p>
+<ul>
+<li><p>对于第 $i$ 个指标，其熵值 $e_j$ 为：</p>
+<p>$e_j = -\frac{1}{\ln n} \sum_{i=1}^{n} p_{ij} \ln p_{ij}$</p>
+</li>
+</ul>
+<p>③变异系数</p>
+<ul>
+<li>第 $j$ 个指标的变异系数： $g_j = 1 - e_j$ .</li>
+<li>显然熵值越大、变异系数越小，代表该指标越有序，该指标的信息量也就越小。</li>
+</ul>
+<p><strong>3.权重与评分</strong></p>
+<p><strong>变异系数求权重</strong></p>
+<ul>
+<li>计算第 $j$ 个指标的权重： $w_j = \frac{g_j}{\sum_{j=1}^{m} g_j} $ .</li>
+<li>指标的变异系数越大、信息量越大，相应指标的权重也越大。</li>
+</ul>
+<p><strong>综合评分</strong></p>
+<ul>
+<li><p>计算第 $i$ 个评价对象的综合评价值</p>
+<p>$s_i = \sum_{j=1}^{m} w_j p_{ij}$</p>
+</li>
+<li><p>该公式对不同科目加权求和，得到每个人的平均值，评价值越大越好。</p>
+</li>
+<li><p>$p_{ij}$ 和 $w_j$ 都是原始数据 (成绩) 求得的，完全客观，不掺杂主观成分。</p>
+</li>
+</ul>
 ]]></content>
       <tags>
         <tag>数学建模</tag>
