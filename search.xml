@@ -1,77 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>4K音游制作</title>
-    <url>/2025/02/21/4K%E9%9F%B3%E6%B8%B8%E5%88%B6%E4%BD%9C/</url>
-    <content><![CDATA[<h1 id="4K音游制作"><a href="#4K音游制作" class="headerlink" title="4K音游制作"></a>4K音游制作</h1><p><strong>Foreword</strong></p>
-<p>Just as I mentioned last time, I need more practical experience. Therefore, based on <code>Unity</code> and <code>C#</code>, I have decided to create a rhythm game.</p>
-<p>Nowadays, there are many types of rhythm games in the market. One type is no-key rhythm games, such as <code>Phigros</code> and <code>Rizline</code>. Another type is  multiple-keys rhythm games, such as <code>Kalpa</code> and <code>Muse Dash</code>. There is also a type of rhythm games called emergence rhythm games, such as <code>Cytus</code> and <code>阳春白雪</code>. In addition, there are many games that mix multiple elements from the above types, such as <code>Arcaea</code> and <code>maimaiDX</code>. Considering the difficulty and time cost, I have ultimately chosen 4K rhythm games as my goal.</p>
-<hr>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>顾名思义，4K(即4 keys)音游，一共包含四个轨道。在每个轨道会有音符下落，游玩者需要在音符到达判定线处点击。每次点击后会进行判定，点击越精准评级也就会越高。以我曾常玩的游戏 <code>Malody 4k</code> 为例，游戏游玩界面如下：</p>
-<p><img src="/images/4k_pic1.jpg" alt="malody"></p>
-<p>基于此，我们来对整个制作过程的思路进行梳理。</p>
-<p>首先，音游程序可以大致分为四个部分，即<strong>谱面读取、触控输入、游戏控制器和键型</strong>四个部分。对于每个部分，我们再来进行详细的解析。</p>
-<hr>
-<h2 id="程序梳理"><a href="#程序梳理" class="headerlink" title="程序梳理"></a>程序梳理</h2><p><strong>谱面读取</strong></p>
-<p>首先，在玩音游的第一步必然是谱面的读取，读取完谱面后才能有接下来的展开。对于谱面的读取，我们可以从以下三个方面来考虑：</p>
-<ul>
-<li>读取谱面文件</li>
-<li>解析数据并储存</li>
-<li>初始化</li>
-</ul>
-<p>于是，我们完成了谱面读取的初步分析。</p>
-<p><strong>键型</strong></p>
-<p>在这里我们先来讨论一下键型。在4k中，我们仅仅使用 <code>tap</code> 和 <code>hold</code> 。其中最主要的就是 <code>tap</code>，由此我们才分生出各种叠、切、乱、锚键、多押等等键型。当然 <code>hold</code> 也会用到，不过就没有 <code>tap</code> 那么频繁，一般在恶心的面条谱里、休息段以及低dan谱中会遇到较多。因此，我们考虑这两种键型：</p>
-<ul>
-<li>tap：点击即可</li>
-<li>hold：点击后需长按，直至结束</li>
-</ul>
-<p><strong>触控输入</strong></p>
-<p>基于上面的键型，我们来讨论触控输入。我们可以分成三类，分别是<strong>输入信息、分析方法和输出信息</strong>。首先，玩家触碰屏幕时，我们就来判断触碰的位置信息和状态信息。判断位置信息即判断你是否碰到了这个音符对应的位置，状态信息即判断你是否正确打击了对应键型。</p>
-<p>随后，我们来分析玩家的输入。分析方法分为两种，一种是<strong>点击</strong>，即手指点到屏幕<strong>那一刻</strong>的手势；一种是<strong>触摸</strong>，就是手指在屏幕上的手势。</p>
-<p>最后就是输出了。最后判定是<strong>点击</strong>还是<strong>触摸</strong>即可。</p>
-<p><strong>游戏控制器</strong></p>
-<p>经过梳理，我们可以总结如下：</p>
-<ul>
-<li>谱面读取（可以独立出去）——加载谱面，初始化关卡，设置游戏开始</li>
-<li>每一帧都记时</li>
-<li>如果到了对应的时间，就生成谱面对应的音符</li>
-<li>如果游戏开始，且音乐已经播放完毕</li>
-<li>结束游戏</li>
-</ul>
-<p>由此，我们给出了一个大致的思路框架。我们仍需对特定对象进行细化。比如音符、判定器等。</p>
-<p><strong>音符</strong></p>
-<p>在4k中，音符(note)呈下落式。因此，我们让音符在每一帧都移动，由此来模拟下落。如果进入了自己的时间判定区域，就执行如下代码：</p>
-<ul>
-<li><p>每一帧都检测自己<strong>是否被点击</strong>（或者对应的<strong>手势</strong>）</p>
-</li>
-<li><p>如果被点到，就消除自己，并且生成点击特效（也可以辅以音效<del>，比如でらっくす</del>）</p>
-</li>
-<li><p>向判定器发送被点击的时间</p>
-</li>
-</ul>
-<p><strong>判定器</strong></p>
-<p>用来计算点击的评价，显示评价的结果、更改分数、combo数等等，可以集成在控制器里。</p>
-<p>由此，我们的大致框架已经完成，我们来进行下一步。</p>
-<hr>
-<h2 id="Unity的使用"><a href="#Unity的使用" class="headerlink" title="Unity的使用"></a>Unity的使用</h2><p>我这边安装了<code>Unity</code>的 <code>LTS</code> 版本，以及 <code>VS 2022</code>。接下来，就可以着手开始了~</p>
-<p>新建项目完成后，点击右上角的灰框，切换至 <code>2 by 3</code> 模式。这样就能同时打开<strong>场景编辑器</strong>和<strong>游戏视角</strong>两个视窗。</p>
-<p><img src="/images/4k_pic2.png" alt="2by3"></p>
-<p><img src="/images/4k_pic3.png" alt="windows"></p>
-<p>随后，我们来添加背景，即创建轨道。这也是每一个note得以下落的基础。在经过一系列的调整以及摄像机位置的调整后，成功实现了背景的搭建：</p>
-<p><img src="/images/4k_pic4.png" alt="background"></p>
-<p>随后，我们在 <code>Assets</code> 文件夹下，创建 <code>Scripts</code> 文件夹，用来存放我们的 <code>C#</code> 代码。</p>
-<p>首先，我们需要处理触控输入部分。在 <code>Unity Manual</code> 中，我们用 <code>touch</code> 作为关键词进行搜索。尽管结果众多，但不难发现，<code>Touch.phase</code> 和 <code>Touch.position</code> 使我们需要的。我们可以看见，旁边写到：</p>
-<ul>
-<li><code>Touch.phase</code>：描述触摸阶段</li>
-<li><code>Touch.position</code>：触摸在屏幕空间中的位置</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>C#</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C#初步学习</title>
     <url>/2025/02/19/C-%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="C-初步学习"><a href="#C-初步学习" class="headerlink" title="C#初步学习"></a>C#初步学习</h1><p><strong>Foreword</strong></p>
@@ -187,6 +116,77 @@
 </ul>
 <p>除此之外的其他情况都应该优先采用 <code>readonly</code> 常量。</p>
 <h2 id="C-运算符"><a href="#C-运算符" class="headerlink" title="C#运算符"></a>C#运算符</h2>]]></content>
+      <tags>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>4K音游制作</title>
+    <url>/2025/02/21/4K%E9%9F%B3%E6%B8%B8%E5%88%B6%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="4K音游制作"><a href="#4K音游制作" class="headerlink" title="4K音游制作"></a>4K音游制作</h1><p><strong>Foreword</strong></p>
+<p>Just as I mentioned last time, I need more practical experience. Therefore, based on <code>Unity</code> and <code>C#</code>, I have decided to create a rhythm game.</p>
+<p>Nowadays, there are many types of rhythm games in the market. One type is no-key rhythm games, such as <code>Phigros</code> and <code>Rizline</code>. Another type is  multiple-keys rhythm games, such as <code>Kalpa</code> and <code>Muse Dash</code>. There is also a type of rhythm games called emergence rhythm games, such as <code>Cytus</code> and <code>阳春白雪</code>. In addition, there are many games that mix multiple elements from the above types, such as <code>Arcaea</code> and <code>maimaiDX</code>. Considering the difficulty and time cost, I have ultimately chosen 4K rhythm games as my goal.</p>
+<hr>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>顾名思义，4K(即4 keys)音游，一共包含四个轨道。在每个轨道会有音符下落，游玩者需要在音符到达判定线处点击。每次点击后会进行判定，点击越精准评级也就会越高。以我曾常玩的游戏 <code>Malody 4k</code> 为例，游戏游玩界面如下：</p>
+<p><img src="/images/4k_pic1.jpg" alt="malody"></p>
+<p>基于此，我们来对整个制作过程的思路进行梳理。</p>
+<p>首先，音游程序可以大致分为四个部分，即<strong>谱面读取、触控输入、游戏控制器和键型</strong>四个部分。对于每个部分，我们再来进行详细的解析。</p>
+<hr>
+<h2 id="程序梳理"><a href="#程序梳理" class="headerlink" title="程序梳理"></a>程序梳理</h2><p><strong>谱面读取</strong></p>
+<p>首先，在玩音游的第一步必然是谱面的读取，读取完谱面后才能有接下来的展开。对于谱面的读取，我们可以从以下三个方面来考虑：</p>
+<ul>
+<li>读取谱面文件</li>
+<li>解析数据并储存</li>
+<li>初始化</li>
+</ul>
+<p>于是，我们完成了谱面读取的初步分析。</p>
+<p><strong>键型</strong></p>
+<p>在这里我们先来讨论一下键型。在4k中，我们仅仅使用 <code>tap</code> 和 <code>hold</code> 。其中最主要的就是 <code>tap</code>，由此我们才分生出各种叠、切、乱、锚键、多押等等键型。当然 <code>hold</code> 也会用到，不过就没有 <code>tap</code> 那么频繁，一般在恶心的面条谱里、休息段以及低dan谱中会遇到较多。因此，我们考虑这两种键型：</p>
+<ul>
+<li>tap：点击即可</li>
+<li>hold：点击后需长按，直至结束</li>
+</ul>
+<p><strong>触控输入</strong></p>
+<p>基于上面的键型，我们来讨论触控输入。我们可以分成三类，分别是<strong>输入信息、分析方法和输出信息</strong>。首先，玩家触碰屏幕时，我们就来判断触碰的位置信息和状态信息。判断位置信息即判断你是否碰到了这个音符对应的位置，状态信息即判断你是否正确打击了对应键型。</p>
+<p>随后，我们来分析玩家的输入。分析方法分为两种，一种是<strong>点击</strong>，即手指点到屏幕<strong>那一刻</strong>的手势；一种是<strong>触摸</strong>，就是手指在屏幕上的手势。</p>
+<p>最后就是输出了。最后判定是<strong>点击</strong>还是<strong>触摸</strong>即可。</p>
+<p><strong>游戏控制器</strong></p>
+<p>经过梳理，我们可以总结如下：</p>
+<ul>
+<li>谱面读取（可以独立出去）——加载谱面，初始化关卡，设置游戏开始</li>
+<li>每一帧都记时</li>
+<li>如果到了对应的时间，就生成谱面对应的音符</li>
+<li>如果游戏开始，且音乐已经播放完毕</li>
+<li>结束游戏</li>
+</ul>
+<p>由此，我们给出了一个大致的思路框架。我们仍需对特定对象进行细化。比如音符、判定器等。</p>
+<p><strong>音符</strong></p>
+<p>在4k中，音符(note)呈下落式。因此，我们让音符在每一帧都移动，由此来模拟下落。如果进入了自己的时间判定区域，就执行如下代码：</p>
+<ul>
+<li><p>每一帧都检测自己<strong>是否被点击</strong>（或者对应的<strong>手势</strong>）</p>
+</li>
+<li><p>如果被点到，就消除自己，并且生成点击特效（也可以辅以音效<del>，比如でらっくす</del>）</p>
+</li>
+<li><p>向判定器发送被点击的时间</p>
+</li>
+</ul>
+<p><strong>判定器</strong></p>
+<p>用来计算点击的评价，显示评价的结果、更改分数、combo数等等，可以集成在控制器里。</p>
+<p>由此，我们的大致框架已经完成，我们来进行下一步。</p>
+<hr>
+<h2 id="Unity的使用"><a href="#Unity的使用" class="headerlink" title="Unity的使用"></a>Unity的使用</h2><p>我这边安装了<code>Unity</code>的 <code>LTS</code> 版本，以及 <code>VS 2022</code>。接下来，就可以着手开始了~</p>
+<p>新建项目完成后，点击右上角的灰框，切换至 <code>2 by 3</code> 模式。这样就能同时打开<strong>场景编辑器</strong>和<strong>游戏视角</strong>两个视窗。</p>
+<p><img src="/images/4k_pic2.png" alt="2by3"></p>
+<p><img src="/images/4k_pic3.png" alt="windows"></p>
+<p>随后，我们来添加背景，即创建轨道。这也是每一个note得以下落的基础。在经过一系列的调整以及摄像机位置的调整后，成功实现了背景的搭建：</p>
+<p><img src="/images/4k_pic4.png" alt="background"></p>
+<p>随后，我们在 <code>Assets</code> 文件夹下，创建 <code>Scripts</code> 文件夹，用来存放我们的 <code>C#</code> 代码。</p>
+<p>首先，我们需要处理触控输入部分。在 <code>Unity Manual</code> 中，我们用 <code>touch</code> 作为关键词进行搜索。尽管结果众多，但不难发现，<code>Touch.phase</code> 和 <code>Touch.position</code> 使我们需要的。我们可以看见，旁边写到：</p>
+<ul>
+<li><code>Touch.phase</code>：描述触摸阶段</li>
+<li><code>Touch.position</code>：触摸在屏幕空间中的位置</li>
+</ul>
+]]></content>
       <tags>
         <tag>C#</tag>
       </tags>
@@ -400,183 +400,6 @@ u
       </tags>
   </entry>
   <entry>
-    <title>Markdown语法入门(舞萌DX特别版)</title>
-    <url>/2024/10/20/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E8%88%9E%E8%90%8CDX%E7%89%B9%E5%88%AB%E7%89%88/</url>
-    <content><![CDATA[<h2 id="0-1介绍"><a href="#0-1介绍" class="headerlink" title="0.1介绍"></a>0.1介绍</h2><p><code>Markdown</code>是一种轻量级的标记语言，它允许人们使用<strong>纯文本格式</strong>编写文档。因其简单的语法、较少的常用标记符号，以及较短的学习时间(<del>易于速成</del>)，被越来越多的学做爱好者及工作者使用。一旦掌握这种标记语言，将极大地提高效率。 </p>
-<p><code>Markdown</code>使用简洁的语法代替排版。相较<code>Word</code>等文字处理软件，<code>Markdown</code>可以做到<strong>手不离开键盘</strong>即可改变字体大小，插入表格、图片、超链接、脚注等。  </p>
-<p>但若要实现复杂排版(如左右对齐缩进等)，建议选择<code>Word</code>、<code>Pages</code>等专业软件。  </p>
-<h2 id="0-2常用编辑器介绍"><a href="#0-2常用编辑器介绍" class="headerlink" title="0.2常用编辑器介绍"></a>0.2常用编辑器介绍</h2><ol>
-<li><code>Typora</code>是一款广受欢迎的轻量级Markdown编辑器。它凭借其优秀的性能和卓越的用户体验，在众多文本编辑工具中脱颖而出。<br><code>Typora</code>采用了所见即所得（WYSIWYG）的设计理念，用户在编辑过程中可实时预览排版效果，无需切换到预览模式，极大地提升了工作效率和编辑体验。<br>但是，Typora已开始收费阶段，价格14.99美元，可供三台设备使用。(<del>建议在csdn等平台多搜搜，你懂的(doge)</del>)</li>
-<li><code>vscode</code>不必多说，安装了Markdown扩展即可。可分屏，边写边预览，也很直观。<del>并且vscode免费</del></li>
-</ol>
-<h2 id="1-标题语法"><a href="#1-标题语法" class="headerlink" title="1.标题语法"></a>1.标题语法</h2><p>要创建标题时，只需在井号(#)后面<strong>空一格</strong>，然后输入要作为标题的文字即可。<strong>#的数量代表了标题的级别</strong>。其中一级标题文字<em>最大</em>，六级<em>最小</em>。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例:#### 舞萌2024</span><br><span class="line">##### Lv.14+</span><br><span class="line">###### VERTEX(rintaro soma deconstructed remix)</span><br></pre></td></tr></table></figure><br><strong>实际效果</strong>:</p>
-<h4 id="舞萌2024"><a href="#舞萌2024" class="headerlink" title="舞萌2024"></a>舞萌2024</h4><h5 id="Lv-14"><a href="#Lv-14" class="headerlink" title="Lv.14"></a>Lv.14</h5><h6 id="VERTEX-rintaro-soma-deconstructed-remix"><a href="#VERTEX-rintaro-soma-deconstructed-remix" class="headerlink" title="VERTEX(rintaro soma deconstructed remix)"></a>VERTEX(rintaro soma deconstructed remix)</h6><p>是不是很简单？  </p>
-<h2 id="2-字体设置斜体、粗体、删除线"><a href="#2-字体设置斜体、粗体、删除线" class="headerlink" title="2.字体设置斜体、粗体、删除线"></a>2.字体设置斜体、粗体、删除线</h2><p>这里需要用到这几个字符:<code>*</code> <code>_</code>  <code>~</code>  </p>
-<p><strong>斜体</strong>  </p>
-<ul>
-<li><p>只需在要变为斜体的语句前后各添加一个 * 或 _ 即可。  </p>
-<p>示例:<code>*PANDORA PARADOXXX*</code>或<code>_PANDORA PARADOXXX_</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <em>PANDORA PARADOXXX</em>  </p>
-</li>
-</ul>
-<p><strong>粗体</strong>  </p>
-<ul>
-<li><p>只需在要变为粗体的语句前后各添加两个 * 即可。   </p>
-<p>示例:<code>**Qzkago Requiem**</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <strong>Qzkago Requiem</strong></p>
-</li>
-</ul>
-<p><strong>倾斜加粗</strong></p>
-<ul>
-<li><p>只需在要变为倾斜加粗的语句前后各添加三个 * 即可。</p>
-<p>示例:<code>***Garakuta Doll Play***</code></p>
-</li>
-<li><p><strong>实际效果</strong>:<br> <strong><em>Garakuta Doll Play</em></strong>  </p>
-</li>
-</ul>
-<p><strong>删除线</strong>  </p>
-<ul>
-<li>只需在要添加删除线的语句前后各添加两个 ~ 即可。</li>
-</ul>
-<p>示例:<code>~~白茄子是15~~</code>  </p>
-<ul>
-<li><strong>实际效果</strong>:<br><del>白茄子是15</del>  <h2 id="3-代码块"><a href="#3-代码块" class="headerlink" title="3.代码块"></a>3.代码块</h2></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Google开源项目风格指南精简版</title>
-    <url>/2025/02/23/Google%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97%E7%B2%BE%E7%AE%80%E7%89%88/</url>
-    <content><![CDATA[<p><strong>自给自足的头文件</strong></p>
-<p>头文件应该<strong>可以独立编译</strong>，并以 <code>.h</code> 为拓展名。给需要被导入但不属于头文件的文件设置为 <code>.inc</code> 拓展名，并尽量避免使用。</p>
-<p><strong>#define防护符</strong></p>
-<p>所有头文件都应该用 <code>#define</code> 防护符来防止重复导入。防护符的格式是 <code>&lt;项目&gt;_&lt;路径&gt;_&lt;文件名&gt;_H_</code> .</p>
-<p><strong>内联函数</strong></p>
-<p>只把 10 行以下的小函数定义为内联(inline).</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>#include的路径及顺序</strong></p>
-<p>推荐按照以下顺序导入头文件：配套的头文件，C语言系统库头文件，C++标准库头文件，其他库的头文件，本项目的头文件。</p>
-<p>举例来说, <code>google-awesome-project/src/foo/internal/fooserver.cc</code> 的导入语句如下:</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo/server/fooserver.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;base/basictypes.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo/server/bar.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;third_party/absl/flags/flag.h&quot;</span></span></span><br></pre></td></tr></table></figure>
-<p><strong>命名空间</strong></p>
-<p>除了少数特殊情况，应该在命名空间 (namespace) 内放置代码。命名空间应该有独一无二的名字，其中包含项目名称，也可以选择性地包含文件路径。禁止使用 using 指令 (例如 <code>using namespace foo</code>). 禁止使用内联 (inline) 命名空间。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> mynamespace &#123;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Myclass</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Foo</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>局部变量</strong></p>
-<p>应该尽可能缩小函数变量的作用域 (scope)，并在声明的同时初始化。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i;</span><br><span class="line">i = <span class="built_in">f</span>(); <span class="comment">// 不好：初始化和声明分离，</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> i = <span class="built_in">f</span>(); <span class="comment">// 良好：声明时初始化。</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> jobs = <span class="built_in">NumJobs</span>();</span><br><span class="line"><span class="comment">// 更多代码...</span></span><br><span class="line"><span class="built_in">f</span>(jobs); <span class="comment">// 不好：初始化和使用位置分离，</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> jobs = <span class="built_in">NumJobs</span>()</span><br><span class="line"><span class="built_in">f</span>(jobs); <span class="comment">// 良好：初始化以后立即(或很快)使用。</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">v.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">v.<span class="built_in">push_back</span>(<span class="number">2</span>); <span class="comment">// 用花括号初始化更好，</span></span><br><span class="line"></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;; <span class="comment">// 良好：立即初始化 v.</span></span><br></pre></td></tr></table></figure>
-<p>通常应该在语句内声明用于 <code>if</code>、<code>while</code> 和 <code>for</code> 语句的变量，这样会把作用域限制在语句内。例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while (const char* p = strchr(str, &#x27;/&#x27;)) str = p + 1;</span><br></pre></td></tr></table></figure>
-<p>需要注意的是，如果变量是一个对象，那么它每次进入作用域时会调用构造函数，每次退出作用域时都会调用析构函数。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 低效的实现：</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">    Foo f; <span class="comment">// 调用 1000000 次构造函数和析构函数</span></span><br><span class="line">    f.<span class="built_in">DoSomething</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo f; <span class="comment">// 调用 1 次构造函数和析构函数</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">    f.<span class="built_in">DoSomething</span>(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>未完待续</p>
-]]></content>
-      <tags>
-        <tag>代码规范</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python学习:字符串</title>
-    <url>/2024/10/21/Python%E5%AD%A6%E4%B9%A0-%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
-    <content><![CDATA[<h3 id="字符串的索引与切片"><a href="#字符串的索引与切片" class="headerlink" title="字符串的索引与切片"></a>字符串的索引与切片</h3><ul>
-<li><strong>字符串的索引访问</strong>  </li>
-</ul>
-<p>Python语言中的字符串包括两种符号体系:正向递增序号和反向递减序号。  </p>
-<p>如下图所示:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>]</span><br><span class="line"><span class="string">&#x27;H&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;d&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">8</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">3</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>字符串的切片访问</strong></li>
-</ul>
-<p>具体语法格式为: <code>[头下标：尾下标]</code> ，这种访问方式称之为“切片”。但注意，这是<strong>左闭右开</strong>的区间。在切片方式中，若头下标缺省，表示从字符串的开始取子串；若尾下标缺省，表示取到字符串的最后一个字符；若头下标和尾下标都缺省，则取整个字符串。 </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Mik&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:]</span><br><span class="line"><span class="string">&#x27;Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:]</span><br><span class="line"><span class="string">&#x27;Hello Mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<p>字符串切片还可以设置取子字符串的顺序，格式为 <code>[头下标:尾下标:步长]</code> 。当步长大于0的时候，从左往右取字符；当步长小于0的时候，从右往左取字符。  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>:<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:<span class="number">2</span>]</span><br><span class="line"><span class="string">&#x27;Hlo&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>:<span class="number">0</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olle&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>::-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olleH&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="字符串的处理与操作"><a href="#字符串的处理与操作" class="headerlink" title="字符串的处理与操作"></a>字符串的处理与操作</h3><ul>
-<li><strong>内置字符串处理函数</strong> </li>
-</ul>
-<p>len(x)   #返回字符串x的长度    </p>
-<p>str(x)   #将任意类型的x转化为字符串类型 </p>
-<p>chr(x)   #返回Unicode编码为x的字符  </p>
-<p>ord(x)   #返回字符x的Unicode编码  </p>
-<p>hex(x)   #将整数x转化为十六进制数  </p>
-<p>oct(x)   #将整数x转化为八进制数  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(s)</span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">120</span>)</span><br><span class="line"><span class="string">&#x27;120&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">3</span>+<span class="number">5</span>)</span><br><span class="line"><span class="string">&#x27;8&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">hex</span>(<span class="number">62</span>)</span><br><span class="line"><span class="string">&#x27;0o76&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line"><span class="number">65</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">chr</span>(<span class="number">65</span>)</span><br><span class="line"><span class="string">&#x27;A&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>查找类函数</strong></li>
-</ul>
-<p>find()   #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则返回-1.  </p>
-<p>rfind()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则返回-1.  </p>
-<p>index()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则抛出异常.  </p>
-<p>rindex() #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则抛出异常.  </p>
-<p>count()  #用来返回一个字符串在另一个字符串中出现的次数，若不存在则返回0.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.find(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line">-<span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.index(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line"> Traceback (most recent call last):</span><br><span class="line">   File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"> ValueError: substring <span class="keyword">not</span> found</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.count(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>分割类函数</strong>  </li>
-</ul>
-<p>split()    #以指定字符为分隔符，从原字符串的左端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
-<p>rsplit()   #以指定字符为分隔符，从原字符串的右端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
-<p>partition()    #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串.  </p>
-<p>rpartition()   #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串. </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;bird&#x27;</span>,<span class="string">&#x27;fish&#x27;</span>,<span class="string">&#x27;monkey&#x27;</span>,<span class="string">&#x27;rabbit&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a girl&#x27;</span>] <span class="comment">#此时以空白来从左往右分割, &#x27;maxsplit=2&#x27;说明最多分割两次.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>] <span class="comment">#此时以空白来从右往左分割.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I am a girl&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;m a girl&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;am&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27; a girl&#x27;</span>)</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>字符串连接方法</strong>  </li>
-</ul>
-<p>join()  #将列表中多个字符串进行连接，并在相邻两个字符串之间插入指定字符，返回新字符串. </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=[<span class="string">&#x27;apple&#x27;</span>,<span class="string">&#x27;banana&#x27;</span>,<span class="string">&#x27;pear&#x27;</span>,<span class="string">&#x27;peach&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;:&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple:banana:pear:peach&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;-&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple-banana-pear-peach&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>大小写字符转换方法</strong>  </li>
-</ul>
-<p>lower()     #将字符串转换为小写字符串.  </p>
-<p>uppper()    #将字符串转换为大写字符串.  </p>
-<p>capitalize()    #将字符串首字母变为大写.  </p>
-<p>title()         #将字符串中每个单词的首字母都变为大写.  </p>
-<p>swapcase()      #将字符串中的字符大小写互换.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lower()</span><br><span class="line"><span class="string">&#x27;i have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.upper()</span><br><span class="line"><span class="string">&#x27;I HAVE TWO BIG EYES&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.capitalize()</span><br><span class="line"><span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.title()</span><br><span class="line"><span class="string">&#x27;I Have Two Big Eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.swapcase()</span><br><span class="line"><span class="string">&#x27;i HAVE TWO BIG EYES&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>替换方法</strong>  </li>
-</ul>
-<p>replace() #替换字符串中指定字符或子字符串</p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.replace(<span class="string">&#x27;big&#x27;</span>,<span class="string">&#x27;大&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;I have two 大 eyes&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>删除字符串两端、右端或左端连续空白字符和指定字符方法</strong></li>
-</ul>
-<p>strip()         #删除字符串两端空白字符.   </p>
-<p>rstrip()        #删除字符串右端空白字符.  </p>
-<p>lstrip()        #删除字符串左端空白字符.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;     abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip()</span><br><span class="line"><span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rstrip()</span><br><span class="line"><span class="string">&#x27;     abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lstrip()</span><br><span class="line"><span class="string">&#x27;abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;====mike====&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip(<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>判断字符串是否以指定字符串开始或结束</strong></li>
-</ul>
-<p>startswith()   #判断字符串是否以指定字符开始.  </p>
-<p>endswith()      #判断字符串是否以指定字符结束.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Python 程序设计.py&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;Python&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.endswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>判断字符串类型方法</strong></li>
-</ul>
-<p>isupper()       #是否全为大写.  </p>
-<p>islower()       #是否全为小写.  </p>
-<p>isdigit()       #是否全为数字.  </p>
-<p>isalnum()       #是否全为字母或汉字或数字.  </p>
-<p>isalpha()       #是否全为字母或汉字.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;years&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.islower()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;YEARS&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isupper()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;20241022&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isdigit()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=s.replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalnum()</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>字符串排版方法</strong>  </li>
-</ul>
-<p>center()         #字符串居中对齐.  </p>
-<p>ljust()          #字符串居左对齐.  </p>
-<p>rjust()          #字符串居右对齐.  </p>
-<p>zfill()          #输出指定宽度，不足的左边填0.  </p>
-<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.center(<span class="number">30.</span><span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;==========hello mike==========&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rjust(<span class="number">20</span>,<span class="string">&#x27;*&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;**********hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.zfill(<span class="number">20</span>)</span><br><span class="line"><span class="string">&#x27;0000000000hello mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-]]></content>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git初步学习</title>
     <url>/2024/11/25/Git%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="Git入门学习"><a href="#Git入门学习" class="headerlink" title="Git入门学习"></a>Git入门学习</h1><p><strong>Git</strong> 是一种 <strong>分布式版本控制系统</strong>，主要用于管理源代码的版本历史。它能记录文件的每一次改动，让开发者能够随时回溯、更改和协作，从而极大提高了代码开发的效率和安全性。</p>
@@ -708,63 +531,387 @@ u
       </tags>
   </entry>
   <entry>
-    <title>TOPSIS法</title>
-    <url>/2025/01/17/TOPSIS%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="TOPSIS法"><a href="#TOPSIS法" class="headerlink" title="TOPSIS法"></a>TOPSIS法</h1><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p><strong>1.指标类型：</strong></p>
+    <title>Google开源项目风格指南精简版</title>
+    <url>/2025/02/23/Google%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97%E7%B2%BE%E7%AE%80%E7%89%88/</url>
+    <content><![CDATA[<p><strong>自给自足的头文件</strong></p>
+<p>头文件应该<strong>可以独立编译</strong>，并以 <code>.h</code> 为拓展名。给需要被导入但不属于头文件的文件设置为 <code>.inc</code> 拓展名，并尽量避免使用。</p>
+<p><strong>#define防护符</strong></p>
+<p>所有头文件都应该用 <code>#define</code> 防护符来防止重复导入。防护符的格式是 <code>&lt;项目&gt;_&lt;路径&gt;_&lt;文件名&gt;_H_</code> .</p>
+<p><strong>内联函数</strong></p>
+<p>只把 10 行以下的小函数定义为内联(inline).</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>#include的路径及顺序</strong></p>
+<p>推荐按照以下顺序导入头文件：配套的头文件，C语言系统库头文件，C++标准库头文件，其他库的头文件，本项目的头文件。</p>
+<p>举例来说, <code>google-awesome-project/src/foo/internal/fooserver.cc</code> 的导入语句如下:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo/server/fooserver.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;base/basictypes.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;foo/server/bar.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;third_party/absl/flags/flag.h&quot;</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>命名空间</strong></p>
+<p>除了少数特殊情况，应该在命名空间 (namespace) 内放置代码。命名空间应该有独一无二的名字，其中包含项目名称，也可以选择性地包含文件路径。禁止使用 using 指令 (例如 <code>using namespace foo</code>). 禁止使用内联 (inline) 命名空间。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> mynamespace &#123;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Myclass</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Foo</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>局部变量</strong></p>
+<p>应该尽可能缩小函数变量的作用域 (scope)，并在声明的同时初始化。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i;</span><br><span class="line">i = <span class="built_in">f</span>(); <span class="comment">// 不好：初始化和声明分离，</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> i = <span class="built_in">f</span>(); <span class="comment">// 良好：声明时初始化。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> jobs = <span class="built_in">NumJobs</span>();</span><br><span class="line"><span class="comment">// 更多代码...</span></span><br><span class="line"><span class="built_in">f</span>(jobs); <span class="comment">// 不好：初始化和使用位置分离，</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> jobs = <span class="built_in">NumJobs</span>()</span><br><span class="line"><span class="built_in">f</span>(jobs); <span class="comment">// 良好：初始化以后立即(或很快)使用。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">v.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">v.<span class="built_in">push_back</span>(<span class="number">2</span>); <span class="comment">// 用花括号初始化更好，</span></span><br><span class="line"></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;; <span class="comment">// 良好：立即初始化 v.</span></span><br></pre></td></tr></table></figure>
+<p>通常应该在语句内声明用于 <code>if</code>、<code>while</code> 和 <code>for</code> 语句的变量，这样会把作用域限制在语句内。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while (const char* p = strchr(str, &#x27;/&#x27;)) str = p + 1;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，如果变量是一个对象，那么它每次进入作用域时会调用构造函数，每次退出作用域时都会调用析构函数。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 低效的实现：</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">    Foo f; <span class="comment">// 调用 1000000 次构造函数和析构函数</span></span><br><span class="line">    f.<span class="built_in">DoSomething</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo f; <span class="comment">// 调用 1 次构造函数和析构函数</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line">    f.<span class="built_in">DoSomething</span>(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>未完待续</p>
+]]></content>
+      <tags>
+        <tag>代码规范</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown语法入门(舞萌DX特别版)</title>
+    <url>/2024/10/20/Markdown%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8-%E8%88%9E%E8%90%8CDX%E7%89%B9%E5%88%AB%E7%89%88/</url>
+    <content><![CDATA[<h2 id="0-1介绍"><a href="#0-1介绍" class="headerlink" title="0.1介绍"></a>0.1介绍</h2><p><code>Markdown</code>是一种轻量级的标记语言，它允许人们使用<strong>纯文本格式</strong>编写文档。因其简单的语法、较少的常用标记符号，以及较短的学习时间(<del>易于速成</del>)，被越来越多的学做爱好者及工作者使用。一旦掌握这种标记语言，将极大地提高效率。 </p>
+<p><code>Markdown</code>使用简洁的语法代替排版。相较<code>Word</code>等文字处理软件，<code>Markdown</code>可以做到<strong>手不离开键盘</strong>即可改变字体大小，插入表格、图片、超链接、脚注等。  </p>
+<p>但若要实现复杂排版(如左右对齐缩进等)，建议选择<code>Word</code>、<code>Pages</code>等专业软件。  </p>
+<h2 id="0-2常用编辑器介绍"><a href="#0-2常用编辑器介绍" class="headerlink" title="0.2常用编辑器介绍"></a>0.2常用编辑器介绍</h2><ol>
+<li><code>Typora</code>是一款广受欢迎的轻量级Markdown编辑器。它凭借其优秀的性能和卓越的用户体验，在众多文本编辑工具中脱颖而出。<br><code>Typora</code>采用了所见即所得（WYSIWYG）的设计理念，用户在编辑过程中可实时预览排版效果，无需切换到预览模式，极大地提升了工作效率和编辑体验。<br>但是，Typora已开始收费阶段，价格14.99美元，可供三台设备使用。(<del>建议在csdn等平台多搜搜，你懂的(doge)</del>)</li>
+<li><code>vscode</code>不必多说，安装了Markdown扩展即可。可分屏，边写边预览，也很直观。<del>并且vscode免费</del></li>
+</ol>
+<h2 id="1-标题语法"><a href="#1-标题语法" class="headerlink" title="1.标题语法"></a>1.标题语法</h2><p>要创建标题时，只需在井号(#)后面<strong>空一格</strong>，然后输入要作为标题的文字即可。<strong>#的数量代表了标题的级别</strong>。其中一级标题文字<em>最大</em>，六级<em>最小</em>。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例:#### 舞萌2024</span><br><span class="line">##### Lv.14+</span><br><span class="line">###### VERTEX(rintaro soma deconstructed remix)</span><br></pre></td></tr></table></figure><br><strong>实际效果</strong>:</p>
+<h4 id="舞萌2024"><a href="#舞萌2024" class="headerlink" title="舞萌2024"></a>舞萌2024</h4><h5 id="Lv-14"><a href="#Lv-14" class="headerlink" title="Lv.14"></a>Lv.14</h5><h6 id="VERTEX-rintaro-soma-deconstructed-remix"><a href="#VERTEX-rintaro-soma-deconstructed-remix" class="headerlink" title="VERTEX(rintaro soma deconstructed remix)"></a>VERTEX(rintaro soma deconstructed remix)</h6><p>是不是很简单？  </p>
+<h2 id="2-字体设置斜体、粗体、删除线"><a href="#2-字体设置斜体、粗体、删除线" class="headerlink" title="2.字体设置斜体、粗体、删除线"></a>2.字体设置斜体、粗体、删除线</h2><p>这里需要用到这几个字符:<code>*</code> <code>_</code>  <code>~</code>  </p>
+<p><strong>斜体</strong>  </p>
 <ul>
-<li><strong>效益型</strong>属性：<strong>越大越好</strong>的属性，例如上述人均专著、科研经费。</li>
-<li><strong>成本型</strong>属性：<strong>越小越好</strong>的属性，例如逾期毕业率。</li>
-<li><strong>区间型</strong>属性：<strong>在某一区间内最好</strong>，过大或过小都不好，例如师生比。</li>
+<li><p>只需在要变为斜体的语句前后各添加一个 * 或 _ 即可。  </p>
+<p>示例:<code>*PANDORA PARADOXXX*</code>或<code>_PANDORA PARADOXXX_</code></p>
+</li>
+<li><p><strong>实际效果</strong>:<br> <em>PANDORA PARADOXXX</em>  </p>
+</li>
 </ul>
-<p>显然的是，求<strong>效益型</strong>属性无需处理；而对于<strong>成本型</strong>属性，求<strong>正理想解</strong>时对其取<strong>最小值</strong>，求<strong>负理想解</strong>时对其取<strong>最大值</strong>；而对于<strong>区间型</strong>属性，根据<strong>数据与最优区间</strong>的<strong>差异</strong>进行处理。</p>
-<p><strong>2.区间型属性的变换</strong></p>
+<p><strong>粗体</strong>  </p>
 <ul>
-<li>设第 $j$ 个指标的最优属性区间为 $[ a_j^0, a_j^*]$ ， $a_j^{\prime}$ 为无法容忍下限， $a_j^{\prime\prime}$ 为无法容忍上限，则：</li>
-<li>若在最优属性区间内，值<strong>设为1</strong>；超出可容忍的范围，值<strong>设为0</strong>。</li>
-<li>不在最优区间内，但是还在可接受的范围内，按公式改为<strong>0到1之间的值</strong>。</li>
-</ul>
-<p><strong>3.向量规范化</strong>：</p>
-<ul>
-<li><p>无论成本型属性还是效益型属性，都用相同公式进行变换：</p>
-<p>$b_{ij} = \frac{a_{ij}}{\sqrt{\sum_{i=1}^{m} a_{ij}^2}}$</p>
+<li><p>只需在要变为粗体的语句前后各添加两个 * 即可。   </p>
+<p>示例:<code>**Qzkago Requiem**</code></p>
 </li>
-<li><p>规范化后的数值，同一属性值(评价指标)的<strong>平方和为1</strong>。</p>
-</li>
-<li><p>确保不同评价指标在同一数量级(0到1之间)。</p>
-</li>
-<li><p><strong>变换前后，每个属性值</strong>(评价指标)中的数据的<strong>大小排序不变</strong>。</p>
+<li><p><strong>实际效果</strong>:<br> <strong>Qzkago Requiem</strong></p>
 </li>
 </ul>
-<h2 id="加权处理"><a href="#加权处理" class="headerlink" title="加权处理"></a>加权处理</h2><p><strong>不同指标的重要性不同</strong></p>
+<p><strong>倾斜加粗</strong></p>
 <ul>
-<li>与AHP的两两比较不同，TOPSIS法直接给每个指标加上权重。</li>
-<li>因为TOPSIS法充分利用了数据的差异，只要权重设置的不是太离谱，对结果影响不会太大。</li>
-</ul>
-<h2 id="最终求解"><a href="#最终求解" class="headerlink" title="最终求解"></a>最终求解</h2><p><strong>求解思路</strong></p>
-<ul>
-<li><p>对第 $j$ 个属性(指标)的正理想解：</p>
-<script type="math/tex; mode=display">c_j^* =  \begin{cases}  \max_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \min_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
-<li><p>对第 $j$ 个属性(指标)的负理想解：</p>
-<script type="math/tex; mode=display">c_j^0 =  \begin{cases}  \min_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \max_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
-<li><p>第 $i$ 个方案到正理想解的距离：</p>
-<p>  $s_i^{*} = \sqrt{\sum_{j=1}^n (c_{ij}-c_j^{*})^2}$</p>
+<li><p>只需在要变为倾斜加粗的语句前后各添加三个 * 即可。</p>
+<p>示例:<code>***Garakuta Doll Play***</code></p>
 </li>
-<li><p>第 $j$个方案到负理想解的距离：</p>
-<p>  $s_i^{0} = \sqrt{\sum_{j=1}^n (c_{ij}-c_j^0)^2}$</p>
+<li><p><strong>实际效果</strong>:<br> <strong><em>Garakuta Doll Play</em></strong>  </p>
 </li>
 </ul>
-<p><strong>最终求解：</strong></p>
+<p><strong>删除线</strong>  </p>
 <ul>
-<li><p>各方案的<strong>综合评价指数</strong>：$f_i^{*} = \frac{s_i^0}{s_i^0+s_i^{*}} = \frac{1}{1+\frac{s_i^*}{s_i^0}}$</p>
-</li>
-<li><p>显然，距离正理想解越近 ($s_i^*$ 越小)，距离负理想解越远 ($s_i^0$ 越大)越好。</p>
-</li>
-<li><p>按 $f_i^*$ 从大到小排序方案的优劣，即为所求。</p>
-</li>
+<li>只需在要添加删除线的语句前后各添加两个 ~ 即可。</li>
+</ul>
+<p>示例:<code>~~白茄子是15~~</code>  </p>
+<ul>
+<li><strong>实际效果</strong>:<br><del>白茄子是15</del>  <h2 id="3-代码块"><a href="#3-代码块" class="headerlink" title="3.代码块"></a>3.代码块</h2></li>
 </ul>
 ]]></content>
       <tags>
-        <tag>数学建模</tag>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenCV简单函数速查(C++)</title>
+    <url>/2025/03/02/OpenCV%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0%E9%80%9F%E6%9F%A5-C/</url>
+    <content><![CDATA[<h1 id="OpenCV-简单函数速查"><a href="#OpenCV-简单函数速查" class="headerlink" title="OpenCV 简单函数速查"></a>OpenCV 简单函数速查</h1><h2 id="读取图片-视频-摄像头"><a href="#读取图片-视频-摄像头" class="headerlink" title="读取图片/视频/摄像头"></a>读取图片/视频/摄像头</h2><p><strong>从文件读取图片</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Mat <span class="title">cv::imread</span><span class="params">(<span class="type">const</span> String &amp;filename, <span class="type">int</span> flags = IMREAD_COLOR)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述代码实现了<strong>从文件加载图像</strong>。函数 <code>imread</code> 从指定文件加载图像并返回。在彩色图像的情况下，解码图像的通道将以 <code>B G R</code> 顺序存储。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::imshow</span><span class="params">(<span class="type">const</span> String &amp;winname, InputArray mat)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述代码实现了<strong>在指定窗口中显示图像</strong>。其后应跟 <code>cv::waitKey</code> 函数。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">cv::waitKey</span><span class="params">(<span class="type">int</span> delay = <span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述代码实现了<strong>等待按下的键</strong>。<code>waitKey(0)</code> 将无限显示窗口，直到有任何按键。</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgcodecs.hpp&gt;</span> <span class="comment">// 读写图像文件</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/highgui.hpp&gt;</span> <span class="comment">// 图像处理</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgproc.hpp&gt;</span> <span class="comment">// 高级GUI</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	string path = <span class="string">&quot;Resources/test.png&quot;</span>;</span><br><span class="line">	Mat img = <span class="built_in">imread</span>(path);</span><br><span class="line">	<span class="built_in">imshow</span>(<span class="string">&quot;Image&quot;</span>, img);</span><br><span class="line">	<span class="built_in">waitKey</span>(<span class="number">0</span>); <span class="comment">//显示图片不会一闪而过</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终，会显示一个名为 <code>Image</code> 的窗口。(<del>懒得放图了</del>)</p>
+<p><strong>从文件读取视频</strong></p>
+<p>要捕获视频，需要创建一个 <code>VideoCapture</code> 对象。它的参数可以是视频文件的名称或设备索引。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">cv::VideoCapture::<span class="built_in">VideoCapture</span>()</span><br><span class="line">cv::VideoCapture::<span class="built_in">VideoCapture</span>(<span class="type">const</span> String &amp;filename)</span><br><span class="line">cv::VideoCapture::<span class="built_in">VideoCapture</span>(<span class="type">const</span> String &amp;filename, <span class="type">int</span> apiPreference)</span><br><span class="line">cv::VideoCapture::<span class="built_in">VideoCapture</span>(<span class="type">int</span> index)</span><br><span class="line">cv::VideoCapture::<span class="built_in">VideoCapture</span>(<span class="type">int</span> index, <span class="type">int</span> apiPreference)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述代码实现<strong>打开视频文件或捕获设备或IP视频流进行视频捕获</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="type">bool</span> cv::VideoCapture::<span class="built_in">isOpened</span>() <span class="type">const</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果视频捕获已经初始化，则返回 <code>true</code> 。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="type">bool</span> cv::VideoCapture::<span class="built_in">read</span>(OutputArray image)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>抓取、解码并返回下一个视频帧。</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="type">double</span> cv::VideoCapture::<span class="built_in">get</span>(<span class="type">int</span> proID) <span class="type">const</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>返回指定的 <code>VideoCapture</code> 属性。<code>&lt;-</code></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="type">double</span> cv::VideoCapture::<span class="built_in">set</span>(<span class="type">int</span> proID, <span class="type">double</span> value)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 <code>VideoCapture</code> 中设置一个属性。</li>
+</ul>
+<p><strong>读摄像头代码实现：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgcodecs.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgproc.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">VideoCapture <span class="title">cap</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">	Mat img;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>) </span><br><span class="line">    &#123;</span><br><span class="line">		cap.<span class="built_in">read</span>(img);</span><br><span class="line">		<span class="built_in">imshow</span>(<span class="string">&quot;Image&quot;</span>, img);</span><br><span class="line">		<span class="built_in">waitKey</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="基础函数"><a href="#基础函数" class="headerlink" title="基础函数"></a>基础函数</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::cvtColor</span><span class="params">(InputArray src, OutputArray dst, <span class="type">int</span> code, <span class="type">int</span> dstCn = <span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述代码实现了<strong>将一种颜色空间转换为另一种颜色空间</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::GaussianBlur</span><span class="params">(InputArray src, OutputArray dst, Size ksize, <span class="type">double</span> sigmaX, <span class="type">double</span> sigmaY = <span class="number">0</span>, <span class="type">int</span> borderType = BORDER_DEFAULT)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>高斯模糊</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::Canny</span><span class="params">(InputArray image, OutputArray edges, <span class="type">double</span> threshold1, <span class="type">double</span> threshold2, <span class="type">int</span> apertureSize = <span class="number">3</span>, <span class="type">bool</span> L2gradient = <span class="literal">false</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用Canny算法在图像中<strong>查找边缘</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Mat <span class="title">cv::getStructuringElement</span><span class="params">(<span class="type">int</span> shape, Size ksize, Point anchor = Point(<span class="number">-1</span>, <span class="number">-1</span>))</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>返回指定大小和形状的结构元素</strong>，用于形态学操作。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::dilate</span><span class="params">(InputArray src, OutputArray dst, InuputArray kernel, Point anchor = Point(<span class="number">-1</span>, <span class="number">-1</span>), <span class="type">int</span> iterations = <span class="number">1</span>, <span class="type">int</span> borderType = BORDER_CONSTANT, <span class="type">const</span> Scalar &amp;borderValue = morphologyDefaultBorderValue())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用特定的结构元素<strong>膨胀</strong>图像。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::erode</span><span class="params">(InputArray src, OutputArray dst, InuputArray kernel, Point anchor = Point(<span class="number">-1</span>, <span class="number">-1</span>), <span class="type">int</span> iterations = <span class="number">1</span>, <span class="type">int</span> borderType = BORDER_CONSTANT, <span class="type">const</span> Scalar &amp;borderValue = morphologyDefaultBorderValue())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用特定的结构元素<strong>腐蚀</strong>图像。</li>
+</ul>
+<hr>
+<h2 id="调整和剪裁"><a href="#调整和剪裁" class="headerlink" title="调整和剪裁"></a>调整和剪裁</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::resize</span><span class="params">(InputArray src, OutputArray dst, Size dsize, <span class="type">double</span> fx=<span class="number">0</span>, <span class="type">double</span> fy=<span class="number">0</span>, <span class="type">int</span> interpolation = INTER_LINEAR)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>调整图像大小</strong>。函数 <code>resize</code> 将图像 <code>src</code> 的大小缩小到或最大到指定的大小。</li>
+</ul>
+<hr>
+<h2 id="绘制形状和文字"><a href="#绘制形状和文字" class="headerlink" title="绘制形状和文字"></a>绘制形状和文字</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Mat</span>(<span class="type">int</span> rows, <span class="type">int</span> cols, <span class="type">int</span> type, <span class="type">const</span> Scalar &amp;s)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重载的构造函数</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::circle</span><span class="params">(InputOutputArray img, Point center, <span class="type">int</span> radius, <span class="type">const</span> Scalar &amp;color, <span class="type">int</span> thickness=<span class="number">1</span>, <span class="type">int</span> lineType=LINE_8, <span class="type">int</span> shift=<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数 <code>cv::circle</code> 用给定的中心和半径绘制一个简单的<strong>实心圆</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::rectangle</span><span class="params">(InputOutputArray img, Point pt1, Point pt2, <span class="type">const</span> Scalar &amp;color, <span class="type">int</span> thickness=<span class="number">1</span>, <span class="type">int</span> lineType=LINE_8, <span class="type">int</span> shift=<span class="number">0</span>)</span></span></span><br><span class="line"><span class="function">    </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::rectangle</span><span class="params">(Mat &amp;img, Rect rec, <span class="type">const</span> Scalar &amp;color, <span class="type">int</span> thickness=<span class="number">1</span>, <span class="type">int</span> lineType=LINE_8, <span class="type">int</span> shift=<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>绘制一个简单的、粗的或填充的右上<strong>矩形</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::line</span> <span class="params">(InputOutputArray img, Point pt1, Point pt2, <span class="type">const</span> Scalar &amp;color, <span class="type">int</span> thickness=<span class="number">1</span>, <span class="type">int</span> lineType=LINE_8, <span class="type">int</span> shift=<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>绘制连接两点的<strong>线段</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::putText</span> <span class="params">(InputOutputArray img, <span class="type">const</span> String &amp;text, Point org, <span class="type">int</span> fontFace, <span class="type">double</span> fontScale, Scalar color, <span class="type">int</span> thickness=<span class="number">1</span>, <span class="type">int</span> lineType=LINE_8, <span class="type">bool</span> bottomLeftOrigin=<span class="literal">false</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>绘制一个文本字符串</strong>。</li>
+</ul>
+<hr>
+<h2 id="透视变换"><a href="#透视变换" class="headerlink" title="透视变换"></a>透视变换</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Mat <span class="title">cv::getPerspectiveTransform</span> <span class="params">(<span class="type">const</span> Point2f src[], <span class="type">const</span> Point2f dst[])</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>返回相应 4 个点对的 <code>3x3</code> 透视变换。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::warpPerspective</span> <span class="params">(InputArray src, OutputArray dst, InputArray M, Size dsize, <span class="type">int</span> flags=INTER_LINEAR, <span class="type">int</span> borderMode=BORDER_CONSTANT, <span class="type">const</span> Scalar &amp;borderValue=Scalar())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>对图像应用透视变换。</li>
+</ul>
+<hr>
+<h2 id="颜色检测"><a href="#颜色检测" class="headerlink" title="颜色检测"></a>颜色检测</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::inRange</span> <span class="params">(InputArray src, InputArray lowerb, InputArray upperb, OutputArray dst)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>检测数组元素时候位于其他两个数组的元素之间。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::namedWindow</span> <span class="params">(<span class="type">const</span> String &amp;winname, <span class="type">int</span> flags = WINDOW_AUTOSIZE)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>创建一个窗口</strong>。函数创建一个可用作图像和轨迹栏占位符的窗口。创建的窗口由它们的名称引用。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">cv::createTrackbar</span> <span class="params">(<span class="type">const</span> String &amp;trackbarname, <span class="type">const</span> String &amp;winname, <span class="type">int</span> *value, <span class="type">int</span> count, TrackbarCallback onChange = <span class="number">0</span>, <span class="type">void</span> *userdata = <span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建一个 <code>trackbar</code> 并将其附加到指定窗口。函数 <code>createTrackbar</code>创建一个具有指定名称和范围的<code>trackbar</code>（滑块或范围控件），分配一个变量值作为与 <code>trackbar</code> 同步的位置，并指定回调函数<code>onChange</code> 为 在跟踪栏位置变化时被调用。创建的轨迹栏显示在指定的窗口 <code>winname</code> 中。</li>
+</ul>
+<hr>
+<h2 id="形状-轮廓检测"><a href="#形状-轮廓检测" class="headerlink" title="形状/轮廓检测"></a>形状/轮廓检测</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::findContours</span><span class="params">(InputOutputArray image, OutputArrayOfArrays contours, OutputArray hierarchy, <span class="type">int</span> mode, <span class="type">int</span> method, Point offset = Point())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>在二值图像中查找轮廓</strong>。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">image</td>
+<td style="text-align:center">二值输入图像</td>
+</tr>
+<tr>
+<td style="text-align:center">contours</td>
+<td style="text-align:center">检测到的轮廓，每个轮廓都存储为点向量（例如 <code>std::vector&lt;std::vector&lt;cv::Point&gt; &gt;</code>）</td>
+</tr>
+<tr>
+<td style="text-align:center">hierarchy</td>
+<td style="text-align:center">可选的输出向量（例如 <code>std::vector&lt;cv::Vec4i&gt;</code>），包含有关图像拓扑的信息</td>
+</tr>
+<tr>
+<td style="text-align:center">mode</td>
+<td style="text-align:center">轮廓检索模式</td>
+</tr>
+<tr>
+<td style="text-align:center">method</td>
+<td style="text-align:center">轮廓近似方式</td>
+</tr>
+<tr>
+<td style="text-align:center">offset</td>
+<td style="text-align:center">每个轮廓点移动的可选偏移量</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">double</span> <span class="title">cv::contourArea</span><span class="params">(InputArray contour, <span class="type">bool</span> oriented = <span class="literal">false</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>计算轮廓区域</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">double</span> <span class="title">cv::arcLength</span><span class="params">(InputArray curve, <span class="type">bool</span> closed)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>计算曲线长度或闭合轮廓周长</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::approxPolyDP</span><span class="params">(InputArray curve, OutputArray approxCurve, <span class="type">double</span> epsilon, <span class="type">bool</span> closed)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>用另一个具有较少顶点的曲线/多边形来<strong>逼近</strong>一条曲线或多边形，以使他们之间的距离小于或等于指定的精度。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::drawContours</span><span class="params">(InputOutputArray image, InputArrayOfArrays contours, <span class="type">int</span> contourIdx, <span class="type">const</span> Scalar &amp;color, <span class="type">int</span> thickness = <span class="number">1</span>, <span class="type">int</span> lineType = LINE_8, InputArray hierarchy = noArray(), <span class="type">int</span> maxLevel = INT_MAX, Point offset = Point())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>绘制轮廓轮廓或填充轮廓</strong>。如果厚度 ≥ 0，该函数在图像中绘制轮廓轮廓，如果厚度 &lt; 0，则填充轮廓所包围的区域。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Point_&lt; _Tp &gt; <span class="title">tl</span><span class="params">()</span> <span class="type">const</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>左上角</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">Point_&lt; _Tp &gt; <span class="title">br</span><span class="params">()</span> <span class="type">const</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>右下角</li>
+</ul>
+<hr>
+<h2 id="人脸检测"><a href="#人脸检测" class="headerlink" title="人脸检测"></a>人脸检测</h2><p>（挖个坑，这里仅给出速查代码，后面写一篇从原理开始分析的人脸检测）</p>
+<p>涉及模块 <code>objdetect:Object Detection</code> </p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">cv</span>::CascadeClassifier</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>用于对象检测的级联分类器类</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">load</span> <span class="params">(<span class="type">const</span> String &amp;filename)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>从文件加载分类器</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">empty</span><span class="params">()</span> <span class="type">const</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>检测分类器是否已加载。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">detectMultiScale</span><span class="params">(InputArray image, std::vector&lt;Rect&gt; &amp;objects, <span class="type">double</span> scaleFactor=<span class="number">1.1</span>, <span class="type">int</span> minNeighbors=<span class="number">3</span>, <span class="type">int</span> flags=<span class="number">0</span>, Size minSize=Size(), Size maxSize=Size())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>检测输入图像中不同大小的对象。检测到的对象作为矩形列表返回。</li>
+</ul>
+<p>代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgcodecs.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgproc.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/objdetect.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	string path = <span class="string">&quot;Resources/test.png&quot;</span>;</span><br><span class="line">	Mat img = <span class="built_in">imread</span>(path);</span><br><span class="line"></span><br><span class="line">	CascadeClassifier faceCascade;</span><br><span class="line">	faceCascade.<span class="built_in">load</span>(<span class="string">&quot;Resources/haarcascade_frontalface_default.xml&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (faceCascade.<span class="built_in">empty</span>()) &#123; cout &lt;&lt; <span class="string">&quot;XML file not loaded&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line"></span><br><span class="line">	vector&lt;Rect&gt; faces;</span><br><span class="line">	faceCascade.<span class="built_in">detectMultiScale</span>(img, faces, <span class="number">1.1</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; faces.<span class="built_in">size</span>(); i++) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">rectangle</span>(img, faces[i].<span class="built_in">tl</span>(), faces[i].<span class="built_in">br</span>(), <span class="built_in">Scalar</span>(<span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">imshow</span>(<span class="string">&quot;Image&quot;</span>, img);</span><br><span class="line">	<span class="built_in">waitKey</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python学习:字符串</title>
+    <url>/2024/10/21/Python%E5%AD%A6%E4%B9%A0-%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h3 id="字符串的索引与切片"><a href="#字符串的索引与切片" class="headerlink" title="字符串的索引与切片"></a>字符串的索引与切片</h3><ul>
+<li><strong>字符串的索引访问</strong>  </li>
+</ul>
+<p>Python语言中的字符串包括两种符号体系:正向递增序号和反向递减序号。  </p>
+<p>如下图所示:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>]</span><br><span class="line"><span class="string">&#x27;H&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;d&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">8</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[-<span class="number">3</span>]</span><br><span class="line"><span class="string">&#x27;r&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>字符串的切片访问</strong></li>
+</ul>
+<p>具体语法格式为: <code>[头下标：尾下标]</code> ，这种访问方式称之为“切片”。但注意，这是<strong>左闭右开</strong>的区间。在切片方式中，若头下标缺省，表示从字符串的开始取子串；若尾下标缺省，表示取到字符串的最后一个字符；若头下标和尾下标都缺省，则取整个字符串。 </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Mik&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:<span class="number">5</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">6</span>:]</span><br><span class="line"><span class="string">&#x27;Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[:]</span><br><span class="line"><span class="string">&#x27;Hello Mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<p>字符串切片还可以设置取子字符串的顺序，格式为 <code>[头下标:尾下标:步长]</code> 。当步长大于0的时候，从左往右取字符；当步长小于0的时候，从右往左取字符。  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello Mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">5</span>:<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:<span class="number">2</span>]</span><br><span class="line"><span class="string">&#x27;Hlo&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">0</span>:<span class="number">6</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>:<span class="number">0</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olle&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s[<span class="number">4</span>::-<span class="number">1</span>]</span><br><span class="line"><span class="string">&#x27;olleH&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="字符串的处理与操作"><a href="#字符串的处理与操作" class="headerlink" title="字符串的处理与操作"></a>字符串的处理与操作</h3><ul>
+<li><strong>内置字符串处理函数</strong> </li>
+</ul>
+<p>len(x)   #返回字符串x的长度    </p>
+<p>str(x)   #将任意类型的x转化为字符串类型 </p>
+<p>chr(x)   #返回Unicode编码为x的字符  </p>
+<p>ord(x)   #返回字符x的Unicode编码  </p>
+<p>hex(x)   #将整数x转化为十六进制数  </p>
+<p>oct(x)   #将整数x转化为八进制数  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(s)</span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">120</span>)</span><br><span class="line"><span class="string">&#x27;120&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">3</span>+<span class="number">5</span>)</span><br><span class="line"><span class="string">&#x27;8&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">hex</span>(<span class="number">62</span>)</span><br><span class="line"><span class="string">&#x27;0o76&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line"><span class="number">65</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">chr</span>(<span class="number">65</span>)</span><br><span class="line"><span class="string">&#x27;A&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>查找类函数</strong></li>
+</ul>
+<p>find()   #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则返回-1.  </p>
+<p>rfind()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则返回-1.  </p>
+<p>index()  #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中首次出现的位置，若不存在则抛出异常.  </p>
+<p>rindex() #查找一个字符串在另一个字符串指定范围内（默认是整个字符串）中最后一次出现的位置，若不存在则抛出异常.  </p>
+<p>count()  #用来返回一个字符串在另一个字符串中出现的次数，若不存在则返回0.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.find(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rfind(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line">-<span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.index(<span class="string">&#x27;tiger&#x27;</span>)</span><br><span class="line"> Traceback (most recent call last):</span><br><span class="line">   File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"> ValueError: substring <span class="keyword">not</span> found</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.count(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>分割类函数</strong>  </li>
+</ul>
+<p>split()    #以指定字符为分隔符，从原字符串的左端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
+<p>rsplit()   #以指定字符为分隔符，从原字符串的右端开始将其分割为多个字符串，并返回包含分割结果的列表.  </p>
+<p>partition()    #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串.  </p>
+<p>rpartition()   #以指定字符串为分隔符将原字符串分割为3个部分，分隔符之前的字符串，分隔符字符串和分隔符之后的字符串. </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;bird,fish,monkey,rabbit&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;bird&#x27;</span>,<span class="string">&#x27;fish&#x27;</span>,<span class="string">&#x27;monkey&#x27;</span>,<span class="string">&#x27;rabbit&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.split(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I&#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27;a girl&#x27;</span>] <span class="comment">#此时以空白来从左往右分割, &#x27;maxsplit=2&#x27;说明最多分割两次.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rsplit(maxsplit=<span class="number">2</span>)</span><br><span class="line">[<span class="string">&#x27;I am&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;girl&#x27;</span>] <span class="comment">#此时以空白来从右往左分割.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;fish&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I am a girl&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;m a girl&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.partition(<span class="string">&#x27;am&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27;I &#x27;</span>,<span class="string">&#x27;am&#x27;</span>,<span class="string">&#x27; a girl&#x27;</span>)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>字符串连接方法</strong>  </li>
+</ul>
+<p>join()  #将列表中多个字符串进行连接，并在相邻两个字符串之间插入指定字符，返回新字符串. </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=[<span class="string">&#x27;apple&#x27;</span>,<span class="string">&#x27;banana&#x27;</span>,<span class="string">&#x27;pear&#x27;</span>,<span class="string">&#x27;peach&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;:&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple:banana:pear:peach&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;-&#x27;</span>.join(s)</span><br><span class="line"><span class="string">&#x27;apple-banana-pear-peach&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>大小写字符转换方法</strong>  </li>
+</ul>
+<p>lower()     #将字符串转换为小写字符串.  </p>
+<p>uppper()    #将字符串转换为大写字符串.  </p>
+<p>capitalize()    #将字符串首字母变为大写.  </p>
+<p>title()         #将字符串中每个单词的首字母都变为大写.  </p>
+<p>swapcase()      #将字符串中的字符大小写互换.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lower()</span><br><span class="line"><span class="string">&#x27;i have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.upper()</span><br><span class="line"><span class="string">&#x27;I HAVE TWO BIG EYES&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.capitalize()</span><br><span class="line"><span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.title()</span><br><span class="line"><span class="string">&#x27;I Have Two Big Eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.swapcase()</span><br><span class="line"><span class="string">&#x27;i HAVE TWO BIG EYES&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>替换方法</strong>  </li>
+</ul>
+<p>replace() #替换字符串中指定字符或子字符串</p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I have two big eyes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.replace(<span class="string">&#x27;big&#x27;</span>,<span class="string">&#x27;大&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;I have two 大 eyes&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>删除字符串两端、右端或左端连续空白字符和指定字符方法</strong></li>
+</ul>
+<p>strip()         #删除字符串两端空白字符.   </p>
+<p>rstrip()        #删除字符串右端空白字符.  </p>
+<p>lstrip()        #删除字符串左端空白字符.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;     abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip()</span><br><span class="line"><span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rstrip()</span><br><span class="line"><span class="string">&#x27;     abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.lstrip()</span><br><span class="line"><span class="string">&#x27;abc     &#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;====mike====&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.strip(<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>判断字符串是否以指定字符串开始或结束</strong></li>
+</ul>
+<p>startswith()   #判断字符串是否以指定字符开始.  </p>
+<p>endswith()      #判断字符串是否以指定字符结束.<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;Python 程序设计.py&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.startswith(<span class="string">&#x27;Python&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.endswith(<span class="string">&#x27;py&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>判断字符串类型方法</strong></li>
+</ul>
+<p>isupper()       #是否全为大写.  </p>
+<p>islower()       #是否全为小写.  </p>
+<p>isdigit()       #是否全为数字.  </p>
+<p>isalnum()       #是否全为字母或汉字或数字.  </p>
+<p>isalpha()       #是否全为字母或汉字.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;years&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.islower()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;YEARS&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isupper()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;20241022&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isdigit()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;I am a girl&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=s.replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalpha()</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.isalnum()</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>字符串排版方法</strong>  </li>
+</ul>
+<p>center()         #字符串居中对齐.  </p>
+<p>ljust()          #字符串居左对齐.  </p>
+<p>rjust()          #字符串居右对齐.  </p>
+<p>zfill()          #输出指定宽度，不足的左边填0.  </p>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">&#x27;hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.center(<span class="number">30.</span><span class="string">&#x27;=&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;==========hello mike==========&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.rjust(<span class="number">20</span>,<span class="string">&#x27;*&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;**********hello mike&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.zfill(<span class="number">20</span>)</span><br><span class="line"><span class="string">&#x27;0000000000hello mike&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+]]></content>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -799,28 +946,6 @@ u
 ]]></content>
       <tags>
         <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据类型:结构体</title>
-    <url>/2024/10/20/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93/</url>
-    <content><![CDATA[<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>在实际问题中，仅仅使用整型(<code>int</code> <code>long long</code>)，浮点型(<code>float</code> <code>double</code>)，字符型(<code>char</code>)以及数组、字符串这些数据类型经常不够。有时候我们需要其中的几种<strong>一起</strong>来修饰某个变量，例如一个学生的信息就需要<code>学号</code>(字符串)，<code>姓名</code>(字符串)，<code>年龄</code>(整型)等等。这些数据类型都不同，但是它们又要表示一个整体，要存在联系，那么我们就需要一个新的数据类型。   </p>
-<p><strong>结构体</strong>就能将不同类型的数据存放在一起，作为个整体进行处理。  </p>
-<p>结构体的声明：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure><br>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
-<p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong>。  </p>
-<p>而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>。  </p>
-<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure><br>2.直接定义结构体变量(匿名结构体)。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure><br><strong><em>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</em></strong>  </p>
-<p><strong>Typedef的引入</strong>:<br>以此为例:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure><br>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
-<p>而若要定义结构体变量<code>stu</code>时，利用<em>数据类型+变量名</em>，我们可以自然而然地写出<code>Student stu;</code>。但这样写，编译器可能会报错，提示我们需要在前面加上<code>struct</code>，于是我们应写为：<code>struct Student stu;</code>。  </p>
-<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure></p>
-<p>这样我们就可以直接用<code>Student stu</code>来定义结构体变量。  </p>
-<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure><br>这样，学生信息里面就包含了学生的生日信息。</p>
-<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure><br><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
-<p>e.g.访问学号:<code>stu1.id</code>.<br>访问生日信息中的月份:<code>stu1.birthday.month</code>.   </p>
-<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <tags>
-        <tag>数据类型</tag>
       </tags>
   </entry>
   <entry>
@@ -1288,6 +1413,159 @@ u
       </tags>
   </entry>
   <entry>
+    <title>TOPSIS法</title>
+    <url>/2025/01/17/TOPSIS%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="TOPSIS法"><a href="#TOPSIS法" class="headerlink" title="TOPSIS法"></a>TOPSIS法</h1><h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p><strong>1.指标类型：</strong></p>
+<ul>
+<li><strong>效益型</strong>属性：<strong>越大越好</strong>的属性，例如上述人均专著、科研经费。</li>
+<li><strong>成本型</strong>属性：<strong>越小越好</strong>的属性，例如逾期毕业率。</li>
+<li><strong>区间型</strong>属性：<strong>在某一区间内最好</strong>，过大或过小都不好，例如师生比。</li>
+</ul>
+<p>显然的是，求<strong>效益型</strong>属性无需处理；而对于<strong>成本型</strong>属性，求<strong>正理想解</strong>时对其取<strong>最小值</strong>，求<strong>负理想解</strong>时对其取<strong>最大值</strong>；而对于<strong>区间型</strong>属性，根据<strong>数据与最优区间</strong>的<strong>差异</strong>进行处理。</p>
+<p><strong>2.区间型属性的变换</strong></p>
+<ul>
+<li>设第 $j$ 个指标的最优属性区间为 $[ a_j^0, a_j^*]$ ， $a_j^{\prime}$ 为无法容忍下限， $a_j^{\prime\prime}$ 为无法容忍上限，则：</li>
+<li>若在最优属性区间内，值<strong>设为1</strong>；超出可容忍的范围，值<strong>设为0</strong>。</li>
+<li>不在最优区间内，但是还在可接受的范围内，按公式改为<strong>0到1之间的值</strong>。</li>
+</ul>
+<p><strong>3.向量规范化</strong>：</p>
+<ul>
+<li><p>无论成本型属性还是效益型属性，都用相同公式进行变换：</p>
+<p>$b_{ij} = \frac{a_{ij}}{\sqrt{\sum_{i=1}^{m} a_{ij}^2}}$</p>
+</li>
+<li><p>规范化后的数值，同一属性值(评价指标)的<strong>平方和为1</strong>。</p>
+</li>
+<li><p>确保不同评价指标在同一数量级(0到1之间)。</p>
+</li>
+<li><p><strong>变换前后，每个属性值</strong>(评价指标)中的数据的<strong>大小排序不变</strong>。</p>
+</li>
+</ul>
+<h2 id="加权处理"><a href="#加权处理" class="headerlink" title="加权处理"></a>加权处理</h2><p><strong>不同指标的重要性不同</strong></p>
+<ul>
+<li>与AHP的两两比较不同，TOPSIS法直接给每个指标加上权重。</li>
+<li>因为TOPSIS法充分利用了数据的差异，只要权重设置的不是太离谱，对结果影响不会太大。</li>
+</ul>
+<h2 id="最终求解"><a href="#最终求解" class="headerlink" title="最终求解"></a>最终求解</h2><p><strong>求解思路</strong></p>
+<ul>
+<li><p>对第 $j$ 个属性(指标)的正理想解：</p>
+<script type="math/tex; mode=display">c_j^* =  \begin{cases}  \max_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \min_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
+<li><p>对第 $j$ 个属性(指标)的负理想解：</p>
+<script type="math/tex; mode=display">c_j^0 =  \begin{cases}  \min_i c_{ij}, & \text{ } j \text{ 是效益型属性} \\ \max_i c_{ij}, & \text{ } j \text{ 是成本型属性} \end{cases}</script></li>
+<li><p>第 $i$ 个方案到正理想解的距离：</p>
+<p>  $s_i^{*} = \sqrt{\sum_{j=1}^n (c_{ij}-c_j^{*})^2}$</p>
+</li>
+<li><p>第 $j$个方案到负理想解的距离：</p>
+<p>  $s_i^{0} = \sqrt{\sum_{j=1}^n (c_{ij}-c_j^0)^2}$</p>
+</li>
+</ul>
+<p><strong>最终求解：</strong></p>
+<ul>
+<li><p>各方案的<strong>综合评价指数</strong>：$f_i^{*} = \frac{s_i^0}{s_i^0+s_i^{*}} = \frac{1}{1+\frac{s_i^*}{s_i^0}}$</p>
+</li>
+<li><p>显然，距离正理想解越近 ($s_i^*$ 越小)，距离负理想解越远 ($s_i^0$ 越大)越好。</p>
+</li>
+<li><p>按 $f_i^*$ 从大到小排序方案的优劣，即为所求。</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据类型:结构体</title>
+    <url>/2024/10/20/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93/</url>
+    <content><![CDATA[<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>在实际问题中，仅仅使用整型(<code>int</code> <code>long long</code>)，浮点型(<code>float</code> <code>double</code>)，字符型(<code>char</code>)以及数组、字符串这些数据类型经常不够。有时候我们需要其中的几种<strong>一起</strong>来修饰某个变量，例如一个学生的信息就需要<code>学号</code>(字符串)，<code>姓名</code>(字符串)，<code>年龄</code>(整型)等等。这些数据类型都不同，但是它们又要表示一个整体，要存在联系，那么我们就需要一个新的数据类型。   </p>
+<p><strong>结构体</strong>就能将不同类型的数据存放在一起，作为个整体进行处理。  </p>
+<p>结构体的声明：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tag</span><span class="comment">//申明一个结构体</span></span><br><span class="line">&#123;</span><br><span class="line">    member1;</span><br><span class="line">    member2;</span><br><span class="line">&#125;variable-list;</span><br><span class="line"><span class="comment">//▶ struct是结构体关键字</span></span><br><span class="line"><span class="comment">//▶ tag是结构体的标签名，是自定义的</span></span><br><span class="line"><span class="comment">//▶ struct tag就是结构体类型</span></span><br><span class="line"><span class="comment">//▶ &#123;&#125;里面放的是成员列表</span></span><br><span class="line"><span class="comment">//▶ variable-list是变量</span></span><br><span class="line"><span class="comment">//▶ member1 , member2 是结构体成员</span></span><br></pre></td></tr></table></figure><br>结构体也是一种数据类型，它由程序员自己定义，可以包含多个其他类型的数据。</p>
+<p>像 int、float、char 等是由C语言本身提供的数据类型，不能再进行分拆，我们称之为<strong>基本数据类型</strong>。  </p>
+<p>而结构体可以包含多个基本类型的数据，也可以包含其他的结构体，我们将它称为<strong>复杂数据类型</strong>。  </p>
+<p><strong>结构体的基础结构</strong><br>1.先定义结构体类型，再定义结构体变量。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//结构体成员</span></span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  <span class="type">char</span> addr[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span> stu1,stu2;<span class="comment">//结构体变量</span></span><br></pre></td></tr></table></figure><br>2.直接定义结构体变量(匿名结构体)。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">  <span class="type">char</span> sex;</span><br><span class="line">  <span class="type">int</span> num;</span><br><span class="line">  <span class="type">float</span> score[<span class="number">3</span>];</span><br><span class="line">&#125;person1,person2;</span><br></pre></td></tr></table></figure><br><strong><em>注意:使用匿名结构体，只能使用一次。无法多次使用一个结构体模块！</em></strong>  </p>
+<p><strong>Typedef的引入</strong>:<br>以此为例:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure><br>在其他地方定义变量时，需要用到<em>数据类型+变量名</em>，如<code>int a;</code> <code>float b;</code> <code>char c;</code>。   </p>
+<p>而若要定义结构体变量<code>stu</code>时，利用<em>数据类型+变量名</em>，我们可以自然而然地写出<code>Student stu;</code>。但这样写，编译器可能会报错，提示我们需要在前面加上<code>struct</code>，于是我们应写为：<code>struct Student stu;</code>。  </p>
+<p>为方便起见，我们添加一行代码:<code>typedef struct Student Student</code>。或者，可以将上述代码改为:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span><span class="comment">//使用链表等数据类型时，struct后面要加Student.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure></p>
+<p>这样我们就可以直接用<code>Student stu</code>来定义结构体变量。  </p>
+<p><strong>结构体的嵌套</strong><br>例如，在学生的信息中，需要添加学生的生日信息，则可以使用结构体嵌套。示例代码如下：<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">birthday</span><span class="comment">//可加可不加</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> day;</span><br><span class="line">&#125;Birthday;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Student</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> id;</span><br><span class="line">  <span class="type">char</span> *name;</span><br><span class="line">  <span class="type">int</span> age;</span><br><span class="line">  <span class="type">float</span> score;</span><br><span class="line">  Birthday birthday;<span class="comment">//嵌套使用</span></span><br><span class="line">&#125;Student;</span><br></pre></td></tr></table></figure><br>这样，学生信息里面就包含了学生的生日信息。</p>
+<p><strong>结构体变量的赋值</strong><br>录入一个学生的信息，可以通过以下代码实现。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">Student stu1=&#123;<span class="number">1001</span>,<span class="string">&quot;张三&quot;</span>,<span class="number">18</span>,<span class="number">100</span>,&#123;<span class="number">2006</span>,<span class="number">1</span>,<span class="number">24</span>&#125;&#125;;</span><br></pre></td></tr></table></figure><br><strong>访问结构体成员变量</strong><br>使用点(<code>.</code>)操作符号</p>
+<p>e.g.访问学号:<code>stu1.id</code>.<br>访问生日信息中的月份:<code>stu1.birthday.month</code>.   </p>
+<p><strong>结构体作为函数的参数</strong><br>例如，要写一个函数，来打印学生信息，写法是:<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printStudentInfo</span><span class="params">(Student stu)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;学号:&quot;</span>&lt;&lt;stu.id&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;姓名:&quot;</span>&lt;&lt;stu.name&lt;&lt;<span class="string">&quot;   &quot;</span>; </span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;年龄:&quot;</span>&lt;&lt;stu.age&lt;&lt;<span class="string">&quot;   &quot;</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;生日:&quot;</span>&lt;&lt;stu.birthday.year&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.month&lt;&lt;<span class="string">&quot;-&quot;</span>;</span><br><span class="line">  cout&lt;&lt;stu.birthday.day&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <tags>
+        <tag>数据类型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>熵权法</title>
+    <url>/2025/01/19/%E7%86%B5%E6%9D%83%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h1><p><strong>熵的概念：</strong></p>
+<ul>
+<li>信息论中，熵是对<strong>不确定性</strong>的一种度量，可判断一个事件的<strong>随机性</strong>及<strong>无序</strong>程度。</li>
+<li>用熵值判断某个指标的<strong>离散程度</strong>，指标的<strong>离散程度越大</strong>，<strong>该指标对综合评价的影响越大</strong>。</li>
+</ul>
+<h3 id="适用赛题"><a href="#适用赛题" class="headerlink" title="适用赛题"></a>适用赛题</h3><ul>
+<li>数据全面，但缺少文献或主观依据的题目<ul>
+<li>例如，<strong>评价河流的水质</strong>，已知河流的含氧量、pH值、细菌密度、生物密度等数据</li>
+<li>但<strong>缺乏评价水质的文献资料</strong>，或者文献内的<strong>说法不一</strong></li>
+<li>即文献很难帮助我们确定影响水质最重要的因素是哪一个，也很难告诉我们其余指标的重要程度如何衡量</li>
+<li>此时即可使用熵权法，<strong>根据数据本身建立评价体系</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>熵权法与其他方法 (如AHP、TOPSIS法等) 最大的区别就是<strong>完全客观</strong></li>
+<li><strong>难以将数据之外的因素考虑进去</strong></li>
+</ul>
+<p><strong>1.数据标准化</strong></p>
+<p>标准化的原因：</p>
+<ul>
+<li>评价体系中，存在数值越大越好的<strong>正向指标</strong>，和数值越小越好的<strong>负向指标</strong></li>
+<li>不同指标数量级也可能不同；且求熵的公式中用到对数函数，变量不允许有负值</li>
+</ul>
+<p><strong>正向指标标准化：</strong></p>
+<p>$ a_{ij} = \frac{ x_{ij}- \min(x_{1j},…,x_{nj} )}{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
+<p><strong>负向指标标准化：</strong></p>
+<p>$ a_{ij} = \frac{ \max(x_{1j},…,x_{nj}) - x_{ij} }{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
+<p>不难发现，标准化之后，$a_{ij}$ 所有值在 $[0,1] $ 区间之内，且都是数值越大、现实意义越好。</p>
+<p><strong>2.指标的熵值和变异程度</strong></p>
+<p>①每个评价对象在各个指标中的比重：</p>
+<ul>
+<li><p>可理解为统计意义上某种情况出现的概率</p>
+<p>$p_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}$</p>
+</li>
+</ul>
+<p>②熵值</p>
+<ul>
+<li><p>对于第 $i$ 个指标，其熵值 $e_j$ 为：</p>
+<p>$e_j = -\frac{1}{\ln n} \sum_{i=1}^{n} p_{ij} \ln p_{ij}$</p>
+</li>
+</ul>
+<p>③变异系数</p>
+<ul>
+<li>第 $j$ 个指标的变异系数： $g_j = 1 - e_j$ .</li>
+<li>显然熵值越大、变异系数越小，代表该指标越有序，该指标的信息量也就越小。</li>
+</ul>
+<p><strong>3.权重与评分</strong></p>
+<p><strong>变异系数求权重</strong></p>
+<ul>
+<li>计算第 $j$ 个指标的权重： $w_j = \frac{g_j}{\sum_{j=1}^{m} g_j} $ .</li>
+<li>指标的变异系数越大、信息量越大，相应指标的权重也越大。</li>
+</ul>
+<p><strong>综合评分</strong></p>
+<ul>
+<li><p>计算第 $i$ 个评价对象的综合评价值</p>
+<p>$s_i = \sum_{j=1}^{m} w_j p_{ij}$</p>
+</li>
+<li><p>该公式对不同科目加权求和，得到每个人的平均值，评价值越大越好。</p>
+</li>
+<li><p>$p_{ij}$ 和 $w_j$ 都是原始数据 (成绩) 求得的，完全客观，不掺杂主观成分。</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>数学建模</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>模拟退火算法</title>
     <url>/2025/01/22/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="模拟退火算法"><a href="#模拟退火算法" class="headerlink" title="模拟退火算法"></a>模拟退火算法</h1><p><strong>模拟退火思想</strong>(以寻找山的最高峰为例)</p>
@@ -1364,77 +1642,6 @@ P=\begin{cases}  1, & \text{ } \Delta f < 0, \\ exp(- \Delta f/T_i), & \text{ } 
 </ul>
 <p><strong>理论上，模拟退火可以找到全局最优</strong></p>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设的目标函数 f(x)，我们要最小化该函数</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">objective_function</span><span class="params">(<span class="type">double</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x - <span class="number">4</span> * x + <span class="number">4</span>; <span class="comment">// 例如 f(x) = x^2 - 4x + 4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟退火算法</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">simulated_annealing</span><span class="params">(<span class="type">double</span> (*obj_func)(<span class="type">double</span>), <span class="type">double</span> start, <span class="type">double</span> end, <span class="type">double</span> temp, <span class="type">double</span> cooling_rate, <span class="type">int</span> iterations)</span> </span>&#123;</span><br><span class="line">    <span class="type">double</span> current_solution = start + (end - start) * ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX); <span class="comment">// 随机初始解</span></span><br><span class="line">    <span class="type">double</span> current_energy = <span class="built_in">obj_func</span>(current_solution);</span><br><span class="line">    <span class="type">double</span> best_solution = current_solution;</span><br><span class="line">    <span class="type">double</span> best_energy = current_energy;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; iterations; i++) &#123;</span><br><span class="line">        <span class="comment">// 生成一个邻域解</span></span><br><span class="line">        <span class="type">double</span> neighbor = current_solution + (<span class="built_in">rand</span>() % <span class="number">2</span> == <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>) * ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX) * <span class="number">0.1</span>; <span class="comment">// 邻域解</span></span><br><span class="line"></span><br><span class="line">        <span class="type">double</span> neighbor_energy = <span class="built_in">obj_func</span>(neighbor);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 计算接受概率</span></span><br><span class="line">        <span class="keyword">if</span> (neighbor_energy &lt; current_energy || <span class="built_in">exp</span>((current_energy - neighbor_energy) / temp) &gt; ((<span class="type">double</span>) <span class="built_in">rand</span>() / RAND_MAX)) &#123;</span><br><span class="line">            current_solution = neighbor;</span><br><span class="line">            current_energy = neighbor_energy;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更新最优解</span></span><br><span class="line">        <span class="keyword">if</span> (current_energy &lt; best_energy) &#123;</span><br><span class="line">            best_solution = current_solution;</span><br><span class="line">            best_energy = current_energy;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 降温</span></span><br><span class="line">        temp *= cooling_rate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> best_solution; <span class="comment">// 返回最优解</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">srand</span>(<span class="built_in">time</span>(<span class="number">0</span>)); <span class="comment">// 随机数种子</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置模拟退火的参数</span></span><br><span class="line">    <span class="type">double</span> start = <span class="number">-10.0</span>;         <span class="comment">// 搜索空间的起始点</span></span><br><span class="line">    <span class="type">double</span> end = <span class="number">10.0</span>;            <span class="comment">// 搜索空间的结束点</span></span><br><span class="line">    <span class="type">double</span> initial_temperature = <span class="number">1000.0</span>;  <span class="comment">// 初始温度</span></span><br><span class="line">    <span class="type">double</span> cooling_rate = <span class="number">0.99</span>;   <span class="comment">// 降温速率</span></span><br><span class="line">    <span class="type">int</span> iterations = <span class="number">10000</span>;       <span class="comment">// 迭代次数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行模拟退火算法</span></span><br><span class="line">    <span class="type">double</span> result = <span class="built_in">simulated_annealing</span>(objective_function, start, end, initial_temperature, cooling_rate, iterations);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;最优解: &quot;</span> &lt;&lt; result &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;最优目标函数值: &quot;</span> &lt;&lt; <span class="built_in">objective_function</span>(result) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>数学建模</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>熵权法</title>
-    <url>/2025/01/19/%E7%86%B5%E6%9D%83%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h1><p><strong>熵的概念：</strong></p>
-<ul>
-<li>信息论中，熵是对<strong>不确定性</strong>的一种度量，可判断一个事件的<strong>随机性</strong>及<strong>无序</strong>程度。</li>
-<li>用熵值判断某个指标的<strong>离散程度</strong>，指标的<strong>离散程度越大</strong>，<strong>该指标对综合评价的影响越大</strong>。</li>
-</ul>
-<h3 id="适用赛题"><a href="#适用赛题" class="headerlink" title="适用赛题"></a>适用赛题</h3><ul>
-<li>数据全面，但缺少文献或主观依据的题目<ul>
-<li>例如，<strong>评价河流的水质</strong>，已知河流的含氧量、pH值、细菌密度、生物密度等数据</li>
-<li>但<strong>缺乏评价水质的文献资料</strong>，或者文献内的<strong>说法不一</strong></li>
-<li>即文献很难帮助我们确定影响水质最重要的因素是哪一个，也很难告诉我们其余指标的重要程度如何衡量</li>
-<li>此时即可使用熵权法，<strong>根据数据本身建立评价体系</strong></li>
-</ul>
-</li>
-</ul>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li>熵权法与其他方法 (如AHP、TOPSIS法等) 最大的区别就是<strong>完全客观</strong></li>
-<li><strong>难以将数据之外的因素考虑进去</strong></li>
-</ul>
-<p><strong>1.数据标准化</strong></p>
-<p>标准化的原因：</p>
-<ul>
-<li>评价体系中，存在数值越大越好的<strong>正向指标</strong>，和数值越小越好的<strong>负向指标</strong></li>
-<li>不同指标数量级也可能不同；且求熵的公式中用到对数函数，变量不允许有负值</li>
-</ul>
-<p><strong>正向指标标准化：</strong></p>
-<p>$ a_{ij} = \frac{ x_{ij}- \min(x_{1j},…,x_{nj} )}{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
-<p><strong>负向指标标准化：</strong></p>
-<p>$ a_{ij} = \frac{ \max(x_{1j},…,x_{nj}) - x_{ij} }{\max(x_{1j},…,x_{nj})-\min(x_{1j},…,x_{nj})}  $</p>
-<p>不难发现，标准化之后，$a_{ij}$ 所有值在 $[0,1] $ 区间之内，且都是数值越大、现实意义越好。</p>
-<p><strong>2.指标的熵值和变异程度</strong></p>
-<p>①每个评价对象在各个指标中的比重：</p>
-<ul>
-<li><p>可理解为统计意义上某种情况出现的概率</p>
-<p>$p_{ij} = \frac{a_{ij}}{\sum_{i=1}^{n} a_{ij}}$</p>
-</li>
-</ul>
-<p>②熵值</p>
-<ul>
-<li><p>对于第 $i$ 个指标，其熵值 $e_j$ 为：</p>
-<p>$e_j = -\frac{1}{\ln n} \sum_{i=1}^{n} p_{ij} \ln p_{ij}$</p>
-</li>
-</ul>
-<p>③变异系数</p>
-<ul>
-<li>第 $j$ 个指标的变异系数： $g_j = 1 - e_j$ .</li>
-<li>显然熵值越大、变异系数越小，代表该指标越有序，该指标的信息量也就越小。</li>
-</ul>
-<p><strong>3.权重与评分</strong></p>
-<p><strong>变异系数求权重</strong></p>
-<ul>
-<li>计算第 $j$ 个指标的权重： $w_j = \frac{g_j}{\sum_{j=1}^{m} g_j} $ .</li>
-<li>指标的变异系数越大、信息量越大，相应指标的权重也越大。</li>
-</ul>
-<p><strong>综合评分</strong></p>
-<ul>
-<li><p>计算第 $i$ 个评价对象的综合评价值</p>
-<p>$s_i = \sum_{j=1}^{m} w_j p_{ij}$</p>
-</li>
-<li><p>该公式对不同科目加权求和，得到每个人的平均值，评价值越大越好。</p>
-</li>
-<li><p>$p_{ij}$ 和 $w_j$ 都是原始数据 (成绩) 求得的，完全客观，不掺杂主观成分。</p>
-</li>
-</ul>
 ]]></content>
       <tags>
         <tag>数学建模</tag>

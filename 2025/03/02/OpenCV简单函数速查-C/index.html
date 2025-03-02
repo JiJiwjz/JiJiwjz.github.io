@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="OpenCV 简单函数速查读取图片&#x2F;视频&#x2F;摄像头从文件读取图片">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenCV简单函数速查(C++)">
+<meta property="og:url" content="http://example.com/2025/03/02/OpenCV%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0%E9%80%9F%E6%9F%A5-C/index.html">
+<meta property="og:site_name" content="Samxander&#39;s home">
+<meta property="og:description" content="OpenCV 简单函数速查读取图片&#x2F;视频&#x2F;摄像头从文件读取图片">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-03-02T07:41:20.000Z">
+<meta property="article:modified_time" content="2025-03-02T07:42:47.544Z">
+<meta property="article:author" content="Sam">
+<meta property="article:tag" content="OpenCV">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2025/03/02/OpenCV%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0%E9%80%9F%E6%9F%A5-C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>OpenCV简单函数速查(C++) | Samxander's home</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?39a7b28cea42de31b1e8e2834e588560";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Samxander's home</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">You shall see the difference now that we are back again!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/02/OpenCV%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0%E9%80%9F%E6%9F%A5-C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Sam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Samxander's home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OpenCV简单函数速查(C++)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-03-02 15:41:20 / 修改时间：15:42:47" itemprop="dateCreated datePublished" datetime="2025-03-02T15:41:20+08:00">2025-03-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="OpenCV-简单函数速查"><a href="#OpenCV-简单函数速查" class="headerlink" title="OpenCV 简单函数速查"></a>OpenCV 简单函数速查</h1><h2 id="读取图片-视频-摄像头"><a href="#读取图片-视频-摄像头" class="headerlink" title="读取图片/视频/摄像头"></a>读取图片/视频/摄像头</h2><p><strong>从文件读取图片</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Mat <span class="title">cv::imread</span><span class="params">(<span class="type">const</span> String &amp;filename, <span class="type">int</span> flags = IMREAD_COLOR)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述代码实现了<strong>从文件加载图像</strong>。函数 <code>imread</code> 从指定文件加载图像并返回。在彩色图像的情况下，解码图像的通道将以 <code>B G R</code> 顺序存储。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::imshow</span><span class="params">(<span class="type">const</span> String &amp;winname, InputArray mat)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述代码实现了<strong>在指定窗口中显示图像</strong>。其后应跟 <code>cv::waitKey</code> 函数。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">cv::waitKey</span><span class="params">(<span class="type">int</span> delay = <span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述代码实现了<strong>等待按下的键</strong>。<code>waitKey(0)</code> 将无限显示窗口，直到有任何按键。</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgcodecs.hpp&gt;</span> <span class="comment">// 读写图像文件</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/highgui.hpp&gt;</span> <span class="comment">// 图像处理</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgproc.hpp&gt;</span> <span class="comment">// 高级GUI</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	string path = <span class="string">&quot;Resources/test.png&quot;</span>;</span><br><span class="line">	Mat img = <span class="built_in">imread</span>(path);</span><br><span class="line">	<span class="built_in">imshow</span>(<span class="string">&quot;Image&quot;</span>, img);</span><br><span class="line">	<span class="built_in">waitKey</span>(<span class="number">0</span>); <span class="comment">//显示图片不会一闪而过</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终，会显示一个名为 <code>Image</code> 的窗口。(<del>懒得放图了</del>)</p>
+<p><strong>从文件读取视频</strong></p>
+<p>要捕获视频，需要创建一个 <code>VideoCapture</code> 对象。它的参数可以是视频文件的名称或设备索引。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cv::VideoCapture::<span class="built_in">VideoCapture</span>()</span><br><span class="line">cv::VideoCapture::<span class="built_in">VideoCapture</span>(<span class="type">const</span> String &amp;filename)</span><br><span class="line">cv::VideoCapture::<span class="built_in">VideoCapture</span>(<span class="type">const</span> String &amp;filename, <span class="type">int</span> apiPreference)</span><br><span class="line">cv::VideoCapture::<span class="built_in">VideoCapture</span>(<span class="type">int</span> index)</span><br><span class="line">cv::VideoCapture::<span class="built_in">VideoCapture</span>(<span class="type">int</span> index, <span class="type">int</span> apiPreference)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述代码实现<strong>打开视频文件或捕获设备或IP视频流进行视频捕获</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="type">bool</span> cv::VideoCapture::<span class="built_in">isOpened</span>() <span class="type">const</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果视频捕获已经初始化，则返回 <code>true</code> 。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="type">bool</span> cv::VideoCapture::<span class="built_in">read</span>(OutputArray image)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>抓取、解码并返回下一个视频帧。</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="type">double</span> cv::VideoCapture::<span class="built_in">get</span>(<span class="type">int</span> proID) <span class="type">const</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>返回指定的 <code>VideoCapture</code> 属性。<code>&lt;-</code></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="type">double</span> cv::VideoCapture::<span class="built_in">set</span>(<span class="type">int</span> proID, <span class="type">double</span> value)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 <code>VideoCapture</code> 中设置一个属性。</li>
+</ul>
+<p><strong>读摄像头代码实现：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgcodecs.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgproc.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">VideoCapture <span class="title">cap</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">	Mat img;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>) </span><br><span class="line">    &#123;</span><br><span class="line">		cap.<span class="built_in">read</span>(img);</span><br><span class="line">		<span class="built_in">imshow</span>(<span class="string">&quot;Image&quot;</span>, img);</span><br><span class="line">		<span class="built_in">waitKey</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="基础函数"><a href="#基础函数" class="headerlink" title="基础函数"></a>基础函数</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::cvtColor</span><span class="params">(InputArray src, OutputArray dst, <span class="type">int</span> code, <span class="type">int</span> dstCn = <span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述代码实现了<strong>将一种颜色空间转换为另一种颜色空间</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::GaussianBlur</span><span class="params">(InputArray src, OutputArray dst, Size ksize, <span class="type">double</span> sigmaX, <span class="type">double</span> sigmaY = <span class="number">0</span>, <span class="type">int</span> borderType = BORDER_DEFAULT)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>高斯模糊</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::Canny</span><span class="params">(InputArray image, OutputArray edges, <span class="type">double</span> threshold1, <span class="type">double</span> threshold2, <span class="type">int</span> apertureSize = <span class="number">3</span>, <span class="type">bool</span> L2gradient = <span class="literal">false</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用Canny算法在图像中<strong>查找边缘</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Mat <span class="title">cv::getStructuringElement</span><span class="params">(<span class="type">int</span> shape, Size ksize, Point anchor = Point(<span class="number">-1</span>, <span class="number">-1</span>))</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>返回指定大小和形状的结构元素</strong>，用于形态学操作。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::dilate</span><span class="params">(InputArray src, OutputArray dst, InuputArray kernel, Point anchor = Point(<span class="number">-1</span>, <span class="number">-1</span>), <span class="type">int</span> iterations = <span class="number">1</span>, <span class="type">int</span> borderType = BORDER_CONSTANT, <span class="type">const</span> Scalar &amp;borderValue = morphologyDefaultBorderValue())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用特定的结构元素<strong>膨胀</strong>图像。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::erode</span><span class="params">(InputArray src, OutputArray dst, InuputArray kernel, Point anchor = Point(<span class="number">-1</span>, <span class="number">-1</span>), <span class="type">int</span> iterations = <span class="number">1</span>, <span class="type">int</span> borderType = BORDER_CONSTANT, <span class="type">const</span> Scalar &amp;borderValue = morphologyDefaultBorderValue())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用特定的结构元素<strong>腐蚀</strong>图像。</li>
+</ul>
+<hr>
+<h2 id="调整和剪裁"><a href="#调整和剪裁" class="headerlink" title="调整和剪裁"></a>调整和剪裁</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::resize</span><span class="params">(InputArray src, OutputArray dst, Size dsize, <span class="type">double</span> fx=<span class="number">0</span>, <span class="type">double</span> fy=<span class="number">0</span>, <span class="type">int</span> interpolation = INTER_LINEAR)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>调整图像大小</strong>。函数 <code>resize</code> 将图像 <code>src</code> 的大小缩小到或最大到指定的大小。</li>
+</ul>
+<hr>
+<h2 id="绘制形状和文字"><a href="#绘制形状和文字" class="headerlink" title="绘制形状和文字"></a>绘制形状和文字</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Mat</span>(<span class="type">int</span> rows, <span class="type">int</span> cols, <span class="type">int</span> type, <span class="type">const</span> Scalar &amp;s)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重载的构造函数</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::circle</span><span class="params">(InputOutputArray img, Point center, <span class="type">int</span> radius, <span class="type">const</span> Scalar &amp;color, <span class="type">int</span> thickness=<span class="number">1</span>, <span class="type">int</span> lineType=LINE_8, <span class="type">int</span> shift=<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数 <code>cv::circle</code> 用给定的中心和半径绘制一个简单的<strong>实心圆</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::rectangle</span><span class="params">(InputOutputArray img, Point pt1, Point pt2, <span class="type">const</span> Scalar &amp;color, <span class="type">int</span> thickness=<span class="number">1</span>, <span class="type">int</span> lineType=LINE_8, <span class="type">int</span> shift=<span class="number">0</span>)</span></span></span><br><span class="line"><span class="function">    </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::rectangle</span><span class="params">(Mat &amp;img, Rect rec, <span class="type">const</span> Scalar &amp;color, <span class="type">int</span> thickness=<span class="number">1</span>, <span class="type">int</span> lineType=LINE_8, <span class="type">int</span> shift=<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>绘制一个简单的、粗的或填充的右上<strong>矩形</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::line</span> <span class="params">(InputOutputArray img, Point pt1, Point pt2, <span class="type">const</span> Scalar &amp;color, <span class="type">int</span> thickness=<span class="number">1</span>, <span class="type">int</span> lineType=LINE_8, <span class="type">int</span> shift=<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>绘制连接两点的<strong>线段</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::putText</span> <span class="params">(InputOutputArray img, <span class="type">const</span> String &amp;text, Point org, <span class="type">int</span> fontFace, <span class="type">double</span> fontScale, Scalar color, <span class="type">int</span> thickness=<span class="number">1</span>, <span class="type">int</span> lineType=LINE_8, <span class="type">bool</span> bottomLeftOrigin=<span class="literal">false</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>绘制一个文本字符串</strong>。</li>
+</ul>
+<hr>
+<h2 id="透视变换"><a href="#透视变换" class="headerlink" title="透视变换"></a>透视变换</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Mat <span class="title">cv::getPerspectiveTransform</span> <span class="params">(<span class="type">const</span> Point2f src[], <span class="type">const</span> Point2f dst[])</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>返回相应 4 个点对的 <code>3x3</code> 透视变换。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::warpPerspective</span> <span class="params">(InputArray src, OutputArray dst, InputArray M, Size dsize, <span class="type">int</span> flags=INTER_LINEAR, <span class="type">int</span> borderMode=BORDER_CONSTANT, <span class="type">const</span> Scalar &amp;borderValue=Scalar())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>对图像应用透视变换。</li>
+</ul>
+<hr>
+<h2 id="颜色检测"><a href="#颜色检测" class="headerlink" title="颜色检测"></a>颜色检测</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::inRange</span> <span class="params">(InputArray src, InputArray lowerb, InputArray upperb, OutputArray dst)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>检测数组元素时候位于其他两个数组的元素之间。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::namedWindow</span> <span class="params">(<span class="type">const</span> String &amp;winname, <span class="type">int</span> flags = WINDOW_AUTOSIZE)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>创建一个窗口</strong>。函数创建一个可用作图像和轨迹栏占位符的窗口。创建的窗口由它们的名称引用。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">cv::createTrackbar</span> <span class="params">(<span class="type">const</span> String &amp;trackbarname, <span class="type">const</span> String &amp;winname, <span class="type">int</span> *value, <span class="type">int</span> count, TrackbarCallback onChange = <span class="number">0</span>, <span class="type">void</span> *userdata = <span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建一个 <code>trackbar</code> 并将其附加到指定窗口。函数 <code>createTrackbar</code>创建一个具有指定名称和范围的<code>trackbar</code>（滑块或范围控件），分配一个变量值作为与 <code>trackbar</code> 同步的位置，并指定回调函数<code>onChange</code> 为 在跟踪栏位置变化时被调用。创建的轨迹栏显示在指定的窗口 <code>winname</code> 中。</li>
+</ul>
+<hr>
+<h2 id="形状-轮廓检测"><a href="#形状-轮廓检测" class="headerlink" title="形状/轮廓检测"></a>形状/轮廓检测</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::findContours</span><span class="params">(InputOutputArray image, OutputArrayOfArrays contours, OutputArray hierarchy, <span class="type">int</span> mode, <span class="type">int</span> method, Point offset = Point())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>在二值图像中查找轮廓</strong>。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">image</td>
+<td style="text-align:center">二值输入图像</td>
+</tr>
+<tr>
+<td style="text-align:center">contours</td>
+<td style="text-align:center">检测到的轮廓，每个轮廓都存储为点向量（例如 <code>std::vector&lt;std::vector&lt;cv::Point&gt; &gt;</code>）</td>
+</tr>
+<tr>
+<td style="text-align:center">hierarchy</td>
+<td style="text-align:center">可选的输出向量（例如 <code>std::vector&lt;cv::Vec4i&gt;</code>），包含有关图像拓扑的信息</td>
+</tr>
+<tr>
+<td style="text-align:center">mode</td>
+<td style="text-align:center">轮廓检索模式</td>
+</tr>
+<tr>
+<td style="text-align:center">method</td>
+<td style="text-align:center">轮廓近似方式</td>
+</tr>
+<tr>
+<td style="text-align:center">offset</td>
+<td style="text-align:center">每个轮廓点移动的可选偏移量</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">double</span> <span class="title">cv::contourArea</span><span class="params">(InputArray contour, <span class="type">bool</span> oriented = <span class="literal">false</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>计算轮廓区域</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">double</span> <span class="title">cv::arcLength</span><span class="params">(InputArray curve, <span class="type">bool</span> closed)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>计算曲线长度或闭合轮廓周长</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::approxPolyDP</span><span class="params">(InputArray curve, OutputArray approxCurve, <span class="type">double</span> epsilon, <span class="type">bool</span> closed)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>用另一个具有较少顶点的曲线/多边形来<strong>逼近</strong>一条曲线或多边形，以使他们之间的距离小于或等于指定的精度。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cv::drawContours</span><span class="params">(InputOutputArray image, InputArrayOfArrays contours, <span class="type">int</span> contourIdx, <span class="type">const</span> Scalar &amp;color, <span class="type">int</span> thickness = <span class="number">1</span>, <span class="type">int</span> lineType = LINE_8, InputArray hierarchy = noArray(), <span class="type">int</span> maxLevel = INT_MAX, Point offset = Point())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>绘制轮廓轮廓或填充轮廓</strong>。如果厚度 ≥ 0，该函数在图像中绘制轮廓轮廓，如果厚度 &lt; 0，则填充轮廓所包围的区域。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Point_&lt; _Tp &gt; <span class="title">tl</span><span class="params">()</span> <span class="type">const</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>左上角</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Point_&lt; _Tp &gt; <span class="title">br</span><span class="params">()</span> <span class="type">const</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>右下角</li>
+</ul>
+<hr>
+<h2 id="人脸检测"><a href="#人脸检测" class="headerlink" title="人脸检测"></a>人脸检测</h2><p>（挖个坑，这里仅给出速查代码，后面写一篇从原理开始分析的人脸检测）</p>
+<p>涉及模块 <code>objdetect:Object Detection</code> </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">cv</span>::CascadeClassifier</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>用于对象检测的级联分类器类</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">load</span> <span class="params">(<span class="type">const</span> String &amp;filename)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>从文件加载分类器</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">empty</span><span class="params">()</span> <span class="type">const</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>检测分类器是否已加载。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">detectMultiScale</span><span class="params">(InputArray image, std::vector&lt;Rect&gt; &amp;objects, <span class="type">double</span> scaleFactor=<span class="number">1.1</span>, <span class="type">int</span> minNeighbors=<span class="number">3</span>, <span class="type">int</span> flags=<span class="number">0</span>, Size minSize=Size(), Size maxSize=Size())</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>检测输入图像中不同大小的对象。检测到的对象作为矩形列表返回。</li>
+</ul>
+<p>代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgcodecs.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/imgproc.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/objdetect.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	string path = <span class="string">&quot;Resources/test.png&quot;</span>;</span><br><span class="line">	Mat img = <span class="built_in">imread</span>(path);</span><br><span class="line"></span><br><span class="line">	CascadeClassifier faceCascade;</span><br><span class="line">	faceCascade.<span class="built_in">load</span>(<span class="string">&quot;Resources/haarcascade_frontalface_default.xml&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (faceCascade.<span class="built_in">empty</span>()) &#123; cout &lt;&lt; <span class="string">&quot;XML file not loaded&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line"></span><br><span class="line">	vector&lt;Rect&gt; faces;</span><br><span class="line">	faceCascade.<span class="built_in">detectMultiScale</span>(img, faces, <span class="number">1.1</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; faces.<span class="built_in">size</span>(); i++) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">rectangle</span>(img, faces[i].<span class="built_in">tl</span>(), faces[i].<span class="built_in">br</span>(), <span class="built_in">Scalar</span>(<span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">3</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">imshow</span>(<span class="string">&quot;Image&quot;</span>, img);</span><br><span class="line">	<span class="built_in">waitKey</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>Insist on writing original high-quality articles. Your support is my biggest motivation.</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Sam 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Sam 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/OpenCV/" rel="tag"># OpenCV</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/02/24/%E7%AE%80%E5%8D%95%E6%89%AB%E9%9B%B7%E6%B8%B8%E6%88%8F%E5%AE%9E%E7%8E%B0/" rel="prev" title="简单扫雷游戏实现">
+      <i class="fa fa-chevron-left"></i> 简单扫雷游戏实现
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV-%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0%E9%80%9F%E6%9F%A5"><span class="nav-number">1.</span> <span class="nav-text">OpenCV 简单函数速查</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E5%9B%BE%E7%89%87-%E8%A7%86%E9%A2%91-%E6%91%84%E5%83%8F%E5%A4%B4"><span class="nav-number">1.1.</span> <span class="nav-text">读取图片&#x2F;视频&#x2F;摄像头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">基础函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E5%92%8C%E5%89%AA%E8%A3%81"><span class="nav-number">1.3.</span> <span class="nav-text">调整和剪裁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%BD%A2%E7%8A%B6%E5%92%8C%E6%96%87%E5%AD%97"><span class="nav-number">1.4.</span> <span class="nav-text">绘制形状和文字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%8F%E8%A7%86%E5%8F%98%E6%8D%A2"><span class="nav-number">1.5.</span> <span class="nav-text">透视变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%E6%A3%80%E6%B5%8B"><span class="nav-number">1.6.</span> <span class="nav-text">颜色检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%A2%E7%8A%B6-%E8%BD%AE%E5%BB%93%E6%A3%80%E6%B5%8B"><span class="nav-number">1.7.</span> <span class="nav-text">形状&#x2F;轮廓检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B"><span class="nav-number">1.8.</span> <span class="nav-text">人脸检测</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sam"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">Sam</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/shuai-xiao-ji-65" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;shuai-xiao-ji-65" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>Zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/JiJiwjz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JiJiwjz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/weijiazhe123.mail.nwpu.edu.cn" title="E-Mail → weijiazhe123.mail.nwpu.edu.cn"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sam</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
